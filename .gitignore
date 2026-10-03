@@ -10,3 +10,6 @@ obj/
 # чужое: утилита для полученія токена и значокъ Xiaomi (товарный знакъ)
 token_extractor.exe
 mi.ico
+
+# собранные пакеты для Store
+store/out/

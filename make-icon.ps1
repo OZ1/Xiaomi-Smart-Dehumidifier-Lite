@@ -1,6 +1,7 @@
 ﻿using namespace System.Drawing
 using namespace System.Drawing.Drawing2D
-param([string] $Out, [string] $PreviewDir)
+# -Out — файлъ .ico; -PreviewDir — папка для PNG каждаго размѣра (icon<N>.png); -Sizes — какіе размѣры рисовать
+param([string] $Out, [string] $PreviewDir, [int[]] $Sizes = @(16, 20, 24, 32, 40, 48, 64, 128, 256))
 Add-Type -AssemblyName System.Drawing
 
 function RoundRect([float]$x, [float]$y, [float]$w, [float]$h, [float]$r) {
@@ -61,13 +62,15 @@ function Draw([int] $n) {
 	$g.Dispose(); $bmp
 }
 
-$sizes = 16, 20, 24, 32, 40, 48, 64, 128, 256
+$sizes = $Sizes
 $images = foreach ($n in $sizes) {
 	$bmp = Draw $n
 	if ($PreviewDir) { $bmp.Save((Join-Path $PreviewDir "icon$n.png")) }
 	$ms = [IO.MemoryStream]::new(); $bmp.Save($ms, [Imaging.ImageFormat]::Png); $bmp.Dispose()
 	, $ms.ToArray()
 }
+
+if (-not $Out) { return } # только PNG — напримѣръ, значки для Store
 
 # ICO: заголовокъ, каталогъ, PNG-образы
 $ico = [IO.MemoryStream]::new(); $w = [IO.BinaryWriter]::new($ico)

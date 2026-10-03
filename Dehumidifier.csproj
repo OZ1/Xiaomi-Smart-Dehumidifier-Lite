@@ -9,10 +9,43 @@
 		<ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
 		<RootNamespace>DehumidifierControl</RootNamespace>
 		<ApplicationIcon>Dehumidifier.ico</ApplicationIcon>
-		<AssemblyTitle>Осушитель Xiaomi Smart Dehumidifier Lite</AssemblyTitle>
 		<NeutralLanguage>ru</NeutralLanguage>
 		<EnableWindowsTargeting>true</EnableWindowsTargeting>
 	</PropertyGroup>
+
+	<!-- Свойства exe (Проводникъ → Свойства → Подробно); издатель — какъ въ пакетѣ для Store (store/pack.ps1).
+	     Версія здѣсь — для мѣстной сборки; GitHub Actions подставляетъ версію изъ мѣтки v* -->
+	<PropertyGroup>
+		<AssemblyTitle>Пультъ для осушителя Xiaomi Smart Dehumidifier Lite</AssemblyTitle>
+		<Product>Пультъ для осушителя Xiaomi</Product>
+		<Description>Управленіе осушителемъ Xiaomi Smart Dehumidifier Lite (xiaomi.derh.lite) по локальной сѣти, безъ Mi Home и облака. Неоффиціальная программа, не связана съ Xiaomi.</Description>
+		<Company>Ољег Зонов</Company>
+		<Authors>Ољег Зонов</Authors>
+		<Copyright>© 2026 Ољег Зонов</Copyright>
+		<Version>1.0.0</Version>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<AssemblyAttribute Include="System.Reflection.AssemblyTrademarkAttribute">
+			<_Parameter1>Xiaomi — товарный знакъ Xiaomi Inc.</_Parameter1>
+		</AssemblyAttribute>
+	</ItemGroup>
+
+	<!-- Свойства exe на каждомъ языкѣ изъ описанія для Store: Проводникъ показываетъ блокъ на языкѣ Windows.
+	     SDK такъ не умѣетъ (пишетъ одинъ блокъ изъ свойствъ выше), поэтому Win32-ресурсъ — свой: версія, значокъ, манифестъ.
+	     Свойства выше остаются для атрибутовъ сборки (Application.ProductName и т. п.) -->
+	<Target Name="LocalizedVersionResource" BeforeTargets="CoreCompile" DependsOnTargets="GetAssemblyAttributes" Condition="'$(DesignTimeBuild)' != 'true'">
+		<PropertyGroup>
+			<VersionResource>$(IntermediateOutputPath)Version.res</VersionResource>
+		</PropertyGroup>
+		<Exec Command="pwsh -NoProfile -ExecutionPolicy Bypass -File &quot;$(MSBuildProjectDirectory)\Properties\VersionResource.ps1&quot; -Out &quot;$(VersionResource)&quot; -Csv &quot;$(MSBuildProjectDirectory)\store\описанія.csv&quot; -Icon &quot;$(MSBuildProjectDirectory)\$(ApplicationIcon)&quot; -Manifest &quot;$(MSBuildProjectDirectory)\Properties\app.manifest&quot; -FileVersion &quot;$(FileVersion)&quot; -InformationalVersion &quot;$(InformationalVersion)&quot; -Copyright &quot;$(Copyright)&quot;" />
+		<PropertyGroup>
+			<!-- значокъ и манифестъ уже въ .res; компиляторъ не принимаетъ ихъ вмѣстѣ съ Win32Resource -->
+			<Win32Resource>$(VersionResource)</Win32Resource>
+			<ApplicationIcon />
+			<Win32Manifest />
+		</PropertyGroup>
+	</Target>
 
 	<!-- Release: одинъ exe безъ dll (нуженъ установленный .NET 10 Desktop Runtime), отладочные символы — внутри exe -->
 	<PropertyGroup Condition="'$(Configuration)'=='Release'">

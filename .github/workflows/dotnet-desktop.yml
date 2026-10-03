@@ -4,6 +4,8 @@
 #   git push origin v1.0.0
 #
 # Версія exe берётся изъ мѣтки безъ «v»; безъ мѣтки — 0.0.0-ci.<номеръ прогона>.
+# По мѣткѣ и при ручномъ запускѣ собирается ещё пакетъ для Microsoft Store (store/pack.ps1) —
+# артефактъ Dehumidifier_<версія>.msixupload для Partner Center; версія — изъ мѣтки, дополненная нулями до четырёхъ чиселъ.
 
 name: Сборка и выпускъ
 
@@ -25,10 +27,10 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v7
 
     - name: Install .NET
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@v6
       with:
         dotnet-version: 10.0.x
 
@@ -41,16 +43,34 @@ jobs:
       run: |
         $version = $env:REF_TYPE -eq 'tag' ? $env:REF_NAME.TrimStart('v') : "0.0.0-ci.$env:RUN_NUMBER"
         "VERSION=$version" >> $env:GITHUB_ENV
+        # Store: четыре числа, послѣднее 0 (v1.2.3 → 1.2.3.0); безъ мѣтки — 0.0.<номеръ прогона>.0
+        $parts = @(($env:REF_TYPE -eq 'tag' ? $env:REF_NAME.TrimStart('v') -replace '-.*$', '' : "0.0.$env:RUN_NUMBER").Split('.')) + '0', '0', '0'
+        $store = ($parts[0..2] -join '.') + '.0' # v1.1 → 1.1.0.0
+        "STORE_VERSION=$store" >> $env:GITHUB_ENV
 
     # Release: одинъ exe безъ dll, переводы внутри (см. Dehumidifier.csproj)
     - name: Publish win-x64
       run: dotnet publish Dehumidifier.csproj -c Release -o publish -p:Version=${{ env.VERSION }}
 
     - name: Upload build artifact
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: Dehumidifier
         path: publish/Dehumidifier.exe
+        if-no-files-found: error
+
+    # MSIX для x64 и arm64 (самодостаточныя), связка и .msixupload; makeappx и makepri — изъ Windows SDK на runner'ѣ
+    - name: Store package
+      if: github.ref_type == 'tag' || github.event_name == 'workflow_dispatch'
+      shell: pwsh
+      run: ./store/pack.ps1 -Version $env:STORE_VERSION
+
+    - name: Upload Store package
+      if: github.ref_type == 'tag' || github.event_name == 'workflow_dispatch'
+      uses: actions/upload-artifact@v7
+      with:
+        path: store/out/*.msixupload
+        archive: false # скачивается самъ .msixupload, безъ zip; имя артефакта — имя файла
         if-no-files-found: error
 
   release:
@@ -61,16 +81,35 @@ jobs:
       contents: write
 
     steps:
+    - name: Checkout # вся исторія и мѣтки — для списка коммитовъ
+      uses: actions/checkout@v7
+      with:
+        fetch-depth: 0
+
     - name: Download build artifact
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v8
       with:
         name: Dehumidifier
+
+    # Описаніе выпуска: коммиты съ предыдущей мѣтки — дата, заголовокъ, текстъ (безъ Co-Authored-By), новые сверху
+    - name: Release notes
+      env:
+        TAG: ${{ github.ref_name }}
+      run: |
+        prev=$(git describe --tags --abbrev=0 "$TAG^" 2>/dev/null || true)
+        {
+          echo "## Что измѣнилось${prev:+ съ $prev}"
+          for c in $(git rev-list --no-merges "${prev:+$prev..}$TAG"); do
+            echo
+            git log -1 --format='- **%ad** %s' --date=format:%d.%m.%Y "$c"
+            body=$(git log -1 --format=%b "$c" | grep -v -i '^co-authored-by:' | sed -e :a -e '/^\n*$/{$d;N;ba' -e '}')
+            if [ -n "$body" ]; then printf '\n%s\n' "$body" | sed 's/^/  /;s/^ *$//'; fi
+          done
+        } > notes.md
 
     - name: Create GitHub release
       env:
         GH_TOKEN: ${{ github.token }}
         TAG: ${{ github.ref_name }}
         REPO: ${{ github.repository }}
-      run: |
-        gh release create "$TAG" Dehumidifier.exe --repo "$REPO" --title "$TAG" --generate-notes \
-          --notes "Нуженъ [.NET 10 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/10.0) (x64)."
+      run: gh release create "$TAG" Dehumidifier.exe --repo "$REPO" --title "$TAG" --notes-file notes.md --generate-notes

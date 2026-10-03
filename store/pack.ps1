@@ -30,6 +30,13 @@ $makeappx = Get-ChildItem 'C:\Program Files (x86)\Windows Kits\10\bin' -Director
 if (-not $makeappx) { throw 'Не найденъ makeappx.exe — нуженъ Windows SDK.' }
 $makepri = Join-Path (Split-Path $makeappx) 'makepri.exe'
 
+# makeappx и makepri перечисляютъ каждый файлъ: при успѣхѣ въ логъ идутъ только предупрежденія, при ошибкѣ — весь выводъ
+function Tool([string] $What, [string] $Exe) {
+	$log = & $Exe @args 2>&1
+	if ($LASTEXITCODE) { $log | Write-Host; throw "$What не удался." }
+	$log | Where-Object { "$_" -match 'warn|error' } | ForEach-Object { Write-Warning "${What}: $_" }
+}
+
 if (Test-Path $out) { Remove-Item $out -Recurse -Force }
 $assets   = New-Item -ItemType Directory (Join-Path $out 'Assets')
 $icons    = New-Item -ItemType Directory (Join-Path $out 'icons')
@@ -67,8 +74,7 @@ foreach ($lang in $languages) {
 "@, [Text.UTF8Encoding]::new($false))
 }
 Copy-Item $assets (Join-Path $out 'pri\Assets') -Recurse
-& $makepri createconfig /cf (Join-Path $out 'priconfig.xml') /dq $languages[0] /pv 10.0.0 /o | Out-Null
-if ($LASTEXITCODE) { throw 'makepri createconfig не удался.' }
+Tool 'makepri createconfig' $makepri createconfig /cf (Join-Path $out 'priconfig.xml') /dq $languages[0] /pv 10.0.0 /o
 $priconfig = [xml](Get-Content (Join-Path $out 'priconfig.xml') -Raw) # всѣ языки — въ одинъ resources.pri, безъ пакетовъ ресурсовъ
 [void]$priconfig.resources.RemoveChild($priconfig.resources.packaging); $priconfig.Save((Join-Path $out 'priconfig.xml'))
 
@@ -78,7 +84,7 @@ foreach ($arch in $Architectures) {
 	$layout = Join-Path $out "layout-$arch"
 	Write-Host "Сборка $arch…"
 	dotnet publish (Join-Path $root 'Dehumidifier.csproj') -c Release -r "win-$arch" --self-contained true `
-		-p:PublishSingleFile=false -p:DebugType=embedded -o $layout -nologo -v q
+		-p:PublishSingleFile=false -p:DebugType=embedded -p:Version=$Version -o $layout -nologo -v q
 	if ($LASTEXITCODE) { throw "Сборка $arch не удалась." }
 
 	Copy-Item $assets (Join-Path $layout 'Assets') -Recurse
@@ -88,18 +94,15 @@ foreach ($arch in $Architectures) {
 
 	# resources.pri: строки и значки; индексируется отдѣльная папка, чтобы не трогать папки сборокъ .NET (ru, cs, …)
 	Copy-Item (Join-Path $layout 'AppxManifest.xml') (Join-Path $out 'pri') -Force
-	& $makepri new /pr (Join-Path $out 'pri') /cf (Join-Path $out 'priconfig.xml') /mn (Join-Path $out 'pri\AppxManifest.xml') `
-		/of (Join-Path $layout 'resources.pri') /o | Out-Null
-	if ($LASTEXITCODE) { throw "makepri ($arch) не удался." }
+	Tool "makepri ($arch)" $makepri new /pr (Join-Path $out 'pri') /cf (Join-Path $out 'priconfig.xml') /mn (Join-Path $out 'pri\AppxManifest.xml') `
+		/of (Join-Path $layout 'resources.pri') /o
 
-	& $makeappx pack /d $layout /p (Join-Path $packages "Dehumidifier_${Version}_$arch.msix") /o | Out-Null
-	if ($LASTEXITCODE) { throw "makeappx pack ($arch) не удался." }
+	Tool "makeappx pack ($arch)" $makeappx pack /d $layout /p (Join-Path $packages "Dehumidifier_${Version}_$arch.msix") /o
 }
 
 # ───── связка и файлъ для Store ─────
 $bundle = Join-Path $out "Dehumidifier_$Version.msixbundle"
-& $makeappx bundle /d $packages /p $bundle /bv $Version /o | Out-Null
-if ($LASTEXITCODE) { throw 'makeappx bundle не удался.' }
+Tool 'makeappx bundle' $makeappx bundle /d $packages /p $bundle /bv $Version /o
 
 $upload = Join-Path $out "Dehumidifier_$Version.msixupload" # .msixupload — zip съ .msixbundle
 Compress-Archive -Path $bundle -DestinationPath "$upload.zip" -Force

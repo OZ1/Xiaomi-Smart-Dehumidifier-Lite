@@ -45,6 +45,16 @@ dotnet publish -c Release
 
 Готовый `Dehumidifier.exe` — въ `bin\Release\net10.0-windows\win-x64\publish\`.
 
+Готовый exe можно и не собирать — онъ лежитъ въ [Releases](../../releases). Выпускъ дѣлаетъ GitHub Actions (`.github/workflows/dotnet-desktop.yml`), когда въ репозиторій приходитъ мѣтка `v*`; версія exe берётся изъ мѣтки:
+
+```bash
+git tag v1.0.0
+```
+
+```bash
+git push origin v1.0.0
+```
+
 ## Окно
 
 При первомъ запускѣ введи адресъ и токенъ и нажми «Подключиться». Они сохраняются въ настройкахъ пользователя (`Settings.Default` → `user.config` въ `%LocalAppData%`), въ репозиторій не попадаютъ; при слѣдующихъ запускахъ программа подключается сама.

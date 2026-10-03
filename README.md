@@ -45,6 +45,12 @@ dotnet publish -c Release
 
 Готовый `Dehumidifier.exe` — въ `bin\Release\net10.0-windows\win-x64\publish\`.
 
+То же — профилемъ публикаціи `Properties\PublishProfiles\FolderProfile.pubxml` (его видитъ и Visual Studio: «Опубликовать»):
+
+```bash
+dotnet publish -p:PublishProfile=FolderProfile
+```
+
 Готовый exe можно и не собирать — онъ лежитъ въ [Releases](../../releases). Выпускъ дѣлаетъ GitHub Actions (`.github/workflows/dotnet-desktop.yml`), когда въ репозиторій приходитъ мѣтка `v*`; версія exe берётся изъ мѣтки:
 
 ```bash

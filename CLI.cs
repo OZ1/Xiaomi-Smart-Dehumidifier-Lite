@@ -11,6 +11,8 @@ namespace DehumidifierControl;
 
 using Properties;
 
+using static Properties.Resources;
+
 using static Byte;
 using static String;
 using static Console;
@@ -26,34 +28,7 @@ using State = DehumidifierState;
 
 static partial class CLI
 {
-	const string Usage = """
-		Управленіе осушителемъ Xiaomi Smart Dehumidifier Lite.
-		Адресъ и токенъ берутся изъ настроекъ программы (тѣ же, что въ окнѣ).
-
-		  Dehumidifier.exe status                    состояніе
-		  Dehumidifier.exe on                        включить
-		  Dehumidifier.exe off                       выключить
-		  Dehumidifier.exe humidity 40…70            цѣлевая влажность, %
-		  Dehumidifier.exe mode smart|sleep|dry      режимъ: умный, ночной, сушка бѣлья
-		  Dehumidifier.exe light on|off dim|bright   подсвѣтка: выключатель и (или) яркость
-
-		Русскія синонимы: состояніе, включить, выключить, влажность, режимъ умный|ночной|сушка,
-		подсвѣтка включить|выключить тусклая|яркая.
-
-		У light выключатель (on|off) и яркость (dim|bright) независимы: можно одно изъ нихъ или оба,
-		въ любомъ порядкѣ. light dim мѣняетъ только яркость, light on dim — и то, и другое:
-		  Dehumidifier.exe light on dim status
-
-		Команды можно писать нѣсколько подрядъ, онѣ выполнятся по порядку:
-		  Dehumidifier.exe mode smart humidity 45 status
-		Сначала провѣряется вся строка: если въ ней ошибка, не выполняется ничего.
-		При отказѣ устройства выполненіе останавливается на этой командѣ.
-		Безъ параметровъ открывается окно.
-
-		Кодъ выхода: 0 — успѣхъ, 1 — ошибка связи или отказъ устройства, 2 — невѣрная команда.
-		""";
-
-	static readonly string[] ModeNames = ["умный", "ночной", "сушка бѣлья"];
+	static string[] ModeNames => [ModeSmart, ModeSleep, ModeDry];
 
 	static readonly Dictionary<string, byte> Modes = new(StringComparer.OrdinalIgnoreCase)
 	{
@@ -62,7 +37,10 @@ static partial class CLI
 		["dry"  ] = 2, ["сушка" ] = 2, ["2"] = 2,
 	};
 
-	static readonly string[] LightNames = ["выключена", "тусклая", "яркая"];
+	static string[] LightNames => [LightOff, LightDim, LightBright];
+
+	/// <summary>Ширина столбца подписей въ status — по самой длинной подписи на языкѣ интерфейса.</summary>
+	static int LabelWidth => new[] { CliPower, CliMode, CliLight, CliTemperature, CliHumidity, CliTarget, CliFault }.Max(l => l.Length) + 1;
 
 	static readonly Dictionary<string, bool> LightSwitch = new(StringComparer.OrdinalIgnoreCase)
 	{
@@ -114,18 +92,18 @@ static partial class CLI
 					var min = ToInt32(id.Min);
 					var max = ToInt32(id.Max);
 					if (i + 1 == args.Length)
-						return Wrong($"«{current}»: нѣтъ значенія — цѣлое число отъ {min} до {max}.");
+						return Wrong(Format(CliNoHumidity, current, min, max));
 					current += ' ' + args[++i];
 					if (!TryParse(args[i].TrimEnd('%'), out var humidity) || humidity is < 0 or > 100)
-						return Wrong($"«{current}»: цѣлевая влажность — цѣлое число отъ {min} до {max}.");
+						return Wrong(Format(CliBadHumidity, current, min, max));
 					break;
 
 				case "mode" or "режимъ" or "режим":
 					if (i + 1 == args.Length)
-						return Wrong($"«{current}»: нѣтъ значенія — режимъ smart, sleep или dry (умный, ночной, сушка).");
+						return Wrong(Format(CliNoMode, current));
 					current += ' ' + args[++i];
 					if (!Modes.TryGetValue(args[i], out byte mode))
-						return Wrong($"«{current}»: режимъ — smart, sleep или dry (умный, ночной, сушка).");
+						return Wrong(Format(CliBadMode, current));
 					break;
 
 				case "light" or "lights" or "подсвѣтка" or "подсветка":
@@ -136,10 +114,10 @@ static partial class CLI
 						if (LightLevels.TryGetValue(args[i + 1], out byte b)) brightness++;
 						else break;
 					if (on + brightness < 1)
-						return Wrong($"«{current}»: нужно dim|bright (тусклая|яркая) и/или on|off (включить|выключить).");
+						return Wrong(Format(CliBadLight, current));
 					break;
 
-				default: return Wrong($"Неизвѣстная команда «{current}».");
+				default: return Wrong(Format(CliUnknownCommand, current));
 				}
 
 				static int Wrong(string message)
@@ -152,15 +130,15 @@ static partial class CLI
 				}
 			}
 
-			using  Dehumidifier device = Connect();
-			static Dehumidifier          Connect()
+			using Dehumidifier device = Connect();
+			static Dehumidifier  Connect()
 			{
-				string ip    = Settings.Default.IP;
+				string ip = Settings.Default.IP;
 				string token = Settings.Default.Token;
 				if (IsNullOrWhiteSpace(ip))
-					throw new ArgumentException("Адресъ не заданъ: открой программу безъ параметровъ и подключись.");
+					throw new ArgumentException(CliNoAddress);
 				if (IsNullOrWhiteSpace(token))
-					throw new ArgumentException("Токенъ не заданъ: открой программу безъ параметровъ и подключись.");
+					throw new ArgumentException(CliNoToken);
 				return new(new(ip, token));
 			}
 
@@ -172,43 +150,43 @@ static partial class CLI
 				case "status" or "состояніе" or "состояние":
 					var s = await device.GetStateAsync();
 
-					Field("Питаніе:",       s.dehumidifier switch { true => ("включено", Green), false => ("выключено", DarkGray), null => null });
-					Field("Режимъ:",        s.dehumidifier_mode   is byte m and < 3 ? (ModeNames[m],  Cyan) : null);
-					Field("Подсвѣтка:",     s.indicator_light switch { false => (LightNames[0], DarkGray), true => s.indicator_light_mode is byte l and < 3 ? (LightNames[l], l == 0 ? DarkGray : White) : null, null => null });
-					Field("Температура:",   s.environment_temperature      is { } c ? ($"{c:0.#} °Ц", White) : null);
-					Field("Влажность:",     s.environment_relative_umidity is { } h ? ($"{h} %", HumidityComfort(h) switch { Ideal => Green, Normal => DarkGreen, Dry or Humid => Yellow, _ => Red }) : null);
-					Field("Цѣль:",          s.dehumidifier_target_humidity is { } t ? ($"{t} %",      White) : null);
-					Field("Неисправность:", s.dehumidifier_fault is { } f ? (FaultText(f), f == 0 ? Green : Red) : null);
+					Field(CliPower      , s.dehumidifier switch { true => (CliStateOn, Green), false => (CliStateOff, DarkGray), null => null });
+					Field(CliMode       , s.dehumidifier_mode is byte m and < 3 ? (ModeNames[m], Cyan) : null);
+					Field(CliLight      , s.indicator_light switch { false => (LightNames[0], DarkGray), true => s.indicator_light_mode is byte l and < 3 ? (LightNames[l], l == 0 ? DarkGray : White) : null, null => null });
+					Field(CliTemperature, s.environment_temperature      is { } c ? (Format(Resources.TemperatureFormat, c), White) : null);
+					Field(CliHumidity   , s.environment_relative_umidity is { } h ? ($"{h} %, {ComfortText(HumidityComfort(h))}", HumidityComfort(h) switch { Ideal => Green, Normal => DarkGreen, Dry or Humid => Yellow, _ => Red }) : null);
+					Field(CliTarget     , s.dehumidifier_target_humidity is { } t ? ($"{t} %", White) : null);
+					Field(CliFault      , s.dehumidifier_fault is { } f ? (FaultText(f), f == 0 ? Green : Red) : null);
 
 					static void Field(string label, (string Text, ConsoleColor Color)? value)
 					{
-						Print($"{label,-14}", Gray);
+						Print(label.PadRight(LabelWidth), Gray);
 						PrintLine(value?.Text ?? "—", value?.Color ?? DarkGray);
 					}
 					break;
 
 				case "on" or "включить":
 					await device.SetAsync((nameof(State.dehumidifier), true));
-					PrintLine("Включено.", Green);
+					PrintLine(CliSwitchedOn, Green);
 					break;
 
 				case "off" or "выключить":
 					await device.SetAsync((nameof(State.dehumidifier), false));
-					PrintLine("Выключено.", Green);
+					PrintLine(CliSwitchedOff, Green);
 					break;
 
 				case "humidity" or "влажность":
 					current += ' ' + args[++i];
 					byte humidity = Parse(args[i].TrimEnd('%'));
 					await device.SetAsync((nameof(State.dehumidifier_target_humidity), humidity));
-					PrintLine($"Цѣлевая влажность: {humidity} %.", Green);
+					PrintLine(Format(CliTargetSet, humidity), Green);
 					break;
 
 				case "mode" or "режимъ" or "режим":
 					current += ' ' + args[++i]; // значеніе есть: провѣрено въ первомъ проходѣ
 					byte mode = Modes[args[i]];
 					await device.SetAsync((nameof(State.dehumidifier_mode), mode));
-					PrintLine($"Режимъ: {ModeNames[mode]}.", Green);
+					PrintLine(Format(CliModeSet, ModeNames[mode]), Green);
 					break;
 
 				case "light" or "lights" or "подсвѣтка" or "подсветка":
@@ -217,12 +195,12 @@ static partial class CLI
 					List<(string Name, JsonNode Value)> values = new(2);
 					bool on = false, br = false;
 					for(; i + 1 < args.Length; i++)
-						if (!on && (on = LightSwitch.TryGetValue(args[i + 1], out bool o))) { values.Add((nameof(State.indicator_light     ), o)); done.Add(o ? "включена" : "выключена"); } else
-						if (!br && (br = LightLevels.TryGetValue(args[i + 1], out byte b))) { values.Add((nameof(State.indicator_light_mode), b)); done.Add($"яркость {LightNames[b]}"); }
+						if (!on && (on = LightSwitch.TryGetValue(args[i + 1], out bool o))) { values.Add((nameof(State.indicator_light ), o)); done.Add(o ? CliLightSwitchOn : CliLightSwitchOff); } else
+						if (!br && (br = LightLevels.TryGetValue(args[i + 1], out byte b))) { values.Add((nameof(State.indicator_light_mode), b)); done.Add(Format(CliBrightness, LightNames[b])); }
 						else break;
 					current = Join(' ', args[first..(i + 1)]);
 					await device.SetAsync([.. values]);
-					PrintLine($"Подсвѣтка: {Join(", ", done)}.", Green);
+					PrintLine(Format(CliLightSet, Join(", ", done)), Green);
 					break;
 				}
 			}
@@ -230,7 +208,7 @@ static partial class CLI
 		}
 		catch (Exception e) when (e is miIOException or IOException or ArgumentException or SocketException)
 		{
-			PrintLine(current is null ? $"Ошибка: {e.Message}" : $"Ошибка въ «{current}»: {e.Message}", Red, Error);
+			PrintLine(current is null ? Format(CliError, e.Message) : Format(CliErrorIn, current, e.Message), Red, Error);
 			return 1;
 		}
 		finally
@@ -241,21 +219,21 @@ static partial class CLI
 
 	static void PrintUsage(TextWriter? error = null)
 	{
-		string[] lines = Usage.Split('\n');
+		string[] lines = CliUsage.Split('\n');
 		for (int i = 0; i < lines.Length; i++)
 		{
 			string line = lines[i].TrimEnd('\r');
 			if (i == 0) PrintLine(line, Yellow, error);
-			else if (line.StartsWith("Кодъ выхода:"))
+			else if (line.StartsWith(CliExitCodePrefix))
 			{
 				foreach (string part in ExitCode().Split(line))
 				{
 					(ConsoleColor bright, ConsoleColor dark)? colors = part switch
 					{
-						['0', ..] => (Green,  DarkGreen),
-						['1', ..] => (Red,    DarkRed),
+						['0', ..] => (Green, DarkGreen),
+						['1', ..] => (Red, DarkRed),
 						['2', ..] => (Yellow, DarkYellow),
-						_         => null,
+						_  => null,
 					};
 					if (colors is var (bright, dark))
 					{
@@ -271,9 +249,9 @@ static partial class CLI
 				string commandLine = m.Groups[1].Value;
 				foreach (string word in WhiteSpace().Split(commandLine)) // пробѣлы остаются отдѣльными кусками
 					Print(word,
-						IsNullOrWhiteSpace(word)                 ? Gray     :
+						IsNullOrWhiteSpace(word)   ? Gray :
 						word.EndsWith(".exe", OrdinalIgnoreCase) ? Magenta :
-						CommandWords.Contains(word)              ? Cyan     : DarkCyan,
+						CommandWords.Contains(word)  ? Cyan : DarkCyan,
 						error);
 				PrintLine(m.Groups[2].Value, Gray, error);
 			}
@@ -300,7 +278,7 @@ static partial class CLI
 	}
 
 	/// <summary>Строка справки съ примѣромъ команды: отступъ въ два пробѣла, команда, затѣмъ (необязательно) описаніе послѣ двухъ и болѣе пробѣловъ.</summary>
-	[GeneratedRegex(@"^(  \S.*?)(\s{2,}\S.*)?$")]
+	[GeneratedRegex(@"^( \S.*?)(\s{2,}\S.*)?$")]
 	private static partial Regex UsageLine();
 
 	/// <summary>Одинъ кодъ выхода въ справкѣ: цифра, тире и описаніе до запятой или точки.</summary>

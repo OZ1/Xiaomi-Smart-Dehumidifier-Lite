@@ -1,0 +1,392 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+    Microsoft ResX Schema
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="EnterToken" xml:space="preserve">
+    <value>Vnesi žeton (32 šestnajstiških števk) in pritisni »Poveži«</value>
+  </data>
+  <data name="PowerOn" xml:space="preserve">
+    <value>Vklopljen</value>
+  </data>
+  <data name="PowerOff" xml:space="preserve">
+    <value>Izklopljen</value>
+  </data>
+  <data name="ResetFilterQuestion" xml:space="preserve">
+    <value>Ponastavim števec filtra? To naredi po čiščenju ali zamenjavi filtra.</value>
+  </data>
+  <data name="BadAddress" xml:space="preserve">
+    <value>Neveljaven naslov</value>
+  </data>
+  <data name="BadToken" xml:space="preserve">
+    <value>Žeton je 32 šestnajstiških števk</value>
+  </data>
+  <data name="Connecting" xml:space="preserve">
+    <value>Povezujem…</value>
+  </data>
+  <data name="Connected" xml:space="preserve">
+    <value>Povezano</value>
+  </data>
+  <data name="Disconnected" xml:space="preserve">
+    <value>Prekinjeno</value>
+  </data>
+  <data name="Connect" xml:space="preserve">
+    <value>&amp;Poveži</value>
+  </data>
+  <data name="Disconnect" xml:space="preserve">
+    <value>&amp;Prekini</value>
+  </data>
+  <data name="LinkRestored" xml:space="preserve">
+    <value>Povezava obnovljena</value>
+  </data>
+  <data name="TemperatureFormat" xml:space="preserve">
+    <value>{0:0.#} °C</value>
+  </data>
+  <data name="WarmingYes" xml:space="preserve">
+    <value>poteka</value>
+  </data>
+  <data name="WarmingNo" xml:space="preserve">
+    <value>ne</value>
+  </data>
+  <data name="Fault0" xml:space="preserve">
+    <value>ni</value>
+  </data>
+  <data name="Fault1" xml:space="preserve">
+    <value>posoda polna</value>
+  </data>
+  <data name="Fault2" xml:space="preserve">
+    <value>napaka tipala temperature in vlažnosti</value>
+  </data>
+  <data name="Fault3" xml:space="preserve">
+    <value>napaka tipala bakrene cevi</value>
+  </data>
+  <data name="Fault4" xml:space="preserve">
+    <value>napaka komunikacije</value>
+  </data>
+  <data name="Fault5" xml:space="preserve">
+    <value>čas je za čiščenje filtra</value>
+  </data>
+  <data name="Fault6" xml:space="preserve">
+    <value>odtaljevanje</value>
+  </data>
+  <data name="Fault7" xml:space="preserve">
+    <value>motor se je zataknil</value>
+  </data>
+  <data name="Fault8" xml:space="preserve">
+    <value>zaščita pred preobremenitvijo</value>
+  </data>
+  <data name="Fault9" xml:space="preserve">
+    <value>premalo hladiva</value>
+  </data>
+  <data name="FaultUnknown" xml:space="preserve">
+    <value>neznana ({0})</value>
+  </data>
+  <data name="BadResponse" xml:space="preserve">
+    <value>Nepričakovan odgovor na {0}.</value>
+  </data>
+  <data name="NoMIoTAttribute" xml:space="preserve">
+    <value>Lastnost {0} nima atributa [MIoT].</value>
+  </data>
+  <data name="WriteRejected" xml:space="preserve">
+    <value>Naprava je zavrnila zapis: {0}</value>
+  </data>
+  <data name="ActionRejected" xml:space="preserve">
+    <value>Naprava je zavrnila dejanje ({0}, {1}): {2}</value>
+  </data>
+  <data name="Error4001" xml:space="preserve">
+    <value>lastnosti ni mogoče prebrati (-4001)</value>
+  </data>
+  <data name="Error4002" xml:space="preserve">
+    <value>lastnosti zdaj ni mogoče zapisati (-4002); ciljne vlažnosti na primer ni mogoče spreminjati v režimu sušenja perila</value>
+  </data>
+  <data name="Error4003" xml:space="preserve">
+    <value>takšne lastnosti, dejanja ali dogodka ni (-4003)</value>
+  </data>
+  <data name="Error4004" xml:space="preserve">
+    <value>notranja napaka naprave (-4004)</value>
+  </data>
+  <data name="Error4005" xml:space="preserve">
+    <value>neveljavna vrednost (-4005)</value>
+  </data>
+  <data name="Error4006" xml:space="preserve">
+    <value>neveljavni parametri dejanja (-4006)</value>
+  </data>
+  <data name="Error4007" xml:space="preserve">
+    <value>neveljaven did (-4007)</value>
+  </data>
+  <data name="ErrorCode" xml:space="preserve">
+    <value>koda {0}</value>
+  </data>
+  <data name="TypeNotSupported" xml:space="preserve">
+    <value>Tip {0} ni podprt.</value>
+  </data>
+  <data name="TokenFormat" xml:space="preserve">
+    <value>Žeton mora imeti 32 šestnajstiških števk.</value>
+  </data>
+  <data name="NoReply" xml:space="preserve">
+    <value>Ni odgovora na ukaz — žeton je najverjetneje napačen.</value>
+  </data>
+  <data name="DeviceSilent" xml:space="preserve">
+    <value>Naprava {0} se ne odziva — preveri naslov in omrežje.</value>
+  </data>
+  <data name="ModeSmart" xml:space="preserve">
+    <value>pametni</value>
+  </data>
+  <data name="ModeSleep" xml:space="preserve">
+    <value>nočni</value>
+  </data>
+  <data name="ModeDry" xml:space="preserve">
+    <value>sušenje perila</value>
+  </data>
+  <data name="LightOff" xml:space="preserve">
+    <value>izklopljena</value>
+  </data>
+  <data name="LightDim" xml:space="preserve">
+    <value>zatemnjena</value>
+  </data>
+  <data name="LightBright" xml:space="preserve">
+    <value>svetla</value>
+  </data>
+  <data name="CliExitCodePrefix" xml:space="preserve">
+    <value>Izhodna koda:</value>
+  </data>
+  <data name="CliNoHumidity" xml:space="preserve">
+    <value>»{0}«: ni vrednosti — celo število od {1} do {2}.</value>
+  </data>
+  <data name="CliBadHumidity" xml:space="preserve">
+    <value>»{0}«: ciljna vlažnost je celo število od {1} do {2}.</value>
+  </data>
+  <data name="CliNoMode" xml:space="preserve">
+    <value>»{0}«: ni vrednosti — režim smart, sleep ali dry.</value>
+  </data>
+  <data name="CliBadMode" xml:space="preserve">
+    <value>»{0}«: režim je smart, sleep ali dry.</value>
+  </data>
+  <data name="CliBadLight" xml:space="preserve">
+    <value>»{0}«: potrebno je dim|bright in/ali on|off.</value>
+  </data>
+  <data name="CliUnknownCommand" xml:space="preserve">
+    <value>Neznan ukaz »{0}«.</value>
+  </data>
+  <data name="CliNoAddress" xml:space="preserve">
+    <value>Naslov ni nastavljen: odpri program brez parametrov in se poveži.</value>
+  </data>
+  <data name="CliNoToken" xml:space="preserve">
+    <value>Žeton ni nastavljen: odpri program brez parametrov in se poveži.</value>
+  </data>
+  <data name="CliPower" xml:space="preserve">
+    <value>Napajanje:</value>
+  </data>
+  <data name="CliMode" xml:space="preserve">
+    <value>Režim:</value>
+  </data>
+  <data name="CliLight" xml:space="preserve">
+    <value>Osvetlitev:</value>
+  </data>
+  <data name="CliTemperature" xml:space="preserve">
+    <value>Temperatura:</value>
+  </data>
+  <data name="CliHumidity" xml:space="preserve">
+    <value>Vlažnost:</value>
+  </data>
+  <data name="CliTarget" xml:space="preserve">
+    <value>Cilj:</value>
+  </data>
+  <data name="CliFault" xml:space="preserve">
+    <value>Napaka:</value>
+  </data>
+  <data name="CliStateOn" xml:space="preserve">
+    <value>vklopljeno</value>
+  </data>
+  <data name="CliStateOff" xml:space="preserve">
+    <value>izklopljeno</value>
+  </data>
+  <data name="CliSwitchedOn" xml:space="preserve">
+    <value>Vklopljeno.</value>
+  </data>
+  <data name="CliSwitchedOff" xml:space="preserve">
+    <value>Izklopljeno.</value>
+  </data>
+  <data name="CliTargetSet" xml:space="preserve">
+    <value>Ciljna vlažnost: {0} %.</value>
+  </data>
+  <data name="CliModeSet" xml:space="preserve">
+    <value>Režim: {0}.</value>
+  </data>
+  <data name="CliLightSwitchOn" xml:space="preserve">
+    <value>vklopljena</value>
+  </data>
+  <data name="CliLightSwitchOff" xml:space="preserve">
+    <value>izklopljena</value>
+  </data>
+  <data name="CliBrightness" xml:space="preserve">
+    <value>svetlost {0}</value>
+  </data>
+  <data name="CliLightSet" xml:space="preserve">
+    <value>Osvetlitev: {0}.</value>
+  </data>
+  <data name="CliError" xml:space="preserve">
+    <value>Napaka: {0}</value>
+  </data>
+  <data name="CliErrorIn" xml:space="preserve">
+    <value>Napaka v »{0}«: {1}</value>
+  </data>
+  <data name="ComfortTooDry" xml:space="preserve">
+    <value>presuho (pod 30 %)</value>
+  </data>
+  <data name="ComfortDry" xml:space="preserve">
+    <value>suhljato (30…39 %)</value>
+  </data>
+  <data name="ComfortIdeal" xml:space="preserve">
+    <value>najbolje (40…50 %)</value>
+  </data>
+  <data name="ComfortNormal" xml:space="preserve">
+    <value>normalno (51…60 %)</value>
+  </data>
+  <data name="ComfortHumid" xml:space="preserve">
+    <value>vlažneje (61…70 %)</value>
+  </data>
+  <data name="ComfortTooHumid" xml:space="preserve">
+    <value>prevlažno (nad 70 %)</value>
+  </data>
+  <data name="CliUsage" xml:space="preserve">
+    <value>Upravljanje razvlaževalnika Xiaomi Smart Dehumidifier Lite.
+Naslov in žeton se vzameta iz nastavitev programa (enaka kot v oknu).
+
+  Dehumidifier.exe status                    stanje
+  Dehumidifier.exe on                        vklopi
+  Dehumidifier.exe off                       izklopi
+  Dehumidifier.exe humidity 40…70            ciljna vlažnost, %
+  Dehumidifier.exe mode smart|sleep|dry      režim: pametni, nočni, sušenje perila
+  Dehumidifier.exe light on|off dim|bright   osvetlitev: stikalo in (ali) svetlost
+
+Ruski sinonimi: состояніе, включить, выключить, влажность, режимъ умный|ночной|сушка,
+подсвѣтка включить|выключить тусклая|яркая.
+
+Pri light sta stikalo (on|off) in svetlost (dim|bright) neodvisna: lahko eno od njiju ali oba,
+v poljubnem vrstnem redu. light dim spremeni le svetlost, light on dim — oboje:
+  Dehumidifier.exe light on dim status
+
+Ukazov lahko podate več zapored, izvedli se bodo po vrsti:
+  Dehumidifier.exe mode smart humidity 45 status
+Najprej se preveri cela vrstica: če je v njej napaka, se ne izvede nič.
+Če naprava zavrne, se izvajanje ustavi pri tem ukazu.
+Brez parametrov se odpre okno.
+
+Izhodna koda: 0 — uspeh, 1 — napaka povezave ali zavrnitev naprave, 2 — neveljaven ukaz.</value>
+  </data>
+</root>

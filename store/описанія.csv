@@ -1,0 +1,624 @@
+﻿Field,ID,Type (Тип),default,ru,sr-cyrl,bg,mk,sk,sl,hr,cs,pl,en
+Description,2,Текст,,"Управляйте осушителемъ Xiaomi Smart Dehumidifier Lite (xiaomi.derh.lite) съ компьютера напрямую по домашней сѣти: программа говоритъ съ осушителемъ безъ приложенія Mi Home и безъ облака Xiaomi.
+
+Что видно:
+• влажность въ комнатѣ, окрашенная по медицинскимъ рекомендаціямъ (40…60 % — норма), и температура;
+• неисправности (напримѣръ, «бакъ полонъ»), прогрѣвъ, остатокъ просушки и таймера.
+
+Чѣмъ управлять:
+• питаніе и режимъ — умный, ночной, сушка бѣлья;
+• цѣлевая влажность — ползункомъ со шкалой;
+• подсвѣтка (выключатель и яркость), звукъ и блокировка кнопокъ, просушка послѣ выключенія;
+• таймеръ выключенія — въ минутахъ или временемъ;
+• сбросъ счётчика фильтра.
+
+Командная строка: «Dehumidifier.exe status», «Dehumidifier.exe mode smart humidity 45» — для сценаріевъ и планировщика.
+
+Для работы нужны IP-адресъ осушителя и его токенъ (32 шестнадцатеричныя цифры). Токенъ можно получить изъ своей учётной записи Mi Home сторонней утилитою Xiaomi-cloud-tokens-extractor.
+
+Программа неоффиціальная и не связана съ Xiaomi. Xiaomi — товарный знакъ Xiaomi Inc.","Управљајте одвлаживачем Xiaomi Smart Dehumidifier Lite (xiaomi.derh.lite) са рачунара директно преко кућне мреже: програм комуницира са одвлаживачем без апликације Mi Home и без Xiaomi облака.
+
+Шта се приказује:
+• влажност у просторији, означена бојом према медицинским препорукама (40…60 % — нормалан опсег), и температура;
+• неисправности (на пример, „резервоар је пун“), загревање, преостало време сушења и тајмера.
+
+Чиме можете да управљате:
+• напајањем и режимом — паметни, ноћни, сушење веша;
+• циљном влажношћу — клизачем са скалом;
+• позадинским осветљењем (укључивање/искључивање и јачина), звуком и блокадом дугмади, сушењем након искључивања;
+• тајмером за искључивање — у минутима или одређивањем времена;
+• ресетовањем бројача филтера.
+
+Командна линија: Dehumidifier.exe status, Dehumidifier.exe mode smart humidity 45 — за скрипте и Планер задатака.
+
+За рад су потребни IP-адреса одвлаживача и његов токен (32 хексадецималне цифре). Токен можете добити из свог налога Mi Home помоћу помоћног програма треће стране Xiaomi-cloud-tokens-extractor.
+
+Програм је незваничан и није повезан са компанијом Xiaomi. Xiaomi је жиг компаније Xiaomi Inc.","Управлявайте обезвлажнителя Xiaomi Smart Dehumidifier Lite (xiaomi.derh.lite) директно от компютъра си по домашната мрежа: програмата комуникира с обезвлажнителя без приложението Mi Home и без облака на Xiaomi.
+
+Какво се вижда:
+• влажността в помещението, оцветена според медицинските препоръки (40…60 % — нормален диапазон), и температурата;
+• неизправности (например „резервоарът е пълен“), загряване, оставащото време за сушене и таймера.
+
+Какво можете да управлявате:
+• захранването и режима — интелигентен, нощен, сушене на пране;
+• целевата влажност — чрез плъзгач със скала;
+• подсветката (включване/изключване и яркост), звука и заключването на бутоните, сушенето след изключване;
+• таймера за изключване — в минути или в определен час;
+• нулирането на брояча на филтъра.
+
+Команден ред: Dehumidifier.exe status, Dehumidifier.exe mode smart humidity 45 — за сценарии и планировчик.
+
+За работа са необходими IP адресът на обезвлажнителя и неговият токен (32 шестнадесетични цифри). Токенът може да бъде получен от вашия акаунт в Mi Home с помощта на помощната програма на трета страна Xiaomi-cloud-tokens-extractor.
+
+Програмата е неофициална и не е свързана с Xiaomi. Xiaomi е търговска марка на Xiaomi Inc.","Управувајте со одвлажнувачот Xiaomi Smart Dehumidifier Lite (xiaomi.derh.lite) директно од компјутер преку домашната мрежа: програмата комуницира со одвлажнувачот без апликацијата Mi Home и без облакот на Xiaomi.
+
+Што се прикажува:
+• влажноста во просторијата, означена со боја според медицинските препораки (40…60 % — нормален опсег), и температурата;
+• дефекти (на пример, „резервоарот е полн“), загревање, преостанатото време на сушење и тајмерот.
+
+Со што можете да управувате:
+• напојувањето и режимот — паметен, ноќен, сушење алишта;
+• целната влажност — со лизгач со скала;
+• осветлувањето (вклучување/исклучување и осветленост), звукот и заклучувањето на копчињата, сушењето по исклучувањето;
+• тајмерот за исклучување — во минути или во одредено време;
+• ресетирањето на бројачот на филтерот.
+
+Командна линија: Dehumidifier.exe status, Dehumidifier.exe mode smart humidity 45 — за скрипти и Распоредувач на задачи.
+
+За работа се потребни IP-адресата на одвлажнувачот и неговиот токен (32 хексадецимални цифри). Токенот може да се добие од вашата сметка во Mi Home со помош на алатката од трета страна Xiaomi-cloud-tokens-extractor.
+
+Програмата е неофицијална и не е поврзана со Xiaomi. Xiaomi е трговска марка на Xiaomi Inc.","Ovládajte odvlhčovač Xiaomi Smart Dehumidifier Lite (xiaomi.derh.lite) z počítača priamo cez domácu sieť: program komunikuje s odvlhčovačom bez aplikácie Mi Home a bez cloudu Xiaomi.
+
+Čo sa zobrazuje:
+• vlhkosť v miestnosti, farebne označená podľa zdravotných odporúčaní (40…60 % — normálny rozsah), a teplota;
+• poruchy (napríklad „nádržka je plná“), zahrievanie, zostávajúci čas sušenia a časovača.
+
+Čo môžete ovládať:
+• napájanie a režim — inteligentný, nočný, sušenie bielizne;
+• cieľovú vlhkosť — posuvníkom so stupnicou;
+• podsvietenie (zapnutie/vypnutie a jas), zvuk a uzamknutie tlačidiel, sušenie po vypnutí;
+• časovač vypnutia — v minútach alebo na konkrétny čas;
+• vynulovanie počítadla filtra.
+
+Príkazový riadok: Dehumidifier.exe status, Dehumidifier.exe mode smart humidity 45 — pre skripty a Plánovač úloh.
+
+Na používanie je potrebná IP adresa odvlhčovača a jeho token (32 hexadecimálnych číslic). Token môžete získať zo svojho účtu Mi Home pomocou nástroja tretej strany Xiaomi-cloud-tokens-extractor.
+
+Program je neoficiálny a nie je prepojený so spoločnosťou Xiaomi. Xiaomi je ochranná známka spoločnosti Xiaomi Inc.","Upravljajte razvlaževalnik Xiaomi Smart Dehumidifier Lite (xiaomi.derh.lite) neposredno iz računalnika prek domačega omrežja: program komunicira z razvlaževalnikom brez aplikacije Mi Home in brez oblaka Xiaomi.
+
+Kaj je prikazano:
+• vlažnost v prostoru, barvno označena glede na zdravstvena priporočila (40…60 % — običajno območje), in temperatura;
+• napake (na primer »posoda je polna«), segrevanje, preostali čas sušenja in časovnika.
+
+Kaj lahko upravljate:
+• napajanje in način delovanja — pametni, nočni, sušenje perila;
+• ciljno vlažnost — z drsnikom z lestvico;
+• osvetlitev (vklop/izklop in svetlost), zvok in zaklepanje gumbov, sušenje po izklopu;
+• časovnik izklopa — v minutah ali ob določenem času;
+• ponastavitev števca filtra.
+
+Ukazna vrstica: Dehumidifier.exe status, Dehumidifier.exe mode smart humidity 45 — za skripte in Razporejevalnik opravil.
+
+Za delovanje potrebujete IP-naslov razvlaževalnika in njegov žeton (32 šestnajstiških števk). Žeton lahko pridobite iz svojega računa Mi Home s pomočjo orodja tretje osebe Xiaomi-cloud-tokens-extractor.
+
+Program je neuraden in ni povezan s podjetjem Xiaomi. Xiaomi je blagovna znamka podjetja Xiaomi Inc.","Upravljajte odvlaživačem Xiaomi Smart Dehumidifier Lite (xiaomi.derh.lite) izravno s računala putem kućne mreže: program komunicira s odvlaživačem bez aplikacije Mi Home i bez Xiaomijeva oblaka.
+
+Što se prikazuje:
+• vlažnost u prostoriji, označena bojama prema medicinskim preporukama (40…60 % — normalan raspon), i temperatura;
+• kvarovi (na primjer, „spremnik je pun“), zagrijavanje, preostalo vrijeme sušenja i tajmer.
+
+Čime možete upravljati:
+• napajanjem i načinom rada — pametni, noćni, sušenje rublja;
+• ciljanom vlažnošću — klizačem sa skalom;
+• osvjetljenjem tipki (uključivanje/isključivanje i svjetlina), zvukom i zaključavanjem tipki, sušenjem nakon isključivanja;
+• tajmerom za isključivanje — u minutama ili u određeno vrijeme;
+• poništavanjem brojača filtra.
+
+Naredbeni redak: Dehumidifier.exe status, Dehumidifier.exe mode smart humidity 45 — za skripte i automatizaciju.
+
+Za rad su potrebni IP-adresa odvlaživača i njegov token (32 heksadecimalne znamenke). Token možete dobiti sa svog računa Mi Home pomoću pomoćnog programa treće strane Xiaomi-cloud-tokens-extractor.
+
+Program je neslužben i nije povezan s tvrtkom Xiaomi. Xiaomi je zaštitni znak tvrtke Xiaomi Inc.","Ovládejte odvlhčovač Xiaomi Smart Dehumidifier Lite (xiaomi.derh.lite) přímo z počítače přes domácí síť: program komunikuje s odvlhčovačem bez aplikace Mi Home a bez cloudu Xiaomi.
+
+Co je vidět:
+• vlhkost v místnosti, barevně označená podle zdravotních doporučení (40…60 % — normální rozmezí), a teplota;
+• poruchy (například „nádržka je plná“), zahřívání, zbývající doba sušení a časovače.
+
+Co lze ovládat:
+• napájení a režim — chytrý, noční, sušení prádla;
+• cílovou vlhkost — pomocí posuvníku se stupnicí;
+• podsvícení (zapnutí/vypnutí a jas), zvuk a uzamčení tlačítek, sušení po vypnutí;
+• časovač vypnutí — v minutách nebo na konkrétní čas;
+• reset počítadla filtru.
+
+Příkazový řádek: Dehumidifier.exe status, Dehumidifier.exe mode smart humidity 45 — pro skripty a Plánovač úloh.
+
+K používání je potřeba IP adresa odvlhčovače a jeho token (32 šestnáctkových číslic). Token můžete získat ze svého účtu Mi Home pomocí nástroje třetí strany Xiaomi-cloud-tokens-extractor.
+
+Program je neoficiální a není spojen se společností Xiaomi. Xiaomi je ochranná známka společnosti Xiaomi Inc.","Steruj osuszaczem Xiaomi Smart Dehumidifier Lite (xiaomi.derh.lite) bezpośrednio z komputera przez domową sieć: program komunikuje się z osuszaczem bez aplikacji Mi Home i bez chmury Xiaomi.
+
+Co widać:
+• wilgotność w pomieszczeniu, oznaczona kolorami zgodnie z zaleceniami medycznymi (40…60 % — prawidłowy zakres), oraz temperatura;
+• awarie (na przykład „zbiornik pełny”), nagrzewanie, pozostały czas osuszania i timera.
+
+Czym można sterować:
+• zasilaniem i trybem — inteligentnym, nocnym, suszeniem prania;
+• docelową wilgotnością — za pomocą suwaka ze skalą;
+• podświetleniem (włączanie/wyłączanie i jasność), dźwiękiem i blokadą przycisków, osuszaniem po wyłączeniu;
+• timerem wyłączenia — w minutach lub o określonej godzinie;
+• resetowaniem licznika filtra.
+
+Wiersz poleceń: Dehumidifier.exe status, Dehumidifier.exe mode smart humidity 45 — do skryptów i Harmonogramu zadań.
+
+Do działania potrzebne są adres IP osuszacza i jego token (32 cyfry szesnastkowe). Token można uzyskać ze swojego konta Mi Home za pomocą narzędzia firmy zewnętrznej Xiaomi-cloud-tokens-extractor.
+
+Program jest nieoficjalny i nie jest powiązany z firmą Xiaomi. Xiaomi jest znakiem towarowym firmy Xiaomi Inc.","Control your Xiaomi Smart Dehumidifier Lite (xiaomi.derh.lite) directly from your computer over your home network: the program communicates with the dehumidifier without the Mi Home app and without the Xiaomi cloud.
+
+What you can see:
+• room humidity, color-coded according to medical recommendations (40…60% — normal range), and temperature;
+• faults (for example, “tank full”), warm-up, remaining drying time, and timer status.
+
+What you can control:
+• power and operating mode — smart, night, laundry drying;
+• target humidity — with a slider and scale;
+• backlight (on/off and brightness), sound and button lock, drying after shutdown;
+• shutdown timer — in minutes or at a specific time;
+• filter counter reset.
+
+Command line: Dehumidifier.exe status, Dehumidifier.exe mode smart humidity 45 — for scripts and scheduled tasks.
+
+The dehumidifier’s IP address and token (32 hexadecimal digits) are required. You can obtain the token from your Mi Home account using the third-party utility Xiaomi-cloud-tokens-extractor.
+
+This program is unofficial and is not affiliated with Xiaomi. Xiaomi is a trademark of Xiaomi Inc."
+ReleaseNotes,3,Текст,,Первый выпускъ.,Прво издање.,Първо издание.,Прво издание.,Prvé vydanie.,Prva izdaja.,Prvo izdanje.,První vydání.,Pierwsze wydanie.,First release.
+Title,4,Текст,,Пультъ для осушителя Xiaomi,Даљински за Xiaomi одвлаживач,Дистанционно управление за обезвлажнител Xiaomi,Далечински управувач за одвлажнувач Xiaomi,Diaľkové ovládanie pre odvlhčovač Xiaomi,Daljinski za razvlaževalnik Xiaomi,Daljinski za Xiaomi odvlaživač,Dálkové ovládání pro odvlhčovač Xiaomi,Pilot do osuszacza Xiaomi,Remote Control for Xiaomi Dehumidifier
+ShortTitle,5,Текст,,,,,,,,,,,
+SortTitle,6,Текст,,,,,,,,,,,
+VoiceTitle,7,Текст,,,,,,,,,,,
+ShortDescription,8,Текст,,Неоффиціальный пультъ для осушителя Xiaomi Smart Dehumidifier Lite по локальной сѣти — безъ Mi Home и безъ облака.,Незванични даљински управљач за Xiaomi Smart Dehumidifier Lite преко локалне мреже — без Mi Home-а и без облака.,Неофициално дистанционно управление за Xiaomi Smart Dehumidifier Lite по локалната мрежа — без Mi Home и без облака.,Неофицијален далечински управувач за Xiaomi Smart Dehumidifier Lite преку локалната мрежа — без Mi Home и без облак.,Neoficiálne diaľkové ovládanie pre Xiaomi Smart Dehumidifier Lite cez lokálnu sieť — bez Mi Home a bez cloudu.,Neuradni daljinski upravljalnik za Xiaomi Smart Dehumidifier Lite prek lokalnega omrežja — brez Mi Home in brez oblaka.,Neslužbeni daljinski upravljač za Xiaomi Smart Dehumidifier Lite putem lokalne mreže — bez Mi Homea i bez oblaka.,Neoficiální dálkové ovládání pro Xiaomi Smart Dehumidifier Lite přes lokální síť — bez Mi Home a bez cloudu.,Nieoficjalny pilot do Xiaomi Smart Dehumidifier Lite przez sieć lokalną — bez Mi Home i bez chmury.,Unofficial remote control for Xiaomi Smart Dehumidifier Lite over the local network — no Mi Home and no cloud.
+DevStudio,9,Текст,,Ољег Зонов,Ољег Зонов,Олег Зонов,Олег Зонов,Oľeg Zonov,Oljeg Zonov,Oljeg Zonov,Oleg Zonov,Oleg Zonow,Oleg Zonov
+CopyrightTrademarkInformation,12,Текст,,Программа не связана съ Xiaomi и не одобрена ею. Xiaomi — товарный знакъ Xiaomi Inc.,Програм није повезан са компанијом Xiaomi нити га је она одобрила. Xiaomi је жиг компаније Xiaomi Inc.,Програмата не е свързана с Xiaomi и не е одобрена от нея. Xiaomi е търговска марка на Xiaomi Inc.,Програмата не е поврзана со Xiaomi и не е одобрена од неа. Xiaomi е трговска марка на Xiaomi Inc.,Program nie je prepojený so spoločnosťou Xiaomi a nebol ňou schválený. Xiaomi je ochranná známka spoločnosti Xiaomi Inc.,Program ni povezan s družbo Xiaomi in ga ta ni odobrila. Xiaomi je blagovna znamka družbe Xiaomi Inc.,Program nije povezan s tvrtkom Xiaomi niti ga je ona odobrila. Xiaomi je zaštitni znak tvrtke Xiaomi Inc.,Program není spojen se společností Xiaomi a nebyl jí schválen. Xiaomi je ochranná známka společnosti Xiaomi Inc.,Program nie jest powiązany z firmą Xiaomi ani nie został przez nią zatwierdzony. Xiaomi jest znakiem towarowym firmy Xiaomi Inc.,The program is not affiliated with Xiaomi and has not been approved by Xiaomi. Xiaomi is a trademark of Xiaomi Inc.
+AdditionalLicenseTerms,13,Текст,,,,,,,,,,,
+DesktopScreenshot1,100,Относительный путь (или URL-адрес файла в Центре партнеров),,https://developer.microsoft.com/en-us/dashboard/apps/9ND0GCJ0FB0X/submissions/1152921505702035357/listings/1152922700028012371/listingassets/3023646772210801499,https://developer.microsoft.com/en-us/dashboard/apps/9ND0GCJ0FB0X/submissions/1152921505702035357/listings/1152922700028012373/listingassets/3060342948187000107,https://developer.microsoft.com/en-us/dashboard/apps/9ND0GCJ0FB0X/submissions/1152921505702035357/listings/1152922700028012375/listingassets/3030391720201806084,https://developer.microsoft.com/en-us/dashboard/apps/9ND0GCJ0FB0X/submissions/1152921505702035357/listings/1152922700028012377/listingassets/3006752637087951300,https://developer.microsoft.com/en-us/dashboard/apps/9ND0GCJ0FB0X/submissions/1152921505702035357/listings/1152922700028012379/listingassets/3064329700829610915,https://developer.microsoft.com/en-us/dashboard/apps/9ND0GCJ0FB0X/submissions/1152921505702035357/listings/1152922700028012381/listingassets/3064415130327628607,https://developer.microsoft.com/en-us/dashboard/apps/9ND0GCJ0FB0X/submissions/1152921505702035357/listings/1152922700028012383/listingassets/3062439695621427946,https://developer.microsoft.com/en-us/dashboard/apps/9ND0GCJ0FB0X/submissions/1152921505702035357/listings/1152922700028012385/listingassets/3013422981275120340,https://developer.microsoft.com/en-us/dashboard/apps/9ND0GCJ0FB0X/submissions/1152921505702035357/listings/1152922700028012387/listingassets/3021775828766841589,https://developer.microsoft.com/en-us/dashboard/apps/9ND0GCJ0FB0X/submissions/1152921505702035357/listings/1152922700028013229/listingassets/3069305065152780676
+DesktopScreenshot2,101,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+DesktopScreenshot3,102,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+DesktopScreenshot4,103,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+DesktopScreenshot5,104,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+DesktopScreenshot6,105,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+DesktopScreenshot7,106,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+DesktopScreenshot8,107,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+DesktopScreenshot9,108,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+DesktopScreenshot10,109,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+DesktopScreenshot11,110,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+DesktopScreenshot12,111,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+DesktopScreenshot13,112,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+DesktopScreenshot14,113,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+DesktopScreenshot15,114,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+DesktopScreenshot16,115,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+DesktopScreenshot17,116,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+DesktopScreenshot18,117,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+DesktopScreenshot19,118,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+DesktopScreenshot20,119,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+DesktopScreenshot21,120,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+DesktopScreenshot22,121,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+DesktopScreenshot23,122,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+DesktopScreenshot24,123,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+DesktopScreenshot25,124,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+DesktopScreenshot26,125,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+DesktopScreenshot27,126,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+DesktopScreenshot28,127,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+DesktopScreenshot29,128,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+DesktopScreenshot30,129,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+DesktopScreenshotCaption1,150,Текст,,,,,,,,,,,
+DesktopScreenshotCaption2,151,Текст,,,,,,,,,,,
+DesktopScreenshotCaption3,152,Текст,,,,,,,,,,,
+DesktopScreenshotCaption4,153,Текст,,,,,,,,,,,
+DesktopScreenshotCaption5,154,Текст,,,,,,,,,,,
+DesktopScreenshotCaption6,155,Текст,,,,,,,,,,,
+DesktopScreenshotCaption7,156,Текст,,,,,,,,,,,
+DesktopScreenshotCaption8,157,Текст,,,,,,,,,,,
+DesktopScreenshotCaption9,158,Текст,,,,,,,,,,,
+DesktopScreenshotCaption10,159,Текст,,,,,,,,,,,
+DesktopScreenshotCaption11,160,Текст,,,,,,,,,,,
+DesktopScreenshotCaption12,161,Текст,,,,,,,,,,,
+DesktopScreenshotCaption13,162,Текст,,,,,,,,,,,
+DesktopScreenshotCaption14,163,Текст,,,,,,,,,,,
+DesktopScreenshotCaption15,164,Текст,,,,,,,,,,,
+DesktopScreenshotCaption16,165,Текст,,,,,,,,,,,
+DesktopScreenshotCaption17,166,Текст,,,,,,,,,,,
+DesktopScreenshotCaption18,167,Текст,,,,,,,,,,,
+DesktopScreenshotCaption19,168,Текст,,,,,,,,,,,
+DesktopScreenshotCaption20,169,Текст,,,,,,,,,,,
+DesktopScreenshotCaption21,170,Текст,,,,,,,,,,,
+DesktopScreenshotCaption22,171,Текст,,,,,,,,,,,
+DesktopScreenshotCaption23,172,Текст,,,,,,,,,,,
+DesktopScreenshotCaption24,173,Текст,,,,,,,,,,,
+DesktopScreenshotCaption25,174,Текст,,,,,,,,,,,
+DesktopScreenshotCaption26,175,Текст,,,,,,,,,,,
+DesktopScreenshotCaption27,176,Текст,,,,,,,,,,,
+DesktopScreenshotCaption28,177,Текст,,,,,,,,,,,
+DesktopScreenshotCaption29,178,Текст,,,,,,,,,,,
+DesktopScreenshotCaption30,179,Текст,,,,,,,,,,,
+MobileScreenshot1,200,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+MobileScreenshot2,201,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+MobileScreenshot3,202,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+MobileScreenshot4,203,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+MobileScreenshot5,204,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+MobileScreenshot6,205,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+MobileScreenshot7,206,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+MobileScreenshot8,207,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+MobileScreenshot9,208,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+MobileScreenshot10,209,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+MobileScreenshot11,210,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+MobileScreenshot12,211,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+MobileScreenshot13,212,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+MobileScreenshot14,213,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+MobileScreenshot15,214,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+MobileScreenshot16,215,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+MobileScreenshot17,216,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+MobileScreenshot18,217,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+MobileScreenshot19,218,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+MobileScreenshot20,219,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+MobileScreenshot21,220,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+MobileScreenshot22,221,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+MobileScreenshot23,222,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+MobileScreenshot24,223,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+MobileScreenshot25,224,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+MobileScreenshot26,225,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+MobileScreenshot27,226,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+MobileScreenshot28,227,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+MobileScreenshot29,228,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+MobileScreenshot30,229,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+MobileScreenshotCaption1,250,Текст,,,,,,,,,,,
+MobileScreenshotCaption2,251,Текст,,,,,,,,,,,
+MobileScreenshotCaption3,252,Текст,,,,,,,,,,,
+MobileScreenshotCaption4,253,Текст,,,,,,,,,,,
+MobileScreenshotCaption5,254,Текст,,,,,,,,,,,
+MobileScreenshotCaption6,255,Текст,,,,,,,,,,,
+MobileScreenshotCaption7,256,Текст,,,,,,,,,,,
+MobileScreenshotCaption8,257,Текст,,,,,,,,,,,
+MobileScreenshotCaption9,258,Текст,,,,,,,,,,,
+MobileScreenshotCaption10,259,Текст,,,,,,,,,,,
+MobileScreenshotCaption11,260,Текст,,,,,,,,,,,
+MobileScreenshotCaption12,261,Текст,,,,,,,,,,,
+MobileScreenshotCaption13,262,Текст,,,,,,,,,,,
+MobileScreenshotCaption14,263,Текст,,,,,,,,,,,
+MobileScreenshotCaption15,264,Текст,,,,,,,,,,,
+MobileScreenshotCaption16,265,Текст,,,,,,,,,,,
+MobileScreenshotCaption17,266,Текст,,,,,,,,,,,
+MobileScreenshotCaption18,267,Текст,,,,,,,,,,,
+MobileScreenshotCaption19,268,Текст,,,,,,,,,,,
+MobileScreenshotCaption20,269,Текст,,,,,,,,,,,
+MobileScreenshotCaption21,270,Текст,,,,,,,,,,,
+MobileScreenshotCaption22,271,Текст,,,,,,,,,,,
+MobileScreenshotCaption23,272,Текст,,,,,,,,,,,
+MobileScreenshotCaption24,273,Текст,,,,,,,,,,,
+MobileScreenshotCaption25,274,Текст,,,,,,,,,,,
+MobileScreenshotCaption26,275,Текст,,,,,,,,,,,
+MobileScreenshotCaption27,276,Текст,,,,,,,,,,,
+MobileScreenshotCaption28,277,Текст,,,,,,,,,,,
+MobileScreenshotCaption29,278,Текст,,,,,,,,,,,
+MobileScreenshotCaption30,279,Текст,,,,,,,,,,,
+XboxScreenshot1,300,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+XboxScreenshot2,301,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+XboxScreenshot3,302,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+XboxScreenshot4,303,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+XboxScreenshot5,304,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+XboxScreenshot6,305,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+XboxScreenshot7,306,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+XboxScreenshot8,307,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+XboxScreenshot9,308,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+XboxScreenshot10,309,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+XboxScreenshot11,310,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+XboxScreenshot12,311,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+XboxScreenshot13,312,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+XboxScreenshot14,313,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+XboxScreenshot15,314,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+XboxScreenshot16,315,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+XboxScreenshot17,316,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+XboxScreenshot18,317,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+XboxScreenshot19,318,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+XboxScreenshot20,319,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+XboxScreenshot21,320,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+XboxScreenshot22,321,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+XboxScreenshot23,322,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+XboxScreenshot24,323,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+XboxScreenshot25,324,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+XboxScreenshot26,325,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+XboxScreenshot27,326,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+XboxScreenshot28,327,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+XboxScreenshot29,328,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+XboxScreenshot30,329,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+XboxScreenshotCaption1,350,Текст,,,,,,,,,,,
+XboxScreenshotCaption2,351,Текст,,,,,,,,,,,
+XboxScreenshotCaption3,352,Текст,,,,,,,,,,,
+XboxScreenshotCaption4,353,Текст,,,,,,,,,,,
+XboxScreenshotCaption5,354,Текст,,,,,,,,,,,
+XboxScreenshotCaption6,355,Текст,,,,,,,,,,,
+XboxScreenshotCaption7,356,Текст,,,,,,,,,,,
+XboxScreenshotCaption8,357,Текст,,,,,,,,,,,
+XboxScreenshotCaption9,358,Текст,,,,,,,,,,,
+XboxScreenshotCaption10,359,Текст,,,,,,,,,,,
+XboxScreenshotCaption11,360,Текст,,,,,,,,,,,
+XboxScreenshotCaption12,361,Текст,,,,,,,,,,,
+XboxScreenshotCaption13,362,Текст,,,,,,,,,,,
+XboxScreenshotCaption14,363,Текст,,,,,,,,,,,
+XboxScreenshotCaption15,364,Текст,,,,,,,,,,,
+XboxScreenshotCaption16,365,Текст,,,,,,,,,,,
+XboxScreenshotCaption17,366,Текст,,,,,,,,,,,
+XboxScreenshotCaption18,367,Текст,,,,,,,,,,,
+XboxScreenshotCaption19,368,Текст,,,,,,,,,,,
+XboxScreenshotCaption20,369,Текст,,,,,,,,,,,
+XboxScreenshotCaption21,370,Текст,,,,,,,,,,,
+XboxScreenshotCaption22,371,Текст,,,,,,,,,,,
+XboxScreenshotCaption23,372,Текст,,,,,,,,,,,
+XboxScreenshotCaption24,373,Текст,,,,,,,,,,,
+XboxScreenshotCaption25,374,Текст,,,,,,,,,,,
+XboxScreenshotCaption26,375,Текст,,,,,,,,,,,
+XboxScreenshotCaption27,376,Текст,,,,,,,,,,,
+XboxScreenshotCaption28,377,Текст,,,,,,,,,,,
+XboxScreenshotCaption29,378,Текст,,,,,,,,,,,
+XboxScreenshotCaption30,379,Текст,,,,,,,,,,,
+HolographicScreenshot1,400,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+HolographicScreenshot2,401,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+HolographicScreenshot3,402,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+HolographicScreenshot4,403,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+HolographicScreenshot5,404,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+HolographicScreenshot6,405,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+HolographicScreenshot7,406,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+HolographicScreenshot8,407,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+HolographicScreenshot9,408,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+HolographicScreenshot10,409,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+HolographicScreenshot11,410,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+HolographicScreenshot12,411,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+HolographicScreenshot13,412,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+HolographicScreenshot14,413,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+HolographicScreenshot15,414,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+HolographicScreenshot16,415,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+HolographicScreenshot17,416,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+HolographicScreenshot18,417,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+HolographicScreenshot19,418,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+HolographicScreenshot20,419,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+HolographicScreenshot21,420,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+HolographicScreenshot22,421,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+HolographicScreenshot23,422,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+HolographicScreenshot24,423,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+HolographicScreenshot25,424,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+HolographicScreenshot26,425,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+HolographicScreenshot27,426,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+HolographicScreenshot28,427,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+HolographicScreenshot29,428,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+HolographicScreenshot30,429,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+HolographicScreenshotCaption1,450,Текст,,,,,,,,,,,
+HolographicScreenshotCaption2,451,Текст,,,,,,,,,,,
+HolographicScreenshotCaption3,452,Текст,,,,,,,,,,,
+HolographicScreenshotCaption4,453,Текст,,,,,,,,,,,
+HolographicScreenshotCaption5,454,Текст,,,,,,,,,,,
+HolographicScreenshotCaption6,455,Текст,,,,,,,,,,,
+HolographicScreenshotCaption7,456,Текст,,,,,,,,,,,
+HolographicScreenshotCaption8,457,Текст,,,,,,,,,,,
+HolographicScreenshotCaption9,458,Текст,,,,,,,,,,,
+HolographicScreenshotCaption10,459,Текст,,,,,,,,,,,
+HolographicScreenshotCaption11,460,Текст,,,,,,,,,,,
+HolographicScreenshotCaption12,461,Текст,,,,,,,,,,,
+HolographicScreenshotCaption13,462,Текст,,,,,,,,,,,
+HolographicScreenshotCaption14,463,Текст,,,,,,,,,,,
+HolographicScreenshotCaption15,464,Текст,,,,,,,,,,,
+HolographicScreenshotCaption16,465,Текст,,,,,,,,,,,
+HolographicScreenshotCaption17,466,Текст,,,,,,,,,,,
+HolographicScreenshotCaption18,467,Текст,,,,,,,,,,,
+HolographicScreenshotCaption19,468,Текст,,,,,,,,,,,
+HolographicScreenshotCaption20,469,Текст,,,,,,,,,,,
+HolographicScreenshotCaption21,470,Текст,,,,,,,,,,,
+HolographicScreenshotCaption22,471,Текст,,,,,,,,,,,
+HolographicScreenshotCaption23,472,Текст,,,,,,,,,,,
+HolographicScreenshotCaption24,473,Текст,,,,,,,,,,,
+HolographicScreenshotCaption25,474,Текст,,,,,,,,,,,
+HolographicScreenshotCaption26,475,Текст,,,,,,,,,,,
+HolographicScreenshotCaption27,476,Текст,,,,,,,,,,,
+HolographicScreenshotCaption28,477,Текст,,,,,,,,,,,
+HolographicScreenshotCaption29,478,Текст,,,,,,,,,,,
+HolographicScreenshotCaption30,479,Текст,,,,,,,,,,,
+SurfaceHubScreenshot11,510,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+SurfaceHubScreenshot12,511,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+SurfaceHubScreenshot13,512,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+SurfaceHubScreenshot14,513,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+SurfaceHubScreenshot15,514,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+SurfaceHubScreenshot16,515,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+SurfaceHubScreenshot17,516,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+SurfaceHubScreenshot18,517,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+SurfaceHubScreenshot19,518,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+SurfaceHubScreenshot20,519,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+SurfaceHubScreenshot21,520,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+SurfaceHubScreenshot22,521,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+SurfaceHubScreenshot23,522,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+SurfaceHubScreenshot24,523,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+SurfaceHubScreenshot25,524,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+SurfaceHubScreenshot26,525,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+SurfaceHubScreenshot27,526,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+SurfaceHubScreenshot28,527,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+SurfaceHubScreenshot29,528,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+SurfaceHubScreenshot30,529,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+SurfaceHubScreenshotCaption11,560,Текст,,,,,,,,,,,
+SurfaceHubScreenshotCaption12,561,Текст,,,,,,,,,,,
+SurfaceHubScreenshotCaption13,562,Текст,,,,,,,,,,,
+SurfaceHubScreenshotCaption14,563,Текст,,,,,,,,,,,
+SurfaceHubScreenshotCaption15,564,Текст,,,,,,,,,,,
+SurfaceHubScreenshotCaption16,565,Текст,,,,,,,,,,,
+SurfaceHubScreenshotCaption17,566,Текст,,,,,,,,,,,
+SurfaceHubScreenshotCaption18,567,Текст,,,,,,,,,,,
+SurfaceHubScreenshotCaption19,568,Текст,,,,,,,,,,,
+SurfaceHubScreenshotCaption20,569,Текст,,,,,,,,,,,
+SurfaceHubScreenshotCaption21,570,Текст,,,,,,,,,,,
+SurfaceHubScreenshotCaption22,571,Текст,,,,,,,,,,,
+SurfaceHubScreenshotCaption23,572,Текст,,,,,,,,,,,
+SurfaceHubScreenshotCaption24,573,Текст,,,,,,,,,,,
+SurfaceHubScreenshotCaption25,574,Текст,,,,,,,,,,,
+SurfaceHubScreenshotCaption26,575,Текст,,,,,,,,,,,
+SurfaceHubScreenshotCaption27,576,Текст,,,,,,,,,,,
+SurfaceHubScreenshotCaption28,577,Текст,,,,,,,,,,,
+SurfaceHubScreenshotCaption29,578,Текст,,,,,,,,,,,
+SurfaceHubScreenshotCaption30,579,Текст,,,,,,,,,,,
+StoreLogo720x1080,600,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+StoreLogo1080x1080,601,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+StoreLogo300x300,602,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+OverrideLogosForWin10,603,True/False,,False,False,False,False,False,False,False,False,False,False
+StoreLogoOverride150x150,604,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+StoreLogoOverride71x71,605,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+PromoImage1920x1080,606,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+PromoImage2400x1200,607,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+XboxBrandedKeyArt584x800,608,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+XboxTitledHero1920x1080,609,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+XboxFeaturedPromo1080x1080,610,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+OptionalPromo358x358,611,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+OptionalPromo1000x800,612,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+OptionalPromo414x180,613,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+Feature1,700,Текст,,Влажность и температура въ комнатѣ,Влажност и температура у просторији,Влажност и температура в помещението,Влажност и температура во просторијата,Vlhkosť a teplota v miestnosti,Vlažnost in temperatura v prostoru,Vlažnost i temperatura u prostoriji,Vlhkost a teplota v místnosti,Wilgotność i temperatura w pomieszczeniu,Room humidity and temperature
+Feature2,701,Текст,,"Питаніе, режимъ, цѣлевая влажность","Напајање, режим, циљна влажност","Захранване, режим, целева влажност","Напојување, режим, целна влажност","Napájanie, režim, cieľová vlhkosť","Napajanje, način delovanja, ciljna vlažnost","Napajanje, način rada, ciljana vlažnost","Napájení, režim, cílová vlhkost","Zasilanie, tryb, docelowa wilgotność","Power, mode, target humidity"
+Feature3,702,Текст,,"Подсвѣтка, звукъ, блокировка кнопокъ","Позадинско осветљење, звук, блокада дугмади","Подсветка, звук, заключване на бутоните","Осветлување, звук, заклучување на копчињата","Podsvietenie, zvuk, uzamknutie tlačidiel","Osvetlitev, zvok, zaklepanje gumbov","Pozadinsko osvjetljenje, zvuk, zaključavanje tipki","Podsvícení, zvuk, uzamčení tlačítek","Podświetlenie, dźwięk, blokada przycisków","Backlight, sound, button lock"
+Feature4,703,Текст,,Таймеръ выключенія,Тајмер за искључивање,Таймер за изключване,Тајмер за исклучување,Časovač vypnutia,Časovnik izklopa,Tajmer za isključivanje,Časovač vypnutí,Timer wyłączenia,Shutdown timer
+Feature5,704,Текст,,Командная строка для сценаріевъ,Командна линија за скрипте,Команден ред за сценарии,Командна линија за скрипти,Príkazový riadok pre skripty,Ukazna vrstica za skripte,Naredbeni redak za skripte,Příkazový řádek pro skripty,Wiersz poleceń do skryptów,Command line for scripts
+Feature6,705,Текст,,"Работа безъ облака, только локальная сѣть","Рад без облака, само преко локалне мреже","Работа без облак, само по локалната мрежа","Работа без облак, само преку локалната мрежа","Prevádzka bez cloudu, iba v lokálnej sieti","Delovanje brez oblaka, samo prek lokalnega omrežja","Rad bez oblaka, samo putem lokalne mreže","Provoz bez cloudu, pouze v lokální síti","Działanie bez chmury, tylko w sieci lokalnej","No cloud required, local network only"
+Feature7,706,Текст,,,,,,,,,,,
+Feature8,707,Текст,,,,,,,,,,,
+Feature9,708,Текст,,,,,,,,,,,
+Feature10,709,Текст,,,,,,,,,,,
+Feature11,710,Текст,,,,,,,,,,,
+Feature12,711,Текст,,,,,,,,,,,
+Feature13,712,Текст,,,,,,,,,,,
+Feature14,713,Текст,,,,,,,,,,,
+Feature15,714,Текст,,,,,,,,,,,
+Feature16,715,Текст,,,,,,,,,,,
+Feature17,716,Текст,,,,,,,,,,,
+Feature18,717,Текст,,,,,,,,,,,
+Feature19,718,Текст,,,,,,,,,,,
+Feature20,719,Текст,,,,,,,,,,,
+MinimumHardwareReq1,800,Текст,,,,,,,,,,,
+MinimumHardwareReq2,801,Текст,,,,,,,,,,,
+MinimumHardwareReq3,802,Текст,,,,,,,,,,,
+MinimumHardwareReq4,803,Текст,,,,,,,,,,,
+MinimumHardwareReq5,804,Текст,,,,,,,,,,,
+MinimumHardwareReq6,805,Текст,,,,,,,,,,,
+MinimumHardwareReq7,806,Текст,,,,,,,,,,,
+MinimumHardwareReq8,807,Текст,,,,,,,,,,,
+MinimumHardwareReq9,808,Текст,,,,,,,,,,,
+MinimumHardwareReq10,809,Текст,,,,,,,,,,,
+MinimumHardwareReq11,810,Текст,,,,,,,,,,,
+RecommendedHardwareReq1,850,Текст,,,,,,,,,,,
+RecommendedHardwareReq2,851,Текст,,,,,,,,,,,
+RecommendedHardwareReq3,852,Текст,,,,,,,,,,,
+RecommendedHardwareReq4,853,Текст,,,,,,,,,,,
+RecommendedHardwareReq5,854,Текст,,,,,,,,,,,
+RecommendedHardwareReq6,855,Текст,,,,,,,,,,,
+RecommendedHardwareReq7,856,Текст,,,,,,,,,,,
+RecommendedHardwareReq8,857,Текст,,,,,,,,,,,
+RecommendedHardwareReq9,858,Текст,,,,,,,,,,,
+RecommendedHardwareReq10,859,Текст,,,,,,,,,,,
+RecommendedHardwareReq11,860,Текст,,,,,,,,,,,
+SearchTerm1,900,Текст,,осушитель,одвлаживач,Xiaomi,одвлажнувач,odvlhčovač,razvlaževalnik,odvlaživač,odvlhčovač,osuszacz,Xiaomi
+SearchTerm2,901,Текст,,Xiaomi,dehumidifier,dehumidifier,Xiaomi,Xiaomi,Xiaomi,Xiaomi,Xiaomi,Xiaomi,Mi Home
+SearchTerm3,902,Текст,,dehumidifier,Mi Home,Mi Home,dehumidifier,dehumidifier,dehumidifier,dehumidifier,dehumidifier,dehumidifier,miIO
+SearchTerm4,903,Текст,,Mi Home,miIO,miIO,Mi Home,Mi Home,Mi Home,Mi Home,Mi Home,Mi Home,MIoT
+SearchTerm5,904,Текст,,miIO,MIoT,MIoT,miIO,miIO,miIO,miIO,miIO,miIO,humidity
+SearchTerm6,905,Текст,,MIoT,влажност,влажност,MIoT,MIoT,MIoT,MIoT,MIoT,MIoT,dehumidifier
+SearchTerm7,906,Текст,,влажность,Xiaomi,обезвлажнител,влажност,vlhkosť,vlažnost,vlažnost,vlhkost,wilgotność,
+TrailerToPlayAtTopOfListing,999,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+Trailer1,1000,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+Trailer2,1001,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+Trailer3,1002,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+Trailer4,1003,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+Trailer5,1004,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+Trailer6,1005,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+Trailer7,1006,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+Trailer8,1007,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+Trailer9,1008,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+Trailer10,1009,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+Trailer11,1010,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+Trailer12,1011,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+Trailer13,1012,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+Trailer14,1013,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+Trailer15,1014,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+TrailerTitle1,1020,Текст,,,,,,,,,,,
+TrailerTitle2,1021,Текст,,,,,,,,,,,
+TrailerTitle3,1022,Текст,,,,,,,,,,,
+TrailerTitle4,1023,Текст,,,,,,,,,,,
+TrailerTitle5,1024,Текст,,,,,,,,,,,
+TrailerTitle6,1025,Текст,,,,,,,,,,,
+TrailerTitle7,1026,Текст,,,,,,,,,,,
+TrailerTitle8,1027,Текст,,,,,,,,,,,
+TrailerTitle9,1028,Текст,,,,,,,,,,,
+TrailerTitle10,1029,Текст,,,,,,,,,,,
+TrailerTitle11,1030,Текст,,,,,,,,,,,
+TrailerTitle12,1031,Текст,,,,,,,,,,,
+TrailerTitle13,1032,Текст,,,,,,,,,,,
+TrailerTitle14,1033,Текст,,,,,,,,,,,
+TrailerTitle15,1034,Текст,,,,,,,,,,,
+TrailerThumbnail1,1040,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+TrailerThumbnail2,1041,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+TrailerThumbnail3,1042,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+TrailerThumbnail4,1043,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+TrailerThumbnail5,1044,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+TrailerThumbnail6,1045,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+TrailerThumbnail7,1046,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+TrailerThumbnail8,1047,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+TrailerThumbnail9,1048,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+TrailerThumbnail10,1049,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+TrailerThumbnail11,1050,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+TrailerThumbnail12,1051,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+TrailerThumbnail13,1052,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+TrailerThumbnail14,1053,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+TrailerThumbnail15,1054,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+TrailerClosedCaption1,1055,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+TrailerClosedCaption2,1056,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+TrailerClosedCaption3,1057,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+TrailerClosedCaption4,1058,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+TrailerClosedCaption5,1059,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+TrailerClosedCaption6,1060,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+TrailerClosedCaption7,1061,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+TrailerClosedCaption8,1062,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+TrailerClosedCaption9,1063,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+TrailerClosedCaption10,1064,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+TrailerClosedCaption11,1065,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+TrailerClosedCaption12,1066,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+TrailerClosedCaption13,1067,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+TrailerClosedCaption14,1068,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+TrailerClosedCaption15,1069,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+TrailerAudioDescription1,1070,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+TrailerAudioDescription2,1071,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+TrailerAudioDescription3,1072,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+TrailerAudioDescription4,1073,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+TrailerAudioDescription5,1074,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+TrailerAudioDescription6,1075,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+TrailerAudioDescription7,1076,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+TrailerAudioDescription8,1077,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+TrailerAudioDescription9,1078,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+TrailerAudioDescription10,1079,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+TrailerAudioDescription11,1080,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+TrailerAudioDescription12,1081,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+TrailerAudioDescription13,1082,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+TrailerAudioDescription14,1083,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+TrailerAudioDescription15,1084,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,

@@ -1,0 +1,392 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+    Microsoft ResX Schema
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="EnterToken" xml:space="preserve">
+    <value>Введи токенъ (32 шестнадцатеричныя цифры) и нажми «Подключиться»</value>
+  </data>
+  <data name="PowerOn" xml:space="preserve">
+    <value>Включенъ</value>
+  </data>
+  <data name="PowerOff" xml:space="preserve">
+    <value>Выключенъ</value>
+  </data>
+  <data name="ResetFilterQuestion" xml:space="preserve">
+    <value>Сбросить счётчикъ фильтра? Дѣлай это послѣ чистки или замѣны фильтра.</value>
+  </data>
+  <data name="BadAddress" xml:space="preserve">
+    <value>Невѣрный адресъ</value>
+  </data>
+  <data name="BadToken" xml:space="preserve">
+    <value>Токенъ — это 32 шестнадцатеричныя цифры</value>
+  </data>
+  <data name="Connecting" xml:space="preserve">
+    <value>Подключаюсь…</value>
+  </data>
+  <data name="Connected" xml:space="preserve">
+    <value>Подключено</value>
+  </data>
+  <data name="Disconnected" xml:space="preserve">
+    <value>Отключено</value>
+  </data>
+  <data name="Connect" xml:space="preserve">
+    <value>&amp;Подключиться</value>
+  </data>
+  <data name="Disconnect" xml:space="preserve">
+    <value>&amp;Отключиться</value>
+  </data>
+  <data name="LinkRestored" xml:space="preserve">
+    <value>Связь возстановлена</value>
+  </data>
+  <data name="TemperatureFormat" xml:space="preserve">
+    <value>{0:0.#} °Ц</value>
+  </data>
+  <data name="WarmingYes" xml:space="preserve">
+    <value>идётъ</value>
+  </data>
+  <data name="WarmingNo" xml:space="preserve">
+    <value>нѣтъ</value>
+  </data>
+  <data name="Fault0" xml:space="preserve">
+    <value>отсутствуетъ</value>
+  </data>
+  <data name="Fault1" xml:space="preserve">
+    <value>бакъ полонъ</value>
+  </data>
+  <data name="Fault2" xml:space="preserve">
+    <value>ошибка датчика температуры и влажности</value>
+  </data>
+  <data name="Fault3" xml:space="preserve">
+    <value>ошибка датчика медной трубки</value>
+  </data>
+  <data name="Fault4" xml:space="preserve">
+    <value>сбой связи</value>
+  </data>
+  <data name="Fault5" xml:space="preserve">
+    <value>пора почистить фильтръ</value>
+  </data>
+  <data name="Fault6" xml:space="preserve">
+    <value>размораживаніе</value>
+  </data>
+  <data name="Fault7" xml:space="preserve">
+    <value>заклинило двигатель</value>
+  </data>
+  <data name="Fault8" xml:space="preserve">
+    <value>защита отъ перегрузки</value>
+  </data>
+  <data name="Fault9" xml:space="preserve">
+    <value>мало хладагента</value>
+  </data>
+  <data name="FaultUnknown" xml:space="preserve">
+    <value>неизвѣстная ({0})</value>
+  </data>
+  <data name="BadResponse" xml:space="preserve">
+    <value>Странный отвѣтъ на {0}.</value>
+  </data>
+  <data name="NoMIoTAttribute" xml:space="preserve">
+    <value>У свойства {0} нѣтъ атрибута [MIoT].</value>
+  </data>
+  <data name="WriteRejected" xml:space="preserve">
+    <value>Устройство отклонило запись: {0}</value>
+  </data>
+  <data name="ActionRejected" xml:space="preserve">
+    <value>Устройство отклонило дѣйствіе ({0}, {1}): {2}</value>
+  </data>
+  <data name="Error4001" xml:space="preserve">
+    <value>свойство нельзя прочесть (-4001)</value>
+  </data>
+  <data name="Error4002" xml:space="preserve">
+    <value>свойство сейчасъ нельзя записать (-4002); цѣлевую влажность, напримѣръ, нельзя мѣнять въ режимѣ сушки бѣлья</value>
+  </data>
+  <data name="Error4003" xml:space="preserve">
+    <value>нѣтъ такого свойства, дѣйствія или событія (-4003)</value>
+  </data>
+  <data name="Error4004" xml:space="preserve">
+    <value>внутренняя ошибка устройства (-4004)</value>
+  </data>
+  <data name="Error4005" xml:space="preserve">
+    <value>недопустимое значеніе (-4005)</value>
+  </data>
+  <data name="Error4006" xml:space="preserve">
+    <value>недопустимые параметры дѣйствія (-4006)</value>
+  </data>
+  <data name="Error4007" xml:space="preserve">
+    <value>невѣрный did (-4007)</value>
+  </data>
+  <data name="ErrorCode" xml:space="preserve">
+    <value>кодъ {0}</value>
+  </data>
+  <data name="TypeNotSupported" xml:space="preserve">
+    <value>Тѵпъ {0} не поддерживается.</value>
+  </data>
+  <data name="TokenFormat" xml:space="preserve">
+    <value>Токенъ долженъ состоять изъ 32 шестнадцатеричныхъ цифръ.</value>
+  </data>
+  <data name="NoReply" xml:space="preserve">
+    <value>Нѣтъ отвѣта на команду — скорѣе всего, токенъ невѣренъ.</value>
+  </data>
+  <data name="DeviceSilent" xml:space="preserve">
+    <value>Устройство {0} не отвѣчаетъ — провѣрь адресъ и сѣть.</value>
+  </data>
+  <data name="ModeSmart" xml:space="preserve">
+    <value>умный</value>
+  </data>
+  <data name="ModeSleep" xml:space="preserve">
+    <value>ночной</value>
+  </data>
+  <data name="ModeDry" xml:space="preserve">
+    <value>сушка бѣлья</value>
+  </data>
+  <data name="LightOff" xml:space="preserve">
+    <value>выключена</value>
+  </data>
+  <data name="LightDim" xml:space="preserve">
+    <value>тусклая</value>
+  </data>
+  <data name="LightBright" xml:space="preserve">
+    <value>яркая</value>
+  </data>
+  <data name="CliExitCodePrefix" xml:space="preserve">
+    <value>Кодъ выхода:</value>
+  </data>
+  <data name="CliNoHumidity" xml:space="preserve">
+    <value>«{0}»: нѣтъ значенія — цѣлое число отъ {1} до {2}.</value>
+  </data>
+  <data name="CliBadHumidity" xml:space="preserve">
+    <value>«{0}»: цѣлевая влажность — цѣлое число отъ {1} до {2}.</value>
+  </data>
+  <data name="CliNoMode" xml:space="preserve">
+    <value>«{0}»: нѣтъ значенія — режимъ smart, sleep или dry (умный, ночной, сушка).</value>
+  </data>
+  <data name="CliBadMode" xml:space="preserve">
+    <value>«{0}»: режимъ — smart, sleep или dry (умный, ночной, сушка).</value>
+  </data>
+  <data name="CliBadLight" xml:space="preserve">
+    <value>«{0}»: нужно dim|bright (тусклая|яркая) и/или on|off (включить|выключить).</value>
+  </data>
+  <data name="CliUnknownCommand" xml:space="preserve">
+    <value>Неизвѣстная команда «{0}».</value>
+  </data>
+  <data name="CliNoAddress" xml:space="preserve">
+    <value>Адресъ не заданъ: открой программу безъ параметровъ и подключись.</value>
+  </data>
+  <data name="CliNoToken" xml:space="preserve">
+    <value>Токенъ не заданъ: открой программу безъ параметровъ и подключись.</value>
+  </data>
+  <data name="CliPower" xml:space="preserve">
+    <value>Питаніе:</value>
+  </data>
+  <data name="CliMode" xml:space="preserve">
+    <value>Режимъ:</value>
+  </data>
+  <data name="CliLight" xml:space="preserve">
+    <value>Подсвѣтка:</value>
+  </data>
+  <data name="CliTemperature" xml:space="preserve">
+    <value>Температура:</value>
+  </data>
+  <data name="CliHumidity" xml:space="preserve">
+    <value>Влажность:</value>
+  </data>
+  <data name="CliTarget" xml:space="preserve">
+    <value>Цѣль:</value>
+  </data>
+  <data name="CliFault" xml:space="preserve">
+    <value>Неисправность:</value>
+  </data>
+  <data name="CliStateOn" xml:space="preserve">
+    <value>включено</value>
+  </data>
+  <data name="CliStateOff" xml:space="preserve">
+    <value>выключено</value>
+  </data>
+  <data name="CliSwitchedOn" xml:space="preserve">
+    <value>Включено.</value>
+  </data>
+  <data name="CliSwitchedOff" xml:space="preserve">
+    <value>Выключено.</value>
+  </data>
+  <data name="CliTargetSet" xml:space="preserve">
+    <value>Цѣлевая влажность: {0} %.</value>
+  </data>
+  <data name="CliModeSet" xml:space="preserve">
+    <value>Режимъ: {0}.</value>
+  </data>
+  <data name="CliLightSwitchOn" xml:space="preserve">
+    <value>включена</value>
+  </data>
+  <data name="CliLightSwitchOff" xml:space="preserve">
+    <value>выключена</value>
+  </data>
+  <data name="CliBrightness" xml:space="preserve">
+    <value>яркость {0}</value>
+  </data>
+  <data name="CliLightSet" xml:space="preserve">
+    <value>Подсвѣтка: {0}.</value>
+  </data>
+  <data name="CliError" xml:space="preserve">
+    <value>Ошибка: {0}</value>
+  </data>
+  <data name="CliErrorIn" xml:space="preserve">
+    <value>Ошибка въ «{0}»: {1}</value>
+  </data>
+  <data name="ComfortTooDry" xml:space="preserve">
+    <value>слишкомъ сухо (ниже 30 %)</value>
+  </data>
+  <data name="ComfortDry" xml:space="preserve">
+    <value>суховато (30…39 %)</value>
+  </data>
+  <data name="ComfortIdeal" xml:space="preserve">
+    <value>лучше всего (40…50 %)</value>
+  </data>
+  <data name="ComfortNormal" xml:space="preserve">
+    <value>норма (51…60 %)</value>
+  </data>
+  <data name="ComfortHumid" xml:space="preserve">
+    <value>влажновато (61…70 %)</value>
+  </data>
+  <data name="ComfortTooHumid" xml:space="preserve">
+    <value>слишкомъ влажно (выше 70 %)</value>
+  </data>
+  <data name="CliUsage" xml:space="preserve">
+    <value>Управленіе осушителемъ Xiaomi Smart Dehumidifier Lite.
+Адресъ и токенъ берутся изъ настроекъ программы (тѣ же, что въ окнѣ).
+
+  Dehumidifier.exe status                    состояніе
+  Dehumidifier.exe on                        включить
+  Dehumidifier.exe off                       выключить
+  Dehumidifier.exe humidity 40…70            цѣлевая влажность, %
+  Dehumidifier.exe mode smart|sleep|dry      режимъ: умный, ночной, сушка бѣлья
+  Dehumidifier.exe light on|off dim|bright   подсвѣтка: выключатель и (или) яркость
+
+Русскія синонимы: состояніе, включить, выключить, влажность, режимъ умный|ночной|сушка,
+подсвѣтка включить|выключить тусклая|яркая.
+
+У light выключатель (on|off) и яркость (dim|bright) независимы: можно одно изъ нихъ или оба,
+въ любомъ порядкѣ. light dim мѣняетъ только яркость, light on dim — и то, и другое:
+  Dehumidifier.exe light on dim status
+
+Команды можно писать нѣсколько подрядъ, онѣ выполнятся по порядку:
+  Dehumidifier.exe mode smart humidity 45 status
+Сначала провѣряется вся строка: если въ ней ошибка, не выполняется ничего.
+При отказѣ устройства выполненіе останавливается на этой командѣ.
+Безъ параметровъ открывается окно.
+
+Кодъ выхода: 0 — успѣхъ, 1 — ошибка связи или отказъ устройства, 2 — невѣрная команда.</value>
+  </data>
+</root>

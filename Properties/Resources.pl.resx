@@ -1,0 +1,392 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+    Microsoft ResX Schema
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="EnterToken" xml:space="preserve">
+    <value>Wpisz token (32 cyfry szesnastkowe) i naciśnij „Połącz”</value>
+  </data>
+  <data name="PowerOn" xml:space="preserve">
+    <value>Włączony</value>
+  </data>
+  <data name="PowerOff" xml:space="preserve">
+    <value>Wyłączony</value>
+  </data>
+  <data name="ResetFilterQuestion" xml:space="preserve">
+    <value>Wyzerować licznik filtra? Zrób to po wyczyszczeniu lub wymianie filtra.</value>
+  </data>
+  <data name="BadAddress" xml:space="preserve">
+    <value>Nieprawidłowy adres</value>
+  </data>
+  <data name="BadToken" xml:space="preserve">
+    <value>Token to 32 cyfry szesnastkowe</value>
+  </data>
+  <data name="Connecting" xml:space="preserve">
+    <value>Łączę…</value>
+  </data>
+  <data name="Connected" xml:space="preserve">
+    <value>Połączono</value>
+  </data>
+  <data name="Disconnected" xml:space="preserve">
+    <value>Rozłączono</value>
+  </data>
+  <data name="Connect" xml:space="preserve">
+    <value>&amp;Połącz</value>
+  </data>
+  <data name="Disconnect" xml:space="preserve">
+    <value>&amp;Rozłącz</value>
+  </data>
+  <data name="LinkRestored" xml:space="preserve">
+    <value>Połączenie przywrócone</value>
+  </data>
+  <data name="TemperatureFormat" xml:space="preserve">
+    <value>{0:0.#} °C</value>
+  </data>
+  <data name="WarmingYes" xml:space="preserve">
+    <value>trwa</value>
+  </data>
+  <data name="WarmingNo" xml:space="preserve">
+    <value>nie</value>
+  </data>
+  <data name="Fault0" xml:space="preserve">
+    <value>brak</value>
+  </data>
+  <data name="Fault1" xml:space="preserve">
+    <value>zbiornik pełny</value>
+  </data>
+  <data name="Fault2" xml:space="preserve">
+    <value>błąd czujnika temperatury i wilgotności</value>
+  </data>
+  <data name="Fault3" xml:space="preserve">
+    <value>błąd czujnika rurki miedzianej</value>
+  </data>
+  <data name="Fault4" xml:space="preserve">
+    <value>błąd komunikacji</value>
+  </data>
+  <data name="Fault5" xml:space="preserve">
+    <value>czas wyczyścić filtr</value>
+  </data>
+  <data name="Fault6" xml:space="preserve">
+    <value>odszranianie</value>
+  </data>
+  <data name="Fault7" xml:space="preserve">
+    <value>silnik zablokowany</value>
+  </data>
+  <data name="Fault8" xml:space="preserve">
+    <value>zabezpieczenie przed przeciążeniem</value>
+  </data>
+  <data name="Fault9" xml:space="preserve">
+    <value>za mało czynnika chłodniczego</value>
+  </data>
+  <data name="FaultUnknown" xml:space="preserve">
+    <value>nieznana ({0})</value>
+  </data>
+  <data name="BadResponse" xml:space="preserve">
+    <value>Nieoczekiwana odpowiedź na {0}.</value>
+  </data>
+  <data name="NoMIoTAttribute" xml:space="preserve">
+    <value>Właściwość {0} nie ma atrybutu [MIoT].</value>
+  </data>
+  <data name="WriteRejected" xml:space="preserve">
+    <value>Urządzenie odrzuciło zapis: {0}</value>
+  </data>
+  <data name="ActionRejected" xml:space="preserve">
+    <value>Urządzenie odrzuciło akcję ({0}, {1}): {2}</value>
+  </data>
+  <data name="Error4001" xml:space="preserve">
+    <value>właściwości nie można odczytać (-4001)</value>
+  </data>
+  <data name="Error4002" xml:space="preserve">
+    <value>właściwości nie można teraz zapisać (-4002); na przykład docelowej wilgotności nie można zmieniać w trybie suszenia prania</value>
+  </data>
+  <data name="Error4003" xml:space="preserve">
+    <value>nie ma takiej właściwości, akcji ani zdarzenia (-4003)</value>
+  </data>
+  <data name="Error4004" xml:space="preserve">
+    <value>wewnętrzny błąd urządzenia (-4004)</value>
+  </data>
+  <data name="Error4005" xml:space="preserve">
+    <value>nieprawidłowa wartość (-4005)</value>
+  </data>
+  <data name="Error4006" xml:space="preserve">
+    <value>nieprawidłowe parametry akcji (-4006)</value>
+  </data>
+  <data name="Error4007" xml:space="preserve">
+    <value>nieprawidłowy did (-4007)</value>
+  </data>
+  <data name="ErrorCode" xml:space="preserve">
+    <value>kod {0}</value>
+  </data>
+  <data name="TypeNotSupported" xml:space="preserve">
+    <value>Typ {0} nie jest obsługiwany.</value>
+  </data>
+  <data name="TokenFormat" xml:space="preserve">
+    <value>Token musi składać się z 32 cyfr szesnastkowych.</value>
+  </data>
+  <data name="NoReply" xml:space="preserve">
+    <value>Brak odpowiedzi na polecenie — najpewniej token jest błędny.</value>
+  </data>
+  <data name="DeviceSilent" xml:space="preserve">
+    <value>Urządzenie {0} nie odpowiada — sprawdź adres i sieć.</value>
+  </data>
+  <data name="ModeSmart" xml:space="preserve">
+    <value>inteligentny</value>
+  </data>
+  <data name="ModeSleep" xml:space="preserve">
+    <value>nocny</value>
+  </data>
+  <data name="ModeDry" xml:space="preserve">
+    <value>suszenie prania</value>
+  </data>
+  <data name="LightOff" xml:space="preserve">
+    <value>wyłączone</value>
+  </data>
+  <data name="LightDim" xml:space="preserve">
+    <value>przyciemnione</value>
+  </data>
+  <data name="LightBright" xml:space="preserve">
+    <value>jasne</value>
+  </data>
+  <data name="CliExitCodePrefix" xml:space="preserve">
+    <value>Kod wyjścia:</value>
+  </data>
+  <data name="CliNoHumidity" xml:space="preserve">
+    <value>„{0}”: brak wartości — liczba całkowita od {1} do {2}.</value>
+  </data>
+  <data name="CliBadHumidity" xml:space="preserve">
+    <value>„{0}”: docelowa wilgotność to liczba całkowita od {1} do {2}.</value>
+  </data>
+  <data name="CliNoMode" xml:space="preserve">
+    <value>„{0}”: brak wartości — tryb smart, sleep lub dry.</value>
+  </data>
+  <data name="CliBadMode" xml:space="preserve">
+    <value>„{0}”: tryb to smart, sleep lub dry.</value>
+  </data>
+  <data name="CliBadLight" xml:space="preserve">
+    <value>„{0}”: potrzeba dim|bright i/lub on|off.</value>
+  </data>
+  <data name="CliUnknownCommand" xml:space="preserve">
+    <value>Nieznane polecenie „{0}”.</value>
+  </data>
+  <data name="CliNoAddress" xml:space="preserve">
+    <value>Nie ustawiono adresu: otwórz program bez parametrów i połącz się.</value>
+  </data>
+  <data name="CliNoToken" xml:space="preserve">
+    <value>Nie ustawiono tokenu: otwórz program bez parametrów i połącz się.</value>
+  </data>
+  <data name="CliPower" xml:space="preserve">
+    <value>Zasilanie:</value>
+  </data>
+  <data name="CliMode" xml:space="preserve">
+    <value>Tryb:</value>
+  </data>
+  <data name="CliLight" xml:space="preserve">
+    <value>Podświetlenie:</value>
+  </data>
+  <data name="CliTemperature" xml:space="preserve">
+    <value>Temperatura:</value>
+  </data>
+  <data name="CliHumidity" xml:space="preserve">
+    <value>Wilgotność:</value>
+  </data>
+  <data name="CliTarget" xml:space="preserve">
+    <value>Cel:</value>
+  </data>
+  <data name="CliFault" xml:space="preserve">
+    <value>Usterka:</value>
+  </data>
+  <data name="CliStateOn" xml:space="preserve">
+    <value>włączone</value>
+  </data>
+  <data name="CliStateOff" xml:space="preserve">
+    <value>wyłączone</value>
+  </data>
+  <data name="CliSwitchedOn" xml:space="preserve">
+    <value>Włączono.</value>
+  </data>
+  <data name="CliSwitchedOff" xml:space="preserve">
+    <value>Wyłączono.</value>
+  </data>
+  <data name="CliTargetSet" xml:space="preserve">
+    <value>Docelowa wilgotność: {0} %.</value>
+  </data>
+  <data name="CliModeSet" xml:space="preserve">
+    <value>Tryb: {0}.</value>
+  </data>
+  <data name="CliLightSwitchOn" xml:space="preserve">
+    <value>włączone</value>
+  </data>
+  <data name="CliLightSwitchOff" xml:space="preserve">
+    <value>wyłączone</value>
+  </data>
+  <data name="CliBrightness" xml:space="preserve">
+    <value>jasność {0}</value>
+  </data>
+  <data name="CliLightSet" xml:space="preserve">
+    <value>Podświetlenie: {0}.</value>
+  </data>
+  <data name="CliError" xml:space="preserve">
+    <value>Błąd: {0}</value>
+  </data>
+  <data name="CliErrorIn" xml:space="preserve">
+    <value>Błąd w „{0}”: {1}</value>
+  </data>
+  <data name="ComfortTooDry" xml:space="preserve">
+    <value>za sucho (poniżej 30 %)</value>
+  </data>
+  <data name="ComfortDry" xml:space="preserve">
+    <value>dość sucho (30…39 %)</value>
+  </data>
+  <data name="ComfortIdeal" xml:space="preserve">
+    <value>najlepiej (40…50 %)</value>
+  </data>
+  <data name="ComfortNormal" xml:space="preserve">
+    <value>w normie (51…60 %)</value>
+  </data>
+  <data name="ComfortHumid" xml:space="preserve">
+    <value>dość wilgotno (61…70 %)</value>
+  </data>
+  <data name="ComfortTooHumid" xml:space="preserve">
+    <value>za wilgotno (powyżej 70 %)</value>
+  </data>
+  <data name="CliUsage" xml:space="preserve">
+    <value>Sterowanie osuszaczem Xiaomi Smart Dehumidifier Lite.
+Adres i token są pobierane z ustawień programu (tych samych co w oknie).
+
+  Dehumidifier.exe status                    stan
+  Dehumidifier.exe on                        włącz
+  Dehumidifier.exe off                       wyłącz
+  Dehumidifier.exe humidity 40…70            docelowa wilgotność, %
+  Dehumidifier.exe mode smart|sleep|dry      tryb: inteligentny, nocny, suszenie prania
+  Dehumidifier.exe light on|off dim|bright   podświetlenie: włącznik i (lub) jasność
+
+Rosyjskie synonimy: состояніе, включить, выключить, влажность, режимъ умный|ночной|сушка,
+подсвѣтка включить|выключить тусклая|яркая.
+
+W light włącznik (on|off) i jasność (dim|bright) są niezależne: można podać jedno z nich lub oba,
+w dowolnej kolejności. light dim zmienia tylko jasność, light on dim — jedno i drugie:
+  Dehumidifier.exe light on dim status
+
+Można podać kilka poleceń po kolei, wykonają się w tej kolejności:
+  Dehumidifier.exe mode smart humidity 45 status
+Najpierw sprawdzany jest cały wiersz: jeśli jest w nim błąd, nic się nie wykonuje.
+Gdy urządzenie odmówi, wykonywanie zatrzymuje się na tym poleceniu.
+Bez parametrów otwiera się okno.
+
+Kod wyjścia: 0 — sukces, 1 — błąd połączenia lub odmowa urządzenia, 2 — nieprawidłowe polecenie.</value>
+  </data>
+</root>

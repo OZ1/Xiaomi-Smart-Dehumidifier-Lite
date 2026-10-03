@@ -1,0 +1,392 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+    Microsoft ResX Schema
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="EnterToken" xml:space="preserve">
+    <value>Внеси го токенот (32 хексадецимални цифри) и притисни „Поврзи“</value>
+  </data>
+  <data name="PowerOn" xml:space="preserve">
+    <value>Вклучен</value>
+  </data>
+  <data name="PowerOff" xml:space="preserve">
+    <value>Исклучен</value>
+  </data>
+  <data name="ResetFilterQuestion" xml:space="preserve">
+    <value>Да се ресетира ли бројачот на филтерот? Направи го тоа по чистење или замена на филтерот.</value>
+  </data>
+  <data name="BadAddress" xml:space="preserve">
+    <value>Неважечка адреса</value>
+  </data>
+  <data name="BadToken" xml:space="preserve">
+    <value>Токенот е 32 хексадецимални цифри</value>
+  </data>
+  <data name="Connecting" xml:space="preserve">
+    <value>Поврзување…</value>
+  </data>
+  <data name="Connected" xml:space="preserve">
+    <value>Поврзано</value>
+  </data>
+  <data name="Disconnected" xml:space="preserve">
+    <value>Врската е прекината</value>
+  </data>
+  <data name="Connect" xml:space="preserve">
+    <value>&amp;Поврзи</value>
+  </data>
+  <data name="Disconnect" xml:space="preserve">
+    <value>&amp;Прекини</value>
+  </data>
+  <data name="LinkRestored" xml:space="preserve">
+    <value>Врската е обновена</value>
+  </data>
+  <data name="TemperatureFormat" xml:space="preserve">
+    <value>{0:0.#} °C</value>
+  </data>
+  <data name="WarmingYes" xml:space="preserve">
+    <value>тече</value>
+  </data>
+  <data name="WarmingNo" xml:space="preserve">
+    <value>не</value>
+  </data>
+  <data name="Fault0" xml:space="preserve">
+    <value>нема</value>
+  </data>
+  <data name="Fault1" xml:space="preserve">
+    <value>резервоарот е полн</value>
+  </data>
+  <data name="Fault2" xml:space="preserve">
+    <value>грешка на сензорот за температура и влажност</value>
+  </data>
+  <data name="Fault3" xml:space="preserve">
+    <value>грешка на сензорот на бакарната цевка</value>
+  </data>
+  <data name="Fault4" xml:space="preserve">
+    <value>грешка во комуникацијата</value>
+  </data>
+  <data name="Fault5" xml:space="preserve">
+    <value>време е да се исчисти филтерот</value>
+  </data>
+  <data name="Fault6" xml:space="preserve">
+    <value>одмрзнување</value>
+  </data>
+  <data name="Fault7" xml:space="preserve">
+    <value>моторот е заглавен</value>
+  </data>
+  <data name="Fault8" xml:space="preserve">
+    <value>заштита од преоптоварување</value>
+  </data>
+  <data name="Fault9" xml:space="preserve">
+    <value>малку ладилно средство</value>
+  </data>
+  <data name="FaultUnknown" xml:space="preserve">
+    <value>непознат ({0})</value>
+  </data>
+  <data name="BadResponse" xml:space="preserve">
+    <value>Неочекуван одговор на {0}.</value>
+  </data>
+  <data name="NoMIoTAttribute" xml:space="preserve">
+    <value>Својството {0} нема атрибут [MIoT].</value>
+  </data>
+  <data name="WriteRejected" xml:space="preserve">
+    <value>Уредот го одби запишувањето: {0}</value>
+  </data>
+  <data name="ActionRejected" xml:space="preserve">
+    <value>Уредот го одби дејството ({0}, {1}): {2}</value>
+  </data>
+  <data name="Error4001" xml:space="preserve">
+    <value>својството не може да се прочита (-4001)</value>
+  </data>
+  <data name="Error4002" xml:space="preserve">
+    <value>својството сега не може да се запише (-4002); на пример, целната влажност не се менува во режим сушење алишта</value>
+  </data>
+  <data name="Error4003" xml:space="preserve">
+    <value>нема такво својство, дејство или настан (-4003)</value>
+  </data>
+  <data name="Error4004" xml:space="preserve">
+    <value>внатрешна грешка на уредот (-4004)</value>
+  </data>
+  <data name="Error4005" xml:space="preserve">
+    <value>неважечка вредност (-4005)</value>
+  </data>
+  <data name="Error4006" xml:space="preserve">
+    <value>неважечки параметри на дејството (-4006)</value>
+  </data>
+  <data name="Error4007" xml:space="preserve">
+    <value>неважечки did (-4007)</value>
+  </data>
+  <data name="ErrorCode" xml:space="preserve">
+    <value>код {0}</value>
+  </data>
+  <data name="TypeNotSupported" xml:space="preserve">
+    <value>Типот {0} не е поддржан.</value>
+  </data>
+  <data name="TokenFormat" xml:space="preserve">
+    <value>Токенот мора да се состои од 32 хексадецимални цифри.</value>
+  </data>
+  <data name="NoReply" xml:space="preserve">
+    <value>Нема одговор на командата — најверојатно токенот е погрешен.</value>
+  </data>
+  <data name="DeviceSilent" xml:space="preserve">
+    <value>Уредот {0} не одговара — провери ја адресата и мрежата.</value>
+  </data>
+  <data name="ModeSmart" xml:space="preserve">
+    <value>паметен</value>
+  </data>
+  <data name="ModeSleep" xml:space="preserve">
+    <value>ноќен</value>
+  </data>
+  <data name="ModeDry" xml:space="preserve">
+    <value>сушење алишта</value>
+  </data>
+  <data name="LightOff" xml:space="preserve">
+    <value>исклучено</value>
+  </data>
+  <data name="LightDim" xml:space="preserve">
+    <value>пригушено</value>
+  </data>
+  <data name="LightBright" xml:space="preserve">
+    <value>светло</value>
+  </data>
+  <data name="CliExitCodePrefix" xml:space="preserve">
+    <value>Излезен код:</value>
+  </data>
+  <data name="CliNoHumidity" xml:space="preserve">
+    <value>„{0}“: нема вредност — цел број од {1} до {2}.</value>
+  </data>
+  <data name="CliBadHumidity" xml:space="preserve">
+    <value>„{0}“: целната влажност е цел број од {1} до {2}.</value>
+  </data>
+  <data name="CliNoMode" xml:space="preserve">
+    <value>„{0}“: нема вредност — режим smart, sleep или dry.</value>
+  </data>
+  <data name="CliBadMode" xml:space="preserve">
+    <value>„{0}“: режимот е smart, sleep или dry.</value>
+  </data>
+  <data name="CliBadLight" xml:space="preserve">
+    <value>„{0}“: потребно е dim|bright и/или on|off.</value>
+  </data>
+  <data name="CliUnknownCommand" xml:space="preserve">
+    <value>Непозната команда „{0}“.</value>
+  </data>
+  <data name="CliNoAddress" xml:space="preserve">
+    <value>Адресата не е зададена: отвори ја програмата без параметри и поврзи се.</value>
+  </data>
+  <data name="CliNoToken" xml:space="preserve">
+    <value>Токенот не е зададен: отвори ја програмата без параметри и поврзи се.</value>
+  </data>
+  <data name="CliPower" xml:space="preserve">
+    <value>Напојување:</value>
+  </data>
+  <data name="CliMode" xml:space="preserve">
+    <value>Режим:</value>
+  </data>
+  <data name="CliLight" xml:space="preserve">
+    <value>Светлина:</value>
+  </data>
+  <data name="CliTemperature" xml:space="preserve">
+    <value>Температура:</value>
+  </data>
+  <data name="CliHumidity" xml:space="preserve">
+    <value>Влажност:</value>
+  </data>
+  <data name="CliTarget" xml:space="preserve">
+    <value>Цел:</value>
+  </data>
+  <data name="CliFault" xml:space="preserve">
+    <value>Дефект:</value>
+  </data>
+  <data name="CliStateOn" xml:space="preserve">
+    <value>вклучено</value>
+  </data>
+  <data name="CliStateOff" xml:space="preserve">
+    <value>исклучено</value>
+  </data>
+  <data name="CliSwitchedOn" xml:space="preserve">
+    <value>Вклучено.</value>
+  </data>
+  <data name="CliSwitchedOff" xml:space="preserve">
+    <value>Исклучено.</value>
+  </data>
+  <data name="CliTargetSet" xml:space="preserve">
+    <value>Целна влажност: {0} %.</value>
+  </data>
+  <data name="CliModeSet" xml:space="preserve">
+    <value>Режим: {0}.</value>
+  </data>
+  <data name="CliLightSwitchOn" xml:space="preserve">
+    <value>вклучено</value>
+  </data>
+  <data name="CliLightSwitchOff" xml:space="preserve">
+    <value>исклучено</value>
+  </data>
+  <data name="CliBrightness" xml:space="preserve">
+    <value>осветленост {0}</value>
+  </data>
+  <data name="CliLightSet" xml:space="preserve">
+    <value>Светлина: {0}.</value>
+  </data>
+  <data name="CliError" xml:space="preserve">
+    <value>Грешка: {0}</value>
+  </data>
+  <data name="CliErrorIn" xml:space="preserve">
+    <value>Грешка во „{0}“: {1}</value>
+  </data>
+  <data name="ComfortTooDry" xml:space="preserve">
+    <value>премногу суво (под 30 %)</value>
+  </data>
+  <data name="ComfortDry" xml:space="preserve">
+    <value>посуво (30…39 %)</value>
+  </data>
+  <data name="ComfortIdeal" xml:space="preserve">
+    <value>најдобро (40…50 %)</value>
+  </data>
+  <data name="ComfortNormal" xml:space="preserve">
+    <value>нормално (51…60 %)</value>
+  </data>
+  <data name="ComfortHumid" xml:space="preserve">
+    <value>повлажно (61…70 %)</value>
+  </data>
+  <data name="ComfortTooHumid" xml:space="preserve">
+    <value>премногу влажно (над 70 %)</value>
+  </data>
+  <data name="CliUsage" xml:space="preserve">
+    <value>Управување со одвлажнувачот Xiaomi Smart Dehumidifier Lite.
+Адресата и токенот се земаат од поставките на програмата (истите како во прозорецот).
+
+  Dehumidifier.exe status                    состојба
+  Dehumidifier.exe on                        вклучување
+  Dehumidifier.exe off                       исклучување
+  Dehumidifier.exe humidity 40…70            целна влажност, %
+  Dehumidifier.exe mode smart|sleep|dry      режим: паметен, ноќен, сушење алишта
+  Dehumidifier.exe light on|off dim|bright   светлина: прекинувач и (или) осветленост
+
+Руски синоними: состояніе, включить, выключить, влажность, режимъ умный|ночной|сушка,
+подсвѣтка включить|выключить тусклая|яркая.
+
+Кај light прекинувачот (on|off) и осветленоста (dim|bright) се независни: може едното или двете,
+во било кој редослед. light dim ја менува само осветленоста, light on dim — двете:
+  Dehumidifier.exe light on dim status
+
+Може да се зададат повеќе команди една по друга, ќе се извршат по ред:
+  Dehumidifier.exe mode smart humidity 45 status
+Прво се проверува целиот ред: ако има грешка, ништо не се извршува.
+Ако уредот одбие, извршувањето застанува на таа команда.
+Без параметри се отвора прозорецот.
+
+Излезен код: 0 — успех, 1 — нема врска или уредот одбил, 2 — неважечка команда.</value>
+  </data>
+</root>

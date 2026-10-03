@@ -10,7 +10,10 @@ using System.Text.Json.Nodes;
 
 namespace DehumidifierControl;
 
+using static Properties.Resources;
+
 using static MD5;
+using static String;
 using static Convert;
 using static Encoding;
 using static JsonNode;
@@ -44,7 +47,7 @@ public sealed class miIO : IDisposable
 		IP = ip;
 		Token = FromHexString(tokenHex);
 		if (Token.Length != 16)
-			throw new ArgumentException("Токенъ долженъ состоять изъ 32 шестнадцатеричныхъ цифръ.", nameof(tokenHex));
+			throw new ArgumentException(TokenFormat, nameof(tokenHex));
 		AES.Key = HashData(Token);
 		IV = HashData([.. AES.Key, .. Token]);
 		Udp.Connect(Parse(ip), 54321);
@@ -86,9 +89,7 @@ public sealed class miIO : IDisposable
 					return response["result"];
 				}
 			}
-			throw new miIOException(answered
-				? "Нѣтъ отвѣта на команду — скорѣе всего, токенъ невѣренъ."
-				: $"Устройство {IP} не отвѣчаетъ — провѣрь адресъ и сѣть.");
+			throw new miIOException(answered ? NoReply : Format(DeviceSilent, IP));
 		}
 		finally
 		{

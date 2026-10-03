@@ -7,6 +7,8 @@ namespace DehumidifierControl;
 
 using Properties;
 
+using static Properties.Resources;
+
 using static Uri;
 using static Math;
 using static Size;
@@ -39,7 +41,7 @@ public partial class MainForm : Form
 	bool Updating;
 	bool Refreshing;
 	bool PollFailed; // послѣдній опросъ не удался — сообщеніе объ этомъ снимемъ, когда связь вернётся
-	uint? TimerLeft;    // сколько минутъ осталось, если таймеръ идётъ (8.3) — для времени выключенія
+	uint? TimerLeft; // сколько минутъ осталось, если таймеръ идётъ (8.3) — для времени выключенія
 
 	readonly Font ValueFont; // жирный, изъ дизайнера — для значеній, на которыя надо обратить вниманіе
 	readonly Font QuietFont; // нежирный — для «всё въ порядкѣ»: неисправность отсутствуетъ, прогрѣва нѣтъ
@@ -71,7 +73,7 @@ public partial class MainForm : Form
 		textBoxIP.Text = Settings.Default.IP;
 		textBoxToken.Text = Settings.Default.Token;
 		if (Settings.Default.Token.Length <= 0)
-			SetStatus("Введи токенъ (32 шестнадцатеричныя цифры) и нажми «Подключиться»");
+			SetStatus(EnterToken);
 		else await ConnectAsync();
 	}
 
@@ -91,6 +93,12 @@ public partial class MainForm : Form
 		base.OnFormClosed(e);
 	}
 
+	protected override void OnSystemColorsChanged(EventArgs e)
+	{
+		base.OnSystemColorsChanged(e);
+		panelTargetScale.Invalidate(); // включили или выключили высокую контрастность — шкалу перерисовать
+	}
+
 	async void Connect_Click(object? sender, EventArgs e)
 	{
 		if (Device is null)
@@ -100,7 +108,7 @@ public partial class MainForm : Form
 
 	void Power_CheckedChanged(object? sender, EventArgs e)
 	{
-		checkBoxPower.Text = checkBoxPower.Checked ? "Включенъ" : "Выключенъ";
+		checkBoxPower.Text = checkBoxPower.Checked ? PowerOn : PowerOff;
 		SetFlag(nameof(State.dehumidifier), checkBoxPower);
 	}
 
@@ -187,7 +195,7 @@ public partial class MainForm : Form
 	void LoopMode_Click(object? sender, EventArgs e) => _ = RunAsync(d => d.LoopModeAsync());
 	void ResetFilter_Click(object? sender, EventArgs e)
 	{
-		if (MessageBox.Show(this, "Сбросить счётчикъ фильтра? Дѣлай это послѣ чистки или замѣны фильтра.", Text, OKCancel, Question) == DialogResult.OK)
+		if (MessageBox.Show(this, ResetFilterQuestion, Text, OKCancel, Question) == DialogResult.OK)
 			_ = RunAsync(d => d.ResetFilterAsync());
 	}
 
@@ -204,12 +212,12 @@ public partial class MainForm : Form
 		string token = textBoxToken.Text.Trim().ToUpperInvariant();
 		if (!IPAddress.TryParse(ip, out _))
 		{
-			SetStatus("Невѣрный адресъ", error: true);
+			SetStatus(BadAddress, error: true);
 			return;
 		}
 		if (token.Length != 32 || !token.All(IsHexDigit))
 		{
-			SetStatus("Токенъ — это 32 шестнадцатеричныя цифры", error: true);
+			SetStatus(BadToken, error: true);
 			return;
 		}
 
@@ -228,13 +236,13 @@ public partial class MainForm : Form
 		checkBoxLight.CheckState = Indeterminate;
 		checkBoxSound.CheckState = Indeterminate;
 		Updating = false;
-		SetStatus("Подключаюсь…");
+		SetStatus(Connecting);
 		await RefreshStateAsync();
 		buttonConnect.Enabled = true;
 		if (groupControls.Enabled) // первое состояніе пришло — подключены
 		{
 			SetConnected(true);
-			SetStatus("Подключено");
+			SetStatus(Connected);
 			pollTimer.Start();
 		}
 		else // не вышло: соединеніе закрываемъ, поля остаются для правки, ошибка — въ строкѣ состоянія
@@ -254,8 +262,8 @@ public partial class MainForm : Form
 		groupControls.Enabled = false;
 		RoomHumidity = null;
 		SetConnected(false);
-		SetStatus("Отключено");
-		toolStripStatusTime.Text = "";
+		SetStatus(Disconnected);
+		SetUpdated("");
 		textBoxIP.Focus();
 	}
 
@@ -266,7 +274,7 @@ public partial class MainForm : Form
 		textBoxIP.ReadOnly = connected;
 		textBoxToken.ReadOnly = connected;
 		textBoxToken.UseSystemPasswordChar = connected;
-		buttonConnect.Text = connected ? "&Отключиться" : "&Подключиться";
+		buttonConnect.Text = connected ? Resources.Disconnect : Connect;
 		AcceptButton = connected ? null : buttonConnect;
 	}
 
@@ -280,11 +288,11 @@ public partial class MainForm : Form
 			if (device != Device) return; // пока ждали, переподключились
 			ApplyState(state);
 			groupControls.Enabled = true;
-			toolStripStatusTime.Text = $"{Now:T}"; // слѣва не трогаемъ: тамъ можетъ быть сообщеніе объ ошибкѣ
+			SetUpdated($"{Now:T}"); // слѣва не трогаемъ: тамъ можетъ быть сообщеніе объ ошибкѣ
 			if (PollFailed)
 			{
 				PollFailed = false;
-				SetStatus("Связь возстановлена");
+				SetStatus(LinkRestored);
 			}
 		}
 		catch (Exception ex) when (device == Device)
@@ -333,39 +341,45 @@ public partial class MainForm : Form
 		Updating = true;
 		try
 		{
-			labelHumidity.Text      = s.environment_relative_umidity is { } h ? $"{h} %" : "—";
-			labelHumidity.ForeColor = s.environment_relative_umidity is { } hc ? Darker(ComfortColor(HumidityComfort(hc))) : ControlText;
+			labelTemperature.Text   = s.environment_temperature is { } t ? Format(TemperatureFormat, t) : "—";
 			RoomHumidity            = s.environment_relative_umidity;
-			labelTemperature.Text = s.environment_temperature is { } t ? $"{t:0.#} °Ц" : "—";
+			labelHumidity.Text      = s.environment_relative_umidity is { } h ? $"{h} %" : "—";
+			labelHumidity.ForeColor = s.environment_relative_umidity is { } hc ? Accent(Darker(ComfortColor(HumidityComfort(hc)))) : ControlText;
+			string? comfort         = s.environment_relative_umidity is { } hd ?               ComfortText (HumidityComfort(hd)) : null; // ступень словами: для экраннаго чтеца и подсказкой
+			if (labelHumidity.AccessibleDescription != comfort)
+			{
+				labelHumidity.AccessibleDescription = comfort;
+				toolTip.SetToolTip(labelHumidity,     comfort);
+			}
 			bool noFault         = s.dehumidifier_fault == 0; // всё въ порядкѣ — нежирно и блёкло
-			labelFault.Text      = s.dehumidifier_fault is { } f ? (noFault ? "отсутствуетъ" : FaultText(f)) : "—";
-			labelFault.ForeColor = s.dehumidifier_fault is > 0 ? Firebrick : noFault ? GrayText : ControlText;
+			labelFault.Text      = s.dehumidifier_fault is { } f ? FaultText(f) : "—";
+			labelFault.ForeColor = s.dehumidifier_fault is > 0 ? Accent(Firebrick) : noFault ? GrayText : ControlText;
 			labelFault.Font = noFault ? QuietFont : ValueFont;
 			bool notWarming   = s.dm_service_is_warming_up == false;
-			labelWarming.Text = s.dm_service_is_warming_up switch { true => "идётъ", false => "нѣтъ", null => "—" };
+			labelWarming.Text = s.dm_service_is_warming_up switch { true => WarmingYes, false => WarmingNo, null => "—" };
 			labelWarming.ForeColor = notWarming ? GrayText : ControlText;
 			labelWarming.Font      = notWarming ? QuietFont : ValueFont;
 			labelDryLeft.Text = s.dm_service_dry_left_time is ushort left and > 0 ? $"{left / 60}:{left % 60:00}" : "—";
 			labelTimerLeft.Text = s.delay == true && s.delay_remain_time is { } r ? $"{r / 60}:{r % 60:00}" : "—";
-			TimerLeft = s.delay == true ? s.delay_remain_time : null;
+			TimerLeft           = s.delay == true ?  s.delay_remain_time : null;
 
 			if (s.dehumidifier is { } power) checkBoxPower.Checked = power;
 			listBoxMode.SelectedIndex = s.dehumidifier_mode is byte mode and < 3 ? mode : -1;
 			if (s.dehumidifier_target_humidity is { } target && !targetDebounceTimer.Enabled && !trackBarTarget.Capture) trackBarTarget.Value = Clamp(target, trackBarTarget.Minimum, trackBarTarget.Maximum);
 			// выключенный осушитель не принимаетъ режимъ, цѣлевую влажность и таймеръ (-4002; провѣрено опытомъ),
-			// а звукъ, подсвѣтку, блокировку и просушку принимаетъ; питаніе неизвѣстно — не гасимъ
+			// а звукъ, подсвѣтку, блокировку и просушку принимаетъ;
 			bool poweredOn = s.dehumidifier != false;
 			listBoxMode.Enabled = buttonLoopMode.Enabled = poweredOn;
 			trackBarTarget.Enabled = poweredOn && s.dehumidifier_mode != 2; // въ режимѣ сушки бѣлья цѣль тоже не мѣняется (-4002)
 			numericTimerMinutes.Enabled = checkBoxTimer.Enabled = dateTimeOff.Enabled = poweredOn;
-			ShowTimeOff();
 			listBoxLight.SelectedIndex = s.indicator_light_mode is byte level and < 3 ? level : -1;
 			checkBoxLight.CheckState   = s.indicator_light switch { true => Checked, false => Unchecked, null => Indeterminate };
-			checkBoxSound.CheckState   = s.alarm switch { true => Checked, false => Unchecked, null => Indeterminate };
-			if (s.physical_controls_locked is { } locked) checkBoxLock.Checked = locked;
-			if (s.dm_service_dry_after_off is { } dry) checkBoxDryAfterOff.Checked = dry;
-			if (s.delay is { } delay) checkBoxTimer.Checked = delay;
+			checkBoxSound.CheckState   = s.alarm           switch { true => Checked, false => Unchecked, null => Indeterminate };
+			if (s.physical_controls_locked is { } locked) checkBoxLock       .Checked = locked;
+			if (s.dm_service_dry_after_off is { } dry   ) checkBoxDryAfterOff.Checked = dry;
+			if (s.delay                    is { } delay ) checkBoxTimer      .Checked = delay;
 			if (s.delay_time is uint minutes and > 0 && !delayDebounceTimer.Enabled && !numericTimerMinutes.Focused) numericTimerMinutes.Value = Clamp(minutes, 1, 720);
+			ShowTimeOff();
 		}
 		finally
 		{
@@ -376,15 +390,25 @@ public partial class MainForm : Form
 	void SetStatus(string text, bool error = false)
 	{
 		toolStripStatusLabel.Text = $"{Now:T} {text}";
-		toolStripStatusLabel.ForeColor = error ? Firebrick : ControlText;
+		toolStripStatusLabel.ForeColor = error ? Accent(Firebrick) : ControlText;
 	}
+
+	/// <summary>Время обновленія: экранный чтецъ читаетъ имя, а не текстъ, — въ имя и время.</summary>
+	void SetUpdated(string time)
+	{
+		toolStripStatusTime.Text = time;
+		toolStripStatusTime.AccessibleName = $"{toolStripStatusTime.ToolTipText} {time}".TrimEnd();
+	}
+
+	/// <summary>Свой цвѣтъ — только безъ высокой контрастности; въ ней — системный цвѣтъ текста, какъ у всего окна.</summary>
+	static Color Accent(Color color) => HighContrast ? ControlText : color;
 
 	// ───── шкала подъ ползункомъ цѣлевой влажности ─────
 
 	/// <summary>Рекомендуемый діапазонъ цѣлевой влажности изъ атрибута [MIoT] (по спецификаціи и руководству 40…70);
 	/// само устройство принимаетъ 0…100 — провѣрено, поэтому ползунокъ шире.</summary>
 	static readonly (int Min, int Max) Recommended = RecommendedRange();
-	static (int Min, int Max) RecommendedRange()
+	static          (int Min, int Max)               RecommendedRange()
 	{
 		MIoTAttribute id = MIoT(nameof(State.dehumidifier_target_humidity));
 		return (ToInt32(id.Min), ToInt32(id.Max));
@@ -398,7 +422,7 @@ public partial class MainForm : Form
 	{
 		Ideal => ForestGreen,
 		Normal => OliveDrab,
-		Dry or Humid => DarkOrange,
+		Dry or Humid => Darker(DarkOrange, 0.8f), // чистый DarkOrange на сѣромъ фонѣ — 2:1, полоскѣ и треугольнику нужно 3:1 (WCAG 1.4.11)
 		_ => Firebrick,
 	};
 
@@ -422,7 +446,7 @@ public partial class MainForm : Form
 		using Pen pen = new(Highlight, 2);
 		for (int v = Recommended.Min; v < Recommended.Max; v++)
 		{
-			pen.Color = ComfortColor(HumidityComfort((byte)v));
+			pen.Color = Accent(ComfortColor(HumidityComfort((byte)v)));
 			int x1 = offset + TargetX(v) - (v == Recommended.Min ? 6 : 0);
 			int x2 = offset + TargetX(v + 1) + (v == Recommended.Max - 1 ? 6 : 0);
 			e.Graphics.DrawLine(pen, x1, height + 1, x2, height + 1);
@@ -433,7 +457,7 @@ public partial class MainForm : Form
 		{
 			int x = offset + TargetX(room), top = height + 4;
 			Point[] triangle = [new(x, top), new(x - 4, top + 6), new(x + 4, top + 6)];
-			using SolidBrush brush = new(ComfortColor(HumidityComfort(room)));
+			using SolidBrush brush = new(Accent(ComfortColor(HumidityComfort(room))));
 			e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 			e.Graphics.FillPolygon(brush, triangle);
 		}
@@ -441,7 +465,7 @@ public partial class MainForm : Form
 		/// <summary>Гдѣ на ползункѣ стоитъ значеніе — въ его координатахъ. Середина бѣгунка ходитъ по желобку,
 		/// не доходя до краёвъ на полширины бѣгунка; такъ же стоятъ и риски.</summary>
 		int TargetX(int value)
-	{
+		{
 
 			const int TBM_GETTHUMBRECT   = 0x0400 + 25;
 			const int TBM_GETCHANNELRECT = 0x0400 + 26;

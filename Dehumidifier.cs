@@ -6,6 +6,8 @@ using System.Text.Json.Nodes;
 
 namespace DehumidifierControl;
 
+using static Properties.Resources;
+
 using static String;
 using static Double;
 using static Encoding;
@@ -69,8 +71,8 @@ public sealed class DehumidifierState
 	public static MIoTAttribute MIoT(string property) => typeof(State).GetProperty(property)!.GetCustomAttribute<MIoTAttribute>()!;
 }
 
-/// <summary>Насколько влажность въ комнатѣ хороша для здоровья.</summary>
 public enum Comfort { TooDry, Dry, Ideal, Normal, Humid, TooHumid }
+
 /// <summary>Xiaomi Smart Dehumidifier Lite</summary>
 public sealed class Dehumidifier(miIO Client) : IDisposable
 {
@@ -84,21 +86,9 @@ public sealed class Dehumidifier(miIO Client) : IDisposable
 	/// <summary>Тѣ же свойства по (siid, piid) — по нимъ разбираемъ отвѣты: устройство возвращаетъ siid и piid каждаго свойства.</summary>
 	static readonly Dictionary<(byte siid, byte piid), (PropertyInfo Info, MIoTAttribute MIoT)> ById = Props.Values.ToDictionary(p => (p.MIoT.siid, p.MIoT.piid));
 
-	static readonly string[] Faults =
-	[
-		/*0*/"отсутствуетъ",
-		/*1*/"бакъ полонъ",
-		/*2*/"ошибка датчика температуры и влажности",
-		/*3*/"ошибка датчика медной трубки",
-		/*4*/"сбой связи",
-		/*5*/"пора почистить фильтръ",
-		/*6*/"размораживаніе",
-		/*7*/"заклинило двигатель",
-		/*8*/"защита отъ перегрузки",
-		/*9*/"мало хладагента",
-	];
+	public static string FaultText(byte code) => ResourceManager.GetString($"Fault{code}", Culture) ?? Format(FaultUnknown, code);
 
-	public static string FaultText(byte code) => code < Faults.Length ? Faults[code] : $"неизвѣстная ({code})";
+	public static string ComfortText(Comfort comfort) => ResourceManager.GetString($"Comfort{comfort}", Culture)!;
 
 	/// <summary>Оцѣнка влажности въ комнатѣ по медицинскимъ рекомендаціямъ:
 	/// 30…60 % — допустимо по ГОСТ 30494-2011;
@@ -128,7 +118,7 @@ public sealed class Dehumidifier(miIO Client) : IDisposable
 		foreach (JsonArray request in ByResponseSize(items))
 		{
 			if (await Client.SendAsync("get_properties", request, ct) is not JsonArray results)
-				throw new miIOException("Странный отвѣтъ на get_properties.");
+				throw new miIOException(Format(BadResponse, "get_properties"));
 			foreach (JsonNode? r in results)
 				if (r is not null && Key(r) is { } key && Code(r) == 0 && ById.TryGetValue(key, out (PropertyInfo Info, MIoTAttribute MIoT) prop))
 					prop.Info.SetValue(state, Parse(r["value"], GetUnderlyingType(prop.Info.PropertyType) ?? prop.Info.PropertyType));
@@ -143,7 +133,7 @@ public sealed class Dehumidifier(miIO Client) : IDisposable
 		foreach ((string? name, JsonNode? value) in values)
 		{
 			if (!Props.TryGetValue(name, out (PropertyInfo Info, MIoTAttribute MIoT) prop))
-				throw new ArgumentException($"У свойства {name} нѣтъ атрибута [MIoT].", nameof(values));
+				throw new ArgumentException(Format(NoMIoTAttribute, name), nameof(values));
 			request.Add(new JsonObject
 			{
 				[ "did" ] = "",
@@ -153,10 +143,10 @@ public sealed class Dehumidifier(miIO Client) : IDisposable
 			});
 		}
 		if (await Client.SendAsync("set_properties", request) is not JsonArray results)
-			throw new miIOException("Странный отвѣтъ на set_properties.");
+			throw new miIOException(Format(BadResponse, "set_properties"));
 		List<JsonNode?> failed = [.. results.Where(r => Code(r) != 0)];
 		if (failed.Count > 0)
-			throw new miIOException("Устройство отклонило запись: " + Join("; ", failed.Select(r => $"{Name(r)} — {ErrorText(Code(r))}")));
+			throw new miIOException(Format(WriteRejected, Join("; ", failed.Select(r => $"{Name(r)} — {ErrorText(Code(r))}"))));
 	}
 
 	// дѣйствія службы 7 dm-service; параметровъ не принимаютъ и ничего не возвращаютъ
@@ -180,7 +170,7 @@ public sealed class Dehumidifier(miIO Client) : IDisposable
 			["in"  ] = new JsonArray(),
 		});
 		if (Code(result) != 0)
-			throw new miIOException($"Устройство отклонило дѣйствіе ({siid}, {aiid}): {ErrorText(Code(result))}");
+			throw new miIOException(Format(ActionRejected, siid, aiid, ErrorText(Code(result))));
 	}
 
 	/// <summary>Предѣлъ длины отвѣта: на get_properties съ отвѣтомъ длиннѣе ~1024 байтъ
@@ -218,14 +208,14 @@ public sealed class Dehumidifier(miIO Client) : IDisposable
 	/// <summary>Коды ошибокъ MIoT въ отвѣтахъ на get/set_properties и action.</summary>
 	public static string ErrorText(int code) => code switch
 	{
-		-4001 => "свойство нельзя прочесть (-4001)",
-		-4002 => "свойство сейчасъ нельзя записать (-4002); цѣлевую влажность, напримѣръ, нельзя мѣнять въ режимѣ сушки бѣлья",
-		-4003 => "нѣтъ такого свойства, дѣйствія или событія (-4003)",
-		-4004 => "внутренняя ошибка устройства (-4004)",
-		-4005 => "недопустимое значеніе (-4005)",
-		-4006 => "недопустимые параметры дѣйствія (-4006)",
-		-4007 => "невѣрный did (-4007)",
-		_     => $"кодъ {code}",
+		-4001 => Error4001,
+		-4002 => Error4002,
+		-4003 => Error4003,
+		-4004 => Error4004,
+		-4005 => Error4005,
+		-4006 => Error4006,
+		-4007 => Error4007,
+		_ => Format(ErrorCode, code),
 	};
 
 	/// <summary>(siid, piid) изъ элемента отвѣта.</summary>
@@ -248,7 +238,7 @@ public sealed class Dehumidifier(miIO Client) : IDisposable
 		type == typeof(uint16) ? (object?)Integer<uint16>(n) :
 		type == typeof(uint32) ? (object?)Integer<uint32>(n) :
 		type == typeof(float ) ? (object?)Float(n)
-		: throw new NotSupportedException($"Тѵпъ {type.Name} не поддерживается.");
+		: throw new NotSupportedException(Format(TypeNotSupported, type.Name));
 
 	static double? Number(JsonNode? n) => n is JsonValue v && v.TryGetValue<double>(out var d) ? d : null;
 

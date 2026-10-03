@@ -1,0 +1,381 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+    Microsoft ResX Schema
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="groupConnection.Text" xml:space="preserve">
+    <value>Połączenie</value>
+  </data>
+  <data name="labelIp.Text" xml:space="preserve">
+    <value>&amp;Adres:</value>
+  </data>
+  <data name="labelToken.Text" xml:space="preserve">
+    <value>&amp;Token:</value>
+  </data>
+  <data name="buttonConnect.Text" xml:space="preserve">
+    <value>&amp;Połącz</value>
+  </data>
+  <data name="textBoxIP.AccessibleName" xml:space="preserve">
+    <value>Adres osuszacza</value>
+  </data>
+  <data name="textBoxIP.AccessibleDescription" xml:space="preserve">
+    <value>Adres IP w sieci lokalnej</value>
+  </data>
+  <data name="textBoxToken.AccessibleName" xml:space="preserve">
+    <value>Token</value>
+  </data>
+  <data name="textBoxToken.AccessibleDescription" xml:space="preserve">
+    <value>32 cyfry szesnastkowe</value>
+  </data>
+  <data name="groupState.Text" xml:space="preserve">
+    <value>Stan</value>
+  </data>
+  <data name="labelHumidityCaption.Text" xml:space="preserve">
+    <value>Wilgotność:</value>
+  </data>
+  <data name="labelTemperatureCaption.Text" xml:space="preserve">
+    <value>Temperatura:</value>
+  </data>
+  <data name="labelFaultCaption.Text" xml:space="preserve">
+    <value>Usterka:</value>
+  </data>
+  <data name="labelWarmingCaption.Text" xml:space="preserve">
+    <value>Rozgrzewanie:</value>
+  </data>
+  <data name="labelDryLeftCaption.Text" xml:space="preserve">
+    <value>Pozostało suszenia:</value>
+  </data>
+  <data name="labelTimerLeftCaption.Text" xml:space="preserve">
+    <value>Timer, pozostało:</value>
+  </data>
+  <data name="groupControls.Text" xml:space="preserve">
+    <value>Sterowanie</value>
+  </data>
+  <data name="labelPowerCaption.Text" xml:space="preserve">
+    <value>&amp;Zasilanie:</value>
+  </data>
+  <data name="checkBoxPower.Text" xml:space="preserve">
+    <value>Wyłączony</value>
+  </data>
+  <data name="checkBoxPower.AccessibleName" xml:space="preserve">
+    <value>Zasilanie</value>
+  </data>
+  <data name="buttonToggle.AccessibleName" xml:space="preserve">
+    <value>Przełącz zasilanie</value>
+  </data>
+  <data name="buttonToggle.AccessibleDescription" xml:space="preserve">
+    <value>Akcja MIoT 7.1 toggle</value>
+  </data>
+  <data name="buttonToggle.ToolTip" xml:space="preserve">
+    <value>Przełącz zasilanie (akcja toggle 7.1)</value>
+  </data>
+  <data name="labelModeCaption.Text" xml:space="preserve">
+    <value>Tr&amp;yb:</value>
+  </data>
+  <data name="listBoxMode.AccessibleName" xml:space="preserve">
+    <value>Tryb</value>
+  </data>
+  <data name="listBoxMode.Items" xml:space="preserve">
+    <value>Inteligentny</value>
+  </data>
+  <data name="listBoxMode.Items1" xml:space="preserve">
+    <value>Nocny</value>
+  </data>
+  <data name="listBoxMode.Items2" xml:space="preserve">
+    <value>Suszenie prania</value>
+  </data>
+  <data name="buttonLoopMode.AccessibleName" xml:space="preserve">
+    <value>Następny tryb</value>
+  </data>
+  <data name="buttonLoopMode.AccessibleDescription" xml:space="preserve">
+    <value>Akcja MIoT 7.2 loop-mode</value>
+  </data>
+  <data name="buttonLoopMode.ToolTip" xml:space="preserve">
+    <value>Następny tryb po kolei (akcja loop-mode 7.2)</value>
+  </data>
+  <data name="labelTargetCaption.Text" xml:space="preserve">
+    <value>&amp;Cel:</value>
+  </data>
+  <data name="trackBarTarget.AccessibleName" xml:space="preserve">
+    <value>Docelowa wilgotność, %</value>
+  </data>
+  <data name="trackBarTarget.AccessibleDescription" xml:space="preserve">
+    <value>MIoT 2.5; zalecane 40…70</value>
+  </data>
+  <data name="panelTargetScale.AccessibleName" xml:space="preserve">
+    <value>Skala docelowej wilgotności</value>
+  </data>
+  <data name="panelTargetScale.AccessibleDescription" xml:space="preserve">
+    <value>Podziałka co 10 %, zalecany zakres i wilgotność w pokoju</value>
+  </data>
+  <data name="checkBoxLight.Text" xml:space="preserve">
+    <value>Światł&amp;o:</value>
+  </data>
+  <data name="checkBoxLight.AccessibleName" xml:space="preserve">
+    <value>Podświetlenie włączone</value>
+  </data>
+  <data name="listBoxLight.AccessibleName" xml:space="preserve">
+    <value>Jasność podświetlenia</value>
+  </data>
+  <data name="listBoxLight.Items" xml:space="preserve">
+    <value>Wyłączone</value>
+  </data>
+  <data name="listBoxLight.Items1" xml:space="preserve">
+    <value>Przyciemnione</value>
+  </data>
+  <data name="listBoxLight.Items2" xml:space="preserve">
+    <value>Jasne</value>
+  </data>
+  <data name="checkBoxSound.Text" xml:space="preserve">
+    <value>Dź&amp;więk przycisków</value>
+  </data>
+  <data name="checkBoxSound.AccessibleName" xml:space="preserve">
+    <value>Dźwięk przycisków</value>
+  </data>
+  <data name="checkBoxLock.Text" xml:space="preserve">
+    <value>&amp;Blokada przycisków</value>
+  </data>
+  <data name="checkBoxLock.AccessibleName" xml:space="preserve">
+    <value>Blokada przycisków</value>
+  </data>
+  <data name="checkBoxDryAfterOff.Text" xml:space="preserve">
+    <value>&amp;Suszenie po wyłączeniu</value>
+  </data>
+  <data name="checkBoxDryAfterOff.AccessibleName" xml:space="preserve">
+    <value>Suszenie po wyłączeniu</value>
+  </data>
+  <data name="checkBoxTimer.Text" xml:space="preserve">
+    <value>T&amp;imer:</value>
+  </data>
+  <data name="checkBoxTimer.AccessibleName" xml:space="preserve">
+    <value>Wyłącznik czasowy włączony</value>
+  </data>
+  <data name="numericTimerMinutes.AccessibleName" xml:space="preserve">
+    <value>Wyłącznik czasowy, minuty</value>
+  </data>
+  <data name="labelTimerMnutes.Text" xml:space="preserve">
+    <value>minut</value>
+  </data>
+  <data name="dateTimeOff.AccessibleName" xml:space="preserve">
+    <value>Godzina wyłączenia</value>
+  </data>
+  <data name="dateTimeOff.AccessibleDescription" xml:space="preserve">
+    <value>Teraz plus timer; po zmianie timer stanie się tą godziną minus teraz</value>
+  </data>
+  <data name="labelTimeOff.Text" xml:space="preserve">
+    <value>godzina wyłączenia</value>
+  </data>
+  <data name="buttonResetFilter.Text" xml:space="preserve">
+    <value>Wyzeruj licznik &amp;filtra…</value>
+  </data>
+  <data name="buttonResetFilter.AccessibleName" xml:space="preserve">
+    <value>Wyzeruj licznik filtra</value>
+  </data>
+  <data name="buttonResetFilter.AccessibleDescription" xml:space="preserve">
+    <value>Akcja MIoT 7.3 reset-filter</value>
+  </data>
+  <data name="toolStripStatusTime.AccessibleName" xml:space="preserve">
+    <value>Zaktualizowano o</value>
+  </data>
+  <data name="toolStripStatusTime.ToolTipText" xml:space="preserve">
+    <value>Zaktualizowano o</value>
+  </data>
+  <data name="statusStrip.AccessibleName" xml:space="preserve">
+    <value>Pasek stanu</value>
+  </data>
+  <data name="labelTemperatureCaption.Location" type="System.Drawing.Point, System.Drawing">
+    <value>73, 62</value>
+  </data>
+  <data name="labelTemperatureCaption.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 15</value>
+  </data>
+  <data name="labelFaultCaption.Location" type="System.Drawing.Point, System.Drawing">
+    <value>101, 92</value>
+  </data>
+  <data name="labelFaultCaption.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 15</value>
+  </data>
+  <data name="labelWarmingCaption.Location" type="System.Drawing.Point, System.Drawing">
+    <value>68, 123</value>
+  </data>
+  <data name="labelWarmingCaption.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 15</value>
+  </data>
+  <data name="labelDryLeftCaption.Location" type="System.Drawing.Point, System.Drawing">
+    <value>42, 153</value>
+  </data>
+  <data name="labelDryLeftCaption.Size" type="System.Drawing.Size, System.Drawing">
+    <value>108, 15</value>
+  </data>
+  <data name="labelTimerLeftCaption.Location" type="System.Drawing.Point, System.Drawing">
+    <value>52, 185</value>
+  </data>
+  <data name="labelTimerLeftCaption.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 15</value>
+  </data>
+  <data name="labelPowerCaption.Location" type="System.Drawing.Point, System.Drawing">
+    <value>27, 34</value>
+  </data>
+  <data name="labelPowerCaption.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 15</value>
+  </data>
+  <data name="labelModeCaption.Location" type="System.Drawing.Point, System.Drawing">
+    <value>50, 82</value>
+  </data>
+  <data name="labelModeCaption.Size" type="System.Drawing.Size, System.Drawing">
+    <value>33, 15</value>
+  </data>
+  <data name="labelTargetCaption.Location" type="System.Drawing.Point, System.Drawing">
+    <value>42, 149</value>
+  </data>
+  <data name="labelTargetCaption.Size" type="System.Drawing.Size, System.Drawing">
+    <value>27, 15</value>
+  </data>
+  <data name="checkBoxLight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 212</value>
+  </data>
+  <data name="checkBoxLight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 19</value>
+  </data>
+  <data name="checkBoxTimer.Location" type="System.Drawing.Point, System.Drawing">
+    <value>55, 347</value>
+  </data>
+  <data name="checkBoxTimer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 19</value>
+  </data>
+  <data name="labelTimerMnutes.Size" type="System.Drawing.Size, System.Drawing">
+    <value>39, 15</value>
+  </data>
+  <data name="checkBoxDryAfterOff.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 19</value>
+  </data>
+  <data name="labelIp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 15</value>
+  </data>
+  <data name="checkBoxSound.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 19</value>
+  </data>
+  <data name="labelTimeOff.Size" type="System.Drawing.Size, System.Drawing">
+    <value>109, 15</value>
+  </data>
+  <data name="labelToken.Size" type="System.Drawing.Size, System.Drawing">
+    <value>42, 15</value>
+  </data>
+  <data name="checkBoxLock.Size" type="System.Drawing.Size, System.Drawing">
+    <value>129, 19</value>
+  </data>
+</root>

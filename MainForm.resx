@@ -120,111 +120,1866 @@
   <metadata name="labelToken.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="labelToken.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="labelToken.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 57</value>
+  </data>
+  <data name="labelToken.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 15</value>
+  </data>
+  <data name="labelToken.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="labelToken.Text" xml:space="preserve">
+    <value>&amp;Токенъ:</value>
+  </data>
+  <data name="&gt;&gt;labelToken.Name" xml:space="preserve">
+    <value>labelToken</value>
+  </data>
+  <data name="&gt;&gt;labelToken.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelToken.Parent" xml:space="preserve">
+    <value>groupConnection</value>
+  </data>
+  <data name="&gt;&gt;labelToken.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <metadata name="labelIp.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
+  <data name="labelIp.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelIp.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 28</value>
+  </data>
+  <data name="labelIp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 15</value>
+  </data>
+  <data name="labelIp.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="labelIp.Text" xml:space="preserve">
+    <value>&amp;Адресъ:</value>
+  </data>
+  <data name="&gt;&gt;labelIp.Name" xml:space="preserve">
+    <value>labelIp</value>
+  </data>
+  <data name="&gt;&gt;labelIp.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelIp.Parent" xml:space="preserve">
+    <value>groupConnection</value>
+  </data>
+  <data name="&gt;&gt;labelIp.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <metadata name="labelTimerLeftCaption.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
+  <data name="labelTimerLeftCaption.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelTimerLeftCaption.Location" type="System.Drawing.Point, System.Drawing">
+    <value>35, 185</value>
+  </data>
+  <data name="labelTimerLeftCaption.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 15</value>
+  </data>
+  <data name="labelTimerLeftCaption.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="labelTimerLeftCaption.Text" xml:space="preserve">
+    <value>Таймеръ, осталось:</value>
+  </data>
+  <data name="&gt;&gt;labelTimerLeftCaption.Name" xml:space="preserve">
+    <value>labelTimerLeftCaption</value>
+  </data>
+  <data name="&gt;&gt;labelTimerLeftCaption.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelTimerLeftCaption.Parent" xml:space="preserve">
+    <value>groupState</value>
+  </data>
+  <data name="&gt;&gt;labelTimerLeftCaption.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
   <metadata name="labelDryLeftCaption.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
+  <data name="labelDryLeftCaption.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelDryLeftCaption.Location" type="System.Drawing.Point, System.Drawing">
+    <value>28, 153</value>
+  </data>
+  <data name="labelDryLeftCaption.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 15</value>
+  </data>
+  <data name="labelDryLeftCaption.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="labelDryLeftCaption.Text" xml:space="preserve">
+    <value>Просушки осталось:</value>
+  </data>
+  <data name="&gt;&gt;labelDryLeftCaption.Name" xml:space="preserve">
+    <value>labelDryLeftCaption</value>
+  </data>
+  <data name="&gt;&gt;labelDryLeftCaption.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelDryLeftCaption.Parent" xml:space="preserve">
+    <value>groupState</value>
+  </data>
+  <data name="&gt;&gt;labelDryLeftCaption.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
   <metadata name="labelWarmingCaption.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
+  <data name="labelWarmingCaption.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelWarmingCaption.Location" type="System.Drawing.Point, System.Drawing">
+    <value>85, 123</value>
+  </data>
+  <data name="labelWarmingCaption.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 15</value>
+  </data>
+  <data name="labelWarmingCaption.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="labelWarmingCaption.Text" xml:space="preserve">
+    <value>Прогрѣвъ:</value>
+  </data>
+  <data name="&gt;&gt;labelWarmingCaption.Name" xml:space="preserve">
+    <value>labelWarmingCaption</value>
+  </data>
+  <data name="&gt;&gt;labelWarmingCaption.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelWarmingCaption.Parent" xml:space="preserve">
+    <value>groupState</value>
+  </data>
+  <data name="&gt;&gt;labelWarmingCaption.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
   <metadata name="labelFaultCaption.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
+  <data name="labelFaultCaption.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelFaultCaption.Location" type="System.Drawing.Point, System.Drawing">
+    <value>55, 92</value>
+  </data>
+  <data name="labelFaultCaption.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 15</value>
+  </data>
+  <data name="labelFaultCaption.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="labelFaultCaption.Text" xml:space="preserve">
+    <value>Неисправность:</value>
+  </data>
+  <data name="&gt;&gt;labelFaultCaption.Name" xml:space="preserve">
+    <value>labelFaultCaption</value>
+  </data>
+  <data name="&gt;&gt;labelFaultCaption.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelFaultCaption.Parent" xml:space="preserve">
+    <value>groupState</value>
+  </data>
+  <data name="&gt;&gt;labelFaultCaption.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
   <metadata name="labelTemperatureCaption.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
+  <data name="labelTemperatureCaption.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelTemperatureCaption.Location" type="System.Drawing.Point, System.Drawing">
+    <value>68, 62</value>
+  </data>
+  <data name="labelTemperatureCaption.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 15</value>
+  </data>
+  <data name="labelTemperatureCaption.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="labelTemperatureCaption.Text" xml:space="preserve">
+    <value>Температура:</value>
+  </data>
+  <data name="&gt;&gt;labelTemperatureCaption.Name" xml:space="preserve">
+    <value>labelTemperatureCaption</value>
+  </data>
+  <data name="&gt;&gt;labelTemperatureCaption.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelTemperatureCaption.Parent" xml:space="preserve">
+    <value>groupState</value>
+  </data>
+  <data name="&gt;&gt;labelTemperatureCaption.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
   <metadata name="labelHumidityCaption.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
+  <data name="labelHumidityCaption.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelHumidityCaption.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 31</value>
+  </data>
+  <data name="labelHumidityCaption.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 15</value>
+  </data>
+  <data name="labelHumidityCaption.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="labelHumidityCaption.Text" xml:space="preserve">
+    <value>Влажность:</value>
+  </data>
+  <data name="&gt;&gt;labelHumidityCaption.Name" xml:space="preserve">
+    <value>labelHumidityCaption</value>
+  </data>
+  <data name="&gt;&gt;labelHumidityCaption.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelHumidityCaption.Parent" xml:space="preserve">
+    <value>groupState</value>
+  </data>
+  <data name="&gt;&gt;labelHumidityCaption.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <metadata name="buttonToggle.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
+  <data name="buttonToggle.AccessibleDescription" xml:space="preserve">
+    <value>Дѣйствіе MIoT 7.1 toggle</value>
+  </data>
+  <data name="buttonToggle.AccessibleName" xml:space="preserve">
+    <value>Переключить питаніе</value>
+  </data>
+  <data name="buttonToggle.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe Fluent Icons, 12pt</value>
+  </data>
+  <data name="buttonToggle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>265, 26</value>
+  </data>
+  <data name="buttonToggle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 32</value>
+  </data>
+  <data name="buttonToggle.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="buttonToggle.Text" xml:space="preserve">
+    <value></value>
+  </data>
   <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="buttonToggle.ToolTip" xml:space="preserve">
+    <value>Переключить питаніе (дѣйствіе toggle 7.1)</value>
+  </data>
+  <data name="&gt;&gt;buttonToggle.Name" xml:space="preserve">
+    <value>buttonToggle</value>
+  </data>
+  <data name="&gt;&gt;buttonToggle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonToggle.Parent" xml:space="preserve">
+    <value>groupControls</value>
+  </data>
+  <data name="&gt;&gt;buttonToggle.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <metadata name="buttonResetFilter.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
+  <data name="buttonResetFilter.AccessibleDescription" xml:space="preserve">
+    <value>Дѣйствіе MIoT 7.3 reset-filter</value>
+  </data>
+  <data name="buttonResetFilter.AccessibleName" xml:space="preserve">
+    <value>Сбросить счётчикъ фильтра</value>
+  </data>
+  <data name="buttonResetFilter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>144, 413</value>
+  </data>
+  <data name="buttonResetFilter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 27</value>
+  </data>
+  <data name="buttonResetFilter.TabIndex" type="System.Int32, mscorlib">
+    <value>29</value>
+  </data>
+  <data name="buttonResetFilter.Text" xml:space="preserve">
+    <value>Сбросить счётчикъ &amp;фильтра…</value>
+  </data>
+  <data name="&gt;&gt;buttonResetFilter.Name" xml:space="preserve">
+    <value>buttonResetFilter</value>
+  </data>
+  <data name="&gt;&gt;buttonResetFilter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonResetFilter.Parent" xml:space="preserve">
+    <value>groupControls</value>
+  </data>
+  <data name="&gt;&gt;buttonResetFilter.ZOrder" xml:space="preserve">
+    <value>30</value>
+  </data>
   <metadata name="labelTargetCaption.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
+  <data name="labelTargetCaption.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelTargetCaption.Location" type="System.Drawing.Point, System.Drawing">
+    <value>30, 149</value>
+  </data>
+  <data name="labelTargetCaption.Size" type="System.Drawing.Size, System.Drawing">
+    <value>39, 15</value>
+  </data>
+  <data name="labelTargetCaption.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="labelTargetCaption.Text" xml:space="preserve">
+    <value>&amp;Цѣль:</value>
+  </data>
+  <data name="&gt;&gt;labelTargetCaption.Name" xml:space="preserve">
+    <value>labelTargetCaption</value>
+  </data>
+  <data name="&gt;&gt;labelTargetCaption.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelTargetCaption.Parent" xml:space="preserve">
+    <value>groupControls</value>
+  </data>
+  <data name="&gt;&gt;labelTargetCaption.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
   <metadata name="labelModeCaption.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
+  <data name="labelModeCaption.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelModeCaption.Location" type="System.Drawing.Point, System.Drawing">
+    <value>28, 82</value>
+  </data>
+  <data name="labelModeCaption.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 15</value>
+  </data>
+  <data name="labelModeCaption.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="labelModeCaption.Text" xml:space="preserve">
+    <value>&amp;Режимъ:</value>
+  </data>
+  <data name="&gt;&gt;labelModeCaption.Name" xml:space="preserve">
+    <value>labelModeCaption</value>
+  </data>
+  <data name="&gt;&gt;labelModeCaption.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelModeCaption.Parent" xml:space="preserve">
+    <value>groupControls</value>
+  </data>
+  <data name="&gt;&gt;labelModeCaption.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
   <metadata name="labelPowerCaption.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
+  <data name="labelPowerCaption.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelPowerCaption.Location" type="System.Drawing.Point, System.Drawing">
+    <value>30, 34</value>
+  </data>
+  <data name="labelPowerCaption.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 15</value>
+  </data>
+  <data name="labelPowerCaption.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="labelPowerCaption.Text" xml:space="preserve">
+    <value>&amp;Питаніе:</value>
+  </data>
+  <data name="&gt;&gt;labelPowerCaption.Name" xml:space="preserve">
+    <value>labelPowerCaption</value>
+  </data>
+  <data name="&gt;&gt;labelPowerCaption.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelPowerCaption.Parent" xml:space="preserve">
+    <value>groupControls</value>
+  </data>
+  <data name="&gt;&gt;labelPowerCaption.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <metadata name="groupConnection.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="groupConnection.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="buttonConnect.Location" type="System.Drawing.Point, System.Drawing">
+    <value>192, 23</value>
+  </data>
+  <data name="buttonConnect.Size" type="System.Drawing.Size, System.Drawing">
+    <value>105, 25</value>
+  </data>
+  <data name="buttonConnect.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="buttonConnect.Text" xml:space="preserve">
+    <value>&amp;Подключиться</value>
+  </data>
+  <data name="&gt;&gt;buttonConnect.Name" xml:space="preserve">
+    <value>buttonConnect</value>
+  </data>
+  <data name="&gt;&gt;buttonConnect.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonConnect.Parent" xml:space="preserve">
+    <value>groupConnection</value>
+  </data>
+  <data name="&gt;&gt;buttonConnect.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="textBoxToken.AccessibleDescription" xml:space="preserve">
+    <value>32 шестнадцатеричныя цифры</value>
+  </data>
+  <data name="textBoxToken.AccessibleName" xml:space="preserve">
+    <value>Токенъ</value>
+  </data>
+  <data name="textBoxToken.Location" type="System.Drawing.Point, System.Drawing">
+    <value>75, 54</value>
+  </data>
+  <data name="textBoxToken.MaxLength" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
+  <data name="textBoxToken.PlaceholderText" xml:space="preserve">
+    <value>00112233445566778899AABBCCDDEEFF</value>
+  </data>
+  <data name="textBoxToken.Size" type="System.Drawing.Size, System.Drawing">
+    <value>222, 23</value>
+  </data>
+  <data name="textBoxToken.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="textBoxToken.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;textBoxToken.Name" xml:space="preserve">
+    <value>textBoxToken</value>
+  </data>
+  <data name="&gt;&gt;textBoxToken.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxToken.Parent" xml:space="preserve">
+    <value>groupConnection</value>
+  </data>
+  <data name="&gt;&gt;textBoxToken.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="textBoxIP.AccessibleDescription" xml:space="preserve">
+    <value>IP-адресъ въ локальной сѣти</value>
+  </data>
+  <data name="textBoxIP.AccessibleName" xml:space="preserve">
+    <value>Адресъ осушителя</value>
+  </data>
+  <data name="textBoxIP.Location" type="System.Drawing.Point, System.Drawing">
+    <value>75, 25</value>
+  </data>
+  <data name="textBoxIP.PlaceholderText" xml:space="preserve">
+    <value>255.255.255.255</value>
+  </data>
+  <data name="textBoxIP.Size" type="System.Drawing.Size, System.Drawing">
+    <value>112, 23</value>
+  </data>
+  <data name="textBoxIP.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="textBoxIP.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;textBoxIP.Name" xml:space="preserve">
+    <value>textBoxIP</value>
+  </data>
+  <data name="&gt;&gt;textBoxIP.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxIP.Parent" xml:space="preserve">
+    <value>groupConnection</value>
+  </data>
+  <data name="&gt;&gt;textBoxIP.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="groupConnection.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="groupConnection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>370, 90</value>
+  </data>
+  <data name="groupConnection.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="groupConnection.Text" xml:space="preserve">
+    <value>Подключеніе</value>
+  </data>
+  <data name="&gt;&gt;groupConnection.Name" xml:space="preserve">
+    <value>groupConnection</value>
+  </data>
+  <data name="&gt;&gt;groupConnection.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupConnection.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupConnection.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <metadata name="groupState.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
+  <data name="groupState.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="labelTimerLeft.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelTimerLeft.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt, style=Bold</value>
+  </data>
+  <data name="labelTimerLeft.Location" type="System.Drawing.Point, System.Drawing">
+    <value>161, 185</value>
+  </data>
+  <data name="labelTimerLeft.Size" type="System.Drawing.Size, System.Drawing">
+    <value>19, 15</value>
+  </data>
+  <data name="labelTimerLeft.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="labelTimerLeft.Text" xml:space="preserve">
+    <value>—</value>
+  </data>
+  <data name="&gt;&gt;labelTimerLeft.Name" xml:space="preserve">
+    <value>labelTimerLeft</value>
+  </data>
+  <data name="&gt;&gt;labelTimerLeft.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelTimerLeft.Parent" xml:space="preserve">
+    <value>groupState</value>
+  </data>
+  <data name="&gt;&gt;labelTimerLeft.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="labelDryLeft.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelDryLeft.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt, style=Bold</value>
+  </data>
+  <data name="labelDryLeft.Location" type="System.Drawing.Point, System.Drawing">
+    <value>161, 154</value>
+  </data>
+  <data name="labelDryLeft.Size" type="System.Drawing.Size, System.Drawing">
+    <value>19, 15</value>
+  </data>
+  <data name="labelDryLeft.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="labelDryLeft.Text" xml:space="preserve">
+    <value>—</value>
+  </data>
+  <data name="&gt;&gt;labelDryLeft.Name" xml:space="preserve">
+    <value>labelDryLeft</value>
+  </data>
+  <data name="&gt;&gt;labelDryLeft.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelDryLeft.Parent" xml:space="preserve">
+    <value>groupState</value>
+  </data>
+  <data name="&gt;&gt;labelDryLeft.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="labelWarming.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelWarming.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt, style=Bold</value>
+  </data>
+  <data name="labelWarming.Location" type="System.Drawing.Point, System.Drawing">
+    <value>161, 123</value>
+  </data>
+  <data name="labelWarming.Size" type="System.Drawing.Size, System.Drawing">
+    <value>19, 15</value>
+  </data>
+  <data name="labelWarming.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="labelWarming.Text" xml:space="preserve">
+    <value>—</value>
+  </data>
+  <data name="&gt;&gt;labelWarming.Name" xml:space="preserve">
+    <value>labelWarming</value>
+  </data>
+  <data name="&gt;&gt;labelWarming.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelWarming.Parent" xml:space="preserve">
+    <value>groupState</value>
+  </data>
+  <data name="&gt;&gt;labelWarming.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="labelFault.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelFault.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt, style=Bold</value>
+  </data>
+  <data name="labelFault.Location" type="System.Drawing.Point, System.Drawing">
+    <value>161, 92</value>
+  </data>
+  <data name="labelFault.Size" type="System.Drawing.Size, System.Drawing">
+    <value>19, 15</value>
+  </data>
+  <data name="labelFault.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="labelFault.Text" xml:space="preserve">
+    <value>—</value>
+  </data>
+  <data name="&gt;&gt;labelFault.Name" xml:space="preserve">
+    <value>labelFault</value>
+  </data>
+  <data name="&gt;&gt;labelFault.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelFault.Parent" xml:space="preserve">
+    <value>groupState</value>
+  </data>
+  <data name="&gt;&gt;labelFault.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="labelTemperature.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelTemperature.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 12pt, style=Bold</value>
+  </data>
+  <data name="labelTemperature.Location" type="System.Drawing.Point, System.Drawing">
+    <value>161, 60</value>
+  </data>
+  <data name="labelTemperature.Size" type="System.Drawing.Size, System.Drawing">
+    <value>26, 21</value>
+  </data>
+  <data name="labelTemperature.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="labelTemperature.Text" xml:space="preserve">
+    <value>—</value>
+  </data>
+  <data name="&gt;&gt;labelTemperature.Name" xml:space="preserve">
+    <value>labelTemperature</value>
+  </data>
+  <data name="&gt;&gt;labelTemperature.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelTemperature.Parent" xml:space="preserve">
+    <value>groupState</value>
+  </data>
+  <data name="&gt;&gt;labelTemperature.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="labelHumidity.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelHumidity.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 16pt, style=Bold</value>
+  </data>
+  <data name="labelHumidity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>161, 24</value>
+  </data>
+  <data name="labelHumidity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 30</value>
+  </data>
+  <data name="labelHumidity.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="labelHumidity.Text" xml:space="preserve">
+    <value>—</value>
+  </data>
+  <data name="&gt;&gt;labelHumidity.Name" xml:space="preserve">
+    <value>labelHumidity</value>
+  </data>
+  <data name="&gt;&gt;labelHumidity.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelHumidity.Parent" xml:space="preserve">
+    <value>groupState</value>
+  </data>
+  <data name="&gt;&gt;labelHumidity.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <metadata name="labelHumidityId.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
+  <data name="labelHumidityId.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelHumidityId.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Light, 7pt</value>
+  </data>
+  <data name="labelHumidityId.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 34</value>
+  </data>
+  <data name="labelHumidityId.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 12</value>
+  </data>
+  <data name="labelHumidityId.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="labelHumidityId.Text" xml:space="preserve">
+    <value>3.1</value>
+  </data>
+  <data name="&gt;&gt;labelHumidityId.Name" xml:space="preserve">
+    <value>labelHumidityId</value>
+  </data>
+  <data name="&gt;&gt;labelHumidityId.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelHumidityId.Parent" xml:space="preserve">
+    <value>groupState</value>
+  </data>
+  <data name="&gt;&gt;labelHumidityId.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <metadata name="labelTemperatureId.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
+  <data name="labelTemperatureId.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelTemperatureId.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Light, 7pt</value>
+  </data>
+  <data name="labelTemperatureId.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 64</value>
+  </data>
+  <data name="labelTemperatureId.Size" type="System.Drawing.Size, System.Drawing">
+    <value>17, 12</value>
+  </data>
+  <data name="labelTemperatureId.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="labelTemperatureId.Text" xml:space="preserve">
+    <value>3.2</value>
+  </data>
+  <data name="&gt;&gt;labelTemperatureId.Name" xml:space="preserve">
+    <value>labelTemperatureId</value>
+  </data>
+  <data name="&gt;&gt;labelTemperatureId.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelTemperatureId.Parent" xml:space="preserve">
+    <value>groupState</value>
+  </data>
+  <data name="&gt;&gt;labelTemperatureId.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <metadata name="labelFaultId.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
+  <data name="labelFaultId.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelFaultId.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Light, 7pt</value>
+  </data>
+  <data name="labelFaultId.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 92</value>
+  </data>
+  <data name="labelFaultId.Size" type="System.Drawing.Size, System.Drawing">
+    <value>17, 12</value>
+  </data>
+  <data name="labelFaultId.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="labelFaultId.Text" xml:space="preserve">
+    <value>2.2</value>
+  </data>
+  <data name="&gt;&gt;labelFaultId.Name" xml:space="preserve">
+    <value>labelFaultId</value>
+  </data>
+  <data name="&gt;&gt;labelFaultId.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelFaultId.Parent" xml:space="preserve">
+    <value>groupState</value>
+  </data>
+  <data name="&gt;&gt;labelFaultId.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
   <metadata name="labelWarmingId.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
+  <data name="labelWarmingId.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelWarmingId.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Light, 7pt</value>
+  </data>
+  <data name="labelWarmingId.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 123</value>
+  </data>
+  <data name="labelWarmingId.Size" type="System.Drawing.Size, System.Drawing">
+    <value>17, 12</value>
+  </data>
+  <data name="labelWarmingId.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="labelWarmingId.Text" xml:space="preserve">
+    <value>7.3</value>
+  </data>
+  <data name="&gt;&gt;labelWarmingId.Name" xml:space="preserve">
+    <value>labelWarmingId</value>
+  </data>
+  <data name="&gt;&gt;labelWarmingId.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelWarmingId.Parent" xml:space="preserve">
+    <value>groupState</value>
+  </data>
+  <data name="&gt;&gt;labelWarmingId.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
   <metadata name="labelDryLeftId.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
+  <data name="labelDryLeftId.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelDryLeftId.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Light, 7pt</value>
+  </data>
+  <data name="labelDryLeftId.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 154</value>
+  </data>
+  <data name="labelDryLeftId.Size" type="System.Drawing.Size, System.Drawing">
+    <value>17, 12</value>
+  </data>
+  <data name="labelDryLeftId.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="labelDryLeftId.Text" xml:space="preserve">
+    <value>7.2</value>
+  </data>
+  <data name="&gt;&gt;labelDryLeftId.Name" xml:space="preserve">
+    <value>labelDryLeftId</value>
+  </data>
+  <data name="&gt;&gt;labelDryLeftId.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelDryLeftId.Parent" xml:space="preserve">
+    <value>groupState</value>
+  </data>
+  <data name="&gt;&gt;labelDryLeftId.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
   <metadata name="labelTimerLeftId.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
+  <data name="labelTimerLeftId.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelTimerLeftId.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Light, 7pt</value>
+  </data>
+  <data name="labelTimerLeftId.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 185</value>
+  </data>
+  <data name="labelTimerLeftId.Size" type="System.Drawing.Size, System.Drawing">
+    <value>17, 12</value>
+  </data>
+  <data name="labelTimerLeftId.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="labelTimerLeftId.Text" xml:space="preserve">
+    <value>8.3</value>
+  </data>
+  <data name="&gt;&gt;labelTimerLeftId.Name" xml:space="preserve">
+    <value>labelTimerLeftId</value>
+  </data>
+  <data name="&gt;&gt;labelTimerLeftId.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelTimerLeftId.Parent" xml:space="preserve">
+    <value>groupState</value>
+  </data>
+  <data name="&gt;&gt;labelTimerLeftId.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="groupState.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 108</value>
+  </data>
+  <data name="groupState.Size" type="System.Drawing.Size, System.Drawing">
+    <value>370, 214</value>
+  </data>
+  <data name="groupState.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="groupState.Text" xml:space="preserve">
+    <value>Состояніе</value>
+  </data>
+  <data name="&gt;&gt;groupState.Name" xml:space="preserve">
+    <value>groupState</value>
+  </data>
+  <data name="&gt;&gt;groupState.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupState.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupState.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <metadata name="statusStrip.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
   <metadata name="statusStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>109, 17</value>
   </metadata>
-  <metadata name="labelPowerId.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>False</value>
-  </metadata>
-  <metadata name="labelModeId.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>False</value>
-  </metadata>
-  <metadata name="labelTargetId.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>False</value>
-  </metadata>
-  <metadata name="labelLightId.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>False</value>
-  </metadata>
-  <metadata name="labelSoundId.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>False</value>
-  </metadata>
-  <metadata name="labelLockId.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>False</value>
-  </metadata>
-  <metadata name="labelDryAfterOffId.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>False</value>
-  </metadata>
-  <metadata name="labelTimerId.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>False</value>
-  </metadata>
-  <metadata name="labelLightModeId.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>False</value>
-  </metadata>
-  <metadata name="labelTimerValueId.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>False</value>
-  </metadata>
-  <metadata name="labelTimerMnutes.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>False</value>
-  </metadata>
+  <data name="toolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>379, 17</value>
+  </data>
+  <data name="toolStripStatusLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="toolStripStatusTime.AccessibleName" xml:space="preserve">
+    <value>Обновлено въ</value>
+  </data>
+  <data name="toolStripStatusTime.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 17</value>
+  </data>
+  <data name="toolStripStatusTime.ToolTipText" xml:space="preserve">
+    <value>Обновлено въ</value>
+  </data>
+  <data name="statusStrip.AccessibleName" xml:space="preserve">
+    <value>Строка состоянія</value>
+  </data>
+  <data name="statusStrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 795</value>
+  </data>
+  <data name="statusStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>394, 22</value>
+  </data>
+  <data name="statusStrip.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;statusStrip.Name" xml:space="preserve">
+    <value>statusStrip</value>
+  </data>
+  <data name="&gt;&gt;statusStrip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;statusStrip.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;statusStrip.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <metadata name="labelTimeOff.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
+  <data name="labelTimeOff.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelTimeOff.Location" type="System.Drawing.Point, System.Drawing">
+    <value>220, 380</value>
+  </data>
+  <data name="labelTimeOff.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 15</value>
+  </data>
+  <data name="labelTimeOff.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="labelTimeOff.Text" xml:space="preserve">
+    <value>время выключенія</value>
+  </data>
+  <data name="&gt;&gt;labelTimeOff.Name" xml:space="preserve">
+    <value>labelTimeOff</value>
+  </data>
+  <data name="&gt;&gt;labelTimeOff.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelTimeOff.Parent" xml:space="preserve">
+    <value>groupControls</value>
+  </data>
+  <data name="&gt;&gt;labelTimeOff.ZOrder" xml:space="preserve">
+    <value>29</value>
+  </data>
+  <metadata name="labelPowerId.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="labelPowerId.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelPowerId.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Light, 7pt</value>
+  </data>
+  <data name="labelPowerId.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 36</value>
+  </data>
+  <data name="labelPowerId.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 12</value>
+  </data>
+  <data name="labelPowerId.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="labelPowerId.Text" xml:space="preserve">
+    <value>2.1</value>
+  </data>
+  <data name="&gt;&gt;labelPowerId.Name" xml:space="preserve">
+    <value>labelPowerId</value>
+  </data>
+  <data name="&gt;&gt;labelPowerId.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelPowerId.Parent" xml:space="preserve">
+    <value>groupControls</value>
+  </data>
+  <data name="&gt;&gt;labelPowerId.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="labelModeId.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="labelModeId.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelModeId.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Light, 7pt</value>
+  </data>
+  <data name="labelModeId.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 84</value>
+  </data>
+  <data name="labelModeId.Size" type="System.Drawing.Size, System.Drawing">
+    <value>17, 12</value>
+  </data>
+  <data name="labelModeId.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="labelModeId.Text" xml:space="preserve">
+    <value>2.3</value>
+  </data>
+  <data name="&gt;&gt;labelModeId.Name" xml:space="preserve">
+    <value>labelModeId</value>
+  </data>
+  <data name="&gt;&gt;labelModeId.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelModeId.Parent" xml:space="preserve">
+    <value>groupControls</value>
+  </data>
+  <data name="&gt;&gt;labelModeId.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <metadata name="labelTargetId.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="labelTargetId.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelTargetId.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Light, 7pt</value>
+  </data>
+  <data name="labelTargetId.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 151</value>
+  </data>
+  <data name="labelTargetId.Size" type="System.Drawing.Size, System.Drawing">
+    <value>17, 12</value>
+  </data>
+  <data name="labelTargetId.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="labelTargetId.Text" xml:space="preserve">
+    <value>2.5</value>
+  </data>
+  <data name="&gt;&gt;labelTargetId.Name" xml:space="preserve">
+    <value>labelTargetId</value>
+  </data>
+  <data name="&gt;&gt;labelTargetId.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelTargetId.Parent" xml:space="preserve">
+    <value>groupControls</value>
+  </data>
+  <data name="&gt;&gt;labelTargetId.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <metadata name="labelLightId.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="labelLightId.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelLightId.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Light, 7pt</value>
+  </data>
+  <data name="labelLightId.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 215</value>
+  </data>
+  <data name="labelLightId.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 12</value>
+  </data>
+  <data name="labelLightId.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="labelLightId.Text" xml:space="preserve">
+    <value>5.1</value>
+  </data>
+  <data name="&gt;&gt;labelLightId.Name" xml:space="preserve">
+    <value>labelLightId</value>
+  </data>
+  <data name="&gt;&gt;labelLightId.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelLightId.Parent" xml:space="preserve">
+    <value>groupControls</value>
+  </data>
+  <data name="&gt;&gt;labelLightId.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <metadata name="labelSoundId.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="labelSoundId.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelSoundId.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Light, 7pt</value>
+  </data>
+  <data name="labelSoundId.Location" type="System.Drawing.Point, System.Drawing">
+    <value>122, 267</value>
+  </data>
+  <data name="labelSoundId.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 12</value>
+  </data>
+  <data name="labelSoundId.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="labelSoundId.Text" xml:space="preserve">
+    <value>4.1</value>
+  </data>
+  <data name="&gt;&gt;labelSoundId.Name" xml:space="preserve">
+    <value>labelSoundId</value>
+  </data>
+  <data name="&gt;&gt;labelSoundId.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelSoundId.Parent" xml:space="preserve">
+    <value>groupControls</value>
+  </data>
+  <data name="&gt;&gt;labelSoundId.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <metadata name="labelLockId.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="labelLockId.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelLockId.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Light, 7pt</value>
+  </data>
+  <data name="labelLockId.Location" type="System.Drawing.Point, System.Drawing">
+    <value>122, 292</value>
+  </data>
+  <data name="labelLockId.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 12</value>
+  </data>
+  <data name="labelLockId.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="labelLockId.Text" xml:space="preserve">
+    <value>6.1</value>
+  </data>
+  <data name="&gt;&gt;labelLockId.Name" xml:space="preserve">
+    <value>labelLockId</value>
+  </data>
+  <data name="&gt;&gt;labelLockId.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelLockId.Parent" xml:space="preserve">
+    <value>groupControls</value>
+  </data>
+  <data name="&gt;&gt;labelLockId.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <metadata name="labelDryAfterOffId.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="labelDryAfterOffId.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelDryAfterOffId.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Light, 7pt</value>
+  </data>
+  <data name="labelDryAfterOffId.Location" type="System.Drawing.Point, System.Drawing">
+    <value>122, 317</value>
+  </data>
+  <data name="labelDryAfterOffId.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 12</value>
+  </data>
+  <data name="labelDryAfterOffId.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="labelDryAfterOffId.Text" xml:space="preserve">
+    <value>7.1</value>
+  </data>
+  <data name="&gt;&gt;labelDryAfterOffId.Name" xml:space="preserve">
+    <value>labelDryAfterOffId</value>
+  </data>
+  <data name="&gt;&gt;labelDryAfterOffId.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelDryAfterOffId.Parent" xml:space="preserve">
+    <value>groupControls</value>
+  </data>
+  <data name="&gt;&gt;labelDryAfterOffId.ZOrder" xml:space="preserve">
+    <value>21</value>
+  </data>
+  <metadata name="labelTimerId.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="labelTimerId.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelTimerId.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Light, 7pt</value>
+  </data>
+  <data name="labelTimerId.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 350</value>
+  </data>
+  <data name="labelTimerId.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 12</value>
+  </data>
+  <data name="labelTimerId.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="labelTimerId.Text" xml:space="preserve">
+    <value>8.1</value>
+  </data>
+  <data name="&gt;&gt;labelTimerId.Name" xml:space="preserve">
+    <value>labelTimerId</value>
+  </data>
+  <data name="&gt;&gt;labelTimerId.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelTimerId.Parent" xml:space="preserve">
+    <value>groupControls</value>
+  </data>
+  <data name="&gt;&gt;labelTimerId.ZOrder" xml:space="preserve">
+    <value>23</value>
+  </data>
+  <metadata name="labelLightModeId.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="labelLightModeId.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelLightModeId.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Light, 7pt</value>
+  </data>
+  <data name="labelLightModeId.Location" type="System.Drawing.Point, System.Drawing">
+    <value>122, 215</value>
+  </data>
+  <data name="labelLightModeId.Size" type="System.Drawing.Size, System.Drawing">
+    <value>17, 12</value>
+  </data>
+  <data name="labelLightModeId.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="labelLightModeId.Text" xml:space="preserve">
+    <value>5.2</value>
+  </data>
+  <data name="&gt;&gt;labelLightModeId.Name" xml:space="preserve">
+    <value>labelLightModeId</value>
+  </data>
+  <data name="&gt;&gt;labelLightModeId.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelLightModeId.Parent" xml:space="preserve">
+    <value>groupControls</value>
+  </data>
+  <data name="&gt;&gt;labelLightModeId.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <metadata name="labelTimerValueId.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="labelTimerValueId.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelTimerValueId.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Light, 7pt</value>
+  </data>
+  <data name="labelTimerValueId.Location" type="System.Drawing.Point, System.Drawing">
+    <value>122, 349</value>
+  </data>
+  <data name="labelTimerValueId.Size" type="System.Drawing.Size, System.Drawing">
+    <value>17, 12</value>
+  </data>
+  <data name="labelTimerValueId.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="labelTimerValueId.Text" xml:space="preserve">
+    <value>8.2</value>
+  </data>
+  <data name="&gt;&gt;labelTimerValueId.Name" xml:space="preserve">
+    <value>labelTimerValueId</value>
+  </data>
+  <data name="&gt;&gt;labelTimerValueId.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelTimerValueId.Parent" xml:space="preserve">
+    <value>groupControls</value>
+  </data>
+  <data name="&gt;&gt;labelTimerValueId.ZOrder" xml:space="preserve">
+    <value>25</value>
+  </data>
+  <metadata name="labelTimerMnutes.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="labelTimerMnutes.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelTimerMnutes.Location" type="System.Drawing.Point, System.Drawing">
+    <value>220, 347</value>
+  </data>
+  <data name="labelTimerMnutes.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 15</value>
+  </data>
+  <data name="labelTimerMnutes.TabIndex" type="System.Int32, mscorlib">
+    <value>27</value>
+  </data>
+  <data name="labelTimerMnutes.Text" xml:space="preserve">
+    <value>минутъ</value>
+  </data>
+  <data name="&gt;&gt;labelTimerMnutes.Name" xml:space="preserve">
+    <value>labelTimerMnutes</value>
+  </data>
+  <data name="&gt;&gt;labelTimerMnutes.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelTimerMnutes.Parent" xml:space="preserve">
+    <value>groupControls</value>
+  </data>
+  <data name="&gt;&gt;labelTimerMnutes.ZOrder" xml:space="preserve">
+    <value>27</value>
+  </data>
+  <data name="groupControls.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="buttonLoopMode.AccessibleDescription" xml:space="preserve">
+    <value>Дѣйствіе MIoT 7.2 loop-mode</value>
+  </data>
+  <data name="buttonLoopMode.AccessibleName" xml:space="preserve">
+    <value>Слѣдующій режимъ</value>
+  </data>
+  <data name="buttonLoopMode.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 12pt</value>
+  </data>
+  <data name="buttonLoopMode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>265, 76</value>
+  </data>
+  <data name="buttonLoopMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 49</value>
+  </data>
+  <data name="buttonLoopMode.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="buttonLoopMode.Text" xml:space="preserve">
+    <value>↓</value>
+  </data>
+  <data name="buttonLoopMode.ToolTip" xml:space="preserve">
+    <value>Слѣдующій режимъ по кругу (дѣйствіе loop-mode 7.2)</value>
+  </data>
+  <data name="&gt;&gt;buttonLoopMode.Name" xml:space="preserve">
+    <value>buttonLoopMode</value>
+  </data>
+  <data name="&gt;&gt;buttonLoopMode.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonLoopMode.Parent" xml:space="preserve">
+    <value>groupControls</value>
+  </data>
+  <data name="&gt;&gt;buttonLoopMode.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="checkBoxTimer.AccessibleDescription" xml:space="preserve">
+    <value>MIoT 8.1</value>
+  </data>
+  <data name="checkBoxTimer.AccessibleName" xml:space="preserve">
+    <value>Таймеръ выключенія включёнъ</value>
+  </data>
+  <data name="checkBoxTimer.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxTimer.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="checkBoxTimer.Location" type="System.Drawing.Point, System.Drawing">
+    <value>37, 347</value>
+  </data>
+  <data name="checkBoxTimer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>78, 19</value>
+  </data>
+  <data name="checkBoxTimer.TabIndex" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="checkBoxTimer.Text" xml:space="preserve">
+    <value>Тай&amp;меръ:</value>
+  </data>
+  <data name="&gt;&gt;checkBoxTimer.Name" xml:space="preserve">
+    <value>checkBoxTimer</value>
+  </data>
+  <data name="&gt;&gt;checkBoxTimer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxTimer.Parent" xml:space="preserve">
+    <value>groupControls</value>
+  </data>
+  <data name="&gt;&gt;checkBoxTimer.ZOrder" xml:space="preserve">
+    <value>24</value>
+  </data>
+  <data name="numericTimerMinutes.AccessibleDescription" xml:space="preserve">
+    <value>MIoT 8.2</value>
+  </data>
+  <data name="numericTimerMinutes.AccessibleName" xml:space="preserve">
+    <value>Таймеръ выключенія, минутъ</value>
+  </data>
+  <data name="numericTimerMinutes.Location" type="System.Drawing.Point, System.Drawing">
+    <value>144, 345</value>
+  </data>
+  <data name="numericTimerMinutes.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 23</value>
+  </data>
+  <data name="numericTimerMinutes.TabIndex" type="System.Int32, mscorlib">
+    <value>26</value>
+  </data>
+  <data name="numericTimerMinutes.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;numericTimerMinutes.Name" xml:space="preserve">
+    <value>numericTimerMinutes</value>
+  </data>
+  <data name="&gt;&gt;numericTimerMinutes.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numericTimerMinutes.Parent" xml:space="preserve">
+    <value>groupControls</value>
+  </data>
+  <data name="&gt;&gt;numericTimerMinutes.ZOrder" xml:space="preserve">
+    <value>26</value>
+  </data>
+  <data name="dateTimeOff.AccessibleDescription" xml:space="preserve">
+    <value>Сейчасъ плюсъ таймеръ; если измѣнить — таймеръ станетъ этимъ временемъ минусъ сейчасъ</value>
+  </data>
+  <data name="dateTimeOff.AccessibleName" xml:space="preserve">
+    <value>Время выключенія по таймеру</value>
+  </data>
+  <data name="dateTimeOff.CustomFormat" xml:space="preserve">
+    <value>HH:mm</value>
+  </data>
+  <data name="dateTimeOff.Location" type="System.Drawing.Point, System.Drawing">
+    <value>144, 376</value>
+  </data>
+  <data name="dateTimeOff.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 23</value>
+  </data>
+  <data name="dateTimeOff.TabIndex" type="System.Int32, mscorlib">
+    <value>28</value>
+  </data>
+  <data name="&gt;&gt;dateTimeOff.Name" xml:space="preserve">
+    <value>dateTimeOff</value>
+  </data>
+  <data name="&gt;&gt;dateTimeOff.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dateTimeOff.Parent" xml:space="preserve">
+    <value>groupControls</value>
+  </data>
+  <data name="&gt;&gt;dateTimeOff.ZOrder" xml:space="preserve">
+    <value>28</value>
+  </data>
+  <data name="checkBoxDryAfterOff.AccessibleDescription" xml:space="preserve">
+    <value>MIoT 7.1</value>
+  </data>
+  <data name="checkBoxDryAfterOff.AccessibleName" xml:space="preserve">
+    <value>Просушка послѣ выключенія</value>
+  </data>
+  <data name="checkBoxDryAfterOff.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxDryAfterOff.Location" type="System.Drawing.Point, System.Drawing">
+    <value>144, 314</value>
+  </data>
+  <data name="checkBoxDryAfterOff.Size" type="System.Drawing.Size, System.Drawing">
+    <value>191, 19</value>
+  </data>
+  <data name="checkBoxDryAfterOff.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="checkBoxDryAfterOff.Text" xml:space="preserve">
+    <value>Просу&amp;шка послѣ выключенія</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDryAfterOff.Name" xml:space="preserve">
+    <value>checkBoxDryAfterOff</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDryAfterOff.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDryAfterOff.Parent" xml:space="preserve">
+    <value>groupControls</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDryAfterOff.ZOrder" xml:space="preserve">
+    <value>22</value>
+  </data>
+  <data name="checkBoxLock.AccessibleDescription" xml:space="preserve">
+    <value>MIoT 6.1</value>
+  </data>
+  <data name="checkBoxLock.AccessibleName" xml:space="preserve">
+    <value>Блокировка кнопокъ</value>
+  </data>
+  <data name="checkBoxLock.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxLock.Location" type="System.Drawing.Point, System.Drawing">
+    <value>144, 289</value>
+  </data>
+  <data name="checkBoxLock.Size" type="System.Drawing.Size, System.Drawing">
+    <value>142, 19</value>
+  </data>
+  <data name="checkBoxLock.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="checkBoxLock.Text" xml:space="preserve">
+    <value>&amp;Блокировка кнопокъ</value>
+  </data>
+  <data name="&gt;&gt;checkBoxLock.Name" xml:space="preserve">
+    <value>checkBoxLock</value>
+  </data>
+  <data name="&gt;&gt;checkBoxLock.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxLock.Parent" xml:space="preserve">
+    <value>groupControls</value>
+  </data>
+  <data name="&gt;&gt;checkBoxLock.ZOrder" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="checkBoxSound.AccessibleDescription" xml:space="preserve">
+    <value>MIoT 4.1</value>
+  </data>
+  <data name="checkBoxSound.AccessibleName" xml:space="preserve">
+    <value>Звукъ кнопокъ</value>
+  </data>
+  <data name="checkBoxSound.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxSound.Location" type="System.Drawing.Point, System.Drawing">
+    <value>144, 264</value>
+  </data>
+  <data name="checkBoxSound.Size" type="System.Drawing.Size, System.Drawing">
+    <value>108, 19</value>
+  </data>
+  <data name="checkBoxSound.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="checkBoxSound.Text" xml:space="preserve">
+    <value>&amp;Звукъ кнопокъ</value>
+  </data>
+  <data name="&gt;&gt;checkBoxSound.Name" xml:space="preserve">
+    <value>checkBoxSound</value>
+  </data>
+  <data name="&gt;&gt;checkBoxSound.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxSound.Parent" xml:space="preserve">
+    <value>groupControls</value>
+  </data>
+  <data name="&gt;&gt;checkBoxSound.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="listBoxLight.AccessibleDescription" xml:space="preserve">
+    <value>MIoT 5.2</value>
+  </data>
+  <data name="listBoxLight.AccessibleName" xml:space="preserve">
+    <value>Яркость подсвѣтки</value>
+  </data>
+  <data name="listBoxLight.Items" xml:space="preserve">
+    <value>Выключена</value>
+  </data>
+  <data name="listBoxLight.Items1" xml:space="preserve">
+    <value>Тусклая</value>
+  </data>
+  <data name="listBoxLight.Items2" xml:space="preserve">
+    <value>Яркая</value>
+  </data>
+  <data name="listBoxLight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>144, 207</value>
+  </data>
+  <data name="listBoxLight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 49</value>
+  </data>
+  <data name="listBoxLight.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;listBoxLight.Name" xml:space="preserve">
+    <value>listBoxLight</value>
+  </data>
+  <data name="&gt;&gt;listBoxLight.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;listBoxLight.Parent" xml:space="preserve">
+    <value>groupControls</value>
+  </data>
+  <data name="&gt;&gt;listBoxLight.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="checkBoxLight.AccessibleDescription" xml:space="preserve">
+    <value>MIoT 5.1</value>
+  </data>
+  <data name="checkBoxLight.AccessibleName" xml:space="preserve">
+    <value>Подсвѣтка включена</value>
+  </data>
+  <data name="checkBoxLight.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxLight.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="checkBoxLight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>28, 212</value>
+  </data>
+  <data name="checkBoxLight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>87, 19</value>
+  </data>
+  <data name="checkBoxLight.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="checkBoxLight.Text" xml:space="preserve">
+    <value>Под&amp;свѣтка:</value>
+  </data>
+  <data name="&gt;&gt;checkBoxLight.Name" xml:space="preserve">
+    <value>checkBoxLight</value>
+  </data>
+  <data name="&gt;&gt;checkBoxLight.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxLight.Parent" xml:space="preserve">
+    <value>groupControls</value>
+  </data>
+  <data name="&gt;&gt;checkBoxLight.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="labelTarget.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelTarget.Location" type="System.Drawing.Point, System.Drawing">
+    <value>98, 149</value>
+  </data>
+  <data name="labelTarget.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 15</value>
+  </data>
+  <data name="labelTarget.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="labelTarget.Text" xml:space="preserve">
+    <value>50 %</value>
+  </data>
+  <data name="labelTarget.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="&gt;&gt;labelTarget.Name" xml:space="preserve">
+    <value>labelTarget</value>
+  </data>
+  <data name="&gt;&gt;labelTarget.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelTarget.Parent" xml:space="preserve">
+    <value>groupControls</value>
+  </data>
+  <data name="&gt;&gt;labelTarget.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="panelTargetScale.AccessibleDescription" xml:space="preserve">
+    <value>Риски черезъ 10 %, рекомендуемый диапазонъ и влажность въ комнатѣ</value>
+  </data>
+  <data name="panelTargetScale.AccessibleName" xml:space="preserve">
+    <value>Шкала цѣлевой влажности</value>
+  </data>
+  <data name="panelTargetScale.Location" type="System.Drawing.Point, System.Drawing">
+    <value>136, 175</value>
+  </data>
+  <data name="panelTargetScale.Size" type="System.Drawing.Size, System.Drawing">
+    <value>220, 24</value>
+  </data>
+  <data name="panelTargetScale.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;panelTargetScale.Name" xml:space="preserve">
+    <value>panelTargetScale</value>
+  </data>
+  <data name="&gt;&gt;panelTargetScale.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panelTargetScale.Parent" xml:space="preserve">
+    <value>groupControls</value>
+  </data>
+  <data name="&gt;&gt;panelTargetScale.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="trackBarTarget.AccessibleDescription" xml:space="preserve">
+    <value>MIoT 2.5; рекомендуется 40…70</value>
+  </data>
+  <data name="trackBarTarget.AccessibleName" xml:space="preserve">
+    <value>Цѣлевая влажность, %</value>
+  </data>
+  <data name="trackBarTarget.Location" type="System.Drawing.Point, System.Drawing">
+    <value>136, 141</value>
+  </data>
+  <data name="trackBarTarget.Size" type="System.Drawing.Size, System.Drawing">
+    <value>220, 45</value>
+  </data>
+  <data name="trackBarTarget.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;trackBarTarget.Name" xml:space="preserve">
+    <value>trackBarTarget</value>
+  </data>
+  <data name="&gt;&gt;trackBarTarget.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;trackBarTarget.Parent" xml:space="preserve">
+    <value>groupControls</value>
+  </data>
+  <data name="&gt;&gt;trackBarTarget.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="listBoxMode.AccessibleDescription" xml:space="preserve">
+    <value>MIoT 2.3</value>
+  </data>
+  <data name="listBoxMode.AccessibleName" xml:space="preserve">
+    <value>Режимъ</value>
+  </data>
+  <data name="listBoxMode.Items" xml:space="preserve">
+    <value>Умный</value>
+  </data>
+  <data name="listBoxMode.Items1" xml:space="preserve">
+    <value>Ночной</value>
+  </data>
+  <data name="listBoxMode.Items2" xml:space="preserve">
+    <value>Сушка бѣлья</value>
+  </data>
+  <data name="listBoxMode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>144, 76</value>
+  </data>
+  <data name="listBoxMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 49</value>
+  </data>
+  <data name="listBoxMode.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;listBoxMode.Name" xml:space="preserve">
+    <value>listBoxMode</value>
+  </data>
+  <data name="&gt;&gt;listBoxMode.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;listBoxMode.Parent" xml:space="preserve">
+    <value>groupControls</value>
+  </data>
+  <data name="&gt;&gt;listBoxMode.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="checkBoxPower.AccessibleDescription" xml:space="preserve">
+    <value>MIoT 2.1</value>
+  </data>
+  <data name="checkBoxPower.AccessibleName" xml:space="preserve">
+    <value>Питаніе</value>
+  </data>
+  <data name="checkBoxPower.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
+    <value>Button</value>
+  </data>
+  <data name="checkBoxPower.Location" type="System.Drawing.Point, System.Drawing">
+    <value>144, 26</value>
+  </data>
+  <data name="checkBoxPower.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 32</value>
+  </data>
+  <data name="checkBoxPower.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="checkBoxPower.Text" xml:space="preserve">
+    <value>Выключенъ</value>
+  </data>
+  <data name="checkBoxPower.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;checkBoxPower.Name" xml:space="preserve">
+    <value>checkBoxPower</value>
+  </data>
+  <data name="&gt;&gt;checkBoxPower.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxPower.Parent" xml:space="preserve">
+    <value>groupControls</value>
+  </data>
+  <data name="&gt;&gt;checkBoxPower.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="groupControls.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="groupControls.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 328</value>
+  </data>
+  <data name="groupControls.Size" type="System.Drawing.Size, System.Drawing">
+    <value>370, 456</value>
+  </data>
+  <data name="groupControls.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="groupControls.Text" xml:space="preserve">
+    <value>Управленіе</value>
+  </data>
+  <data name="&gt;&gt;groupControls.Name" xml:space="preserve">
+    <value>groupControls</value>
+  </data>
+  <data name="&gt;&gt;groupControls.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupControls.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupControls.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <metadata name="pollTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>218, 17</value>
   </metadata>
@@ -234,7 +1989,15 @@
   <metadata name="delayDebounceTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>493, 17</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>7, 15</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>394, 817</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAkAEBAAAAEAIAALAgAAlgAAABQUAAABACAAXwIAAKECAAAYGAAAAQAgAPUCAAAABQAAICAAAAEA
@@ -537,5 +2300,59 @@
         +nvDq7iIFPGUhYo6s/BEbRaVSD6O0LSb//ehvXPPf186h8H//0JTIwiCIAiCIAiCIAiCIAiCIAiCIAiC
         IAiCBDn/DzYQ21kUcCkaAAAAAElFTkSuQmCC
 </value>
+  </data>
+  <data name="$this.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 856</value>
+  </data>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>400, 856</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Xiaomi Smart Dehumidifier Lite</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel.Name" xml:space="preserve">
+    <value>toolStripStatusLabel</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusTime.Name" xml:space="preserve">
+    <value>toolStripStatusTime</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusTime.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolTip.Name" xml:space="preserve">
+    <value>toolTip</value>
+  </data>
+  <data name="&gt;&gt;toolTip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pollTimer.Name" xml:space="preserve">
+    <value>pollTimer</value>
+  </data>
+  <data name="&gt;&gt;pollTimer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Timer, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;targetDebounceTimer.Name" xml:space="preserve">
+    <value>targetDebounceTimer</value>
+  </data>
+  <data name="&gt;&gt;targetDebounceTimer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Timer, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;delayDebounceTimer.Name" xml:space="preserve">
+    <value>delayDebounceTimer</value>
+  </data>
+  <data name="&gt;&gt;delayDebounceTimer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Timer, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>MainForm</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

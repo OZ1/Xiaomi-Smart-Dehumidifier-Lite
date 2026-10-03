@@ -28,6 +28,7 @@ $makeappx = Get-ChildItem 'C:\Program Files (x86)\Windows Kits\10\bin' -Director
 	Where-Object Name -match '^10\.' | Sort-Object { [version]$_.Name } -Descending |
 	ForEach-Object { Join-Path $_.FullName 'x64\makeappx.exe' } | Where-Object { Test-Path $_ } | Select-Object -First 1
 if (-not $makeappx) { throw 'Не найденъ makeappx.exe — нуженъ Windows SDK.' }
+$makepri = Join-Path (Split-Path $makeappx) 'makepri.exe'
 
 if (Test-Path $out) { Remove-Item $out -Recurse -Force }
 $assets   = New-Item -ItemType Directory (Join-Path $out 'Assets')
@@ -44,8 +45,34 @@ foreach ($n in 16, 24, 32, 48, 256) { # панель задачъ и меню «
 	Copy-Item "$icons\icon$n.png" "$assets\Square44x44Logo.targetsize-${n}_altform-unplated.png"
 }
 
-# ───── пакетъ на каждую архитектуру ─────
+# ───── имя и описаніе на каждомъ языкѣ: Title и ShortDescription изъ описанія.csv → Strings\<языкъ>\Resources.resw ─────
+# Имена должны совпадать съ зарезервированными въ Partner Center.
 $x = { param($s) [Security.SecurityElement]::Escape($s) }
+$strings = New-Item -ItemType Directory (Join-Path $out 'pri\Strings')
+$csv = Import-Csv (Join-Path $PSScriptRoot 'описанія.csv')
+$title = $csv | Where-Object Field -eq 'Title'; $short = $csv | Where-Object Field -eq 'ShortDescription'
+$languages = ([xml](Get-Content (Join-Path $PSScriptRoot 'AppxManifest.xml') -Raw)).Package.Resources.Resource.Language
+foreach ($lang in $languages) {
+	$appTitle = $title.($lang.ToLowerInvariant()); $desc = $short.($lang.ToLowerInvariant()) # не $name: это $Name
+	if (-not $appTitle -or -not $desc) { throw "Въ описанія.csv нѣтъ названія или краткаго описанія для $lang." }
+	$dir = New-Item -ItemType Directory (Join-Path $strings $lang)
+	[IO.File]::WriteAllText((Join-Path $dir 'Resources.resw'), @"
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+	<resheader name="version"><value>2.0</value></resheader>
+	<data name="AppDisplayName" xml:space="preserve"><value>$(& $x $appTitle)</value></data>
+	<data name="AppDescription" xml:space="preserve"><value>$(& $x $desc)</value></data>
+</root>
+"@, [Text.UTF8Encoding]::new($false))
+}
+Copy-Item $assets (Join-Path $out 'pri\Assets') -Recurse
+& $makepri createconfig /cf (Join-Path $out 'priconfig.xml') /dq $languages[0] /pv 10.0.0 /o | Out-Null
+if ($LASTEXITCODE) { throw 'makepri createconfig не удался.' }
+$priconfig = [xml](Get-Content (Join-Path $out 'priconfig.xml') -Raw) # всѣ языки — въ одинъ resources.pri, безъ пакетовъ ресурсовъ
+[void]$priconfig.resources.RemoveChild($priconfig.resources.packaging); $priconfig.Save((Join-Path $out 'priconfig.xml'))
+
+# ───── пакетъ на каждую архитектуру ─────
 $template = Get-Content (Join-Path $PSScriptRoot 'AppxManifest.xml') -Raw
 foreach ($arch in $Architectures) {
 	$layout = Join-Path $out "layout-$arch"
@@ -58,6 +85,12 @@ foreach ($arch in $Architectures) {
 	$manifest = $template.Replace('{Name}', (& $x $Name)).Replace('{Publisher}', (& $x $Publisher)).
 		Replace('{PublisherDisplayName}', (& $x $PublisherDisplayName)).Replace('{Version}', $Version).Replace('{Arch}', $arch)
 	[IO.File]::WriteAllText((Join-Path $layout 'AppxManifest.xml'), $manifest, [Text.UTF8Encoding]::new($false))
+
+	# resources.pri: строки и значки; индексируется отдѣльная папка, чтобы не трогать папки сборокъ .NET (ru, cs, …)
+	Copy-Item (Join-Path $layout 'AppxManifest.xml') (Join-Path $out 'pri') -Force
+	& $makepri new /pr (Join-Path $out 'pri') /cf (Join-Path $out 'priconfig.xml') /mn (Join-Path $out 'pri\AppxManifest.xml') `
+		/of (Join-Path $layout 'resources.pri') /o | Out-Null
+	if ($LASTEXITCODE) { throw "makepri ($arch) не удался." }
 
 	& $makeappx pack /d $layout /p (Join-Path $packages "Dehumidifier_${Version}_$arch.msix") /o | Out-Null
 	if ($LASTEXITCODE) { throw "makeappx pack ($arch) не удался." }

@@ -1,4 +1,4 @@
-﻿using Timer = System.Windows.Forms.Timer;
+using Timer = System.Windows.Forms.Timer;
 
 namespace DehumidifierControl;
 
@@ -34,6 +34,7 @@ partial class MainForm
 	{
 		components = new System.ComponentModel.Container();
 		Label labelToken;
+		System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 		Label labelIp;
 		Label labelTimerLeftCaption;
 		Label labelDryLeftCaption;
@@ -67,7 +68,6 @@ partial class MainForm
 		Label labelLightModeId;
 		Label labelTimerValueId;
 		Label labelTimerMnutes;
-		System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 		buttonConnect = new Button();
 		textBoxToken = new TextBox();
 		textBoxIP = new TextBox();
@@ -84,7 +84,6 @@ partial class MainForm
 		checkBoxTimer = new CheckBox();
 		numericTimerMinutes = new NumericUpDown();
 		dateTimeOff = new DateTimePicker();
-		labelTimeOff = new Label();
 		checkBoxDryAfterOff = new CheckBox();
 		checkBoxLock = new CheckBox();
 		checkBoxSound = new CheckBox();
@@ -121,6 +120,7 @@ partial class MainForm
 		labelDryLeftId = new Label();
 		labelTimerLeftId = new Label();
 		statusStrip = new StatusStrip();
+		labelTimeOff = new Label();
 		labelPowerId = new Label();
 		labelModeId = new Label();
 		labelTargetId = new Label();
@@ -142,702 +142,420 @@ partial class MainForm
 		// 
 		// labelToken
 		// 
-		labelToken.AutoSize = true;
-		labelToken.Location = new Point(15, 57);
+		resources.ApplyResources(labelToken, "labelToken");
 		labelToken.Name = "labelToken";
-		labelToken.Size = new Size(50, 15);
-		labelToken.TabIndex = 3;
-		labelToken.Text = "&Токенъ:";
 		// 
 		// labelIp
 		// 
-		labelIp.AutoSize = true;
-		labelIp.Location = new Point(15, 28);
+		resources.ApplyResources(labelIp, "labelIp");
 		labelIp.Name = "labelIp";
-		labelIp.Size = new Size(50, 15);
-		labelIp.TabIndex = 0;
-		labelIp.Text = "&Адресъ:";
 		// 
 		// labelTimerLeftCaption
 		// 
-		labelTimerLeftCaption.AutoSize = true;
-		labelTimerLeftCaption.Location = new Point(35, 185);
+		resources.ApplyResources(labelTimerLeftCaption, "labelTimerLeftCaption");
 		labelTimerLeftCaption.Name = "labelTimerLeftCaption";
-		labelTimerLeftCaption.Size = new Size(115, 15);
-		labelTimerLeftCaption.TabIndex = 16;
-		labelTimerLeftCaption.Text = "Таймеръ, осталось:";
 		// 
 		// labelDryLeftCaption
 		// 
-		labelDryLeftCaption.AutoSize = true;
-		labelDryLeftCaption.Location = new Point(28, 153);
+		resources.ApplyResources(labelDryLeftCaption, "labelDryLeftCaption");
 		labelDryLeftCaption.Name = "labelDryLeftCaption";
-		labelDryLeftCaption.Size = new Size(122, 15);
-		labelDryLeftCaption.TabIndex = 13;
-		labelDryLeftCaption.Text = "Просушки осталось:";
 		// 
 		// labelWarmingCaption
 		// 
-		labelWarmingCaption.AutoSize = true;
-		labelWarmingCaption.Location = new Point(85, 123);
+		resources.ApplyResources(labelWarmingCaption, "labelWarmingCaption");
 		labelWarmingCaption.Name = "labelWarmingCaption";
-		labelWarmingCaption.Size = new Size(65, 15);
-		labelWarmingCaption.TabIndex = 10;
-		labelWarmingCaption.Text = "Прогрѣвъ:";
 		// 
 		// labelFaultCaption
 		// 
-		labelFaultCaption.AutoSize = true;
-		labelFaultCaption.Location = new Point(55, 92);
+		resources.ApplyResources(labelFaultCaption, "labelFaultCaption");
 		labelFaultCaption.Name = "labelFaultCaption";
-		labelFaultCaption.Size = new Size(95, 15);
-		labelFaultCaption.TabIndex = 7;
-		labelFaultCaption.Text = "Неисправность:";
 		// 
 		// labelTemperatureCaption
 		// 
-		labelTemperatureCaption.AutoSize = true;
-		labelTemperatureCaption.Location = new Point(68, 62);
+		resources.ApplyResources(labelTemperatureCaption, "labelTemperatureCaption");
 		labelTemperatureCaption.Name = "labelTemperatureCaption";
-		labelTemperatureCaption.Size = new Size(82, 15);
-		labelTemperatureCaption.TabIndex = 4;
-		labelTemperatureCaption.Text = "Температура:";
 		// 
 		// labelHumidityCaption
 		// 
-		labelHumidityCaption.AutoSize = true;
-		labelHumidityCaption.Location = new Point(80, 31);
+		resources.ApplyResources(labelHumidityCaption, "labelHumidityCaption");
 		labelHumidityCaption.Name = "labelHumidityCaption";
-		labelHumidityCaption.Size = new Size(70, 15);
-		labelHumidityCaption.TabIndex = 1;
-		labelHumidityCaption.Text = "Влажность:";
 		// 
 		// buttonToggle
 		// 
-		buttonToggle.AccessibleDescription = "Дѣйствіе MIoT 7.1 toggle";
-		buttonToggle.AccessibleName = "Переключить питаніе";
-		buttonToggle.Font = new Font("Segoe Fluent Icons", 12F);
-		buttonToggle.Location = new Point(265, 26);
+		resources.ApplyResources(buttonToggle, "buttonToggle");
 		buttonToggle.Name = "buttonToggle";
-		buttonToggle.Size = new Size(32, 32);
-		buttonToggle.TabIndex = 3;
-		buttonToggle.Text = "";
-		toolTip.SetToolTip(buttonToggle, "Переключить питаніе (дѣйствіе toggle 7.1)");
+		toolTip.SetToolTip(buttonToggle, resources.GetString("buttonToggle.ToolTip"));
 		buttonToggle.UseVisualStyleBackColor = true;
 		buttonToggle.Click += Toggle_Click;
 		// 
 		// buttonResetFilter
 		// 
-		buttonResetFilter.AccessibleDescription = "Дѣйствіе MIoT 7.3 reset-filter";
-		buttonResetFilter.AccessibleName = "Сбросить счётчикъ фильтра";
-		buttonResetFilter.Location = new Point(144, 413);
+		resources.ApplyResources(buttonResetFilter, "buttonResetFilter");
 		buttonResetFilter.Name = "buttonResetFilter";
-		buttonResetFilter.Size = new Size(200, 27);
-		buttonResetFilter.TabIndex = 29;
-		buttonResetFilter.Text = "Сбросить счётчикъ &фильтра…";
 		buttonResetFilter.UseVisualStyleBackColor = true;
 		buttonResetFilter.Click += ResetFilter_Click;
 		// 
 		// labelTargetCaption
 		// 
-		labelTargetCaption.AutoSize = true;
-		labelTargetCaption.Location = new Point(30, 149);
+		resources.ApplyResources(labelTargetCaption, "labelTargetCaption");
 		labelTargetCaption.Name = "labelTargetCaption";
-		labelTargetCaption.Size = new Size(39, 15);
-		labelTargetCaption.TabIndex = 9;
-		labelTargetCaption.Text = "&Цѣль:";
 		// 
 		// labelModeCaption
 		// 
-		labelModeCaption.AutoSize = true;
-		labelModeCaption.Location = new Point(28, 82);
+		resources.ApplyResources(labelModeCaption, "labelModeCaption");
 		labelModeCaption.Name = "labelModeCaption";
-		labelModeCaption.Size = new Size(55, 15);
-		labelModeCaption.TabIndex = 5;
-		labelModeCaption.Text = "&Режимъ:";
 		// 
 		// labelPowerCaption
 		// 
-		labelPowerCaption.AutoSize = true;
-		labelPowerCaption.Location = new Point(30, 34);
+		resources.ApplyResources(labelPowerCaption, "labelPowerCaption");
 		labelPowerCaption.Name = "labelPowerCaption";
-		labelPowerCaption.Size = new Size(53, 15);
-		labelPowerCaption.TabIndex = 1;
-		labelPowerCaption.Text = "&Питаніе:";
 		// 
 		// groupConnection
 		// 
-		groupConnection.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-		groupConnection.Controls.Add(buttonConnect);
-		groupConnection.Controls.Add(textBoxToken);
-		groupConnection.Controls.Add(labelToken);
-		groupConnection.Controls.Add(textBoxIP);
+		resources.ApplyResources(groupConnection, "groupConnection");
 		groupConnection.Controls.Add(labelIp);
-		groupConnection.Location = new Point(12, 12);
+		groupConnection.Controls.Add(textBoxIP);
+		groupConnection.Controls.Add(labelToken);
+		groupConnection.Controls.Add(textBoxToken);
+		groupConnection.Controls.Add(buttonConnect);
 		groupConnection.Name = "groupConnection";
-		groupConnection.Size = new Size(370, 90);
-		groupConnection.TabIndex = 0;
 		groupConnection.TabStop = false;
-		groupConnection.Text = "Подключеніе";
 		// 
 		// buttonConnect
 		// 
-		buttonConnect.Location = new Point(192, 23);
+		resources.ApplyResources(buttonConnect, "buttonConnect");
 		buttonConnect.Name = "buttonConnect";
-		buttonConnect.Size = new Size(105, 25);
-		buttonConnect.TabIndex = 2;
-		buttonConnect.Text = "&Подключиться";
 		buttonConnect.UseVisualStyleBackColor = true;
 		buttonConnect.Click += Connect_Click;
 		// 
 		// textBoxToken
 		// 
-		textBoxToken.AccessibleDescription = "32 шестнадцатеричныя цифры";
-		textBoxToken.AccessibleName = "Токенъ";
+		resources.ApplyResources(textBoxToken, "textBoxToken");
 		textBoxToken.CharacterCasing = CharacterCasing.Upper;
-		textBoxToken.Location = new Point(75, 54);
-		textBoxToken.MaxLength = 32;
 		textBoxToken.Name = "textBoxToken";
-		textBoxToken.PlaceholderText = "00112233445566778899AABBCCDDEEFF";
-		textBoxToken.Size = new Size(222, 23);
-		textBoxToken.TabIndex = 4;
-		textBoxToken.TextAlign = HorizontalAlignment.Center;
 		// 
 		// textBoxIP
 		// 
-		textBoxIP.AccessibleDescription = "IP-адресъ въ локальной сѣти";
-		textBoxIP.AccessibleName = "Адресъ осушителя";
-		textBoxIP.Location = new Point(75, 25);
+		resources.ApplyResources(textBoxIP, "textBoxIP");
 		textBoxIP.Name = "textBoxIP";
-		textBoxIP.PlaceholderText = "255.255.255.255";
-		textBoxIP.Size = new Size(112, 23);
-		textBoxIP.TabIndex = 1;
-		textBoxIP.TextAlign = HorizontalAlignment.Center;
 		// 
 		// groupState
 		// 
-		groupState.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-		groupState.Controls.Add(labelTimerLeft);
-		groupState.Controls.Add(labelTimerLeftCaption);
-		groupState.Controls.Add(labelDryLeft);
-		groupState.Controls.Add(labelDryLeftCaption);
-		groupState.Controls.Add(labelWarming);
-		groupState.Controls.Add(labelWarmingCaption);
-		groupState.Controls.Add(labelFault);
-		groupState.Controls.Add(labelFaultCaption);
-		groupState.Controls.Add(labelTemperature);
-		groupState.Controls.Add(labelTemperatureCaption);
-		groupState.Controls.Add(labelHumidity);
-		groupState.Controls.Add(labelHumidityCaption);
+		resources.ApplyResources(groupState, "groupState");
 		groupState.Controls.Add(labelHumidityId);
+		groupState.Controls.Add(labelHumidityCaption);
+		groupState.Controls.Add(labelHumidity);
 		groupState.Controls.Add(labelTemperatureId);
+		groupState.Controls.Add(labelTemperatureCaption);
+		groupState.Controls.Add(labelTemperature);
 		groupState.Controls.Add(labelFaultId);
+		groupState.Controls.Add(labelFaultCaption);
+		groupState.Controls.Add(labelFault);
 		groupState.Controls.Add(labelWarmingId);
+		groupState.Controls.Add(labelWarmingCaption);
+		groupState.Controls.Add(labelWarming);
 		groupState.Controls.Add(labelDryLeftId);
+		groupState.Controls.Add(labelDryLeftCaption);
+		groupState.Controls.Add(labelDryLeft);
 		groupState.Controls.Add(labelTimerLeftId);
-		groupState.Location = new Point(12, 108);
+		groupState.Controls.Add(labelTimerLeftCaption);
+		groupState.Controls.Add(labelTimerLeft);
 		groupState.Name = "groupState";
-		groupState.Size = new Size(370, 214);
-		groupState.TabIndex = 1;
 		groupState.TabStop = false;
-		groupState.Text = "Состояніе";
 		// 
 		// labelTimerLeft
 		// 
-		labelTimerLeft.AutoSize = true;
-		labelTimerLeft.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-		labelTimerLeft.Location = new Point(161, 185);
+		resources.ApplyResources(labelTimerLeft, "labelTimerLeft");
 		labelTimerLeft.Name = "labelTimerLeft";
-		labelTimerLeft.Size = new Size(19, 15);
-		labelTimerLeft.TabIndex = 17;
-		labelTimerLeft.Text = "—";
 		// 
 		// labelDryLeft
 		// 
-		labelDryLeft.AutoSize = true;
-		labelDryLeft.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-		labelDryLeft.Location = new Point(161, 154);
+		resources.ApplyResources(labelDryLeft, "labelDryLeft");
 		labelDryLeft.Name = "labelDryLeft";
-		labelDryLeft.Size = new Size(19, 15);
-		labelDryLeft.TabIndex = 14;
-		labelDryLeft.Text = "—";
 		// 
 		// labelWarming
 		// 
-		labelWarming.AutoSize = true;
-		labelWarming.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-		labelWarming.Location = new Point(161, 123);
+		resources.ApplyResources(labelWarming, "labelWarming");
 		labelWarming.Name = "labelWarming";
-		labelWarming.Size = new Size(19, 15);
-		labelWarming.TabIndex = 11;
-		labelWarming.Text = "—";
 		// 
 		// labelFault
 		// 
-		labelFault.AutoSize = true;
-		labelFault.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-		labelFault.Location = new Point(161, 92);
+		resources.ApplyResources(labelFault, "labelFault");
 		labelFault.Name = "labelFault";
-		labelFault.Size = new Size(19, 15);
-		labelFault.TabIndex = 8;
-		labelFault.Text = "—";
 		// 
 		// labelTemperature
 		// 
-		labelTemperature.AutoSize = true;
-		labelTemperature.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-		labelTemperature.Location = new Point(161, 60);
+		resources.ApplyResources(labelTemperature, "labelTemperature");
 		labelTemperature.Name = "labelTemperature";
-		labelTemperature.Size = new Size(26, 21);
-		labelTemperature.TabIndex = 5;
-		labelTemperature.Text = "—";
 		// 
 		// labelHumidity
 		// 
-		labelHumidity.AutoSize = true;
-		labelHumidity.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
-		labelHumidity.Location = new Point(161, 24);
+		resources.ApplyResources(labelHumidity, "labelHumidity");
 		labelHumidity.Name = "labelHumidity";
-		labelHumidity.Size = new Size(35, 30);
-		labelHumidity.TabIndex = 2;
-		labelHumidity.Text = "—";
 		// 
 		// labelHumidityId
 		// 
-		labelHumidityId.AutoSize = true;
-		labelHumidityId.Font = new Font("Segoe UI Light", 7F);
+		resources.ApplyResources(labelHumidityId, "labelHumidityId");
 		labelHumidityId.ForeColor = SystemColors.GrayText;
-		labelHumidityId.Location = new Point(6, 34);
 		labelHumidityId.Name = "labelHumidityId";
-		labelHumidityId.Size = new Size(16, 12);
-		labelHumidityId.TabIndex = 0;
-		labelHumidityId.Text = "3.1";
 		// 
 		// labelTemperatureId
 		// 
-		labelTemperatureId.AutoSize = true;
-		labelTemperatureId.Font = new Font("Segoe UI Light", 7F);
+		resources.ApplyResources(labelTemperatureId, "labelTemperatureId");
 		labelTemperatureId.ForeColor = SystemColors.GrayText;
-		labelTemperatureId.Location = new Point(6, 64);
 		labelTemperatureId.Name = "labelTemperatureId";
-		labelTemperatureId.Size = new Size(17, 12);
-		labelTemperatureId.TabIndex = 3;
-		labelTemperatureId.Text = "3.2";
 		// 
 		// labelFaultId
 		// 
-		labelFaultId.AutoSize = true;
-		labelFaultId.Font = new Font("Segoe UI Light", 7F);
+		resources.ApplyResources(labelFaultId, "labelFaultId");
 		labelFaultId.ForeColor = SystemColors.GrayText;
-		labelFaultId.Location = new Point(6, 92);
 		labelFaultId.Name = "labelFaultId";
-		labelFaultId.Size = new Size(17, 12);
-		labelFaultId.TabIndex = 6;
-		labelFaultId.Text = "2.2";
 		// 
 		// labelWarmingId
 		// 
-		labelWarmingId.AutoSize = true;
-		labelWarmingId.Font = new Font("Segoe UI Light", 7F);
+		resources.ApplyResources(labelWarmingId, "labelWarmingId");
 		labelWarmingId.ForeColor = SystemColors.GrayText;
-		labelWarmingId.Location = new Point(6, 123);
 		labelWarmingId.Name = "labelWarmingId";
-		labelWarmingId.Size = new Size(17, 12);
-		labelWarmingId.TabIndex = 9;
-		labelWarmingId.Text = "7.3";
 		// 
 		// labelDryLeftId
 		// 
-		labelDryLeftId.AutoSize = true;
-		labelDryLeftId.Font = new Font("Segoe UI Light", 7F);
+		resources.ApplyResources(labelDryLeftId, "labelDryLeftId");
 		labelDryLeftId.ForeColor = SystemColors.GrayText;
-		labelDryLeftId.Location = new Point(6, 154);
 		labelDryLeftId.Name = "labelDryLeftId";
-		labelDryLeftId.Size = new Size(17, 12);
-		labelDryLeftId.TabIndex = 12;
-		labelDryLeftId.Text = "7.2";
 		// 
 		// labelTimerLeftId
 		// 
-		labelTimerLeftId.AutoSize = true;
-		labelTimerLeftId.Font = new Font("Segoe UI Light", 7F);
+		resources.ApplyResources(labelTimerLeftId, "labelTimerLeftId");
 		labelTimerLeftId.ForeColor = SystemColors.GrayText;
-		labelTimerLeftId.Location = new Point(6, 185);
 		labelTimerLeftId.Name = "labelTimerLeftId";
-		labelTimerLeftId.Size = new Size(17, 12);
-		labelTimerLeftId.TabIndex = 15;
-		labelTimerLeftId.Text = "8.3";
 		// 
 		// statusStrip
 		// 
 		statusStrip.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel, toolStripStatusTime });
-		statusStrip.Location = new Point(0, 795);
+		resources.ApplyResources(statusStrip, "statusStrip");
 		statusStrip.Name = "statusStrip";
 		statusStrip.ShowItemToolTips = true;
-		statusStrip.Size = new Size(394, 22);
 		statusStrip.SizingGrip = false;
-		statusStrip.TabIndex = 3;
 		// 
 		// toolStripStatusLabel
 		// 
+		toolStripStatusLabel.LiveSetting = System.Windows.Forms.Automation.AutomationLiveSetting.Polite;
 		toolStripStatusLabel.Name = "toolStripStatusLabel";
-		toolStripStatusLabel.Size = new Size(379, 17);
+		resources.ApplyResources(toolStripStatusLabel, "toolStripStatusLabel");
 		toolStripStatusLabel.Spring = true;
-		toolStripStatusLabel.TextAlign = ContentAlignment.MiddleLeft;
 		// 
 		// toolStripStatusTime
 		// 
-		toolStripStatusTime.AccessibleName = "Обновлено въ";
+		resources.ApplyResources(toolStripStatusTime, "toolStripStatusTime");
 		toolStripStatusTime.Name = "toolStripStatusTime";
-		toolStripStatusTime.Size = new Size(0, 17);
-		toolStripStatusTime.ToolTipText = "Обновлено въ";
+		// 
+		// labelTimeOff
+		// 
+		resources.ApplyResources(labelTimeOff, "labelTimeOff");
+		labelTimeOff.Name = "labelTimeOff";
 		// 
 		// labelPowerId
 		// 
-		labelPowerId.AutoSize = true;
-		labelPowerId.Font = new Font("Segoe UI Light", 7F);
+		resources.ApplyResources(labelPowerId, "labelPowerId");
 		labelPowerId.ForeColor = SystemColors.GrayText;
-		labelPowerId.Location = new Point(6, 36);
 		labelPowerId.Name = "labelPowerId";
-		labelPowerId.Size = new Size(16, 12);
-		labelPowerId.TabIndex = 0;
-		labelPowerId.Text = "2.1";
 		// 
 		// labelModeId
 		// 
-		labelModeId.AutoSize = true;
-		labelModeId.Font = new Font("Segoe UI Light", 7F);
+		resources.ApplyResources(labelModeId, "labelModeId");
 		labelModeId.ForeColor = SystemColors.GrayText;
-		labelModeId.Location = new Point(6, 84);
 		labelModeId.Name = "labelModeId";
-		labelModeId.Size = new Size(17, 12);
-		labelModeId.TabIndex = 4;
-		labelModeId.Text = "2.3";
 		// 
 		// labelTargetId
 		// 
-		labelTargetId.AutoSize = true;
-		labelTargetId.Font = new Font("Segoe UI Light", 7F);
+		resources.ApplyResources(labelTargetId, "labelTargetId");
 		labelTargetId.ForeColor = SystemColors.GrayText;
-		labelTargetId.Location = new Point(6, 151);
 		labelTargetId.Name = "labelTargetId";
-		labelTargetId.Size = new Size(17, 12);
-		labelTargetId.TabIndex = 8;
-		labelTargetId.Text = "2.5";
 		// 
 		// labelLightId
 		// 
-		labelLightId.AutoSize = true;
-		labelLightId.Font = new Font("Segoe UI Light", 7F);
+		resources.ApplyResources(labelLightId, "labelLightId");
 		labelLightId.ForeColor = SystemColors.GrayText;
-		labelLightId.Location = new Point(6, 215);
 		labelLightId.Name = "labelLightId";
-		labelLightId.Size = new Size(16, 12);
-		labelLightId.TabIndex = 13;
-		labelLightId.Text = "5.1";
 		// 
 		// labelSoundId
 		// 
-		labelSoundId.AutoSize = true;
-		labelSoundId.Font = new Font("Segoe UI Light", 7F);
+		resources.ApplyResources(labelSoundId, "labelSoundId");
 		labelSoundId.ForeColor = SystemColors.GrayText;
-		labelSoundId.Location = new Point(122, 267);
 		labelSoundId.Name = "labelSoundId";
-		labelSoundId.Size = new Size(16, 12);
-		labelSoundId.TabIndex = 17;
-		labelSoundId.Text = "4.1";
 		// 
 		// labelLockId
 		// 
-		labelLockId.AutoSize = true;
-		labelLockId.Font = new Font("Segoe UI Light", 7F);
+		resources.ApplyResources(labelLockId, "labelLockId");
 		labelLockId.ForeColor = SystemColors.GrayText;
-		labelLockId.Location = new Point(122, 292);
 		labelLockId.Name = "labelLockId";
-		labelLockId.Size = new Size(16, 12);
-		labelLockId.TabIndex = 19;
-		labelLockId.Text = "6.1";
 		// 
 		// labelDryAfterOffId
 		// 
-		labelDryAfterOffId.AutoSize = true;
-		labelDryAfterOffId.Font = new Font("Segoe UI Light", 7F);
+		resources.ApplyResources(labelDryAfterOffId, "labelDryAfterOffId");
 		labelDryAfterOffId.ForeColor = SystemColors.GrayText;
-		labelDryAfterOffId.Location = new Point(122, 317);
 		labelDryAfterOffId.Name = "labelDryAfterOffId";
-		labelDryAfterOffId.Size = new Size(16, 12);
-		labelDryAfterOffId.TabIndex = 21;
-		labelDryAfterOffId.Text = "7.1";
 		// 
 		// labelTimerId
 		// 
-		labelTimerId.AutoSize = true;
-		labelTimerId.Font = new Font("Segoe UI Light", 7F);
+		resources.ApplyResources(labelTimerId, "labelTimerId");
 		labelTimerId.ForeColor = SystemColors.GrayText;
-		labelTimerId.Location = new Point(6, 350);
 		labelTimerId.Name = "labelTimerId";
-		labelTimerId.Size = new Size(16, 12);
-		labelTimerId.TabIndex = 23;
-		labelTimerId.Text = "8.1";
 		// 
 		// labelLightModeId
 		// 
-		labelLightModeId.AutoSize = true;
-		labelLightModeId.Font = new Font("Segoe UI Light", 7F);
+		resources.ApplyResources(labelLightModeId, "labelLightModeId");
 		labelLightModeId.ForeColor = SystemColors.GrayText;
-		labelLightModeId.Location = new Point(122, 215);
 		labelLightModeId.Name = "labelLightModeId";
-		labelLightModeId.Size = new Size(17, 12);
-		labelLightModeId.TabIndex = 15;
-		labelLightModeId.Text = "5.2";
 		// 
 		// labelTimerValueId
 		// 
-		labelTimerValueId.AutoSize = true;
-		labelTimerValueId.Font = new Font("Segoe UI Light", 7F);
+		resources.ApplyResources(labelTimerValueId, "labelTimerValueId");
 		labelTimerValueId.ForeColor = SystemColors.GrayText;
-		labelTimerValueId.Location = new Point(122, 349);
 		labelTimerValueId.Name = "labelTimerValueId";
-		labelTimerValueId.Size = new Size(17, 12);
-		labelTimerValueId.TabIndex = 25;
-		labelTimerValueId.Text = "8.2";
 		// 
 		// labelTimerMnutes
 		// 
-		labelTimerMnutes.AutoSize = true;
-		labelTimerMnutes.Location = new Point(220, 347);
+		resources.ApplyResources(labelTimerMnutes, "labelTimerMnutes");
 		labelTimerMnutes.Name = "labelTimerMnutes";
-		labelTimerMnutes.Size = new Size(48, 15);
-		labelTimerMnutes.TabIndex = 27;
-		labelTimerMnutes.Text = "минутъ";
 		// 
 		// groupControls
 		// 
-		groupControls.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-		groupControls.Controls.Add(labelTimerValueId);
-		groupControls.Controls.Add(labelLightModeId);
+		resources.ApplyResources(groupControls, "groupControls");
+		groupControls.Controls.Add(labelPowerId);
+		groupControls.Controls.Add(labelPowerCaption);
+		groupControls.Controls.Add(checkBoxPower);
 		groupControls.Controls.Add(buttonToggle);
+		groupControls.Controls.Add(labelModeId);
+		groupControls.Controls.Add(labelModeCaption);
+		groupControls.Controls.Add(listBoxMode);
 		groupControls.Controls.Add(buttonLoopMode);
-		groupControls.Controls.Add(buttonResetFilter);
-		groupControls.Controls.Add(checkBoxTimer);
-		groupControls.Controls.Add(numericTimerMinutes);
-		groupControls.Controls.Add(dateTimeOff);
-		groupControls.Controls.Add(labelTimeOff);
-		groupControls.Controls.Add(checkBoxDryAfterOff);
-		groupControls.Controls.Add(checkBoxLock);
-		groupControls.Controls.Add(checkBoxSound);
-		groupControls.Controls.Add(listBoxLight);
-		groupControls.Controls.Add(checkBoxLight);
+		groupControls.Controls.Add(labelTargetId);
+		groupControls.Controls.Add(labelTargetCaption);
 		groupControls.Controls.Add(labelTarget);
 		groupControls.Controls.Add(panelTargetScale);
 		groupControls.Controls.Add(trackBarTarget);
-		groupControls.Controls.Add(labelTimerMnutes);
-		groupControls.Controls.Add(labelTargetCaption);
-		groupControls.Controls.Add(listBoxMode);
-		groupControls.Controls.Add(labelModeCaption);
-		groupControls.Controls.Add(checkBoxPower);
-		groupControls.Controls.Add(labelPowerCaption);
-		groupControls.Controls.Add(labelPowerId);
-		groupControls.Controls.Add(labelModeId);
-		groupControls.Controls.Add(labelTargetId);
 		groupControls.Controls.Add(labelLightId);
+		groupControls.Controls.Add(checkBoxLight);
+		groupControls.Controls.Add(labelLightModeId);
+		groupControls.Controls.Add(listBoxLight);
 		groupControls.Controls.Add(labelSoundId);
+		groupControls.Controls.Add(checkBoxSound);
 		groupControls.Controls.Add(labelLockId);
+		groupControls.Controls.Add(checkBoxLock);
 		groupControls.Controls.Add(labelDryAfterOffId);
+		groupControls.Controls.Add(checkBoxDryAfterOff);
 		groupControls.Controls.Add(labelTimerId);
-		groupControls.Enabled = false;
-		groupControls.Location = new Point(12, 328);
+		groupControls.Controls.Add(checkBoxTimer);
+		groupControls.Controls.Add(labelTimerValueId);
+		groupControls.Controls.Add(numericTimerMinutes);
+		groupControls.Controls.Add(labelTimerMnutes);
+		groupControls.Controls.Add(dateTimeOff);
+		groupControls.Controls.Add(labelTimeOff);
+		groupControls.Controls.Add(buttonResetFilter);
 		groupControls.Name = "groupControls";
-		groupControls.Size = new Size(370, 456);
-		groupControls.TabIndex = 1;
 		groupControls.TabStop = false;
-		groupControls.Text = "Управленіе";
 		// 
 		// buttonLoopMode
 		// 
-		buttonLoopMode.AccessibleDescription = "Дѣйствіе MIoT 7.2 loop-mode";
-		buttonLoopMode.AccessibleName = "Слѣдующій режимъ";
-		buttonLoopMode.Font = new Font("Segoe UI", 12F);
-		buttonLoopMode.Location = new Point(265, 76);
+		resources.ApplyResources(buttonLoopMode, "buttonLoopMode");
 		buttonLoopMode.Name = "buttonLoopMode";
-		buttonLoopMode.Size = new Size(32, 49);
-		buttonLoopMode.TabIndex = 7;
-		buttonLoopMode.Text = "↓";
-		toolTip.SetToolTip(buttonLoopMode, "Слѣдующій режимъ по кругу (дѣйствіе loop-mode 7.2)");
+		toolTip.SetToolTip(buttonLoopMode, resources.GetString("buttonLoopMode.ToolTip"));
 		buttonLoopMode.UseVisualStyleBackColor = true;
 		buttonLoopMode.Click += LoopMode_Click;
 		// 
 		// checkBoxTimer
 		// 
-		checkBoxTimer.AccessibleDescription = "MIoT 8.1";
-		checkBoxTimer.AccessibleName = "Таймеръ выключенія включёнъ";
-		checkBoxTimer.AutoSize = true;
-		checkBoxTimer.CheckAlign = ContentAlignment.MiddleRight;
-		checkBoxTimer.Location = new Point(37, 347);
+		resources.ApplyResources(checkBoxTimer, "checkBoxTimer");
 		checkBoxTimer.Name = "checkBoxTimer";
-		checkBoxTimer.Size = new Size(78, 19);
-		checkBoxTimer.TabIndex = 24;
-		checkBoxTimer.Text = "Тай&меръ:";
 		checkBoxTimer.UseVisualStyleBackColor = true;
 		checkBoxTimer.CheckedChanged += Timer_CheckedChanged;
 		// 
-		// dateTimeOff
-		// 
-		dateTimeOff.AccessibleDescription = "Сейчасъ плюсъ таймеръ; если измѣнить — таймеръ станетъ этимъ временемъ минусъ сейчасъ";
-		dateTimeOff.AccessibleName = "Время выключенія по таймеру";
-		dateTimeOff.CustomFormat = "HH:mm";
-		dateTimeOff.Format = DateTimePickerFormat.Custom;
-		dateTimeOff.Location = new Point(144, 376);
-		dateTimeOff.Name = "dateTimeOff";
-		dateTimeOff.ShowUpDown = true;
-		dateTimeOff.Size = new Size(70, 23);
-		dateTimeOff.TabIndex = 28;
-		dateTimeOff.ValueChanged += TimeOff_ValueChanged;
-		// 
-		// labelTimeOff
-		// 
-		labelTimeOff.AutoSize = true;
-		labelTimeOff.Location = new Point(220, 380);
-		labelTimeOff.Name = "labelTimeOff";
-		labelTimeOff.Size = new Size(97, 15);
-		labelTimeOff.TabIndex = 30;
-		labelTimeOff.Text = "время выключенія";
-		// 
 		// numericTimerMinutes
 		// 
-		numericTimerMinutes.AccessibleDescription = "MIoT 8.2";
-		numericTimerMinutes.AccessibleName = "Таймеръ выключенія, минутъ";
-		numericTimerMinutes.Location = new Point(144, 345);
+		resources.ApplyResources(numericTimerMinutes, "numericTimerMinutes");
 		numericTimerMinutes.Maximum = new decimal(new int[] { 720, 0, 0, 0 });
 		numericTimerMinutes.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
 		numericTimerMinutes.Name = "numericTimerMinutes";
-		numericTimerMinutes.Size = new Size(70, 23);
-		numericTimerMinutes.TabIndex = 26;
-		numericTimerMinutes.TextAlign = HorizontalAlignment.Center;
 		numericTimerMinutes.Value = new decimal(new int[] { 60, 0, 0, 0 });
 		numericTimerMinutes.ValueChanged += TimerMinutes_ValueChanged;
 		// 
+		// dateTimeOff
+		// 
+		resources.ApplyResources(dateTimeOff, "dateTimeOff");
+		dateTimeOff.Format = DateTimePickerFormat.Custom;
+		dateTimeOff.Name = "dateTimeOff";
+		dateTimeOff.ShowUpDown = true;
+		dateTimeOff.ValueChanged += TimeOff_ValueChanged;
+		// 
 		// checkBoxDryAfterOff
 		// 
-		checkBoxDryAfterOff.AccessibleDescription = "MIoT 7.1";
-		checkBoxDryAfterOff.AccessibleName = "Просушка послѣ выключенія";
-		checkBoxDryAfterOff.AutoSize = true;
-		checkBoxDryAfterOff.Location = new Point(144, 314);
+		resources.ApplyResources(checkBoxDryAfterOff, "checkBoxDryAfterOff");
 		checkBoxDryAfterOff.Name = "checkBoxDryAfterOff";
-		checkBoxDryAfterOff.Size = new Size(191, 19);
-		checkBoxDryAfterOff.TabIndex = 22;
-		checkBoxDryAfterOff.Text = "Просу&шка послѣ выключенія";
 		checkBoxDryAfterOff.UseVisualStyleBackColor = true;
 		checkBoxDryAfterOff.CheckedChanged += DryAfterOff_CheckedChanged;
 		// 
 		// checkBoxLock
 		// 
-		checkBoxLock.AccessibleDescription = "MIoT 6.1";
-		checkBoxLock.AccessibleName = "Блокировка кнопокъ";
-		checkBoxLock.AutoSize = true;
-		checkBoxLock.Location = new Point(144, 289);
+		resources.ApplyResources(checkBoxLock, "checkBoxLock");
 		checkBoxLock.Name = "checkBoxLock";
-		checkBoxLock.Size = new Size(142, 19);
-		checkBoxLock.TabIndex = 20;
-		checkBoxLock.Text = "&Блокировка кнопокъ";
 		checkBoxLock.UseVisualStyleBackColor = true;
 		checkBoxLock.CheckedChanged += Lock_CheckedChanged;
 		// 
 		// checkBoxSound
 		// 
-		checkBoxSound.AccessibleDescription = "MIoT 4.1";
-		checkBoxSound.AccessibleName = "Звукъ кнопокъ";
-		checkBoxSound.AutoSize = true;
-		checkBoxSound.Location = new Point(144, 264);
+		resources.ApplyResources(checkBoxSound, "checkBoxSound");
 		checkBoxSound.Name = "checkBoxSound";
-		checkBoxSound.Size = new Size(108, 19);
-		checkBoxSound.TabIndex = 18;
-		checkBoxSound.Text = "&Звукъ кнопокъ";
 		checkBoxSound.UseVisualStyleBackColor = true;
 		checkBoxSound.CheckedChanged += Sound_CheckedChanged;
 		// 
 		// listBoxLight
 		// 
-		listBoxLight.AccessibleDescription = "MIoT 5.2";
-		listBoxLight.AccessibleName = "Яркость подсвѣтки";
+		resources.ApplyResources(listBoxLight, "listBoxLight");
 		listBoxLight.FormattingEnabled = true;
-		listBoxLight.Items.AddRange(new object[] { "Выключена", "Тусклая", "Яркая" });
-		listBoxLight.Location = new Point(144, 207);
+		listBoxLight.Items.AddRange(new object[] { resources.GetString("listBoxLight.Items"), resources.GetString("listBoxLight.Items1"), resources.GetString("listBoxLight.Items2") });
 		listBoxLight.Name = "listBoxLight";
-		listBoxLight.Size = new Size(115, 49);
-		listBoxLight.TabIndex = 16;
 		listBoxLight.SelectedIndexChanged += Light_SelectedIndexChanged;
 		// 
 		// checkBoxLight
 		// 
-		checkBoxLight.AccessibleDescription = "MIoT 5.1";
-		checkBoxLight.AccessibleName = "Подсвѣтка включена";
-		checkBoxLight.AutoSize = true;
-		checkBoxLight.CheckAlign = ContentAlignment.MiddleRight;
-		checkBoxLight.Location = new Point(28, 212);
+		resources.ApplyResources(checkBoxLight, "checkBoxLight");
 		checkBoxLight.Name = "checkBoxLight";
-		checkBoxLight.Size = new Size(87, 19);
-		checkBoxLight.TabIndex = 14;
-		checkBoxLight.Text = "Под&свѣтка:";
 		checkBoxLight.UseVisualStyleBackColor = true;
 		checkBoxLight.CheckedChanged += LightOn_CheckedChanged;
 		// 
 		// labelTarget
 		// 
-		labelTarget.AutoSize = true;
-		labelTarget.Location = new Point(98, 149);
+		resources.ApplyResources(labelTarget, "labelTarget");
 		labelTarget.Name = "labelTarget";
-		labelTarget.Size = new Size(32, 15);
-		labelTarget.TabIndex = 11;
-		labelTarget.Text = "50 %";
-		labelTarget.TextAlign = ContentAlignment.MiddleRight;
 		// 
 		// panelTargetScale
 		// 
-		panelTargetScale.AccessibleDescription = "Риски черезъ 10 %, рекомендуемый диапазонъ и влажность въ комнатѣ";
-		panelTargetScale.AccessibleName = "Шкала цѣлевой влажности";
-		panelTargetScale.Location = new Point(136, 175);
+		resources.ApplyResources(panelTargetScale, "panelTargetScale");
 		panelTargetScale.Name = "panelTargetScale";
-		panelTargetScale.Size = new Size(220, 24);
-		panelTargetScale.TabIndex = 12;
 		panelTargetScale.Paint += TargetScale_Paint;
 		// 
 		// trackBarTarget
 		// 
-		trackBarTarget.AccessibleDescription = "MIoT 2.5; рекомендуется 40…70";
-		trackBarTarget.AccessibleName = "Цѣлевая влажность, %";
-		trackBarTarget.Location = new Point(136, 141);
+		resources.ApplyResources(trackBarTarget, "trackBarTarget");
 		trackBarTarget.Maximum = 100;
 		trackBarTarget.Name = "trackBarTarget";
-		trackBarTarget.Size = new Size(220, 45);
-		trackBarTarget.TabIndex = 10;
 		trackBarTarget.TickFrequency = 10;
 		trackBarTarget.Value = 50;
 		trackBarTarget.ValueChanged += Target_ValueChanged;
 		// 
 		// listBoxMode
 		// 
-		listBoxMode.AccessibleDescription = "MIoT 2.3";
-		listBoxMode.AccessibleName = "Режимъ";
+		resources.ApplyResources(listBoxMode, "listBoxMode");
 		listBoxMode.FormattingEnabled = true;
-		listBoxMode.Items.AddRange(new object[] { "Умный", "Ночной", "Сушка бѣлья" });
-		listBoxMode.Location = new Point(144, 76);
+		listBoxMode.Items.AddRange(new object[] { resources.GetString("listBoxMode.Items"), resources.GetString("listBoxMode.Items1"), resources.GetString("listBoxMode.Items2") });
 		listBoxMode.Name = "listBoxMode";
-		listBoxMode.Size = new Size(115, 49);
-		listBoxMode.TabIndex = 6;
 		listBoxMode.SelectedIndexChanged += Mode_SelectedIndexChanged;
 		// 
 		// checkBoxPower
 		// 
-		checkBoxPower.AccessibleDescription = "MIoT 2.1";
-		checkBoxPower.AccessibleName = "Питаніе";
-		checkBoxPower.Appearance = Appearance.Button;
-		checkBoxPower.Location = new Point(144, 26);
+		resources.ApplyResources(checkBoxPower, "checkBoxPower");
 		checkBoxPower.Name = "checkBoxPower";
-		checkBoxPower.Size = new Size(115, 32);
-		checkBoxPower.TabIndex = 2;
-		checkBoxPower.Text = "Выключенъ";
-		checkBoxPower.TextAlign = ContentAlignment.MiddleCenter;
 		checkBoxPower.UseVisualStyleBackColor = true;
 		checkBoxPower.CheckedChanged += Power_CheckedChanged;
 		// 
@@ -859,21 +577,15 @@ partial class MainForm
 		// MainForm
 		// 
 		AcceptButton = buttonConnect;
-		AutoScaleDimensions = new SizeF(7F, 15F);
+		resources.ApplyResources(this, "$this");
 		AutoScaleMode = AutoScaleMode.Font;
-		ClientSize = new Size(394, 817);
-		Controls.Add(statusStrip);
-		Controls.Add(groupControls);
-		Controls.Add(groupState);
 		Controls.Add(groupConnection);
+		Controls.Add(groupState);
+		Controls.Add(groupControls);
+		Controls.Add(statusStrip);
 		FormBorderStyle = FormBorderStyle.FixedSingle;
-		Icon = (Icon)resources.GetObject("$this.Icon");
 		MaximizeBox = false;
-		MaximumSize = new Size(1000, 856);
-		MinimumSize = new Size(400, 856);
 		Name = "MainForm";
-		StartPosition = FormStartPosition.CenterScreen;
-		Text = "Xiaomi Smart Dehumidifier Lite";
 		groupConnection.ResumeLayout(false);
 		groupConnection.PerformLayout();
 		groupState.ResumeLayout(false);

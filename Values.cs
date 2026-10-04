@@ -1,5 +1,6 @@
 ﻿using System.Net;
 using System.Net.Sockets;
+using System.Text;
 
 namespace DehumidifierControl;
 
@@ -71,4 +72,15 @@ static class Values
 		-4007 => Error4007,
 		_ => Format(ErrorCode, code),
 	};
+
+	/// <summary>Словами: выключенъ / режимъ, прогрѣвъ, неисправность.</summary>
+	public static string StateText(Reading s) => AppendState(new(), s).ToString();
+
+	public static StringBuilder AppendState(StringBuilder text, Reading s)
+	{
+		text.Append(s.Power == false ? PowerOff : s.Mode switch { 0 => ModeSmart, 1 => ModeSleep, 2 => ModeDry, _ => "?" });
+		if (s.Warming == true) text.Append(", ").Append(ChartWarming);
+		if (s.Fault is byte f and > 0) text.Append(", ").Append(FaultText(f));
+		return text;
+	}
 }

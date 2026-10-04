@@ -357,6 +357,18 @@
   <data name="menuExit.Text" xml:space="preserve">
     <value>Za&amp;kończ</value>
   </data>
+  <data name="groupWatch.Text" xml:space="preserve">
+    <value>Obserwacja</value>
+  </data>
+  <data name="labelWaterCaption.Text" xml:space="preserve">
+    <value>Woda w powietrzu:</value>
+  </data>
+  <data name="labelEtaCaption.Text" xml:space="preserve">
+    <value>Do celu:</value>
+  </data>
+  <data name="buttonRecord.Text" xml:space="preserve">
+    <value>⚫ &amp;Nagrywaj</value>
+  </data>
   <data name="labelTemperatureCaption.Location" type="System.Drawing.Point, System.Drawing">
     <value>73, 62</value>
   </data>
@@ -437,5 +449,8 @@
   </data>
   <data name="checkBoxLock.Size" type="System.Drawing.Size, System.Drawing">
     <value>129, 19</value>
+  </data>
+  <data name="buttonRecord.ToolTip" xml:space="preserve">
+    <value>Rozpocznij lub zatrzymaj nagrywanie (F5)</value>
   </data>
 </root>

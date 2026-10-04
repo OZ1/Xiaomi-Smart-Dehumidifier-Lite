@@ -11,5 +11,26 @@
     <Setting Name="Location" Type="System.Drawing.Point" Scope="User">
       <Value Profile="(Default)">-1000000, -1000000</Value>
     </Setting>
+    <Setting Name="RoomVolume" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">40</Value>
+    </Setting>
+    <Setting Name="BufferFactor" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="RatedCapacity" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">13</Value>
+    </Setting>
+    <Setting Name="AirExchange" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">0.5</Value>
+    </Setting>
+    <Setting Name="OutdoorTemperature" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
+    <Setting Name="OutdoorHumidity" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">80</Value>
+    </Setting>
+    <Setting Name="MoistureSources" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">50</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

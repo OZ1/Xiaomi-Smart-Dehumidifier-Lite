@@ -354,6 +354,18 @@
   <data name="menuExit.Text" xml:space="preserve">
     <value>&amp;Излаз</value>
   </data>
+  <data name="groupWatch.Text" xml:space="preserve">
+    <value>Праћење</value>
+  </data>
+  <data name="labelWaterCaption.Text" xml:space="preserve">
+    <value>Вода у ваздуху:</value>
+  </data>
+  <data name="labelEtaCaption.Text" xml:space="preserve">
+    <value>До циља:</value>
+  </data>
+  <data name="buttonRecord.Text" xml:space="preserve">
+    <value>⚫ Сн&amp;имај</value>
+  </data>
   <data name="labelHumidityCaption.Location" type="System.Drawing.Point, System.Drawing">
     <value>86, 31</value>
   </data>
@@ -434,5 +446,8 @@
   </data>
   <data name="checkBoxLock.Size" type="System.Drawing.Size, System.Drawing">
     <value>115, 19</value>
+  </data>
+  <data name="buttonRecord.ToolTip" xml:space="preserve">
+    <value>Почни или заустави снимање (F5)</value>
   </data>
 </root>

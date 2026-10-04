@@ -609,33 +609,6 @@ namespace DehumidifierControl.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на {0} сут {1} ч.
-        /// </summary>
-        internal static string DurationDays {
-            get {
-                return ResourceManager.GetString("DurationDays", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на {0} ч {1:00} мин.
-        /// </summary>
-        internal static string DurationHours {
-            get {
-                return ResourceManager.GetString("DurationHours", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на {0} мин.
-        /// </summary>
-        internal static string DurationMinutes {
-            get {
-                return ResourceManager.GetString("DurationMinutes", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Ищет локализованную строку, похожую на Введи токенъ (32 шестнадцатеричныя цифры) и нажми «Подключиться».
         /// </summary>
         internal static string EnterToken {
@@ -974,6 +947,168 @@ namespace DehumidifierControl.Properties {
         internal static string WriteRejected {
             get {
                 return ResourceManager.GetString("WriteRejected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на ⚫ &amp;Вести запись.
+        /// </summary>
+        internal static string RecordStart {
+            get {
+                return ResourceManager.GetString("RecordStart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на ■ &amp;Остановить запись.
+        /// </summary>
+        internal static string RecordStop {
+            get {
+                return ResourceManager.GetString("RecordStop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Запись идётъ: {0}.
+        /// </summary>
+        internal static string RecordStarted {
+            get {
+                return ResourceManager.GetString("RecordStarted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Запись остановлена..
+        /// </summary>
+        internal static string RecordStopped {
+            get {
+                return ResourceManager.GetString("RecordStopped", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на {0:0.0} г/м³, роса {1:0.0} °Ц.
+        /// </summary>
+        internal static string WaterFormat {
+            get {
+                return ResourceManager.GetString("WaterFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на ≈ {0:t} (черезъ {1}), {2}.
+        /// </summary>
+        internal static string EtaFormat {
+            get {
+                return ResourceManager.GetString("EtaFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на не дойдётъ: предѣлъ ≈ {0:0} %, {1}.
+        /// </summary>
+        internal static string EtaNever {
+            get {
+                return ResourceManager.GetString("EtaNever", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на по модели.
+        /// </summary>
+        internal static string EtaByModel {
+            get {
+                return ResourceManager.GetString("EtaByModel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на по наблюденію.
+        /// </summary>
+        internal static string EtaByObservation {
+            get {
+                return ResourceManager.GetString("EtaByObservation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на цѣль достигнута.
+        /// </summary>
+        internal static string EtaReached {
+            get {
+                return ResourceManager.GetString("EtaReached", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на выключенъ.
+        /// </summary>
+        internal static string EtaOff {
+            get {
+                return ResourceManager.GetString("EtaOff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на сушка бѣлья — безъ цѣли.
+        /// </summary>
+        internal static string EtaDry {
+            get {
+                return ResourceManager.GetString("EtaDry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на ждётъ конца прогрѣва.
+        /// </summary>
+        internal static string EtaWarming {
+            get {
+                return ResourceManager.GetString("EtaWarming", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на стоитъ — неисправность.
+        /// </summary>
+        internal static string EtaFault {
+            get {
+                return ResourceManager.GetString("EtaFault", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на {0} мин.
+        /// </summary>
+        internal static string DurationMinutes {
+            get {
+                return ResourceManager.GetString("DurationMinutes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на {0} ч {1:00} мин.
+        /// </summary>
+        internal static string DurationHours {
+            get {
+                return ResourceManager.GetString("DurationHours", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на {0} сут {1} ч.
+        /// </summary>
+        internal static string DurationDays {
+            get {
+                return ResourceManager.GetString("DurationDays", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на прогрѣвъ.
+        /// </summary>
+        internal static string ChartWarming {
+            get {
+                return ResourceManager.GetString("ChartWarming", resourceCulture);
             }
         }
         

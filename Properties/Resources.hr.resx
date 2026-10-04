@@ -408,6 +408,60 @@
   <data name="ComfortTooHumid" xml:space="preserve">
     <value>prevlažno (od 70 %)</value>
   </data>
+  <data name="RecordStart" xml:space="preserve">
+    <value>⚫ Sni&amp;maj</value>
+  </data>
+  <data name="RecordStop" xml:space="preserve">
+    <value>■ Zaustavi sni&amp;manje</value>
+  </data>
+  <data name="RecordStarted" xml:space="preserve">
+    <value>Snimanje: {0}</value>
+  </data>
+  <data name="RecordStopped" xml:space="preserve">
+    <value>Snimanje zaustavljeno.</value>
+  </data>
+  <data name="WaterFormat" xml:space="preserve">
+    <value>{0:0.0} g/m³, rosište {1:0.0} °C</value>
+  </data>
+  <data name="EtaFormat" xml:space="preserve">
+    <value>≈ {0:t} (za {1}), {2}</value>
+  </data>
+  <data name="EtaNever" xml:space="preserve">
+    <value>neće dosegnuti: granica ≈ {0:0} %, {1}</value>
+  </data>
+  <data name="EtaByModel" xml:space="preserve">
+    <value>prema modelu</value>
+  </data>
+  <data name="EtaByObservation" xml:space="preserve">
+    <value>prema praćenju</value>
+  </data>
+  <data name="EtaReached" xml:space="preserve">
+    <value>cilj dosegnut</value>
+  </data>
+  <data name="EtaOff" xml:space="preserve">
+    <value>isključen</value>
+  </data>
+  <data name="EtaDry" xml:space="preserve">
+    <value>sušenje rublja — bez cilja</value>
+  </data>
+  <data name="EtaWarming" xml:space="preserve">
+    <value>čeka kraj zagrijavanja</value>
+  </data>
+  <data name="EtaFault" xml:space="preserve">
+    <value>stoji — kvar</value>
+  </data>
+  <data name="DurationMinutes" xml:space="preserve">
+    <value>{0} min</value>
+  </data>
+  <data name="DurationHours" xml:space="preserve">
+    <value>{0} h {1:00} min</value>
+  </data>
+  <data name="DurationDays" xml:space="preserve">
+    <value>{0} d {1} h</value>
+  </data>
+  <data name="ChartWarming" xml:space="preserve">
+    <value>zagrijavanje</value>
+  </data>
   <data name="CliUsage" xml:space="preserve">
     <value>Upravljanje odvlaživačem Xiaomi Smart Dehumidifier Lite.
 Adresa i token uzimaju se iz postavki programa (iste kao u prozoru) ili se pišu ispred naredbi.
@@ -451,15 +505,6 @@ Token upisan u naredbeni redak vide drugi programi na ovom računalu i ostaje u 
 Da to izbjegneš, poveži se jednom u prozoru: adresa i token spremit će se u postavke.
 
 Izlazni kod: 0 — uspjeh, 1 — greška veze ili odbijanje uređaja, 2 — neispravna naredba.</value>
-  </data>
-  <data name="DurationMinutes" xml:space="preserve">
-    <value>{0} min</value>
-  </data>
-  <data name="DurationHours" xml:space="preserve">
-    <value>{0} h {1:00} min</value>
-  </data>
-  <data name="DurationDays" xml:space="preserve">
-    <value>{0} d {1} h</value>
   </data>
   <data name="ConnectedTo" xml:space="preserve">
     <value>Povezano s {0}</value>

@@ -58,5 +58,89 @@ namespace DehumidifierControl.Properties {
                 this["Location"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("40")]
+        public double RoomVolume {
+            get {
+                return ((double)(this["RoomVolume"]));
+            }
+            set {
+                this["RoomVolume"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
+        public double BufferFactor {
+            get {
+                return ((double)(this["BufferFactor"]));
+            }
+            set {
+                this["BufferFactor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("13")]
+        public double RatedCapacity {
+            get {
+                return ((double)(this["RatedCapacity"]));
+            }
+            set {
+                this["RatedCapacity"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.5")]
+        public double AirExchange {
+            get {
+                return ((double)(this["AirExchange"]));
+            }
+            set {
+                this["AirExchange"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public double OutdoorTemperature {
+            get {
+                return ((double)(this["OutdoorTemperature"]));
+            }
+            set {
+                this["OutdoorTemperature"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("80")]
+        public double OutdoorHumidity {
+            get {
+                return ((double)(this["OutdoorHumidity"]));
+            }
+            set {
+                this["OutdoorHumidity"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("50")]
+        public double MoistureSources {
+            get {
+                return ((double)(this["MoistureSources"]));
+            }
+            set {
+                this["MoistureSources"] = value;
+            }
+        }
     }
 }

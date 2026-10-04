@@ -408,6 +408,60 @@
   <data name="ComfortTooHumid" xml:space="preserve">
     <value>сувише влажно (од 70 %)</value>
   </data>
+  <data name="RecordStart" xml:space="preserve">
+    <value>⚫ Сн&amp;имај</value>
+  </data>
+  <data name="RecordStop" xml:space="preserve">
+    <value>■ Заустави сн&amp;имање</value>
+  </data>
+  <data name="RecordStarted" xml:space="preserve">
+    <value>Снимање: {0}</value>
+  </data>
+  <data name="RecordStopped" xml:space="preserve">
+    <value>Снимање заустављено.</value>
+  </data>
+  <data name="WaterFormat" xml:space="preserve">
+    <value>{0:0.0} г/м³, тачка росе {1:0.0} °C</value>
+  </data>
+  <data name="EtaFormat" xml:space="preserve">
+    <value>≈ {0:t} (за {1}), {2}</value>
+  </data>
+  <data name="EtaNever" xml:space="preserve">
+    <value>неће стићи: граница ≈ {0:0} %, {1}</value>
+  </data>
+  <data name="EtaByModel" xml:space="preserve">
+    <value>по моделу</value>
+  </data>
+  <data name="EtaByObservation" xml:space="preserve">
+    <value>по праћењу</value>
+  </data>
+  <data name="EtaReached" xml:space="preserve">
+    <value>циљ достигнут</value>
+  </data>
+  <data name="EtaOff" xml:space="preserve">
+    <value>искључен</value>
+  </data>
+  <data name="EtaDry" xml:space="preserve">
+    <value>сушење веша — без циља</value>
+  </data>
+  <data name="EtaWarming" xml:space="preserve">
+    <value>чека крај загревања</value>
+  </data>
+  <data name="EtaFault" xml:space="preserve">
+    <value>стоји — квар</value>
+  </data>
+  <data name="DurationMinutes" xml:space="preserve">
+    <value>{0} мин</value>
+  </data>
+  <data name="DurationHours" xml:space="preserve">
+    <value>{0} ч {1:00} мин</value>
+  </data>
+  <data name="DurationDays" xml:space="preserve">
+    <value>{0} д {1} ч</value>
+  </data>
+  <data name="ChartWarming" xml:space="preserve">
+    <value>загревање</value>
+  </data>
   <data name="CliUsage" xml:space="preserve">
     <value>Управљање одвлаживачем Xiaomi Smart Dehumidifier Lite.
 Адреса и токен се узимају из подешавања програма (иста као у прозору) или се пишу испред команди.
@@ -451,15 +505,6 @@ siid.piid је број MIoT својства, као испод натписа 
 Да то избегнеш, повежи се једном у прозору: адреса и токен ће се сачувати у подешавањима.
 
 Излазни код: 0 — успех, 1 — грешка везе или одбијање уређаја, 2 — неисправна команда.</value>
-  </data>
-  <data name="DurationMinutes" xml:space="preserve">
-    <value>{0} мин</value>
-  </data>
-  <data name="DurationHours" xml:space="preserve">
-    <value>{0} ч {1:00} мин</value>
-  </data>
-  <data name="DurationDays" xml:space="preserve">
-    <value>{0} д {1} ч</value>
   </data>
   <data name="ConnectedTo" xml:space="preserve">
     <value>Повезано са {0}</value>

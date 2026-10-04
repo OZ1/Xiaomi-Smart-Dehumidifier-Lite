@@ -13,6 +13,7 @@ using static Byte;
 using static Char;
 using static Size;
 using static Task;
+using static Path;
 using static Int32;
 using static Array;
 using static Single;
@@ -23,6 +24,7 @@ using static DateTime;
 using static TimeSpan;
 using static Color;
 using static SystemColors;
+using static CollectionsMarshal;
 using static ToolStripDropDownCloseReason;
 using static FontStyle;
 using static LayoutKind;
@@ -38,6 +40,8 @@ using static DehumidifierState;
 using static ComfortScale;
 using static Network;
 using static Values;
+using static SampleKind;
+using static Psychrometrics;
 
 using State = DehumidifierState;
 
@@ -52,6 +56,16 @@ public partial class MainForm : Form
 
 	readonly Font ValueFont; // жирный, изъ дизайнера — для значеній, на которыя надо обратить вниманіе
 	readonly Font QuietFont; // нежирный — для «всё въ порядкѣ»: неисправность отсутствуетъ, прогрѣва нѣтъ
+
+	Recorder? Recorder;          // идётъ запись — иначе null
+	Reading? LastReading;        // послѣднее состояніе — для разсчётовъ
+
+	/// <summary>Измѣненія за послѣднія два часа, и безъ записи, — по нимъ оцѣнивается, когда влажность дойдётъ до цѣли.</summary>
+	readonly List<Sample>    History = [];
+	static readonly TimeSpan HistoryLength = new(hours:2, 0,0);
+
+	/// <summary>Сколько послѣдняго осушенія брать для живой оцѣнки.</summary>
+	static readonly TimeSpan EtaWindow = new(hours:1, 0,0);
 
 	byte? RoomHumidity { get; set // влажность въ комнатѣ — для треугольника подъ шкалой
 	{
@@ -79,6 +93,7 @@ public partial class MainForm : Form
 			StartPosition = Manual;
 			Location = Settings.Default.Location;
 		}
+		UpdateRecordButton();
 
 		textBoxIP   .Text = App.IP    is not null ?      App.IP.ToString() : Settings.Default.IP;
 		textBoxToken.Text = App.Token is not null ? ToHexString(App.Token) : Settings.Default.Token;
@@ -117,6 +132,7 @@ public partial class MainForm : Form
 	protected override void OnFormClosed(FormClosedEventArgs e)
 	{
 		pollTimer.Stop();
+		StopRecording();
 		notifyIcon.Visible = false;
 		base.OnFormClosed(e);
 	}
@@ -197,11 +213,15 @@ public partial class MainForm : Form
 		pollTimer.Stop();
 		targetDebounceTimer.Stop();
 		delayDebounceTimer.Stop();
+		StopRecording();
 		Device?.Dispose();
 		Device = null;
 		groupControls.Enabled = false;
 		RoomHumidity = null;
 		ShowTray();
+		History.Clear();
+		LastReading = null;
+		labelWater.Text = labelEta.Text = "—";
 		SetConnected(false);
 		SetStatus(Disconnected);
 		SetUpdated("");
@@ -243,6 +263,7 @@ public partial class MainForm : Form
 			State state = await device.GetStateAsync();
 			if (device != Device) return; // пока ждали, переподключились
 			ApplyState(state);
+			Observe(new(state));
 			groupControls.Enabled = true;
 			SetUpdated($"{Now:T}"); // слѣва не трогаемъ: тамъ можетъ быть сообщеніе объ ошибкѣ
 			if (PollFailed)
@@ -255,6 +276,7 @@ public partial class MainForm : Form
 		{
 			SetStatus(ex.Message, error: true);
 			PollFailed = true;
+			LinkLost();
 		}
 		catch
 		{
@@ -314,6 +336,134 @@ public partial class MainForm : Form
 		}
 	}
 
+	// ───── наблюденіе: запись, вода въ воздухѣ, когда дойдётъ до цѣли ─────
+
+	/// <summary>Пришло состояніе: въ исторію и въ запись — если что-то измѣнилось; вода въ воздухѣ и оцѣнка — заново.</summary>
+	void Observe(Reading reading)
+	{
+		DateTime now = Now;
+		LastReading = reading;
+		if (History.Count == 0 || History[^1].Kind == Lost || History[^1].State != reading)
+			History.Add(new(now,  History.Count == 0 ? Rec : Change, reading));
+		if (History.Count > 2) // записи идутъ по времени: сколько устарѣло — двоичнымъ поискомъ среди History[1..^1]
+			History.RemoveRange(0, ~AsSpan(History)[1..^1].BinarySearch(new OlderThan(now - HistoryLength)));
+		try
+		{
+			Recorder?.Add(now, reading);
+		}
+		catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
+		{
+			StopRecording();
+			SetStatus(ex.Message, error: true);
+		}
+		labelWater.Text = reading.Water is { } water && reading is { Temperature: { } t, Humidity: { } h } ? Format(WaterFormat, water, DewPoint(t, h)) : "—";
+		labelEta.Text = EtaText(reading);
+	}
+
+	/// <summary>Связь потеряна: въ исторіи и въ записи — lost (одинъ на весь обрывъ).</summary>
+	void LinkLost()
+	{
+		DateTime now = Now;
+		if (History.Count > 0 && History[^1].Kind != Lost)
+			History.Add(new(now, Lost, History[^1].State));
+		try
+		{
+			Recorder?.LinkLost(now);
+		}
+		catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
+		{
+			StopRecording();
+		}
+		labelEta.Text = "—";
+	}
+
+	/// <summary>Когда влажность дойдётъ до цѣли: по наблюденію за послѣднимъ осушеніемъ (подгонка экспоненты),
+	/// а пока наблюденій мало — по модели изъ разсчётовъ.</summary>
+	string EtaText(Reading r)
+	{
+		if (r.Water is not { } water || r.Temperature is not { } t || r.Humidity is not { } h) return "—";
+		if (r.Power == false) return EtaOff;
+		if (r.Fault is > 0) return EtaFault;
+		if (r.Warming == true) return EtaWarming;
+		if (r.Mode == LogFormat.DryMode) return EtaDry;
+		if (r.Target is not { } target) return "—";
+		if (h <= target) return EtaReached;
+		ExpFit? fit = MoistureFit.Recent(History, EtaWindow);
+		(double tau, double limit) = fit is { } f ? (f.Tau, f.Limit) : RoomModel.FromSettings().Course(t, working: true);
+		string source = fit is null ? EtaByModel : EtaByObservation;
+		Forecast forecast = Forecast.Estimate(water, t, target, tau, limit);
+		return forecast.Hours is { } hours
+			? Format(EtaFormat, Now.AddHours(Min(hours, 24 * 365)), Duration(FromHours(Min(hours, 24 * 365))), source)
+			: Format(EtaNever, forecast.LimitHumidity, source);
+	}
+
+	/// <summary>F5 — запись: изъ любого мѣста окна, какъ кнопки «Наблюденія»;
+	/// запись — только когда ея кнопка доступна (есть связь).</summary>
+	protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+	{
+		switch (keyData)
+		{
+			case Keys.F5:
+				if (buttonRecord.Enabled) Record_Click(this, EventArgs.Empty);
+				return true;
+		}
+		return base.ProcessCmdKey(ref msg, keyData);
+	}
+
+	void Record_Click(object? sender, EventArgs e)
+	{
+		if (Recorder is not null)
+		{
+			StopRecording();
+			SetStatus(RecordStopped);
+			return;
+		}
+		if (Device is null) return;
+		try
+		{
+			Recorder = new(Now);
+		}
+		catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
+		{
+			SetStatus(ex.Message, error: true);
+			return;
+		}
+		if (LastReading is {} reading && !PollFailed)
+			Recorder.Add(Now, reading);
+		SetStatus(Format(RecordStarted, GetFileName(Recorder.Path)));
+		UpdateRecordButton();
+	}
+
+	void StopRecording()
+	{
+		if (Recorder is not { } recorder) return;
+		Recorder = null;
+		try
+		{
+			recorder.Stop(Now);
+		}
+		catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
+		{
+			SetStatus(ex.Message, error: true);
+		}
+		UpdateRecordButton();
+	}
+
+	/// <summary>Начать запись можно, пока подключены; остановить — всегда.</summary>
+	void UpdateRecordButton()
+	{
+		buttonRecord.Text    = Recorder is null ? RecordStart : RecordStop;
+		buttonRecord.Enabled = Recorder is not null || Device is not null && textBoxIP.ReadOnly;
+	}
+
+	/// <summary>Уже открытое окно — развернуть, если свёрнуто, и вывести наверхъ.</summary>
+	static void Bring(Form form)
+	{
+		if (form.WindowState == FormWindowState.Minimized)
+			form.WindowState  = FormWindowState.Normal;
+		form.Activate();
+	}
+
 	void SetStatus(string text, bool error = false)
 	{
 		toolStripStatusLabel.Text = $"{Now:T} {text}";
@@ -341,6 +491,7 @@ public partial class MainForm : Form
 		groupConnection.Visible = !connected;
 		buttonDisconnect.Visible = connected;
 		HiddenConnectionGroupHeight = connected ? groupState.Top - groupConnection.Top + HiddenConnectionGroupHeight : 0; // «Состояніе» встаётъ на мѣсто рамки
+		UpdateRecordButton();
 	}
 
 	/// <summary>Высота спрятанной рамки подключенія вмѣстѣ съ промежуткомъ подъ нею — на столько поднято всё ниже; 0 — рамка на мѣстѣ, какъ въ дизайнерѣ.
@@ -353,12 +504,13 @@ public partial class MainForm : Form
 		field = value;
 		// мѣста — до смѣны высоты окна: якорь снизу у «Управленія» растягиваетъ его не всегда (у ещё не показаннаго окна — нѣтъ),
 		// поэтому ставимъ всё явно, а не поправляемъ растянутое
-		Rectangle state = groupState.Bounds, controls = groupControls.Bounds;
+		Rectangle state = groupState.Bounds, controls = groupControls.Bounds, watch = groupWatch.Bounds;
 		Size client = ClientSize; // наименьшій размѣръ — вмѣстѣ съ окномъ, иначе окно не ужмётся
 		MinimumSize = new(MinimumSize.Width, MinimumSize.Height + below);
 		ClientSize = new(client.Width, client.Height + below);
 		groupState   .SetBounds(state   .Left, state   .Top + below, state   .Width, state   .Height);
 		groupControls.SetBounds(controls.Left, controls.Top + below, controls.Width, controls.Height);
+		groupWatch   .SetBounds(watch   .Left, watch   .Top + below, watch   .Width, watch   .Height);
 	}}
 
 	void Power_CheckedChanged(object? sender, EventArgs e)
@@ -520,7 +672,7 @@ public partial class MainForm : Form
 	}
 
 	/// <summary>Свой цвѣтъ — только безъ высокой контрастности; въ ней — системный цвѣтъ текста, какъ у всего окна.</summary>
-	static Color Accent(Color color) => HighContrast ? ControlText : color;
+	internal static Color Accent(Color color) => HighContrast ? ControlText : color;
 
 	// ───── шкала подъ ползункомъ цѣлевой влажности ─────
 

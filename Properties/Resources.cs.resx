@@ -408,6 +408,60 @@
   <data name="ComfortTooHumid" xml:space="preserve">
     <value>příliš vlhko (od 70 %)</value>
   </data>
+  <data name="RecordStart" xml:space="preserve">
+    <value>⚫ Na&amp;hrávat</value>
+  </data>
+  <data name="RecordStop" xml:space="preserve">
+    <value>■ Zastavit na&amp;hrávání</value>
+  </data>
+  <data name="RecordStarted" xml:space="preserve">
+    <value>Nahrává se: {0}</value>
+  </data>
+  <data name="RecordStopped" xml:space="preserve">
+    <value>Nahrávání zastaveno.</value>
+  </data>
+  <data name="WaterFormat" xml:space="preserve">
+    <value>{0:0.0} g/m³, rosný bod {1:0.0} °C</value>
+  </data>
+  <data name="EtaFormat" xml:space="preserve">
+    <value>≈ {0:t} (za {1}), {2}</value>
+  </data>
+  <data name="EtaNever" xml:space="preserve">
+    <value>nedosáhne: mez ≈ {0:0} %, {1}</value>
+  </data>
+  <data name="EtaByModel" xml:space="preserve">
+    <value>podle modelu</value>
+  </data>
+  <data name="EtaByObservation" xml:space="preserve">
+    <value>podle sledování</value>
+  </data>
+  <data name="EtaReached" xml:space="preserve">
+    <value>cíl dosažen</value>
+  </data>
+  <data name="EtaOff" xml:space="preserve">
+    <value>vypnuto</value>
+  </data>
+  <data name="EtaDry" xml:space="preserve">
+    <value>sušení prádla — bez cíle</value>
+  </data>
+  <data name="EtaWarming" xml:space="preserve">
+    <value>čeká na konec zahřívání</value>
+  </data>
+  <data name="EtaFault" xml:space="preserve">
+    <value>stojí — porucha</value>
+  </data>
+  <data name="DurationMinutes" xml:space="preserve">
+    <value>{0} min</value>
+  </data>
+  <data name="DurationHours" xml:space="preserve">
+    <value>{0} h {1:00} min</value>
+  </data>
+  <data name="DurationDays" xml:space="preserve">
+    <value>{0} d {1} h</value>
+  </data>
+  <data name="ChartWarming" xml:space="preserve">
+    <value>zahřívání</value>
+  </data>
   <data name="CliUsage" xml:space="preserve">
     <value>Ovládání odvlhčovače Xiaomi Smart Dehumidifier Lite.
 Adresa a token se berou z nastavení programu (stejné jako v okně) nebo se píší před příkazy.
@@ -451,15 +505,6 @@ Token zapsaný na příkazovém řádku vidí ostatní programy na tomto počít
 Abys tomu předešel, připoj se jednou v okně: adresa a token se uloží do nastavení.
 
 Návratový kód: 0 — úspěch, 1 — chyba spojení nebo odmítnutí zařízením, 2 — neplatný příkaz.</value>
-  </data>
-  <data name="DurationMinutes" xml:space="preserve">
-    <value>{0} min</value>
-  </data>
-  <data name="DurationHours" xml:space="preserve">
-    <value>{0} h {1:00} min</value>
-  </data>
-  <data name="DurationDays" xml:space="preserve">
-    <value>{0} d {1} h</value>
   </data>
   <data name="ConnectedTo" xml:space="preserve">
     <value>Připojeno k {0}</value>

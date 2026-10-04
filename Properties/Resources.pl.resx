@@ -408,6 +408,60 @@
   <data name="ComfortTooHumid" xml:space="preserve">
     <value>za wilgotno (od 70 %)</value>
   </data>
+  <data name="RecordStart" xml:space="preserve">
+    <value>⚫ &amp;Nagrywaj</value>
+  </data>
+  <data name="RecordStop" xml:space="preserve">
+    <value>■ Zatrzymaj &amp;nagrywanie</value>
+  </data>
+  <data name="RecordStarted" xml:space="preserve">
+    <value>Nagrywanie: {0}</value>
+  </data>
+  <data name="RecordStopped" xml:space="preserve">
+    <value>Nagrywanie zatrzymane.</value>
+  </data>
+  <data name="WaterFormat" xml:space="preserve">
+    <value>{0:0.0} g/m³, punkt rosy {1:0.0} °C</value>
+  </data>
+  <data name="EtaFormat" xml:space="preserve">
+    <value>≈ {0:t} (za {1}), {2}</value>
+  </data>
+  <data name="EtaNever" xml:space="preserve">
+    <value>nie osiągnie: granica ≈ {0:0} %, {1}</value>
+  </data>
+  <data name="EtaByModel" xml:space="preserve">
+    <value>wg modelu</value>
+  </data>
+  <data name="EtaByObservation" xml:space="preserve">
+    <value>wg obserwacji</value>
+  </data>
+  <data name="EtaReached" xml:space="preserve">
+    <value>cel osiągnięty</value>
+  </data>
+  <data name="EtaOff" xml:space="preserve">
+    <value>wyłączony</value>
+  </data>
+  <data name="EtaDry" xml:space="preserve">
+    <value>suszenie prania — bez celu</value>
+  </data>
+  <data name="EtaWarming" xml:space="preserve">
+    <value>czeka na koniec nagrzewania</value>
+  </data>
+  <data name="EtaFault" xml:space="preserve">
+    <value>stoi — usterka</value>
+  </data>
+  <data name="DurationMinutes" xml:space="preserve">
+    <value>{0} min</value>
+  </data>
+  <data name="DurationHours" xml:space="preserve">
+    <value>{0} h {1:00} min</value>
+  </data>
+  <data name="DurationDays" xml:space="preserve">
+    <value>{0} d {1} h</value>
+  </data>
+  <data name="ChartWarming" xml:space="preserve">
+    <value>nagrzewanie</value>
+  </data>
   <data name="CliUsage" xml:space="preserve">
     <value>Sterowanie osuszaczem Xiaomi Smart Dehumidifier Lite.
 Adres i token są pobierane z ustawień programu (tych samych co w oknie) albo podawane przed poleceniami.
@@ -451,15 +505,6 @@ Token wpisany w wierszu poleceń widzą inne programy na tym komputerze i zostaj
 Aby tego uniknąć, połącz się raz w oknie: adres i token zostaną zapisane w ustawieniach.
 
 Kod wyjścia: 0 — sukces, 1 — błąd połączenia lub odmowa urządzenia, 2 — nieprawidłowe polecenie.</value>
-  </data>
-  <data name="DurationMinutes" xml:space="preserve">
-    <value>{0} min</value>
-  </data>
-  <data name="DurationHours" xml:space="preserve">
-    <value>{0} h {1:00} min</value>
-  </data>
-  <data name="DurationDays" xml:space="preserve">
-    <value>{0} d {1} h</value>
   </data>
   <data name="ConnectedTo" xml:space="preserve">
     <value>Połączono z {0}</value>

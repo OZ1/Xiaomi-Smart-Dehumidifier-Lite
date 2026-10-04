@@ -408,6 +408,60 @@
   <data name="ComfortTooHumid" xml:space="preserve">
     <value>too humid (70 % and above)</value>
   </data>
+  <data name="RecordStart" xml:space="preserve">
+    <value>⚫ R&amp;ecord</value>
+  </data>
+  <data name="RecordStop" xml:space="preserve">
+    <value>■ Stop r&amp;ecording</value>
+  </data>
+  <data name="RecordStarted" xml:space="preserve">
+    <value>Recording: {0}</value>
+  </data>
+  <data name="RecordStopped" xml:space="preserve">
+    <value>Recording stopped.</value>
+  </data>
+  <data name="WaterFormat" xml:space="preserve">
+    <value>{0:0.0} g/m³, dew point {1:0.0} °C</value>
+  </data>
+  <data name="EtaFormat" xml:space="preserve">
+    <value>≈ {0:t} (in {1}), {2}</value>
+  </data>
+  <data name="EtaNever" xml:space="preserve">
+    <value>won&apos;t reach: limit ≈ {0:0} %, {1}</value>
+  </data>
+  <data name="EtaByModel" xml:space="preserve">
+    <value>by model</value>
+  </data>
+  <data name="EtaByObservation" xml:space="preserve">
+    <value>by observation</value>
+  </data>
+  <data name="EtaReached" xml:space="preserve">
+    <value>target reached</value>
+  </data>
+  <data name="EtaOff" xml:space="preserve">
+    <value>off</value>
+  </data>
+  <data name="EtaDry" xml:space="preserve">
+    <value>clothes drying — no target</value>
+  </data>
+  <data name="EtaWarming" xml:space="preserve">
+    <value>waiting for warm-up to end</value>
+  </data>
+  <data name="EtaFault" xml:space="preserve">
+    <value>stopped — fault</value>
+  </data>
+  <data name="DurationMinutes" xml:space="preserve">
+    <value>{0} min</value>
+  </data>
+  <data name="DurationHours" xml:space="preserve">
+    <value>{0} h {1:00} min</value>
+  </data>
+  <data name="DurationDays" xml:space="preserve">
+    <value>{0} d {1} h</value>
+  </data>
+  <data name="ChartWarming" xml:space="preserve">
+    <value>warm-up</value>
+  </data>
   <data name="CliUsage" xml:space="preserve">
     <value>Control of the Xiaomi Smart Dehumidifier Lite.
 The address and token are taken from the program settings (the same as in the window) or written before the commands.
@@ -451,15 +505,6 @@ A token written on the command line is visible to other programs on this compute
 To avoid that, connect once in the window: the address and token will be saved in the settings.
 
 Exit code: 0 — success, 1 — connection error or device refusal, 2 — invalid command.</value>
-  </data>
-  <data name="DurationMinutes" xml:space="preserve">
-    <value>{0} min</value>
-  </data>
-  <data name="DurationHours" xml:space="preserve">
-    <value>{0} h {1:00} min</value>
-  </data>
-  <data name="DurationDays" xml:space="preserve">
-    <value>{0} d {1} h</value>
   </data>
   <data name="ConnectedTo" xml:space="preserve">
     <value>Connected to {0}</value>

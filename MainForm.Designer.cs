@@ -19,6 +19,7 @@ partial class MainForm
 		{
 			components?.Dispose();
 			QuietFont.Dispose();
+			Recorder?.Dispose();
 			Device?.Dispose();
 		}
 		base.Dispose(disposing);
@@ -72,18 +73,8 @@ partial class MainForm
 		ToolStripMenuItem menuExit;
 		ToolStripMenuItem menuSettings;
 		ToolStripMenuItem menuMaintenance;
-		toolStripStatusLabel = new ToolStripStatusLabel();
-		toolStripStatusTime = new ToolStripStatusLabel();
-		menuDryAfterOff = new ToolStripMenuItem();
-		menuSound = new ToolStripMenuItem();
-		menuLight = new ToolStripMenuItem();
-		menuLightOn = new ToolStripMenuItem();
-		toolStripSeparator2 = new ToolStripSeparator();
-		menuLightBright = new ToolStripMenuItem();
-		menuLightDim = new ToolStripMenuItem();
-		menuLightOff = new ToolStripMenuItem();
-		menuLock = new ToolStripMenuItem();
-		menuResetFilter = new ToolStripMenuItem();
+		Label labelWaterCaption;
+		Label labelEtaCaption;
 		textBoxIP = new TextBox();
 		textBoxToken = new TextBox();
 		buttonConnect = new Button();
@@ -94,6 +85,8 @@ partial class MainForm
 		labelDryLeft = new Label();
 		labelTimerLeft = new Label();
 		buttonDisconnect = new GlyphButton();
+		toolStripStatusLabel = new ToolStripStatusLabel();
+		toolStripStatusTime = new ToolStripStatusLabel();
 		menuMode = new ToolStripMenuItem();
 		menuModeSmart = new ToolStripMenuItem();
 		menuSmart40 = new ToolStripMenuItem();
@@ -108,6 +101,16 @@ partial class MainForm
 		menuSleep70 = new ToolStripMenuItem();
 		menuSleepValue = new ToolStripTextBox();
 		menuModeDry = new ToolStripMenuItem();
+		menuDryAfterOff = new ToolStripMenuItem();
+		menuSound = new ToolStripMenuItem();
+		menuLight = new ToolStripMenuItem();
+		menuLightOn = new ToolStripMenuItem();
+		toolStripSeparator2 = new ToolStripSeparator();
+		menuLightBright = new ToolStripMenuItem();
+		menuLightDim = new ToolStripMenuItem();
+		menuLightOff = new ToolStripMenuItem();
+		menuLock = new ToolStripMenuItem();
+		menuResetFilter = new ToolStripMenuItem();
 		groupControls = new GroupBox();
 		checkBoxPower = new CheckBox();
 		listBoxMode = new ListBox();
@@ -131,8 +134,6 @@ partial class MainForm
 		menuTray = new ContextMenuStrip(components);
 		menuOpen = new ToolStripMenuItem();
 		menuPower = new ToolStripMenuItem();
-		groupConnection = new GroupBox();
-		groupState = new GroupBox();
 		labelToken = new Label();
 		labelIp = new Label();
 		labelTimerLeftCaption = new Label();
@@ -146,6 +147,8 @@ partial class MainForm
 		labelTargetCaption = new Label();
 		labelModeCaption = new Label();
 		labelPowerCaption = new Label();
+		groupConnection = new GroupBox();
+		groupState = new GroupBox();
 		labelHumidityId = new Label();
 		labelTemperatureId = new Label();
 		labelFaultId = new Label();
@@ -171,13 +174,20 @@ partial class MainForm
 		menuExit = new ToolStripMenuItem();
 		menuSettings = new ToolStripMenuItem();
 		menuMaintenance = new ToolStripMenuItem();
+		groupWatch = new GroupBox();
+		labelWaterCaption = new Label();
+		labelWater = new Label();
+		labelEtaCaption = new Label();
+		labelEta = new Label();
+		buttonRecord = new Button();
+		groupConnection.SuspendLayout();
+		groupState.SuspendLayout();
 		statusStrip.SuspendLayout();
 		groupControls.SuspendLayout();
+		groupWatch.SuspendLayout();
 		((System.ComponentModel.ISupportInitialize)trackBarTarget).BeginInit();
 		((System.ComponentModel.ISupportInitialize)numericTimerMinutes).BeginInit();
 		menuTray.SuspendLayout();
-		groupConnection.SuspendLayout();
-		groupState.SuspendLayout();
 		SuspendLayout();
 		// 
 		// labelToken
@@ -250,11 +260,78 @@ partial class MainForm
 		resources.ApplyResources(labelPowerCaption, "labelPowerCaption");
 		labelPowerCaption.Name = "labelPowerCaption";
 		// 
+		// groupConnection
+		// 
+		resources.ApplyResources(groupConnection, "groupConnection");
+		groupConnection.Controls.Add(labelIp);
+		groupConnection.Controls.Add(textBoxIP);
+		groupConnection.Controls.Add(labelToken);
+		groupConnection.Controls.Add(textBoxToken);
+		groupConnection.Controls.Add(buttonConnect);
+		groupConnection.Name = "groupConnection";
+		groupConnection.TabStop = false;
+		// 
+		// textBoxIP
+		// 
+		resources.ApplyResources(textBoxIP, "textBoxIP");
+		textBoxIP.Name = "textBoxIP";
+		// 
+		// textBoxToken
+		// 
+		resources.ApplyResources(textBoxToken, "textBoxToken");
+		textBoxToken.CharacterCasing = CharacterCasing.Upper;
+		textBoxToken.Name = "textBoxToken";
+		// 
+		// buttonConnect
+		// 
+		resources.ApplyResources(buttonConnect, "buttonConnect");
+		buttonConnect.Name = "buttonConnect";
+		buttonConnect.UseVisualStyleBackColor = true;
+		buttonConnect.Click += Connect_Click;
+		// 
+		// buttonDisconnect
+		// 
+		resources.ApplyResources(buttonDisconnect, "buttonDisconnect");
+		buttonDisconnect.Name = "buttonDisconnect";
+		buttonDisconnect.UseVisualStyleBackColor = true;
+		buttonDisconnect.Click += Disconnect_Click;
+		buttonDisconnect.PaintImage += Disconnect_PaintImage;
+		// 
+		// groupState
+		// 
+		resources.ApplyResources(groupState, "groupState");
+		groupState.Controls.Add(labelHumidityId);
+		groupState.Controls.Add(labelHumidityCaption);
+		groupState.Controls.Add(labelHumidity);
+		groupState.Controls.Add(labelTemperatureId);
+		groupState.Controls.Add(labelTemperatureCaption);
+		groupState.Controls.Add(labelTemperature);
+		groupState.Controls.Add(labelFaultId);
+		groupState.Controls.Add(labelFaultCaption);
+		groupState.Controls.Add(labelFault);
+		groupState.Controls.Add(labelWarmingId);
+		groupState.Controls.Add(labelWarmingCaption);
+		groupState.Controls.Add(labelWarming);
+		groupState.Controls.Add(labelDryLeftId);
+		groupState.Controls.Add(labelDryLeftCaption);
+		groupState.Controls.Add(labelDryLeft);
+		groupState.Controls.Add(labelTimerLeftId);
+		groupState.Controls.Add(labelTimerLeftCaption);
+		groupState.Controls.Add(labelTimerLeft);
+		groupState.Controls.Add(buttonDisconnect);
+		groupState.Name = "groupState";
+		groupState.TabStop = false;
+		// 
 		// labelHumidityId
 		// 
 		resources.ApplyResources(labelHumidityId, "labelHumidityId");
 		labelHumidityId.ForeColor = SystemColors.GrayText;
 		labelHumidityId.Name = "labelHumidityId";
+		// 
+		// labelHumidity
+		// 
+		resources.ApplyResources(labelHumidity, "labelHumidity");
+		labelHumidity.Name = "labelHumidity";
 		// 
 		// labelTemperatureId
 		// 
@@ -262,11 +339,21 @@ partial class MainForm
 		labelTemperatureId.ForeColor = SystemColors.GrayText;
 		labelTemperatureId.Name = "labelTemperatureId";
 		// 
+		// labelTemperature
+		// 
+		resources.ApplyResources(labelTemperature, "labelTemperature");
+		labelTemperature.Name = "labelTemperature";
+		// 
 		// labelFaultId
 		// 
 		resources.ApplyResources(labelFaultId, "labelFaultId");
 		labelFaultId.ForeColor = SystemColors.GrayText;
 		labelFaultId.Name = "labelFaultId";
+		// 
+		// labelFault
+		// 
+		resources.ApplyResources(labelFault, "labelFault");
+		labelFault.Name = "labelFault";
 		// 
 		// labelWarmingId
 		// 
@@ -274,17 +361,32 @@ partial class MainForm
 		labelWarmingId.ForeColor = SystemColors.GrayText;
 		labelWarmingId.Name = "labelWarmingId";
 		// 
+		// labelWarming
+		// 
+		resources.ApplyResources(labelWarming, "labelWarming");
+		labelWarming.Name = "labelWarming";
+		// 
 		// labelDryLeftId
 		// 
 		resources.ApplyResources(labelDryLeftId, "labelDryLeftId");
 		labelDryLeftId.ForeColor = SystemColors.GrayText;
 		labelDryLeftId.Name = "labelDryLeftId";
 		// 
+		// labelDryLeft
+		// 
+		resources.ApplyResources(labelDryLeft, "labelDryLeft");
+		labelDryLeft.Name = "labelDryLeft";
+		// 
 		// labelTimerLeftId
 		// 
 		resources.ApplyResources(labelTimerLeftId, "labelTimerLeftId");
 		labelTimerLeftId.ForeColor = SystemColors.GrayText;
 		labelTimerLeftId.Name = "labelTimerLeftId";
+		// 
+		// labelTimerLeft
+		// 
+		resources.ApplyResources(labelTimerLeft, "labelTimerLeft");
+		labelTimerLeft.Name = "labelTimerLeft";
 		// 
 		// statusStrip
 		// 
@@ -391,139 +493,6 @@ partial class MainForm
 		toolStripSeparator4.Name = "toolStripSeparator4";
 		resources.ApplyResources(toolStripSeparator4, "toolStripSeparator4");
 		// 
-		// menuExit
-		// 
-		menuExit.Name = "menuExit";
-		resources.ApplyResources(menuExit, "menuExit");
-		menuExit.Click += Exit_Click;
-		// 
-		// menuSettings
-		// 
-		menuSettings.DropDownItems.AddRange(new ToolStripItem[] { menuDryAfterOff, menuSound, menuLight, menuLock, toolStripSeparator3, menuMaintenance });
-		menuSettings.Name = "menuSettings";
-		resources.ApplyResources(menuSettings, "menuSettings");
-		// 
-		// menuDryAfterOff
-		// 
-		menuDryAfterOff.Name = "menuDryAfterOff";
-		resources.ApplyResources(menuDryAfterOff, "menuDryAfterOff");
-		menuDryAfterOff.Click += MenuFlag_Click;
-		// 
-		// menuSound
-		// 
-		menuSound.Name = "menuSound";
-		resources.ApplyResources(menuSound, "menuSound");
-		menuSound.Click += MenuFlag_Click;
-		// 
-		// menuLight
-		// 
-		menuLight.DropDownItems.AddRange(new ToolStripItem[] { menuLightOn, toolStripSeparator2, menuLightBright, menuLightDim, menuLightOff });
-		menuLight.Name = "menuLight";
-		resources.ApplyResources(menuLight, "menuLight");
-		// 
-		// menuLightOn
-		// 
-		menuLightOn.Name = "menuLightOn";
-		resources.ApplyResources(menuLightOn, "menuLightOn");
-		menuLightOn.Click += MenuLightOn_Click;
-		// 
-		// toolStripSeparator2
-		// 
-		toolStripSeparator2.Name = "toolStripSeparator2";
-		resources.ApplyResources(toolStripSeparator2, "toolStripSeparator2");
-		// 
-		// menuLightBright
-		// 
-		menuLightBright.Name = "menuLightBright";
-		resources.ApplyResources(menuLightBright, "menuLightBright");
-		menuLightBright.Click += MenuLightLevel_Click;
-		// 
-		// menuLightDim
-		// 
-		menuLightDim.Name = "menuLightDim";
-		resources.ApplyResources(menuLightDim, "menuLightDim");
-		menuLightDim.Click += MenuLightLevel_Click;
-		// 
-		// menuLightOff
-		// 
-		menuLightOff.Name = "menuLightOff";
-		resources.ApplyResources(menuLightOff, "menuLightOff");
-		menuLightOff.Click += MenuLightLevel_Click;
-		// 
-		// menuLock
-		// 
-		menuLock.Name = "menuLock";
-		resources.ApplyResources(menuLock, "menuLock");
-		menuLock.Click += MenuFlag_Click;
-		// 
-		// menuMaintenance
-		// 
-		menuMaintenance.DropDownItems.AddRange(new ToolStripItem[] { menuResetFilter });
-		menuMaintenance.Name = "menuMaintenance";
-		resources.ApplyResources(menuMaintenance, "menuMaintenance");
-		// 
-		// menuResetFilter
-		// 
-		menuResetFilter.Name = "menuResetFilter";
-		resources.ApplyResources(menuResetFilter, "menuResetFilter");
-		menuResetFilter.Click += ResetFilter_Click;
-		// 
-		// textBoxIP
-		// 
-		resources.ApplyResources(textBoxIP, "textBoxIP");
-		textBoxIP.Name = "textBoxIP";
-		// 
-		// textBoxToken
-		// 
-		resources.ApplyResources(textBoxToken, "textBoxToken");
-		textBoxToken.CharacterCasing = CharacterCasing.Upper;
-		textBoxToken.Name = "textBoxToken";
-		// 
-		// buttonConnect
-		// 
-		resources.ApplyResources(buttonConnect, "buttonConnect");
-		buttonConnect.Name = "buttonConnect";
-		buttonConnect.UseVisualStyleBackColor = true;
-		buttonConnect.Click += Connect_Click;
-		// 
-		// labelHumidity
-		// 
-		resources.ApplyResources(labelHumidity, "labelHumidity");
-		labelHumidity.Name = "labelHumidity";
-		// 
-		// labelTemperature
-		// 
-		resources.ApplyResources(labelTemperature, "labelTemperature");
-		labelTemperature.Name = "labelTemperature";
-		// 
-		// labelFault
-		// 
-		resources.ApplyResources(labelFault, "labelFault");
-		labelFault.Name = "labelFault";
-		// 
-		// labelWarming
-		// 
-		resources.ApplyResources(labelWarming, "labelWarming");
-		labelWarming.Name = "labelWarming";
-		// 
-		// labelDryLeft
-		// 
-		resources.ApplyResources(labelDryLeft, "labelDryLeft");
-		labelDryLeft.Name = "labelDryLeft";
-		// 
-		// labelTimerLeft
-		// 
-		resources.ApplyResources(labelTimerLeft, "labelTimerLeft");
-		labelTimerLeft.Name = "labelTimerLeft";
-		// 
-		// buttonDisconnect
-		// 
-		resources.ApplyResources(buttonDisconnect, "buttonDisconnect");
-		buttonDisconnect.Name = "buttonDisconnect";
-		buttonDisconnect.UseVisualStyleBackColor = true;
-		buttonDisconnect.Click += Disconnect_Click;
-		buttonDisconnect.PaintImage += Disconnect_PaintImage;
-		// 
 		// menuMode
 		// 
 		menuMode.DropDownItems.AddRange(new ToolStripItem[] { menuModeSmart, menuModeSleep, menuModeDry });
@@ -611,6 +580,121 @@ partial class MainForm
 		menuModeDry.Name = "menuModeDry";
 		resources.ApplyResources(menuModeDry, "menuModeDry");
 		menuModeDry.Click += MenuMode_Click;
+		// 
+		// menuExit
+		// 
+		menuExit.Name = "menuExit";
+		resources.ApplyResources(menuExit, "menuExit");
+		menuExit.Click += Exit_Click;
+		// 
+		// menuSettings
+		// 
+		menuSettings.DropDownItems.AddRange(new ToolStripItem[] { menuDryAfterOff, menuSound, menuLight, menuLock, toolStripSeparator3, menuMaintenance });
+		menuSettings.Name = "menuSettings";
+		resources.ApplyResources(menuSettings, "menuSettings");
+		// 
+		// menuDryAfterOff
+		// 
+		menuDryAfterOff.Name = "menuDryAfterOff";
+		resources.ApplyResources(menuDryAfterOff, "menuDryAfterOff");
+		menuDryAfterOff.Click += MenuFlag_Click;
+		// 
+		// menuSound
+		// 
+		menuSound.Name = "menuSound";
+		resources.ApplyResources(menuSound, "menuSound");
+		menuSound.Click += MenuFlag_Click;
+		// 
+		// menuLight
+		// 
+		menuLight.DropDownItems.AddRange(new ToolStripItem[] { menuLightOn, toolStripSeparator2, menuLightBright, menuLightDim, menuLightOff });
+		menuLight.Name = "menuLight";
+		resources.ApplyResources(menuLight, "menuLight");
+		// 
+		// menuLightOn
+		// 
+		menuLightOn.Name = "menuLightOn";
+		resources.ApplyResources(menuLightOn, "menuLightOn");
+		menuLightOn.Click += MenuLightOn_Click;
+		// 
+		// toolStripSeparator2
+		// 
+		toolStripSeparator2.Name = "toolStripSeparator2";
+		resources.ApplyResources(toolStripSeparator2, "toolStripSeparator2");
+		// 
+		// menuLightBright
+		// 
+		menuLightBright.Name = "menuLightBright";
+		resources.ApplyResources(menuLightBright, "menuLightBright");
+		menuLightBright.Click += MenuLightLevel_Click;
+		// 
+		// menuLightDim
+		// 
+		menuLightDim.Name = "menuLightDim";
+		resources.ApplyResources(menuLightDim, "menuLightDim");
+		menuLightDim.Click += MenuLightLevel_Click;
+		// 
+		// menuLightOff
+		// 
+		menuLightOff.Name = "menuLightOff";
+		resources.ApplyResources(menuLightOff, "menuLightOff");
+		menuLightOff.Click += MenuLightLevel_Click;
+		// 
+		// menuLock
+		// 
+		menuLock.Name = "menuLock";
+		resources.ApplyResources(menuLock, "menuLock");
+		menuLock.Click += MenuFlag_Click;
+		// 
+		// menuMaintenance
+		// 
+		menuMaintenance.DropDownItems.AddRange(new ToolStripItem[] { menuResetFilter });
+		menuMaintenance.Name = "menuMaintenance";
+		resources.ApplyResources(menuMaintenance, "menuMaintenance");
+		// 
+		// menuResetFilter
+		// 
+		menuResetFilter.Name = "menuResetFilter";
+		resources.ApplyResources(menuResetFilter, "menuResetFilter");
+		menuResetFilter.Click += ResetFilter_Click;
+		// groupWatch
+		// 
+		groupWatch.Controls.Add(labelWaterCaption);
+		groupWatch.Controls.Add(labelWater);
+		groupWatch.Controls.Add(labelEtaCaption);
+		groupWatch.Controls.Add(labelEta);
+		groupWatch.Controls.Add(buttonRecord);
+		resources.ApplyResources(groupWatch, "groupWatch");
+		groupWatch.Name = "groupWatch";
+		groupWatch.TabStop = false;
+		// 
+		// labelWaterCaption
+		// 
+		resources.ApplyResources(labelWaterCaption, "labelWaterCaption");
+		labelWaterCaption.Name = "labelWaterCaption";
+		// 
+		// labelWater
+		// 
+		resources.ApplyResources(labelWater, "labelWater");
+		labelWater.Name = "labelWater";
+		// 
+		// labelEtaCaption
+		// 
+		resources.ApplyResources(labelEtaCaption, "labelEtaCaption");
+		labelEtaCaption.Name = "labelEtaCaption";
+		// 
+		// labelEta
+		// 
+		resources.ApplyResources(labelEta, "labelEta");
+		labelEta.Name = "labelEta";
+		// 
+		// buttonRecord
+		// 
+		resources.ApplyResources(buttonRecord, "buttonRecord");
+		toolTip.SetToolTip(buttonRecord, resources.GetString("buttonRecord.ToolTip"));
+		buttonRecord.Name = "buttonRecord";
+		buttonRecord.UseVisualStyleBackColor = true;
+		buttonRecord.Click += Record_Click;
 		// 
 		// groupControls
 		// 
@@ -771,8 +855,8 @@ partial class MainForm
 		// 
 		notifyIcon.ContextMenuStrip = menuTray;
 		resources.ApplyResources(notifyIcon, "notifyIcon");
-		notifyIcon.PaintImage += NotifyIcon_PaintImage;
 		notifyIcon.MouseClick += NotifyIcon_MouseClick;
+		notifyIcon.PaintImage += NotifyIcon_PaintImage;
 		// 
 		// menuTray
 		// 
@@ -793,42 +877,6 @@ partial class MainForm
 		resources.ApplyResources(menuPower, "menuPower");
 		menuPower.Click += MenuPower_Click;
 		// 
-		// groupConnection
-		// 
-		resources.ApplyResources(groupConnection, "groupConnection");
-		groupConnection.Controls.Add(labelIp);
-		groupConnection.Controls.Add(textBoxIP);
-		groupConnection.Controls.Add(labelToken);
-		groupConnection.Controls.Add(textBoxToken);
-		groupConnection.Controls.Add(buttonConnect);
-		groupConnection.Name = "groupConnection";
-		groupConnection.TabStop = false;
-		// 
-		// groupState
-		// 
-		resources.ApplyResources(groupState, "groupState");
-		groupState.Controls.Add(labelHumidityId);
-		groupState.Controls.Add(labelHumidityCaption);
-		groupState.Controls.Add(labelHumidity);
-		groupState.Controls.Add(labelTemperatureId);
-		groupState.Controls.Add(labelTemperatureCaption);
-		groupState.Controls.Add(labelTemperature);
-		groupState.Controls.Add(labelFaultId);
-		groupState.Controls.Add(labelFaultCaption);
-		groupState.Controls.Add(labelFault);
-		groupState.Controls.Add(labelWarmingId);
-		groupState.Controls.Add(labelWarmingCaption);
-		groupState.Controls.Add(labelWarming);
-		groupState.Controls.Add(labelDryLeftId);
-		groupState.Controls.Add(labelDryLeftCaption);
-		groupState.Controls.Add(labelDryLeft);
-		groupState.Controls.Add(labelTimerLeftId);
-		groupState.Controls.Add(labelTimerLeftCaption);
-		groupState.Controls.Add(labelTimerLeft);
-		groupState.Controls.Add(buttonDisconnect);
-		groupState.Name = "groupState";
-		groupState.TabStop = false;
-		// 
 		// MainForm
 		// 
 		AcceptButton = buttonConnect;
@@ -837,21 +885,24 @@ partial class MainForm
 		Controls.Add(groupConnection);
 		Controls.Add(groupState);
 		Controls.Add(groupControls);
+		Controls.Add(groupWatch);
 		Controls.Add(statusStrip);
 		FormBorderStyle = FormBorderStyle.FixedSingle;
 		MaximizeBox = false;
 		Name = "MainForm";
-		statusStrip.ResumeLayout(false);
-		statusStrip.PerformLayout();
-		groupControls.ResumeLayout(false);
-		groupControls.PerformLayout();
-		((System.ComponentModel.ISupportInitialize)trackBarTarget).EndInit();
-		((System.ComponentModel.ISupportInitialize)numericTimerMinutes).EndInit();
-		menuTray.ResumeLayout(false);
 		groupConnection.ResumeLayout(false);
 		groupConnection.PerformLayout();
 		groupState.ResumeLayout(false);
 		groupState.PerformLayout();
+		statusStrip.ResumeLayout(false);
+		statusStrip.PerformLayout();
+		groupControls.ResumeLayout(false);
+		groupControls.PerformLayout();
+		groupWatch.ResumeLayout(false);
+		groupWatch.PerformLayout();
+		((System.ComponentModel.ISupportInitialize)trackBarTarget).EndInit();
+		((System.ComponentModel.ISupportInitialize)numericTimerMinutes).EndInit();
+		menuTray.ResumeLayout(false);
 		ResumeLayout(false);
 		PerformLayout();
 	}
@@ -864,6 +915,7 @@ partial class MainForm
 	private GlyphButton buttonDisconnect;
 	private GroupBox groupConnection;
 	private GroupBox groupState;
+	private GroupBox groupWatch;
 	private Label labelHumidity;
 	private Label labelTemperature;
 	private Label labelFault;
@@ -919,4 +971,7 @@ partial class MainForm
 	private ToolStripTextBox menuSmartValue;
 	private ToolStripTextBox menuSleepValue;
 	private ToolStripMenuItem menuMode;
+	private Label labelWater;
+	private Label labelEta;
+	private Button buttonRecord;
 }

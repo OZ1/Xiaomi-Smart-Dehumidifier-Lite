@@ -408,6 +408,60 @@
   <data name="ComfortTooHumid" xml:space="preserve">
     <value>prevlažno (od 70 %)</value>
   </data>
+  <data name="RecordStart" xml:space="preserve">
+    <value>⚫ Sn&amp;emaj</value>
+  </data>
+  <data name="RecordStop" xml:space="preserve">
+    <value>■ Ustavi sn&amp;emanje</value>
+  </data>
+  <data name="RecordStarted" xml:space="preserve">
+    <value>Snemanje: {0}</value>
+  </data>
+  <data name="RecordStopped" xml:space="preserve">
+    <value>Snemanje ustavljeno.</value>
+  </data>
+  <data name="WaterFormat" xml:space="preserve">
+    <value>{0:0.0} g/m³, rosišče {1:0.0} °C</value>
+  </data>
+  <data name="EtaFormat" xml:space="preserve">
+    <value>≈ {0:t} (čez {1}), {2}</value>
+  </data>
+  <data name="EtaNever" xml:space="preserve">
+    <value>ne bo dosegla: meja ≈ {0:0} %, {1}</value>
+  </data>
+  <data name="EtaByModel" xml:space="preserve">
+    <value>po modelu</value>
+  </data>
+  <data name="EtaByObservation" xml:space="preserve">
+    <value>po spremljanju</value>
+  </data>
+  <data name="EtaReached" xml:space="preserve">
+    <value>cilj dosežen</value>
+  </data>
+  <data name="EtaOff" xml:space="preserve">
+    <value>izklopljen</value>
+  </data>
+  <data name="EtaDry" xml:space="preserve">
+    <value>sušenje perila — brez cilja</value>
+  </data>
+  <data name="EtaWarming" xml:space="preserve">
+    <value>čaka na konec ogrevanja</value>
+  </data>
+  <data name="EtaFault" xml:space="preserve">
+    <value>stoji — napaka</value>
+  </data>
+  <data name="DurationMinutes" xml:space="preserve">
+    <value>{0} min</value>
+  </data>
+  <data name="DurationHours" xml:space="preserve">
+    <value>{0} h {1:00} min</value>
+  </data>
+  <data name="DurationDays" xml:space="preserve">
+    <value>{0} d {1} h</value>
+  </data>
+  <data name="ChartWarming" xml:space="preserve">
+    <value>ogrevanje</value>
+  </data>
   <data name="CliUsage" xml:space="preserve">
     <value>Upravljanje razvlaževalnika Xiaomi Smart Dehumidifier Lite.
 Naslov in žeton se vzameta iz nastavitev programa (enaka kot v oknu) ali se napišeta pred ukazi.
@@ -451,15 +505,6 @@ Brez parametrov se odpre okno.
 Če se temu želiš izogniti, se enkrat poveži v oknu: naslov in žeton se shranita v nastavitve.
 
 Izhodna koda: 0 — uspeh, 1 — napaka povezave ali zavrnitev naprave, 2 — neveljaven ukaz.</value>
-  </data>
-  <data name="DurationMinutes" xml:space="preserve">
-    <value>{0} min</value>
-  </data>
-  <data name="DurationHours" xml:space="preserve">
-    <value>{0} h {1:00} min</value>
-  </data>
-  <data name="DurationDays" xml:space="preserve">
-    <value>{0} d {1} h</value>
   </data>
   <data name="ConnectedTo" xml:space="preserve">
     <value>Povezano z {0}</value>

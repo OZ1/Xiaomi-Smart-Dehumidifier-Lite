@@ -452,6 +452,48 @@ siid.piid — номеръ свойства MIoT, какъ подъ подпис
 
 Кодъ выхода: 0 — успѣхъ, 1 — ошибка связи или отказъ устройства, 2 — невѣрная команда.</value>
   </data>
+  <data name="RecordStart" xml:space="preserve">
+    <value>⚫ &amp;Вести запись</value>
+  </data>
+  <data name="RecordStop" xml:space="preserve">
+    <value>■ &amp;Остановить запись</value>
+  </data>
+  <data name="RecordStarted" xml:space="preserve">
+    <value>Запись идётъ: {0}</value>
+  </data>
+  <data name="RecordStopped" xml:space="preserve">
+    <value>Запись остановлена.</value>
+  </data>
+  <data name="WaterFormat" xml:space="preserve">
+    <value>{0:0.0} г/м³, роса {1:0.0} °Ц</value>
+  </data>
+  <data name="EtaFormat" xml:space="preserve">
+    <value>≈ {0:t} (черезъ {1}), {2}</value>
+  </data>
+  <data name="EtaNever" xml:space="preserve">
+    <value>не дойдётъ: предѣлъ ≈ {0:0} %, {1}</value>
+  </data>
+  <data name="EtaByModel" xml:space="preserve">
+    <value>по модели</value>
+  </data>
+  <data name="EtaByObservation" xml:space="preserve">
+    <value>по наблюденію</value>
+  </data>
+  <data name="EtaReached" xml:space="preserve">
+    <value>цѣль достигнута</value>
+  </data>
+  <data name="EtaOff" xml:space="preserve">
+    <value>выключенъ</value>
+  </data>
+  <data name="EtaDry" xml:space="preserve">
+    <value>сушка бѣлья — безъ цѣли</value>
+  </data>
+  <data name="EtaWarming" xml:space="preserve">
+    <value>ждётъ конца прогрѣва</value>
+  </data>
+  <data name="EtaFault" xml:space="preserve">
+    <value>стоитъ — неисправность</value>
+  </data>
   <data name="DurationMinutes" xml:space="preserve">
     <value>{0} мин</value>
   </data>
@@ -460,6 +502,9 @@ siid.piid — номеръ свойства MIoT, какъ подъ подпис
   </data>
   <data name="DurationDays" xml:space="preserve">
     <value>{0} сут {1} ч</value>
+  </data>
+  <data name="ChartWarming" xml:space="preserve">
+    <value>прогрѣвъ</value>
   </data>
   <data name="ConnectedTo" xml:space="preserve">
     <value>Подключенъ къ {0}</value>

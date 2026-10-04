@@ -297,6 +297,66 @@
   <data name="statusStrip.AccessibleName" xml:space="preserve">
     <value>Stavový riadok</value>
   </data>
+  <data name="menuOpen.Text" xml:space="preserve">
+    <value>&amp;Otvoriť</value>
+  </data>
+  <data name="menuPower.Text" xml:space="preserve">
+    <value>&amp;Napájanie</value>
+  </data>
+  <data name="menuMode.Text" xml:space="preserve">
+    <value>&amp;Režim</value>
+  </data>
+  <data name="menuModeSmart.Text" xml:space="preserve">
+    <value>&amp;1 Inteligentný</value>
+  </data>
+  <data name="menuModeSleep.Text" xml:space="preserve">
+    <value>&amp;2 Nočný</value>
+  </data>
+  <data name="menuModeDry.Text" xml:space="preserve">
+    <value>&amp;3 Sušenie bielizne</value>
+  </data>
+  <data name="menuSettings.Text" xml:space="preserve">
+    <value>Na&amp;stavenia</value>
+  </data>
+  <data name="menuMaintenance.Text" xml:space="preserve">
+    <value>&amp;Údržba</value>
+  </data>
+  <data name="menuLight.Text" xml:space="preserve">
+    <value>Po&amp;dsvietenie</value>
+  </data>
+  <data name="menuLightOn.Text" xml:space="preserve">
+    <value>&amp;0 Zapnuté</value>
+  </data>
+  <data name="menuLightOff.Text" xml:space="preserve">
+    <value>&amp;1 Vypnuté</value>
+  </data>
+  <data name="menuLightDim.Text" xml:space="preserve">
+    <value>&amp;2 Tlmené</value>
+  </data>
+  <data name="menuLightBright.Text" xml:space="preserve">
+    <value>&amp;3 Jasné</value>
+  </data>
+  <data name="menuSound.Text" xml:space="preserve">
+    <value>&amp;Zvuk tlačidiel</value>
+  </data>
+  <data name="menuLock.Text" xml:space="preserve">
+    <value>&amp;Blokovanie tlačidiel</value>
+  </data>
+  <data name="menuDryAfterOff.Text" xml:space="preserve">
+    <value>&amp;Sušenie po vypnutí</value>
+  </data>
+  <data name="menuResetFilter.Text" xml:space="preserve">
+    <value>Vynulovať počítadlo &amp;filtra…</value>
+  </data>
+  <data name="menuSmartValue.AccessibleName" xml:space="preserve">
+    <value>Cieľová vlhkosť, %</value>
+  </data>
+  <data name="menuSleepValue.AccessibleName" xml:space="preserve">
+    <value>Cieľová vlhkosť, %</value>
+  </data>
+  <data name="menuExit.Text" xml:space="preserve">
+    <value>&amp;Koniec</value>
+  </data>
   <data name="labelHumidityCaption.Location" type="System.Drawing.Point, System.Drawing">
     <value>100, 31</value>
   </data>

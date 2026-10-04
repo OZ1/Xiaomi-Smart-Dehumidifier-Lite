@@ -4,6 +4,9 @@ using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Numerics;
 using System.Runtime.InteropServices;
+using System.Drawing.Drawing2D;
+using System.ComponentModel;
+using Microsoft.Win32;
 
 namespace DehumidifierControl;
 
@@ -12,8 +15,12 @@ using Properties;
 using static Properties.Resources;
 
 using static Uri;
+using static Byte;
+using static Char;
 using static Size;
+using static Task;
 using static Int32;
+using static Array;
 using static Single;
 using static Double;
 using static String;
@@ -22,9 +29,12 @@ using static Matrix3x2;
 using static Matrix4x4;
 using static DateTime;
 using static TimeSpan;
+using static Graphics;
 using static Color;
 using static SystemColors;
+using static SystemEvents;
 using static StringComparison;
+using static ToolStripDropDownCloseReason;
 using static FontStyle;
 using static Enumerable;
 using static LayoutKind;
@@ -67,6 +77,17 @@ public partial class MainForm : Form
 		panelTargetScale.Invalidate();
 	}}
 
+	(Color Color, bool Light) TrayLook { get; set // какой капля нарисована: цвѣтъ и тема панели задачъ
+	{
+		if (field == value) return;
+		field = value;
+		nint hIcon = TrayIconHandle;
+		notifyIcon.Icon = TrayIcon(value.Color, value.Light, SmallIconSize, out TrayIconHandle);
+		DestroyIcon(hIcon);
+	}}
+
+	nint TrayIconHandle; // HICON капли: Icon.FromHandle его не освобождаетъ — освобождаемъ сами, когда замѣняемъ
+
 	public MainForm()
 	{
 		InitializeComponent();//⏻\uE7E8
@@ -79,6 +100,8 @@ public partial class MainForm : Form
 	{
 		base.OnLoad(e);
 		if (DesignMode) return;
+		ShowTray();
+		UserPreferenceChanged += SystemEvents_UserPreferenceChanged;
 		if (Settings.Default.Location.X > -1000000)
 		{
 			StartPosition = Manual;
@@ -161,7 +184,7 @@ public partial class MainForm : Form
 	{
 		if (e.CloseReason == UserClosing)
 		{
-			Settings.Default.Location = Location;
+			Settings.Default.Location = WindowState == FormWindowState.Normal ? Location : RestoreBounds.Location;
 			Settings.Default.Save();
 		}
 		base.OnFormClosing(e);
@@ -169,8 +192,22 @@ public partial class MainForm : Form
 
 	protected override void OnFormClosed(FormClosedEventArgs e)
 	{
+		UserPreferenceChanged -= SystemEvents_UserPreferenceChanged; // событіе статическое: безъ отписки держитъ окно въ памяти
 		pollTimer.Stop();
+		notifyIcon.Visible = false;
+		DestroyIcon(TrayIconHandle);
 		base.OnFormClosed(e);
+	}
+
+	protected override async void OnResize(EventArgs e)
+	{
+		base.OnResize(e);
+		if (WindowState != FormWindowState.Minimized) return;
+		notifyIcon.Visible = true; // свернули — въ трей: значокъ только на это время
+		// Сразу прятать нельзя: анимацію сворачиванія DWM рисуетъ уже послѣ WM_SIZE, и окно, скрытое здѣсь, исчезаетъ безъ нея.
+		// Даёмъ ей доиграть (у Windows — около четверти секунды) и прячемъ, если окно за это время не развернули.
+		await Delay(400);
+		if (WindowState == FormWindowState.Minimized) Hide();
 	}
 
 	protected override void OnSystemColorsChanged(EventArgs e)
@@ -243,6 +280,7 @@ public partial class MainForm : Form
 		Device = null;
 		groupControls.Enabled = false;
 		RoomHumidity = null;
+		ShowTray();
 		SetConnected(false);
 		SetStatus(Disconnected);
 		SetUpdated("");
@@ -324,7 +362,7 @@ public partial class MainForm : Form
 		try
 		{
 			labelTemperature.Text   = s.environment_temperature is { } t ? Format(TemperatureFormat, t) : "—";
-			RoomHumidity            = s.environment_relative_umidity;
+			ShowTray(RoomHumidity   = s.environment_relative_umidity);
 			labelHumidity.Text      = s.environment_relative_umidity is { } h ? $"{h} %" : "—";
 			labelHumidity.ForeColor = s.environment_relative_umidity is { } hc ? Accent(Darker(HumidityColor(hc))) : ControlText;
 			string? comfort         = s.environment_relative_umidity is { } hd ? ComfortText(HumidityComfort(hd)) : null; // ступень словами: для экраннаго чтеца и подсказкой
@@ -346,8 +384,8 @@ public partial class MainForm : Form
 			if (s.dehumidifier is { } power) checkBoxPower.Checked = power;
 			listBoxMode.SelectedIndex = s.dehumidifier_mode is byte mode and < 3 ? mode : -1;
 			if (s.dehumidifier_target_humidity is { } target && !targetDebounceTimer.Enabled && !trackBarTarget.Capture) trackBarTarget.Value = Clamp(target, trackBarTarget.Minimum, trackBarTarget.Maximum);
-			// выключенный осушитель не принимаетъ режимъ, цѣлевую влажность и таймеръ (-4002; провѣрено опытомъ),
-			// а звукъ, подсвѣтку, блокировку и просушку принимаетъ;
+			if (s.dehumidifier_mode is byte current and < 3 && s.dehumidifier_target_humidity is { } currentTarget) ModeTargets[current] = currentTarget;
+			// выключенный осушитель не принимаетъ режимъ, цѣлевую влажность и таймеръ (-4002; провѣрено опытомъ), а звукъ, подсвѣтку, блокировку и просушку принимаетъ;
 			bool poweredOn = s.dehumidifier != false;
 			listBoxMode.Enabled = buttonLoopMode.Enabled = poweredOn;
 			trackBarTarget.Enabled = poweredOn && s.dehumidifier_mode != 2; // въ режимѣ сушки бѣлья цѣль тоже не мѣняется (-4002)
@@ -595,15 +633,18 @@ public partial class MainForm : Form
 	/// у краёвъ перехода цвѣтъ мѣняется медленно, поэтому площадка переходитъ въ переливъ безъ излома.
 	/// Граница ступеней — посерединѣ между послѣднимъ значеніемъ одной и первымъ слѣдующей (ComfortStarts − 0,5);
 	/// ступени шире двухъ переходовъ, поэтому влажность бываетъ у одной границы самое большее.</summary>
-	static Color HumidityColor(byte humidity)
+	static Color HumidityColor(byte humidity) => HumidityColor(humidity, ComfortColor);
+
+	/// <summary>То же съ другими цвѣтами ступеней — для капли въ треѣ.</summary>
+	static Color HumidityColor(byte humidity, Func<Comfort, Color> palette)
 	{
 		for (int i = 0; i < ComfortStarts.Length; i++)
 		{
 			double  d =  humidity - ComfortStarts[i] + 0.5; // разстояніе до границы между ступенями i и i + 1
 			if (Abs(d) > HumidityBlendPercent) continue;
 			double t = (d + HumidityBlendPercent) / (2 * HumidityBlendPercent);
-			Color a = ComfortColor((Comfort) i);
-			Color b = ComfortColor((Comfort)(i + 1));
+			Color a = palette((Comfort) i);
+			Color b = palette((Comfort)(i + 1));
 			return MixOKLCH(a, b, (float)(t * t * (3 - 2 * t)));
 
 			/// <summary>Смѣсь двухъ цвѣтовъ въ OKLCH: всѣ три составляющія — линейно, тонъ — по короткой дугѣ.
@@ -640,7 +681,7 @@ public partial class MainForm : Form
 				return FromArgb(Gamma(rgb.X), Gamma(rgb.Y), Gamma(rgb.Z));
 			}
 		}
-		return ComfortColor(HumidityComfort(humidity)); // далеко отъ всѣхъ границъ — на площадкѣ
+		return palette(HumidityComfort(humidity)); // далеко отъ всѣхъ границъ — на площадкѣ
 	}
 
 	/// <summary>Шкала подъ ползункомъ: числа, кратныя 10; рекомендуемыя (40…70) темнѣе и подчёркнуты полоской,
@@ -677,7 +718,7 @@ public partial class MainForm : Form
 			ReadOnlySpan<Point> triangle = [new(x, top), new(x - 4, top + 6),
 			/**/                                         new(x + 4, top + 6)];
 			using SolidBrush brush = new(Accent(ComfortColor(HumidityComfort(room))));
-			e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+			e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
 			e.Graphics.FillPolygon(brush, triangle);
 		}
 
@@ -703,4 +744,197 @@ public partial class MainForm : Form
 
 	[StructLayout(Sequential)]
 	struct RECT { public int Left, Top, Right, Bottom; }
+
+	// ───── трей: капля цвѣтомъ влажности и меню управленія ─────
+
+	/// <summary>Цвѣта ступеней для капли въ треѣ — мягкіе и свѣтлые, не какъ у надписи въ окнѣ: нѣжно-голубой, мятно-салатовый, оранжевый, кирпичный.</summary>
+	static Color TrayComfortColor(Comfort comfort) => comfort switch
+	{
+		Ideal => LightSkyBlue,
+		Normal => LightGreen,
+		Dry or Humid => Orange,
+		_ => FromArgb(0xC4, 0x4E, 0x34), // кирпичный
+	};
+
+	/// <summary>Панель задачъ свѣтлая (иначе тёмная) — отъ этого цвѣтъ ободка капли.</summary>
+	static bool LightTaskbar => Registry.GetValue(@"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize", "SystemUsesLightTheme", 0) is 1;
+
+	/// <summary>Капля въ треѣ — цвѣтомъ влажности (переливъ тотъ же, что у надписи, цвѣта ярче), подсказка — влажность и ступень словами;
+	/// безъ данныхъ — серебряная. Перерисовывается, только когда мѣняется цвѣтъ или тема панели задачъ.</summary>
+	void ShowTray(byte? humidity = null)
+	{
+		string text = humidity is { } h ? $"{CliHumidity} {h} %" : Text;
+		notifyIcon.Text = text.Length <= 127 ? text : text[..127]; // больше Windows не принимаетъ
+		TrayLook = (Accent(humidity is { } hc ? HumidityColor(hc, TrayComfortColor) : Silver), LightTaskbar);
+	}
+
+	/// <summary>Крупная капля во весь значокъ: остріе вверху, брюшко внизу; тонкій ободокъ — тёмный на свѣтлой панели задачъ, свѣтлый на тёмной:
+	/// яркая капля на свѣтлой панели безъ него расплывается.</summary>
+	static Icon TrayIcon(Color color, bool lightTaskbar, Size size, out nint handle)
+	{
+		using Bitmap bitmap = new(size.Width, size.Height);
+		using (Graphics g = FromImage(bitmap))
+		{
+			g.SmoothingMode = SmoothingMode.AntiAlias;
+			float r = size.Width * 0.33f; // радіусъ брюшка: ширина капли — ⅔ высоты, вытянутая, не шарикъ
+			PointF center = new(size.Width / 2f, size.Height - r - 0.75f);
+			PointF tip    = new(size.Width / 2f,                   0.75f);
+			// Бока — вогнутыя дуги радіуса R: каждая проходитъ черезъ остріе и касается брюшка снаружи — безъ излома.
+			// Центръ лѣваго бока — (tip.X − dx, tip.Y + dy): отъ острія на R, отъ центра брюшка на R + r (h — отъ острія до центра брюшка):
+			// dx² + dy² = R², dx² + (h − dy)² = (R + r)² — вычитая, dy = (h² − 2Rr − r²) / 2h; правый бокъ — зеркально.
+			// При R = (h² − r²) / 2r центръ бока на уровнѣ острія (dy = 0) и бокъ у острія отвѣсенъ — хвостикъ иглою;
+			// меньше нельзя — дуги боковъ перехлестнутся; въ 1,6 раза больше — бока положе, хвостикъ сходится остріемъ.
+			float h  = center.Y - tip.Y;
+			float R  =      1.6f * (h * h - r * r) / (2 * r);
+			float dy = (h * h - 2 * R * r - r * r) / (2 * h), dx = Sqrt(R * R - dy * dy);
+			float toBelly = RadiansToDegrees(Atan2(h - dy, dx)); // отъ центра лѣваго бока къ центру брюшка — тамъ и точка касанія
+			float toTip   = RadiansToDegrees(Atan2(  - dy, dx)); // отъ центра лѣваго бока къ острію
+			using GraphicsPath drop = new();
+			drop.AddArc(center.X - r,   center.Y - r,   2 * r, 2 * r,      -toBelly, 180 + 2 * toBelly); // брюшко по часовой: отъ правой точки касанія черезъ низъ до лѣвой
+			drop.AddArc(tip.X - dx - R, tip.Y + dy - R, 2 * R, 2 * R,       toBelly, toTip - toBelly);   // лѣвый бокъ — вверхъ къ острію
+			drop.AddArc(tip.X + dx - R, tip.Y + dy - R, 2 * R, 2 * R, 180 - toTip,   toTip - toBelly);   // правый бокъ — отъ острія внизъ
+			drop.CloseFigure();
+			using SolidBrush brush = new(color);
+			using Pen rim = new(FromArgb(lightTaskbar ? 110 : 140, lightTaskbar ? Black : White), 1);
+			g.FillPath(brush, drop);
+			g.DrawPath(rim, drop);
+		}
+		handle = bitmap.GetHicon();
+		return Icon.FromHandle(handle);
+	}
+
+	[SuppressMessage("Interoperability", "SYSLIB1054: Используйте LibraryImportAttribute вместо DllImportAttribute для генерирования кода маршализации P/Invoke во время компиляции")]
+	[DllImport("User32", ExactSpelling = true)]
+	static extern bool DestroyIcon(nint icon);
+
+	void RestoreFromTray()
+	{
+		Show();
+		WindowState = FormWindowState.Normal;
+		Activate();
+		notifyIcon.Visible = false; // окно на экранѣ — въ треѣ не нужно
+	}
+
+	void NotifyIcon_MouseClick(object? sender, MouseEventArgs e)
+	{
+		if (e.Button == MouseButtons.Left) RestoreFromTray();
+	}
+
+	void Open_Click(object? sender, EventArgs e) => RestoreFromTray();
+	void Exit_Click(object? sender, EventArgs e) => Close();
+
+	ToolStripMenuItem[] ModeItems  => field ??= [menuModeSmart, menuModeSleep, menuModeDry];
+	ToolStripMenuItem[] LightItems => field ??= [menuLightOff, menuLightDim, menuLightBright];
+	Dictionary<ToolStripMenuItem, CheckBox> FlagItems => field ??= new()
+	{
+		{ menuSound,       checkBoxSound       },
+		{ menuLock,        checkBoxLock        },
+		{ menuDryAfterOff, checkBoxDryAfterOff },
+	};
+
+	/// <summary>Цѣль въ подменю режима: (пунктъ, режимъ, влажность).</summary>
+	Dictionary<ToolStripMenuItem, (byte Mode, byte Target)> TargetItems => field ??= new()
+	{
+		{menuSmart40, (0, 40)}, {menuSmart50, (0, 50)}, {menuSmart60, (0, 60)}, {menuSmart70, (0, 70)},
+		{menuSleep40, (1, 40)}, {menuSleep50, (1, 50)}, {menuSleep60, (1, 60)}, {menuSleep70, (1, 70)},
+	};
+
+	/// <summary>Поле любой цѣли въ подменю режима: (поле, режимъ).</summary>
+	Dictionary<ToolStripTextBox, byte> TargetBoxes => field ??= new() {{menuSmartValue, 0}, {menuSleepValue, 1}};
+
+	/// <summary>Послѣдняя извѣстная цѣль каждаго режима: осушитель помнитъ ихъ всѣ, а сообщаетъ только текущую —
+	/// запоминаемъ, что видѣли въ отвѣтахъ, пока режимъ былъ текущимъ. Только на время работы: послѣ запуска извѣстна лишь текущая.</summary>
+	readonly byte?[] ModeTargets = new byte?[3];
+
+	/// <summary>Меню повторяетъ окно: отмѣтки — состояніе элементовъ, что тамъ погашено — гаснетъ и здѣсь.
+	/// Пункты дѣйствуютъ черезъ тѣ же элементы — команда уходитъ тѣмъ же путёмъ, что и изъ окна.
+	/// Неизвѣстное (третье) состояніе флажка — пунктъ гаснетъ: щелчокъ по такому флажку ничего бы не отправилъ.</summary>
+	void TrayMenu_Opening(object? sender, CancelEventArgs e)
+	{
+		menuPower.Checked = checkBoxPower.Checked;
+		menuPower.Enabled = checkBoxPower.Enabled;
+		bool modes = listBoxMode.Enabled; // выключенный осушитель не принимаетъ ни режимъ, ни цѣль
+		for (int i = 0; i < ModeItems.Length; i++)
+		{
+			ModeItems[i].Checked = listBoxMode.SelectedIndex == i;
+			ModeItems[i].Enabled = modes;
+		}
+		// цѣль каждаго режима — послѣдняя извѣстная: осушитель сообщаетъ только текущую
+		foreach ((ToolStripMenuItem item, (byte mode, byte target)) in TargetItems)
+		{
+			item.Checked = ModeTargets[mode] == target;
+			item.Enabled = modes;
+		}
+		foreach ((ToolStripTextBox box, byte mode) in TargetBoxes)
+		{
+			box.Text = ModeTargets[mode]?.ToString();
+			box.Enabled = modes;
+		}
+		menuLight  .Enabled    = checkBoxLight.Enabled;
+		menuLightOn.Enabled    = checkBoxLight.CheckState != Indeterminate;
+		menuLightOn.CheckState = checkBoxLight.CheckState;
+		for (int i = 0; i < LightItems.Length; i++)
+			LightItems[i].Checked = listBoxLight.SelectedIndex == i;
+		foreach ((ToolStripMenuItem item, CheckBox box) in FlagItems)
+		{
+			item.CheckState = box.CheckState;
+			item.Enabled = box.Enabled && box.CheckState != Indeterminate;
+		}
+		menuResetFilter.Enabled = groupControls.Enabled;
+	}
+
+	void MenuLightLevel_Click(object? sender, EventArgs e) => listBoxLight.SelectedIndex = IndexOf(LightItems, sender);
+
+	void MenuLightOn_Click(object? sender, EventArgs e) => checkBoxLight.Checked ^= true;
+	void MenuPower_Click(object? sender, EventArgs e) => checkBoxPower.Checked ^= true;
+	void MenuFlag_Click(object? sender, EventArgs e)
+	{
+		FlagItems[(ToolStripMenuItem)sender!].Checked ^= true;
+	}
+
+	/// <summary>Режимъ — щелчкомъ по нему самому; у «Умнаго» и «Ночного» есть подменю цѣли, поэтому меню закрываемъ сами.</summary>
+	void MenuMode_Click(object? sender, EventArgs e)
+	{
+		listBoxMode.SelectedIndex = IndexOf(ModeItems, sender);
+		menuTray.Close(ItemClicked);
+	}
+
+	/// <summary>Въ полѣ цѣли — только цифры.</summary>
+	void MenuTargetValue_KeyPress(object? sender, KeyPressEventArgs e) => e.Handled = !IsControl(e.KeyChar) && !IsAsciiDigit(e.KeyChar);
+	void MenuTargetValue_KeyDown(object? sender, KeyEventArgs e)
+	{
+		if (e.KeyCode != Keys.Enter) return;
+		e.SuppressKeyPress = true;
+		ToolStripTextBox box = (ToolStripTextBox)sender!;
+		byte mode = TargetBoxes[box];
+		if (!TryParse(box.Text, out byte target) || trackBarTarget.Minimum > target || target > trackBarTarget.Maximum) return;
+		menuTray.Close(Keyboard);
+		SetModeTarget((mode, target));
+	}
+
+	void MenuTarget_Click(object? sender, EventArgs e)
+	{
+		SetModeTarget(TargetItems[(ToolStripMenuItem)sender!]);
+	}
+
+	/// <summary>Цѣль въ режимѣ: если режимъ не тотъ — сначала онъ, потомъ цѣль (осушитель помнитъ её для каждаго режима свою).
+	/// Прямо на устройство, не черезъ ползунокъ: онъ показываетъ цѣль текущаго режима, и то же число въ другомъ режимѣ его не сдвинуло бы.</summary>
+	void SetModeTarget((byte Mode, byte Target) mt)
+	{
+		(byte mode, byte target) = mt;
+		bool switchMode = listBoxMode.SelectedIndex != mode;
+		_ = RunAsync(async d =>
+		{
+			if (switchMode) await d.SetAsync((nameof(State.dehumidifier_mode), mode));
+			await d.SetAsync((nameof(State.dehumidifier_target_humidity), target));
+		});
+	}
+
+	/// <summary>Смѣна темы (WM_SETTINGCHANGE съ «ImmersiveColorSet») приходитъ какъ General — перерисовать каплю сразу, не дожидаясь опроса;
+	/// ShowTray самъ провѣритъ, поменялась ли тема панели задачъ. Вызывается въ UI-потокѣ: SystemEvents шлётъ въ контекстъ подписавшагося.</summary>
+	void SystemEvents_UserPreferenceChanged(object sender, UserPreferenceChangedEventArgs e)
+	{
+		if (e.Category == UserPreferenceCategory.General)
+			ShowTray(RoomHumidity);
+	}
 }

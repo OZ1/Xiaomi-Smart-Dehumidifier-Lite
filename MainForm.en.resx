@@ -297,6 +297,66 @@
   <data name="statusStrip.AccessibleName" xml:space="preserve">
     <value>Status bar</value>
   </data>
+  <data name="menuOpen.Text" xml:space="preserve">
+    <value>&amp;Open</value>
+  </data>
+  <data name="menuPower.Text" xml:space="preserve">
+    <value>&amp;Power</value>
+  </data>
+  <data name="menuMode.Text" xml:space="preserve">
+    <value>&amp;Mode</value>
+  </data>
+  <data name="menuModeSmart.Text" xml:space="preserve">
+    <value>&amp;1 Smart</value>
+  </data>
+  <data name="menuModeSleep.Text" xml:space="preserve">
+    <value>&amp;2 Sleep</value>
+  </data>
+  <data name="menuModeDry.Text" xml:space="preserve">
+    <value>&amp;3 Clothes drying</value>
+  </data>
+  <data name="menuSettings.Text" xml:space="preserve">
+    <value>&amp;Settings</value>
+  </data>
+  <data name="menuMaintenance.Text" xml:space="preserve">
+    <value>&amp;Maintenance</value>
+  </data>
+  <data name="menuLight.Text" xml:space="preserve">
+    <value>&amp;Light</value>
+  </data>
+  <data name="menuLightOn.Text" xml:space="preserve">
+    <value>&amp;0 On</value>
+  </data>
+  <data name="menuLightOff.Text" xml:space="preserve">
+    <value>&amp;1 Off</value>
+  </data>
+  <data name="menuLightDim.Text" xml:space="preserve">
+    <value>&amp;2 Dim</value>
+  </data>
+  <data name="menuLightBright.Text" xml:space="preserve">
+    <value>&amp;3 Bright</value>
+  </data>
+  <data name="menuSound.Text" xml:space="preserve">
+    <value>Button &amp;sound</value>
+  </data>
+  <data name="menuLock.Text" xml:space="preserve">
+    <value>Button loc&amp;k</value>
+  </data>
+  <data name="menuDryAfterOff.Text" xml:space="preserve">
+    <value>D&amp;ry after switching off</value>
+  </data>
+  <data name="menuResetFilter.Text" xml:space="preserve">
+    <value>Reset &amp;filter counter…</value>
+  </data>
+  <data name="menuSmartValue.AccessibleName" xml:space="preserve">
+    <value>Target humidity, %</value>
+  </data>
+  <data name="menuSleepValue.AccessibleName" xml:space="preserve">
+    <value>Target humidity, %</value>
+  </data>
+  <data name="menuExit.Text" xml:space="preserve">
+    <value>E&amp;xit</value>
+  </data>
   <data name="labelHumidityCaption.Location" type="System.Drawing.Point, System.Drawing">
     <value>90, 31</value>
   </data>

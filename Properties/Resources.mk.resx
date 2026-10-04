@@ -253,13 +253,13 @@
     <value>сушење алишта</value>
   </data>
   <data name="LightOff" xml:space="preserve">
-    <value>исклучено</value>
+    <value>исклучена</value>
   </data>
   <data name="LightDim" xml:space="preserve">
-    <value>пригушено</value>
+    <value>пригушена</value>
   </data>
   <data name="LightBright" xml:space="preserve">
-    <value>светло</value>
+    <value>светла</value>
   </data>
   <data name="CliExitCodePrefix" xml:space="preserve">
     <value>Излезен код:</value>
@@ -331,10 +331,10 @@
     <value>Режим: {0}.</value>
   </data>
   <data name="CliLightSwitchOn" xml:space="preserve">
-    <value>вклучено</value>
+    <value>вклучена</value>
   </data>
   <data name="CliLightSwitchOff" xml:space="preserve">
-    <value>исклучено</value>
+    <value>исклучена</value>
   </data>
   <data name="CliBrightness" xml:space="preserve">
     <value>осветленост {0}</value>

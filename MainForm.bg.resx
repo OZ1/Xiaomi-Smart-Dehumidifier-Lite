@@ -294,6 +294,60 @@
   <data name="statusStrip.AccessibleName" xml:space="preserve">
     <value>Лента на състоянието</value>
   </data>
+  <data name="menuOpen.Text" xml:space="preserve">
+    <value>&amp;Отваряне</value>
+  </data>
+  <data name="menuPower.Text" xml:space="preserve">
+    <value>&amp;Захранване</value>
+  </data>
+  <data name="menuMode.Text" xml:space="preserve">
+    <value>&amp;Режим</value>
+  </data>
+  <data name="menuModeSmart.Text" xml:space="preserve">
+    <value>&amp;1 Интелигентен</value>
+  </data>
+  <data name="menuModeSleep.Text" xml:space="preserve">
+    <value>&amp;2 Нощен</value>
+  </data>
+  <data name="menuModeDry.Text" xml:space="preserve">
+    <value>&amp;3 Сушене на дрехи</value>
+  </data>
+  <data name="menuMaintenance.Text" xml:space="preserve">
+    <value>&amp;Обслужване</value>
+  </data>
+  <data name="menuLight.Text" xml:space="preserve">
+    <value>По&amp;дсветка</value>
+  </data>
+  <data name="menuLightOff.Text" xml:space="preserve">
+    <value>&amp;1 Изключена</value>
+  </data>
+  <data name="menuLightDim.Text" xml:space="preserve">
+    <value>&amp;2 Приглушена</value>
+  </data>
+  <data name="menuLightBright.Text" xml:space="preserve">
+    <value>&amp;3 Ярка</value>
+  </data>
+  <data name="menuSound.Text" xml:space="preserve">
+    <value>З&amp;вук на бутоните</value>
+  </data>
+  <data name="menuLock.Text" xml:space="preserve">
+    <value>&amp;Блокиране на бутоните</value>
+  </data>
+  <data name="menuDryAfterOff.Text" xml:space="preserve">
+    <value>Су&amp;шене след изключване</value>
+  </data>
+  <data name="menuResetFilter.Text" xml:space="preserve">
+    <value>Нулиране на брояча на &amp;филтъра…</value>
+  </data>
+  <data name="menuSmartValue.AccessibleName" xml:space="preserve">
+    <value>Целева влажност, %</value>
+  </data>
+  <data name="menuSleepValue.AccessibleName" xml:space="preserve">
+    <value>Целева влажност, %</value>
+  </data>
+  <data name="menuExit.Text" xml:space="preserve">
+    <value>&amp;Изход</value>
+  </data>
   <data name="labelHumidityCaption.Location" type="System.Drawing.Point, System.Drawing">
     <value>86, 31</value>
   </data>

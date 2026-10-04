@@ -68,6 +68,12 @@ partial class MainForm
 		Label labelLightModeId;
 		Label labelTimerValueId;
 		Label labelTimerMnutes;
+		ToolStripSeparator toolStripSeparator1;
+		ToolStripSeparator toolStripSeparator3;
+		ToolStripSeparator toolStripSeparator4;
+		ToolStripMenuItem menuExit;
+		ToolStripMenuItem menuSettings;
+		ToolStripMenuItem menuMaintenance;
 		textBoxIP = new TextBox();
 		textBoxToken = new TextBox();
 		buttonConnect = new Button();
@@ -79,6 +85,30 @@ partial class MainForm
 		labelTimerLeft = new Label();
 		toolStripStatusLabel = new ToolStripStatusLabel();
 		toolStripStatusTime = new ToolStripStatusLabel();
+		menuMode = new ToolStripMenuItem();
+		menuModeSmart = new ToolStripMenuItem();
+		menuSmart40 = new ToolStripMenuItem();
+		menuSmart50 = new ToolStripMenuItem();
+		menuSmart60 = new ToolStripMenuItem();
+		menuSmart70 = new ToolStripMenuItem();
+		menuSmartValue = new ToolStripTextBox();
+		menuModeSleep = new ToolStripMenuItem();
+		menuSleep40 = new ToolStripMenuItem();
+		menuSleep50 = new ToolStripMenuItem();
+		menuSleep60 = new ToolStripMenuItem();
+		menuSleep70 = new ToolStripMenuItem();
+		menuSleepValue = new ToolStripTextBox();
+		menuModeDry = new ToolStripMenuItem();
+		menuDryAfterOff = new ToolStripMenuItem();
+		menuSound = new ToolStripMenuItem();
+		menuLight = new ToolStripMenuItem();
+		menuLightOn = new ToolStripMenuItem();
+		toolStripSeparator2 = new ToolStripSeparator();
+		menuLightBright = new ToolStripMenuItem();
+		menuLightDim = new ToolStripMenuItem();
+		menuLightOff = new ToolStripMenuItem();
+		menuLock = new ToolStripMenuItem();
+		menuResetFilter = new ToolStripMenuItem();
 		groupControls = new GroupBox();
 		checkBoxPower = new CheckBox();
 		listBoxMode = new ListBox();
@@ -98,6 +128,10 @@ partial class MainForm
 		pollTimer = new Timer(components);
 		targetDebounceTimer = new Timer(components);
 		delayDebounceTimer = new Timer(components);
+		notifyIcon = new NotifyIcon(components);
+		menuTray = new ContextMenuStrip(components);
+		menuOpen = new ToolStripMenuItem();
+		menuPower = new ToolStripMenuItem();
 		labelToken = new Label();
 		labelIp = new Label();
 		labelTimerLeftCaption = new Label();
@@ -132,12 +166,19 @@ partial class MainForm
 		labelLightModeId = new Label();
 		labelTimerValueId = new Label();
 		labelTimerMnutes = new Label();
+		toolStripSeparator1 = new ToolStripSeparator();
+		toolStripSeparator3 = new ToolStripSeparator();
+		toolStripSeparator4 = new ToolStripSeparator();
+		menuExit = new ToolStripMenuItem();
+		menuSettings = new ToolStripMenuItem();
+		menuMaintenance = new ToolStripMenuItem();
 		groupConnection.SuspendLayout();
 		groupState.SuspendLayout();
 		statusStrip.SuspendLayout();
 		groupControls.SuspendLayout();
 		((System.ComponentModel.ISupportInitialize)trackBarTarget).BeginInit();
 		((System.ComponentModel.ISupportInitialize)numericTimerMinutes).BeginInit();
+		menuTray.SuspendLayout();
 		SuspendLayout();
 		// 
 		// labelToken
@@ -419,6 +460,186 @@ partial class MainForm
 		resources.ApplyResources(labelTimerMnutes, "labelTimerMnutes");
 		labelTimerMnutes.Name = "labelTimerMnutes";
 		// 
+		// toolStripSeparator1
+		// 
+		toolStripSeparator1.Name = "toolStripSeparator1";
+		resources.ApplyResources(toolStripSeparator1, "toolStripSeparator1");
+		// 
+		// toolStripSeparator3
+		// 
+		toolStripSeparator3.Name = "toolStripSeparator3";
+		resources.ApplyResources(toolStripSeparator3, "toolStripSeparator3");
+		// 
+		// toolStripSeparator4
+		// 
+		toolStripSeparator4.Name = "toolStripSeparator4";
+		resources.ApplyResources(toolStripSeparator4, "toolStripSeparator4");
+		// 
+		// menuMode
+		// 
+		menuMode.DropDownItems.AddRange(new ToolStripItem[] { menuModeSmart, menuModeSleep, menuModeDry });
+		menuMode.Name = "menuMode";
+		resources.ApplyResources(menuMode, "menuMode");
+		// 
+		// menuModeSmart
+		// 
+		menuModeSmart.DropDownItems.AddRange(new ToolStripItem[] { menuSmart40, menuSmart50, menuSmart60, menuSmart70, menuSmartValue });
+		menuModeSmart.Name = "menuModeSmart";
+		resources.ApplyResources(menuModeSmart, "menuModeSmart");
+		menuModeSmart.Click += MenuMode_Click;
+		// 
+		// menuSmart40
+		// 
+		menuSmart40.Name = "menuSmart40";
+		resources.ApplyResources(menuSmart40, "menuSmart40");
+		menuSmart40.Click += MenuTarget_Click;
+		// 
+		// menuSmart50
+		// 
+		menuSmart50.Name = "menuSmart50";
+		resources.ApplyResources(menuSmart50, "menuSmart50");
+		menuSmart50.Click += MenuTarget_Click;
+		// 
+		// menuSmart60
+		// 
+		menuSmart60.Name = "menuSmart60";
+		resources.ApplyResources(menuSmart60, "menuSmart60");
+		menuSmart60.Click += MenuTarget_Click;
+		// 
+		// menuSmart70
+		// 
+		menuSmart70.Name = "menuSmart70";
+		resources.ApplyResources(menuSmart70, "menuSmart70");
+		menuSmart70.Click += MenuTarget_Click;
+		// 
+		// menuSmartValue
+		// 
+		resources.ApplyResources(menuSmartValue, "menuSmartValue");
+		menuSmartValue.Name = "menuSmartValue";
+		menuSmartValue.KeyDown += MenuTargetValue_KeyDown;
+		menuSmartValue.KeyPress += MenuTargetValue_KeyPress;
+		// 
+		// menuModeSleep
+		// 
+		menuModeSleep.DropDownItems.AddRange(new ToolStripItem[] { menuSleep40, menuSleep50, menuSleep60, menuSleep70, menuSleepValue });
+		menuModeSleep.Name = "menuModeSleep";
+		resources.ApplyResources(menuModeSleep, "menuModeSleep");
+		menuModeSleep.Click += MenuMode_Click;
+		// 
+		// menuSleep40
+		// 
+		menuSleep40.Name = "menuSleep40";
+		resources.ApplyResources(menuSleep40, "menuSleep40");
+		menuSleep40.Click += MenuTarget_Click;
+		// 
+		// menuSleep50
+		// 
+		menuSleep50.Name = "menuSleep50";
+		resources.ApplyResources(menuSleep50, "menuSleep50");
+		menuSleep50.Click += MenuTarget_Click;
+		// 
+		// menuSleep60
+		// 
+		menuSleep60.Name = "menuSleep60";
+		resources.ApplyResources(menuSleep60, "menuSleep60");
+		menuSleep60.Click += MenuTarget_Click;
+		// 
+		// menuSleep70
+		// 
+		menuSleep70.Name = "menuSleep70";
+		resources.ApplyResources(menuSleep70, "menuSleep70");
+		menuSleep70.Click += MenuTarget_Click;
+		// 
+		// menuSleepValue
+		// 
+		resources.ApplyResources(menuSleepValue, "menuSleepValue");
+		menuSleepValue.Name = "menuSleepValue";
+		menuSleepValue.KeyDown += MenuTargetValue_KeyDown;
+		menuSleepValue.KeyPress += MenuTargetValue_KeyPress;
+		// 
+		// menuModeDry
+		// 
+		menuModeDry.Name = "menuModeDry";
+		resources.ApplyResources(menuModeDry, "menuModeDry");
+		menuModeDry.Click += MenuMode_Click;
+		// 
+		// menuExit
+		// 
+		menuExit.Name = "menuExit";
+		resources.ApplyResources(menuExit, "menuExit");
+		menuExit.Click += Exit_Click;
+		// 
+		// menuSettings
+		// 
+		menuSettings.DropDownItems.AddRange(new ToolStripItem[] { menuDryAfterOff, menuSound, menuLight, menuLock, toolStripSeparator3, menuMaintenance });
+		menuSettings.Name = "menuSettings";
+		resources.ApplyResources(menuSettings, "menuSettings");
+		// 
+		// menuDryAfterOff
+		// 
+		menuDryAfterOff.Name = "menuDryAfterOff";
+		resources.ApplyResources(menuDryAfterOff, "menuDryAfterOff");
+		menuDryAfterOff.Click += MenuFlag_Click;
+		// 
+		// menuSound
+		// 
+		menuSound.Name = "menuSound";
+		resources.ApplyResources(menuSound, "menuSound");
+		menuSound.Click += MenuFlag_Click;
+		// 
+		// menuLight
+		// 
+		menuLight.DropDownItems.AddRange(new ToolStripItem[] { menuLightOn, toolStripSeparator2, menuLightBright, menuLightDim, menuLightOff });
+		menuLight.Name = "menuLight";
+		resources.ApplyResources(menuLight, "menuLight");
+		// 
+		// menuLightOn
+		// 
+		menuLightOn.Name = "menuLightOn";
+		resources.ApplyResources(menuLightOn, "menuLightOn");
+		menuLightOn.Click += MenuLightOn_Click;
+		// 
+		// toolStripSeparator2
+		// 
+		toolStripSeparator2.Name = "toolStripSeparator2";
+		resources.ApplyResources(toolStripSeparator2, "toolStripSeparator2");
+		// 
+		// menuLightBright
+		// 
+		menuLightBright.Name = "menuLightBright";
+		resources.ApplyResources(menuLightBright, "menuLightBright");
+		menuLightBright.Click += MenuLightLevel_Click;
+		// 
+		// menuLightDim
+		// 
+		menuLightDim.Name = "menuLightDim";
+		resources.ApplyResources(menuLightDim, "menuLightDim");
+		menuLightDim.Click += MenuLightLevel_Click;
+		// 
+		// menuLightOff
+		// 
+		menuLightOff.Name = "menuLightOff";
+		resources.ApplyResources(menuLightOff, "menuLightOff");
+		menuLightOff.Click += MenuLightLevel_Click;
+		// 
+		// menuLock
+		// 
+		menuLock.Name = "menuLock";
+		resources.ApplyResources(menuLock, "menuLock");
+		menuLock.Click += MenuFlag_Click;
+		// 
+		// menuMaintenance
+		// 
+		menuMaintenance.DropDownItems.AddRange(new ToolStripItem[] { menuResetFilter });
+		menuMaintenance.Name = "menuMaintenance";
+		resources.ApplyResources(menuMaintenance, "menuMaintenance");
+		// 
+		// menuResetFilter
+		// 
+		menuResetFilter.Name = "menuResetFilter";
+		resources.ApplyResources(menuResetFilter, "menuResetFilter");
+		menuResetFilter.Click += ResetFilter_Click;
+		// 
 		// groupControls
 		// 
 		resources.ApplyResources(groupControls, "groupControls");
@@ -574,6 +795,31 @@ partial class MainForm
 		delayDebounceTimer.Interval = 700;
 		delayDebounceTimer.Tick += DelayDebounce_Tick;
 		// 
+		// notifyIcon
+		// 
+		notifyIcon.ContextMenuStrip = menuTray;
+		resources.ApplyResources(notifyIcon, "notifyIcon");
+		notifyIcon.MouseClick += NotifyIcon_MouseClick;
+		// 
+		// menuTray
+		// 
+		menuTray.Items.AddRange(new ToolStripItem[] { menuOpen, toolStripSeparator1, menuSettings, menuMode, menuPower, toolStripSeparator4, menuExit });
+		menuTray.Name = "contextMenuTray";
+		resources.ApplyResources(menuTray, "menuTray");
+		menuTray.Opening += TrayMenu_Opening;
+		// 
+		// menuOpen
+		// 
+		resources.ApplyResources(menuOpen, "menuOpen");
+		menuOpen.Name = "menuOpen";
+		menuOpen.Click += Open_Click;
+		// 
+		// menuPower
+		// 
+		menuPower.Name = "menuPower";
+		resources.ApplyResources(menuPower, "menuPower");
+		menuPower.Click += MenuPower_Click;
+		// 
 		// MainForm
 		// 
 		AcceptButton = buttonConnect;
@@ -596,6 +842,7 @@ partial class MainForm
 		groupControls.PerformLayout();
 		((System.ComponentModel.ISupportInitialize)trackBarTarget).EndInit();
 		((System.ComponentModel.ISupportInitialize)numericTimerMinutes).EndInit();
+		menuTray.ResumeLayout(false);
 		ResumeLayout(false);
 		PerformLayout();
 	}
@@ -632,4 +879,32 @@ partial class MainForm
 	private Timer pollTimer;
 	private Timer targetDebounceTimer;
 	private Timer delayDebounceTimer;
+	private NotifyIcon notifyIcon;
+	private ContextMenuStrip menuTray;
+	private ToolStripMenuItem menuOpen;
+	private ToolStripMenuItem menuPower;
+	private ToolStripMenuItem menuModeSmart;
+	private ToolStripMenuItem menuModeSleep;
+	private ToolStripMenuItem menuModeDry;
+	private ToolStripMenuItem menuSmart40;
+	private ToolStripMenuItem menuSmart50;
+	private ToolStripMenuItem menuSmart60;
+	private ToolStripMenuItem menuSmart70;
+	private ToolStripMenuItem menuSleep40;
+	private ToolStripMenuItem menuSleep50;
+	private ToolStripMenuItem menuSleep60;
+	private ToolStripMenuItem menuSleep70;
+	private ToolStripMenuItem menuLight;
+	private ToolStripMenuItem menuLightOn;
+	private ToolStripMenuItem menuLightOff;
+	private ToolStripMenuItem menuLightDim;
+	private ToolStripMenuItem menuLightBright;
+	private ToolStripMenuItem menuSound;
+	private ToolStripMenuItem menuLock;
+	private ToolStripMenuItem menuDryAfterOff;
+	private ToolStripMenuItem menuResetFilter;
+	private ToolStripSeparator toolStripSeparator2;
+	private ToolStripTextBox menuSmartValue;
+	private ToolStripTextBox menuSleepValue;
+	private ToolStripMenuItem menuMode;
 }

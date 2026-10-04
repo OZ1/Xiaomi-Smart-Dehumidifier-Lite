@@ -294,6 +294,66 @@
   <data name="statusStrip.AccessibleName" xml:space="preserve">
     <value>Статусна трака</value>
   </data>
+  <data name="menuOpen.Text" xml:space="preserve">
+    <value>От&amp;вори</value>
+  </data>
+  <data name="menuPower.Text" xml:space="preserve">
+    <value>&amp;Напајање</value>
+  </data>
+  <data name="menuMode.Text" xml:space="preserve">
+    <value>&amp;Режим</value>
+  </data>
+  <data name="menuModeSmart.Text" xml:space="preserve">
+    <value>&amp;1 Паметни</value>
+  </data>
+  <data name="menuModeSleep.Text" xml:space="preserve">
+    <value>&amp;2 Ноћни</value>
+  </data>
+  <data name="menuModeDry.Text" xml:space="preserve">
+    <value>&amp;3 Сушење веша</value>
+  </data>
+  <data name="menuSettings.Text" xml:space="preserve">
+    <value>&amp;Подешавања</value>
+  </data>
+  <data name="menuMaintenance.Text" xml:space="preserve">
+    <value>Од&amp;ржавање</value>
+  </data>
+  <data name="menuLight.Text" xml:space="preserve">
+    <value>&amp;Осветљење</value>
+  </data>
+  <data name="menuLightOn.Text" xml:space="preserve">
+    <value>&amp;0 Укључено</value>
+  </data>
+  <data name="menuLightOff.Text" xml:space="preserve">
+    <value>&amp;1 Искључено</value>
+  </data>
+  <data name="menuLightDim.Text" xml:space="preserve">
+    <value>&amp;2 Пригушено</value>
+  </data>
+  <data name="menuLightBright.Text" xml:space="preserve">
+    <value>&amp;3 Јако</value>
+  </data>
+  <data name="menuSound.Text" xml:space="preserve">
+    <value>&amp;Звук тастера</value>
+  </data>
+  <data name="menuLock.Text" xml:space="preserve">
+    <value>&amp;Блокада тастера</value>
+  </data>
+  <data name="menuDryAfterOff.Text" xml:space="preserve">
+    <value>&amp;Сушење после искључења</value>
+  </data>
+  <data name="menuResetFilter.Text" xml:space="preserve">
+    <value>Ресетуј бројач &amp;филтера…</value>
+  </data>
+  <data name="menuSmartValue.AccessibleName" xml:space="preserve">
+    <value>Циљна влажност, %</value>
+  </data>
+  <data name="menuSleepValue.AccessibleName" xml:space="preserve">
+    <value>Циљна влажност, %</value>
+  </data>
+  <data name="menuExit.Text" xml:space="preserve">
+    <value>&amp;Излаз</value>
+  </data>
   <data name="labelHumidityCaption.Location" type="System.Drawing.Point, System.Drawing">
     <value>86, 31</value>
   </data>

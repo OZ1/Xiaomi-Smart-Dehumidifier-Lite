@@ -297,6 +297,66 @@
   <data name="statusStrip.AccessibleName" xml:space="preserve">
     <value>Pasek stanu</value>
   </data>
+  <data name="menuOpen.Text" xml:space="preserve">
+    <value>Otwó&amp;rz</value>
+  </data>
+  <data name="menuPower.Text" xml:space="preserve">
+    <value>&amp;Zasilanie</value>
+  </data>
+  <data name="menuMode.Text" xml:space="preserve">
+    <value>Tr&amp;yb</value>
+  </data>
+  <data name="menuModeSmart.Text" xml:space="preserve">
+    <value>&amp;1 Inteligentny</value>
+  </data>
+  <data name="menuModeSleep.Text" xml:space="preserve">
+    <value>&amp;2 Nocny</value>
+  </data>
+  <data name="menuModeDry.Text" xml:space="preserve">
+    <value>&amp;3 Suszenie prania</value>
+  </data>
+  <data name="menuSettings.Text" xml:space="preserve">
+    <value>&amp;Ustawienia</value>
+  </data>
+  <data name="menuMaintenance.Text" xml:space="preserve">
+    <value>&amp;Konserwacja</value>
+  </data>
+  <data name="menuLight.Text" xml:space="preserve">
+    <value>Światł&amp;o</value>
+  </data>
+  <data name="menuLightOn.Text" xml:space="preserve">
+    <value>&amp;0 Włączone</value>
+  </data>
+  <data name="menuLightOff.Text" xml:space="preserve">
+    <value>&amp;1 Wyłączone</value>
+  </data>
+  <data name="menuLightDim.Text" xml:space="preserve">
+    <value>&amp;2 Przyciemnione</value>
+  </data>
+  <data name="menuLightBright.Text" xml:space="preserve">
+    <value>&amp;3 Jasne</value>
+  </data>
+  <data name="menuSound.Text" xml:space="preserve">
+    <value>Dź&amp;więk przycisków</value>
+  </data>
+  <data name="menuLock.Text" xml:space="preserve">
+    <value>&amp;Blokada przycisków</value>
+  </data>
+  <data name="menuDryAfterOff.Text" xml:space="preserve">
+    <value>&amp;Suszenie po wyłączeniu</value>
+  </data>
+  <data name="menuResetFilter.Text" xml:space="preserve">
+    <value>Wyzeruj licznik &amp;filtra…</value>
+  </data>
+  <data name="menuSmartValue.AccessibleName" xml:space="preserve">
+    <value>Docelowa wilgotność, %</value>
+  </data>
+  <data name="menuSleepValue.AccessibleName" xml:space="preserve">
+    <value>Docelowa wilgotność, %</value>
+  </data>
+  <data name="menuExit.Text" xml:space="preserve">
+    <value>Za&amp;kończ</value>
+  </data>
   <data name="labelTemperatureCaption.Location" type="System.Drawing.Point, System.Drawing">
     <value>73, 62</value>
   </data>

@@ -462,6 +462,59 @@
   <data name="ChartWarming" xml:space="preserve">
     <value>ogrevanje</value>
   </data>
+  <data name="CalcDegrees" xml:space="preserve">
+    <value>{0:0.0} °C</value>
+  </data>
+  <data name="CalcGramsPerKilogram" xml:space="preserve">
+    <value>{0:0.0} g/kg</value>
+  </data>
+  <data name="CalcOther" xml:space="preserve">
+    <value>→ {0:0.#} %</value>
+  </data>
+  <data name="CalcRemove" xml:space="preserve">
+    <value>{0:0} g iz zraka, {1:0} g s pufrom</value>
+  </data>
+  <data name="CalcNothingToRemove" xml:space="preserve">
+    <value>nič — vlažnost ni nad ciljem</value>
+  </data>
+  <data name="CalcInflow" xml:space="preserve">
+    <value>Dotok vlage zdaj: {0:0} g/h ({1:0.0} l/dan)</value>
+  </data>
+  <data name="CalcRemoval" xml:space="preserve">
+    <value>Razvlaževalnik zdaj odvzema: {0:0} g/h ({1:0.0} l/dan)</value>
+  </data>
+  <data name="CalcWithout" xml:space="preserve">
+    <value>Brez razvlaževalnika bo vlažnost šla proti {0:0} % (τ = {1:0.0} h)</value>
+  </data>
+  <data name="CalcWithoutLimit" xml:space="preserve">
+    <value>Brez razvlaževalnika: ni izmenjave zraka — viri dvigujejo vlažnost brez meje</value>
+  </data>
+  <data name="CalcWith" xml:space="preserve">
+    <value>Z razvlaževalnikom brez prekinitev — proti {0:0} % (τ = {1:0.0} h)</value>
+  </data>
+  <data name="CalcEta" xml:space="preserve">
+    <value>Do cilja {0:0} %: {1}</value>
+  </data>
+  <data name="CalcNever" xml:space="preserve">
+    <value>Cilja {0:0} % ne bo dosegla: meja {1:0} %</value>
+  </data>
+  <data name="CalcReached" xml:space="preserve">
+    <value>Cilj {0:0} % je že dosežen</value>
+  </data>
+  <data name="CalcNeeded" xml:space="preserve">
+    <value>Za vzdrževanje {0:0} % je potrebna nazivna zmogljivost vsaj {1:0.0} l/dan</value>
+  </data>
+  <data name="CalcTooLow" xml:space="preserve">
+    <value>Pod ≈ {0:0} % kompresorski razvlaževalnik skoraj ne suši</value>
+  </data>
+  <data name="CalcFromRecordsNone" xml:space="preserve">
+    <value>V zapisih ni enakomernih odsekov (vsaj 10 minut) — ni s čim izboljšati.</value>
+  </data>
+  <data name="CalcFromRecordsDone" xml:space="preserve">
+    <value>Po zapisih: odsekov »izklopljen« — {0}, »razvlažuje« — {1}.
+Pufer k = {2:0.0}, izmenjava zraka {3:0.00} h⁻¹, viri ≈ {4:0} g/h.
+Prostornina sobe in zmogljivost razvlaževalnika se vzameta iz polj — preveri ju.</value>
+  </data>
   <data name="CliUsage" xml:space="preserve">
     <value>Upravljanje razvlaževalnika Xiaomi Smart Dehumidifier Lite.
 Naslov in žeton se vzameta iz nastavitev programa (enaka kot v oknu) ali se napišeta pred ukazi.

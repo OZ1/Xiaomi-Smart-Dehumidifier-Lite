@@ -506,6 +506,59 @@ siid.piid — номеръ свойства MIoT, какъ подъ подпис
   <data name="ChartWarming" xml:space="preserve">
     <value>прогрѣвъ</value>
   </data>
+  <data name="CalcDegrees" xml:space="preserve">
+    <value>{0:0.0} °Ц</value>
+  </data>
+  <data name="CalcGramsPerKilogram" xml:space="preserve">
+    <value>{0:0.0} г/кг</value>
+  </data>
+  <data name="CalcOther" xml:space="preserve">
+    <value>→ {0:0.#} %</value>
+  </data>
+  <data name="CalcRemove" xml:space="preserve">
+    <value>{0:0} г изъ воздуха, {1:0} г съ буферомъ</value>
+  </data>
+  <data name="CalcNothingToRemove" xml:space="preserve">
+    <value>ничего — влажность не выше цѣли</value>
+  </data>
+  <data name="CalcInflow" xml:space="preserve">
+    <value>Притокъ влаги сейчасъ: {0:0} г/ч ({1:0.0} л/сутки)</value>
+  </data>
+  <data name="CalcRemoval" xml:space="preserve">
+    <value>Осушитель снимаетъ сейчасъ: {0:0} г/ч ({1:0.0} л/сутки)</value>
+  </data>
+  <data name="CalcWithout" xml:space="preserve">
+    <value>Безъ осушителя влажность пойдётъ къ {0:0} % (τ = {1:0.0} ч)</value>
+  </data>
+  <data name="CalcWithoutLimit" xml:space="preserve">
+    <value>Безъ осушителя: воздухообмѣна нѣтъ — источники поднимаютъ влажность безъ предѣла</value>
+  </data>
+  <data name="CalcWith" xml:space="preserve">
+    <value>Съ осушителемъ безъ остановокъ — къ {0:0} % (τ = {1:0.0} ч)</value>
+  </data>
+  <data name="CalcEta" xml:space="preserve">
+    <value>До цѣли {0:0} %: {1}</value>
+  </data>
+  <data name="CalcNever" xml:space="preserve">
+    <value>До цѣли {0:0} % не дойдётъ: предѣлъ {1:0} %</value>
+  </data>
+  <data name="CalcReached" xml:space="preserve">
+    <value>Цѣль {0:0} % уже достигнута</value>
+  </data>
+  <data name="CalcNeeded" xml:space="preserve">
+    <value>Чтобы держать {0:0} %, нужна паспортная производительность не меньше {1:0.0} л/сутки</value>
+  </data>
+  <data name="CalcTooLow" xml:space="preserve">
+    <value>Ниже ≈ {0:0} % компрессорный осушитель почти не сушитъ</value>
+  </data>
+  <data name="CalcFromRecordsNone" xml:space="preserve">
+    <value>Въ записяхъ нѣтъ ровныхъ отрѣзковъ (не короче 10 минутъ) — уточнить нечѣмъ.</value>
+  </data>
+  <data name="CalcFromRecordsDone" xml:space="preserve">
+    <value>По записямъ: отрѣзковъ «выключенъ» — {0}, «осушаетъ» — {1}.
+Буферъ k = {2:0.0}, воздухообмѣнъ {3:0.00} ч⁻¹, источники ≈ {4:0} г/ч.
+Объёмъ комнаты и производительность осушителя берутся изъ полей — провѣрь ихъ.</value>
+  </data>
   <data name="ConnectedTo" xml:space="preserve">
     <value>Подключенъ къ {0}</value>
   </data>

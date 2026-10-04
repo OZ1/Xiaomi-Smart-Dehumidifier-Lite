@@ -11,7 +11,7 @@ public static class Psychrometrics
 	const double B = 17.625;
 	const double C = 243.04; // °Ц
 
-	/// <summary>Газовая постоянная водяного пара, дѣлённая на 100 (гПа → Па) и на 1000 (кг → г): ρ = e / (R·T) → 216,7·e/T г/м³.</summary>
+	/// <summary>10⁵ / R, гдѣ R = 461,5 Дж/(кг·К) — газовая постоянная водянаго пара, ×100 — гПа → Па, ×1000 — кг → г: ρ = e / (R·T) → 216,7·e/T г/м³.</summary>
 	const double VaporFactor = 216.7;
 
 	const double Kelvin = 273.15;
@@ -25,6 +25,10 @@ public static class Psychrometrics
 	/// <summary>Относительная влажность, %, при которой въ кубометрѣ ρ граммовъ воды.</summary>
 	public static double RelativeHumidity(double t, double rho) => 100 * rho * (t + Kelvin) / VaporFactor / SaturationPressure(t);
 
+	/// <summary>Относительная влажность, %, если воздухъ съ t и rh нагрѣть или остудить до other: давленіе пара остаётся тѣмъ же,
+	/// а ρ — нѣтъ (охлаждаясь, воздухъ сжимается). Въ точкѣ росы — ровно 100 %.</summary>
+	public static double HumidityAt(double t, double rh, double other) => rh * SaturationPressure(t) / SaturationPressure(other);
+
 	/// <summary>Точка росы, °Ц: до какой температуры остудить воздухъ, чтобы пошёлъ конденсатъ.</summary>
 	public static double DewPoint(double t, double rh)
 	{
@@ -32,7 +36,7 @@ public static class Psychrometrics
 		return C * g / (B - g);
 	}
 
-	/// <summary>Влагосодержаніе, граммовъ воды на килограммъ сухого воздуха (давленіе по умолчанію — нормальное).</summary>
+	/// <summary>Влагосодержаніе, граммовъ воды на килограммъ сухаго воздуха (давленіе по умолчанію — нормальное).</summary>
 	public static double MixingRatio(double t, double rh, double pressure = 1013.25)
 	{
 		double e = rh / 100 * SaturationPressure(t);

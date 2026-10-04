@@ -1,0 +1,405 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+    Microsoft ResX Schema
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="groupAir.Text" xml:space="preserve">
+    <value>Ваздух</value>
+  </data>
+  <data name="labelTemperatureCaption.Text" xml:space="preserve">
+    <value>&amp;Температура, °C:</value>
+  </data>
+  <data name="labelHumidityCaption.Text" xml:space="preserve">
+    <value>&amp;Влажност, %:</value>
+  </data>
+  <data name="labelWaterCaption.Text" xml:space="preserve">
+    <value>&amp;Апсолутна влажност, г/м³:</value>
+  </data>
+  <data name="buttonFromDevice.Text" xml:space="preserve">
+    <value>Из о&amp;двлаживача</value>
+  </data>
+  <data name="labelDewCaption.Text" xml:space="preserve">
+    <value>Тачка росе:</value>
+  </data>
+  <data name="labelRatioCaption.Text" xml:space="preserve">
+    <value>Садржај влаге:</value>
+  </data>
+  <data name="labelOtherCaption.Text" xml:space="preserve">
+    <value>Иста вода на др&amp;угој T, °C:</value>
+  </data>
+  <data name="groupRoom.Text" xml:space="preserve">
+    <value>Соба</value>
+  </data>
+  <data name="labelVolumeCaption.Text" xml:space="preserve">
+    <value>&amp;Запремина собе, м³:</value>
+  </data>
+  <data name="labelBufferCaption.Text" xml:space="preserve">
+    <value>&amp;Бафер k (зидови, ствари):</value>
+  </data>
+  <data name="labelTargetCaption.Text" xml:space="preserve">
+    <value>&amp;Циљ, %:</value>
+  </data>
+  <data name="labelRemoveCaption.Text" xml:space="preserve">
+    <value>Уклонити воде:</value>
+  </data>
+  <data name="groupForecast.Text" xml:space="preserve">
+    <value>Прогноза</value>
+  </data>
+  <data name="labelExchangeCaption.Text" xml:space="preserve">
+    <value>&amp;Размена ваздуха, ч⁻¹:</value>
+  </data>
+  <data name="labelOutdoorCaption.Text" xml:space="preserve">
+    <value>&amp;Напољу, °C и %:</value>
+  </data>
+  <data name="numericOutdoorTemperature.AccessibleName" xml:space="preserve">
+    <value>Напољу, °C</value>
+  </data>
+  <data name="numericOutdoorHumidity.AccessibleName" xml:space="preserve">
+    <value>Напољу, %</value>
+  </data>
+  <data name="labelSourcesCaption.Text" xml:space="preserve">
+    <value>&amp;Извори влаге, г/ч:</value>
+  </data>
+  <data name="labelRatedCaption.Text" xml:space="preserve">
+    <value>&amp;Капацитет, л/дан:</value>
+  </data>
+  <data name="labelRatedHint.Text" xml:space="preserve">
+    <value>на 30 °C и 80 %</value>
+  </data>
+  <data name="buttonFromRecords.Text" xml:space="preserve">
+    <value>Из за&amp;писа</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Прорачун</value>
+  </data>
+  <data name="groupAir.ToolTip" xml:space="preserve">
+    <value>Својства ваздуха при задатој температури и влажности.
+Притисак засићене паре по Магнусовој формули (коефицијенти Алдучова и Ескриџа, 1996):
+од −40 до +50 °C грешка је мања од 0,4 %. Притисак ваздуха узима се нормалан, 1013 hPa.</value>
+  </data>
+  <data name="labelTemperatureCaption.ToolTip" xml:space="preserve">
+    <value>Температура ваздуха у просторији, °C.
+Од ње зависи колико воде ваздух може да задржи: на +20 °C до 17,2 g/m³, на +30 °C већ до 30,3 g/m³.
+Зато иста вода на другој температури даје другу релативну влажност:
+одвлаживач, грејући просторију, снижава је и пре него што скупи воду.
+Дугме „Из одвлаживача“ уписује његово очитавање.</value>
+  </data>
+  <data name="numericTemperature.ToolTip" xml:space="preserve">
+    <value>Температура ваздуха у просторији, °C.
+Од ње зависи колико воде ваздух може да задржи: на +20 °C до 17,2 g/m³, на +30 °C већ до 30,3 g/m³.
+Зато иста вода на другој температури даје другу релативну влажност:
+одвлаживач, грејући просторију, снижава је и пре него што скупи воду.
+Дугме „Из одвлаживача“ уписује његово очитавање.</value>
+  </data>
+  <data name="labelHumidityCaption.ToolTip" xml:space="preserve">
+    <value>Релативна влажност, %: колико воде има у ваздуху према највећој могућој на тој температури.
+100 % — ваздух је засићен: више воде не задржава, вишак се издваја као роса.
+Кад је промениш, апсолутна влажност се прерачуна на истој температури.</value>
+  </data>
+  <data name="numericHumidity.ToolTip" xml:space="preserve">
+    <value>Релативна влажност, %: колико воде има у ваздуху према највећој могућој на тој температури.
+100 % — ваздух је засићен: више воде не задржава, вишак се издваја као роса.
+Кад је промениш, апсолутна влажност се прерачуна на истој температури.</value>
+  </data>
+  <data name="labelWaterCaption.ToolTip" xml:space="preserve">
+    <value>Апсолутна влажност — грама воде у кубном метру ваздуха.
+За разлику од релативне, не мења се кад се ваздух загрева или хлади,
+зато се прогноза рачуна управо у њој.
+Можеш је уписати и сам — тада се релативна прерачуна на истој температури.</value>
+  </data>
+  <data name="numericWater.ToolTip" xml:space="preserve">
+    <value>Апсолутна влажност — грама воде у кубном метру ваздуха.
+За разлику од релативне, не мења се кад се ваздух загрева или хлади,
+зато се прогноза рачуна управо у њој.
+Можеш је уписати и сам — тада се релативна прерачуна на истој температури.</value>
+  </data>
+  <data name="buttonFromDevice.ToolTip" xml:space="preserve">
+    <value>Уписује температуру, влажност и циљ које одвлаживач сада показује.
+У режиму сушења веша циљ се не узима — тамо га нема.
+Ако одвлаживач није повезан, поља се не мењају.</value>
+  </data>
+  <data name="labelDewCaption.ToolTip" xml:space="preserve">
+    <value>Тачка росе — на коју температуру треба охладити овај ваздух да се из њега издвоји вода.
+Прозор, зид или цеви хладнији од тачке росе оросе се, а временом и убуђају.
+Компресорски одвлаживач суши управо тако: хлади испаривач испод тачке росе и скупља капи.</value>
+  </data>
+  <data name="labelDew.ToolTip" xml:space="preserve">
+    <value>Тачка росе — на коју температуру треба охладити овај ваздух да се из њега издвоји вода.
+Прозор, зид или цеви хладнији од тачке росе оросе се, а временом и убуђају.
+Компресорски одвлаживач суши управо тако: хлади испаривач испод тачке росе и скупља капи.</value>
+  </data>
+  <data name="labelRatioCaption.ToolTip" xml:space="preserve">
+    <value>Садржај влаге — грама воде по килограму сувог ваздуха (при нормалном притиску).
+Као и апсолутна влажност, не зависи од температуре, а ни од сабијања ваздуха;
+по тој оси цртају се психрометријски дијаграми.</value>
+  </data>
+  <data name="labelRatio.ToolTip" xml:space="preserve">
+    <value>Садржај влаге — грама воде по килограму сувог ваздуха (при нормалном притиску).
+Као и апсолутна влажност, не зависи од температуре, а ни од сабијања ваздуха;
+по тој оси цртају се психрометријски дијаграми.</value>
+  </data>
+  <data name="labelOtherCaption.ToolTip" xml:space="preserve">
+    <value>Колика ће бити релативна влажност ако се овај ваздух (иста вода по килограму ваздуха)
+загреје или охлади на другу температуру: уз хладан прозор, у подруму, ноћу, напољу.
+Изнад 100 % — на тој температури вишак воде издвојиће се као роса.</value>
+  </data>
+  <data name="numericOtherTemperature.ToolTip" xml:space="preserve">
+    <value>Колика ће бити релативна влажност ако се овај ваздух (иста вода по килограму ваздуха)
+загреје или охлади на другу температуру: уз хладан прозор, у подруму, ноћу, напољу.
+Изнад 100 % — на тој температури вишак воде издвојиће се као роса.</value>
+  </data>
+  <data name="labelOther.ToolTip" xml:space="preserve">
+    <value>Колика ће бити релативна влажност ако се овај ваздух (иста вода по килограму ваздуха)
+загреје или охлади на другу температуру: уз хладан прозор, у подруму, ноћу, напољу.
+Изнад 100 % — на тој температури вишак воде издвојиће се као роса.</value>
+  </data>
+  <data name="groupRoom.ToolTip" xml:space="preserve">
+    <value>Колико воде уклонити из просторије да се на истој температури достигне циљ.</value>
+  </data>
+  <data name="labelVolumeCaption.ToolTip" xml:space="preserve">
+    <value>Запремина просторије, m³: површина пода × висина плафона; 15 m² уз плафон од 2,7 m — око 40 m³.
+Ако су врата отворена, рачунај и суседне просторије: ваздух у њима је заједнички.
+Памти се.</value>
+  </data>
+  <data name="numericVolume.ToolTip" xml:space="preserve">
+    <value>Запремина просторије, m³: површина пода × висина плафона; 15 m² уз плафон од 2,7 m — око 40 m³.
+Ако су врата отворена, рачунај и суседне просторије: ваздух у њима је заједнички.
+Памти се.</value>
+  </data>
+  <data name="labelBufferCaption.ToolTip" xml:space="preserve">
+    <value>Бафер k — колико пута више воде има у просторији него само у њеном ваздуху.
+Зидови, намештај, тканине и папир упијају влагу и враћају је кад се ваздух суши,
+зато сушење траје дуже и уклања више него што произлази из саме запремине.
+1 — празна просторија с глатким зидовима; што више ствари, дрвета и тканина, то је k веће.
+Најтачније га процењује дугме „Из записа“. Памти се.</value>
+  </data>
+  <data name="numericBuffer.ToolTip" xml:space="preserve">
+    <value>Бафер k — колико пута више воде има у просторији него само у њеном ваздуху.
+Зидови, намештај, тканине и папир упијају влагу и враћају је кад се ваздух суши,
+зато сушење траје дуже и уклања више него што произлази из саме запремине.
+1 — празна просторија с глатким зидовима; што више ствари, дрвета и тканина, то је k веће.
+Најтачније га процењује дугме „Из записа“. Памти се.</value>
+  </data>
+  <data name="labelTargetCaption.ToolTip" xml:space="preserve">
+    <value>Циљна влажност, %, на истој температури.
+По њој се рачунају „Уклонити воде“, време до циља и потребан капацитет.
+За здравље је најбоље 40…50 %.</value>
+  </data>
+  <data name="numericTarget.ToolTip" xml:space="preserve">
+    <value>Циљна влажност, %, на истој температури.
+По њој се рачунају „Уклонити воде“, време до циља и потребан капацитет.
+За здравље је најбоље 40…50 %.</value>
+  </data>
+  <data name="labelRemoveCaption.ToolTip" xml:space="preserve">
+    <value>Колико воде уклонити да влажност на истој температури падне на циљ.
+Први број је само из ваздуха: запремина × разлика апсолутне влажности сада и при циљу.
+Други је заједно с бафером (× k): отприлике толико ће одвлаживач скупити у резервоар,
+не рачунајући воду која у међувремену дође споља и из извора.</value>
+  </data>
+  <data name="labelRemove.ToolTip" xml:space="preserve">
+    <value>Колико воде уклонити да влажност на истој температури падне на циљ.
+Први број је само из ваздуха: запремина × разлика апсолутне влажности сада и при циљу.
+Други је заједно с бафером (× k): отприлике толико ће одвлаживач скупити у резервоар,
+не рачунајући воду која у међувремену дође споља и из извора.</value>
+  </data>
+  <data name="groupForecast.ToolTip" xml:space="preserve">
+    <value>Прогноза по моделу просторије:
+k·V·dρ/dt = n·V·(ρ напољу − ρ) + S − c·(ρ − ρ min)
+ρ — апсолутна влажност, V — запремина, k — бафер, n — измена ваздуха, S — извори,
+c — „ефективни проток“ одвлаживача (из називног капацитета), ρ min — влажност ≈ 35 %.
+Влажност се експоненцијално приближава својој граници с временском константом τ = k·V / (n·V + c).
+Температура се узима сталном.</value>
+  </data>
+  <data name="labelExchangeCaption.ToolTip" xml:space="preserve">
+    <value>Број измена ваздуха, h⁻¹: колико пута на сат сав ваздух просторије замени се доведеним.
+Затворени прозори и врата — око 0,1…0,5; проветравање, аспиратор — 1 и више.
+Ако је напољу суше, измена ваздуха помаже сушењу; ако је влажније — смета.
+Најтачније је процењује дугме „Из записа“. Памти се.</value>
+  </data>
+  <data name="numericExchange.ToolTip" xml:space="preserve">
+    <value>Број измена ваздуха, h⁻¹: колико пута на сат сав ваздух просторије замени се доведеним.
+Затворени прозори и врата — око 0,1…0,5; проветравање, аспиратор — 1 и више.
+Ако је напољу суше, измена ваздуха помаже сушењу; ако је влажније — смета.
+Најтачније је процењује дугме „Из записа“. Памти се.</value>
+  </data>
+  <data name="labelOutdoorCaption.ToolTip" xml:space="preserve">
+    <value>Температура и релативна влажност тамо одакле долази ваздух: напољу, степениште, суседна просторија.
+Из њих се узима апсолутна влажност дотока. Спољашњи ваздух, и влажан, по хладноћи доноси мало воде:
+на −5 °C и 80 % 2,7 g/m³, док у просторији на +22 °C и 50 % 9,7 g/m³.
+Памти се.</value>
+  </data>
+  <data name="numericOutdoorTemperature.ToolTip" xml:space="preserve">
+    <value>Температура и релативна влажност тамо одакле долази ваздух: напољу, степениште, суседна просторија.
+Из њих се узима апсолутна влажност дотока. Спољашњи ваздух, и влажан, по хладноћи доноси мало воде:
+на −5 °C и 80 % 2,7 g/m³, док у просторији на +22 °C и 50 % 9,7 g/m³.
+Памти се.</value>
+  </data>
+  <data name="numericOutdoorHumidity.ToolTip" xml:space="preserve">
+    <value>Температура и релативна влажност тамо одакле долази ваздух: напољу, степениште, суседна просторија.
+Из њих се узима апсолутна влажност дотока. Спољашњи ваздух, и влажан, по хладноћи доноси мало воде:
+на −5 °C и 80 % 2,7 g/m³, док у просторији на +22 °C и 50 % 9,7 g/m³.
+Памти се.</value>
+  </data>
+  <data name="labelSourcesCaption.ToolTip" xml:space="preserve">
+    <value>Извори влаге у просторији, g/h: дисање и кожа, кување, веш који се суши, биљке, акваријум.
+Човек у мировању — око 50 g/h; веш који се суши у просторији — стотине грама на сат.
+Негативан број је понор: нешто односи влагу, на пример хладан зид или клима-уређај.
+Најтачније их процењује дугме „Из записа“. Памти се.</value>
+  </data>
+  <data name="numericSources.ToolTip" xml:space="preserve">
+    <value>Извори влаге у просторији, g/h: дисање и кожа, кување, веш који се суши, биљке, акваријум.
+Човек у мировању — око 50 g/h; веш који се суши у просторији — стотине грама на сат.
+Негативан број је понор: нешто односи влагу, на пример хладан зид или клима-уређај.
+Најтачније их процењује дугме „Из записа“. Памти се.</value>
+  </data>
+  <data name="labelRatedCaption.ToolTip" xml:space="preserve">
+    <value>Називни капацитет одвлаживача, l/дан — по стандарду на 30 °C и 80 %.
+У обичној просторији уклања много мање: што је ваздух сувљи и хладнији, то мање,
+а испод ≈ 35 % компресорски одвлаживач готово не суши.
+Модел узима уклањање сразмерно (ρ − ρ при 35 %) и фактор одређује из називне тачке.
+Памти се.</value>
+  </data>
+  <data name="numericRated.ToolTip" xml:space="preserve">
+    <value>Називни капацитет одвлаживача, l/дан — по стандарду на 30 °C и 80 %.
+У обичној просторији уклања много мање: што је ваздух сувљи и хладнији, то мање,
+а испод ≈ 35 % компресорски одвлаживач готово не суши.
+Модел узима уклањање сразмерно (ρ − ρ при 35 %) и фактор одређује из називне тачке.
+Памти се.</value>
+  </data>
+  <data name="labelRatedHint.ToolTip" xml:space="preserve">
+    <value>Називни капацитет одвлаживача, l/дан — по стандарду на 30 °C и 80 %.
+У обичној просторији уклања много мање: што је ваздух сувљи и хладнији, то мање,
+а испод ≈ 35 % компресорски одвлаживач готово не суши.
+Модел узима уклањање сразмерно (ρ − ρ при 35 %) и фактор одређује из називне тачке.
+Памти се.</value>
+  </data>
+  <data name="buttonFromRecords.ToolTip" xml:space="preserve">
+    <value>Прецизира бафер k, измену ваздуха и изворе према свим сачуваним записима.
+Одсечци с искљученим одвлаживачем показују колико брзо се влажност приближава равнотежи с околином (n/k)
+и којој (одатле извори); одсечци сушења — колико брзо је одвлаживач снижава.
+Запремина просторије и називни капацитет узимају се из поља — најпре их тачно постави.
+Одсечци краћи од 10 минута или с готово правим током не узимају се у обзир.</value>
+  </data>
+  <data name="labelForecast.ToolTip" xml:space="preserve">
+    <value>Доток — колико воде на сат доносе измена ваздуха и извори при садашњој влажности.
+Одвлаживач уклања — колико воде на сат уклања при садашњој влажности и температури.
+Без одвлаживача и с њим — до које ће влажности доћи просторија и за које време:
+после τ остаје 37 % пута, после 2τ 14 %, после 3τ 5 %.
+До циља — кад ће влажност достићи циљ ако одвлаживач ради без прекида.
+Потребан капацитет — с мањим називним одвлаживач неће задржати циљ.</value>
+  </data>
+</root>

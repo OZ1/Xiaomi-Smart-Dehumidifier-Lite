@@ -366,6 +366,9 @@
   <data name="buttonRecord.Text" xml:space="preserve">
     <value>⚫ Снима&amp;ј</value>
   </data>
+  <data name="buttonCalculator.Text" xml:space="preserve">
+    <value>Пресметк&amp;и…</value>
+  </data>
   <data name="labelHumidityCaption.Location" type="System.Drawing.Point, System.Drawing">
     <value>86, 31</value>
   </data>
@@ -446,5 +449,8 @@
   </data>
   <data name="buttonRecord.ToolTip" xml:space="preserve">
     <value>Почни или запри го снимањето (F5)</value>
+  </data>
+  <data name="buttonCalculator.ToolTip" xml:space="preserve">
+    <value>Пресметки на влажноста (F7)</value>
   </data>
 </root>

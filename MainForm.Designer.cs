@@ -75,6 +75,7 @@ partial class MainForm
 		ToolStripMenuItem menuMaintenance;
 		Label labelWaterCaption;
 		Label labelEtaCaption;
+		Button buttonCalculator;
 		textBoxIP = new TextBox();
 		textBoxToken = new TextBox();
 		buttonConnect = new Button();
@@ -180,6 +181,7 @@ partial class MainForm
 		labelEtaCaption = new Label();
 		labelEta = new Label();
 		buttonRecord = new Button();
+		buttonCalculator = new Button();
 		groupConnection.SuspendLayout();
 		groupState.SuspendLayout();
 		statusStrip.SuspendLayout();
@@ -664,6 +666,7 @@ partial class MainForm
 		groupWatch.Controls.Add(labelEtaCaption);
 		groupWatch.Controls.Add(labelEta);
 		groupWatch.Controls.Add(buttonRecord);
+		groupWatch.Controls.Add(buttonCalculator);
 		resources.ApplyResources(groupWatch, "groupWatch");
 		groupWatch.Name = "groupWatch";
 		groupWatch.TabStop = false;
@@ -695,6 +698,14 @@ partial class MainForm
 		buttonRecord.Name = "buttonRecord";
 		buttonRecord.UseVisualStyleBackColor = true;
 		buttonRecord.Click += Record_Click;
+		// 
+		// buttonCalculator
+		// 
+		resources.ApplyResources(buttonCalculator, "buttonCalculator");
+		toolTip.SetToolTip(buttonCalculator, resources.GetString("buttonCalculator.ToolTip"));
+		buttonCalculator.Name = "buttonCalculator";
+		buttonCalculator.UseVisualStyleBackColor = true;
+		buttonCalculator.Click += Calculator_Click;
 		// 
 		// groupControls
 		// 

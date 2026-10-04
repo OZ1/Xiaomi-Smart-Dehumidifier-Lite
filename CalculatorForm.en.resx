@@ -1,0 +1,405 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+    Microsoft ResX Schema
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="groupAir.Text" xml:space="preserve">
+    <value>Air</value>
+  </data>
+  <data name="labelTemperatureCaption.Text" xml:space="preserve">
+    <value>&amp;Temperature, °C:</value>
+  </data>
+  <data name="labelHumidityCaption.Text" xml:space="preserve">
+    <value>&amp;Humidity, %:</value>
+  </data>
+  <data name="labelWaterCaption.Text" xml:space="preserve">
+    <value>&amp;Absolute humidity, g/m³:</value>
+  </data>
+  <data name="buttonFromDevice.Text" xml:space="preserve">
+    <value>From &amp;dehumidifier</value>
+  </data>
+  <data name="labelDewCaption.Text" xml:space="preserve">
+    <value>Dew point:</value>
+  </data>
+  <data name="labelRatioCaption.Text" xml:space="preserve">
+    <value>Moisture content:</value>
+  </data>
+  <data name="labelOtherCaption.Text" xml:space="preserve">
+    <value>Same water at &amp;other T, °C:</value>
+  </data>
+  <data name="groupRoom.Text" xml:space="preserve">
+    <value>Room</value>
+  </data>
+  <data name="labelVolumeCaption.Text" xml:space="preserve">
+    <value>Room &amp;volume, m³:</value>
+  </data>
+  <data name="labelBufferCaption.Text" xml:space="preserve">
+    <value>&amp;Buffer k (walls, furniture):</value>
+  </data>
+  <data name="labelTargetCaption.Text" xml:space="preserve">
+    <value>Tar&amp;get, %:</value>
+  </data>
+  <data name="labelRemoveCaption.Text" xml:space="preserve">
+    <value>Water to remove:</value>
+  </data>
+  <data name="groupForecast.Text" xml:space="preserve">
+    <value>Forecast</value>
+  </data>
+  <data name="labelExchangeCaption.Text" xml:space="preserve">
+    <value>Air e&amp;xchange, h⁻¹:</value>
+  </data>
+  <data name="labelOutdoorCaption.Text" xml:space="preserve">
+    <value>O&amp;utdoors, °C and %:</value>
+  </data>
+  <data name="numericOutdoorTemperature.AccessibleName" xml:space="preserve">
+    <value>Outdoors, °C</value>
+  </data>
+  <data name="numericOutdoorHumidity.AccessibleName" xml:space="preserve">
+    <value>Outdoors, %</value>
+  </data>
+  <data name="labelSourcesCaption.Text" xml:space="preserve">
+    <value>Moisture &amp;sources, g/h:</value>
+  </data>
+  <data name="labelRatedCaption.Text" xml:space="preserve">
+    <value>&amp;Rated capacity, L/day:</value>
+  </data>
+  <data name="labelRatedHint.Text" xml:space="preserve">
+    <value>at 30 °C and 80 %</value>
+  </data>
+  <data name="buttonFromRecords.Text" xml:space="preserve">
+    <value>From re&amp;cords</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Calculation</value>
+  </data>
+  <data name="groupAir.ToolTip" xml:space="preserve">
+    <value>Properties of the air at the given temperature and humidity.
+Saturation vapour pressure uses the Magnus formula (Alduchov and Eskridge coefficients, 1996):
+error below 0.4 % from −40 to +50 °C. Air pressure is taken as standard, 1013 hPa.</value>
+  </data>
+  <data name="labelTemperatureCaption.ToolTip" xml:space="preserve">
+    <value>Room air temperature, °C.
+It sets how much water the air can hold: up to 17.2 g/m³ at +20 °C, but up to 30.3 g/m³ at +30 °C.
+So the same water gives a different relative humidity at a different temperature:
+the dehumidifier, warming the room, lowers it even before it collects any water.
+“From dehumidifier” fills in its reading.</value>
+  </data>
+  <data name="numericTemperature.ToolTip" xml:space="preserve">
+    <value>Room air temperature, °C.
+It sets how much water the air can hold: up to 17.2 g/m³ at +20 °C, but up to 30.3 g/m³ at +30 °C.
+So the same water gives a different relative humidity at a different temperature:
+the dehumidifier, warming the room, lowers it even before it collects any water.
+“From dehumidifier” fills in its reading.</value>
+  </data>
+  <data name="labelHumidityCaption.ToolTip" xml:space="preserve">
+    <value>Relative humidity, %: how much water the air holds compared with the most it can hold at this temperature.
+100 % means saturated: the air cannot hold more, the excess condenses as dew.
+Change it and the absolute humidity is recalculated at the same temperature.</value>
+  </data>
+  <data name="numericHumidity.ToolTip" xml:space="preserve">
+    <value>Relative humidity, %: how much water the air holds compared with the most it can hold at this temperature.
+100 % means saturated: the air cannot hold more, the excess condenses as dew.
+Change it and the absolute humidity is recalculated at the same temperature.</value>
+  </data>
+  <data name="labelWaterCaption.ToolTip" xml:space="preserve">
+    <value>Absolute humidity: grams of water per cubic metre of air.
+Unlike relative humidity, it does not change when the air warms up or cools down,
+which is why the forecast is computed in it.
+You can enter it yourself — the relative humidity is then recalculated at the same temperature.</value>
+  </data>
+  <data name="numericWater.ToolTip" xml:space="preserve">
+    <value>Absolute humidity: grams of water per cubic metre of air.
+Unlike relative humidity, it does not change when the air warms up or cools down,
+which is why the forecast is computed in it.
+You can enter it yourself — the relative humidity is then recalculated at the same temperature.</value>
+  </data>
+  <data name="buttonFromDevice.ToolTip" xml:space="preserve">
+    <value>Fill in the temperature, humidity and target that the dehumidifier is showing now.
+The target is not taken in laundry drying mode — that mode has none.
+If the dehumidifier is not connected, the fields stay as they are.</value>
+  </data>
+  <data name="labelDewCaption.ToolTip" xml:space="preserve">
+    <value>Dew point: the temperature this air must be cooled to for water to condense out of it.
+Windows, walls or pipes colder than the dew point collect condensation, and in time mould.
+A compressor dehumidifier works exactly so: it chills its coil below the dew point and collects the drops.</value>
+  </data>
+  <data name="labelDew.ToolTip" xml:space="preserve">
+    <value>Dew point: the temperature this air must be cooled to for water to condense out of it.
+Windows, walls or pipes colder than the dew point collect condensation, and in time mould.
+A compressor dehumidifier works exactly so: it chills its coil below the dew point and collects the drops.</value>
+  </data>
+  <data name="labelRatioCaption.ToolTip" xml:space="preserve">
+    <value>Mixing ratio: grams of water per kilogram of dry air (at standard pressure).
+Like absolute humidity, it does not depend on temperature, nor on compression of the air;
+psychrometric charts are drawn along this axis.</value>
+  </data>
+  <data name="labelRatio.ToolTip" xml:space="preserve">
+    <value>Mixing ratio: grams of water per kilogram of dry air (at standard pressure).
+Like absolute humidity, it does not depend on temperature, nor on compression of the air;
+psychrometric charts are drawn along this axis.</value>
+  </data>
+  <data name="labelOtherCaption.ToolTip" xml:space="preserve">
+    <value>What the relative humidity becomes if this air (the same water per kilogram of air)
+is warmed or cooled to another temperature: by a cold window, in a basement, at night, outdoors.
+Above 100 % means the excess water would condense as dew at that temperature.</value>
+  </data>
+  <data name="numericOtherTemperature.ToolTip" xml:space="preserve">
+    <value>What the relative humidity becomes if this air (the same water per kilogram of air)
+is warmed or cooled to another temperature: by a cold window, in a basement, at night, outdoors.
+Above 100 % means the excess water would condense as dew at that temperature.</value>
+  </data>
+  <data name="labelOther.ToolTip" xml:space="preserve">
+    <value>What the relative humidity becomes if this air (the same water per kilogram of air)
+is warmed or cooled to another temperature: by a cold window, in a basement, at night, outdoors.
+Above 100 % means the excess water would condense as dew at that temperature.</value>
+  </data>
+  <data name="groupRoom.ToolTip" xml:space="preserve">
+    <value>How much water to remove from the room to reach the target at the same temperature.</value>
+  </data>
+  <data name="labelVolumeCaption.ToolTip" xml:space="preserve">
+    <value>Room volume, m³: floor area × ceiling height; 15 m² with a 2.7 m ceiling is about 40 m³.
+If the doors are open, include the adjoining rooms: they share the air.
+Remembered.</value>
+  </data>
+  <data name="numericVolume.ToolTip" xml:space="preserve">
+    <value>Room volume, m³: floor area × ceiling height; 15 m² with a 2.7 m ceiling is about 40 m³.
+If the doors are open, include the adjoining rooms: they share the air.
+Remembered.</value>
+  </data>
+  <data name="labelBufferCaption.ToolTip" xml:space="preserve">
+    <value>Buffer k: how many times more water the room holds than its air alone.
+Walls, furniture, fabrics and paper absorb moisture and give it back as the air dries,
+so drying takes longer and removes more than the volume alone suggests.
+1 is an empty room with smooth walls; the more things, wood and fabrics, the larger k.
+“From records” estimates it best. Remembered.</value>
+  </data>
+  <data name="numericBuffer.ToolTip" xml:space="preserve">
+    <value>Buffer k: how many times more water the room holds than its air alone.
+Walls, furniture, fabrics and paper absorb moisture and give it back as the air dries,
+so drying takes longer and removes more than the volume alone suggests.
+1 is an empty room with smooth walls; the more things, wood and fabrics, the larger k.
+“From records” estimates it best. Remembered.</value>
+  </data>
+  <data name="labelTargetCaption.ToolTip" xml:space="preserve">
+    <value>Target humidity, %, at the same temperature.
+Used for “Water to remove”, the time to target and the capacity needed.
+40…50 % is best for health.</value>
+  </data>
+  <data name="numericTarget.ToolTip" xml:space="preserve">
+    <value>Target humidity, %, at the same temperature.
+Used for “Water to remove”, the time to target and the capacity needed.
+40…50 % is best for health.</value>
+  </data>
+  <data name="labelRemoveCaption.ToolTip" xml:space="preserve">
+    <value>How much water to remove so that the humidity drops to the target at the same temperature.
+The first number is the air alone: volume × the difference in absolute humidity now and at the target.
+The second includes the buffer (× k): roughly what the dehumidifier will collect in its tank,
+not counting the water that arrives from outside and from sources meanwhile.</value>
+  </data>
+  <data name="labelRemove.ToolTip" xml:space="preserve">
+    <value>How much water to remove so that the humidity drops to the target at the same temperature.
+The first number is the air alone: volume × the difference in absolute humidity now and at the target.
+The second includes the buffer (× k): roughly what the dehumidifier will collect in its tank,
+not counting the water that arrives from outside and from sources meanwhile.</value>
+  </data>
+  <data name="groupForecast.ToolTip" xml:space="preserve">
+    <value>Forecast by the room model:
+k·V·dρ/dt = n·V·(ρ outdoor − ρ) + S − c·(ρ − ρ min)
+ρ — absolute humidity, V — volume, k — buffer, n — air exchange, S — sources,
+c — the dehumidifier’s “effective flow” (from its rated capacity), ρ min — humidity at ≈ 35 %.
+Humidity approaches its limit exponentially with the time constant τ = k·V / (n·V + c).
+Temperature is taken as constant.</value>
+  </data>
+  <data name="labelExchangeCaption.ToolTip" xml:space="preserve">
+    <value>Air change rate, h⁻¹: how many times an hour the room’s air is replaced by incoming air.
+Closed windows and doors — about 0.1…0.5; airing or an extractor fan — 1 and more.
+If the air outside is drier, air exchange helps drying; if it is more humid, it hinders.
+“From records” estimates it best. Remembered.</value>
+  </data>
+  <data name="numericExchange.ToolTip" xml:space="preserve">
+    <value>Air change rate, h⁻¹: how many times an hour the room’s air is replaced by incoming air.
+Closed windows and doors — about 0.1…0.5; airing or an extractor fan — 1 and more.
+If the air outside is drier, air exchange helps drying; if it is more humid, it hinders.
+“From records” estimates it best. Remembered.</value>
+  </data>
+  <data name="labelOutdoorCaption.ToolTip" xml:space="preserve">
+    <value>Temperature and relative humidity where the incoming air comes from: outdoors, a stairwell, the next room.
+The absolute humidity of the inflow is taken from them. Outdoor air, even damp, brings little water when cold:
+2.7 g/m³ at −5 °C and 80 %, against 9.7 g/m³ in a room at +22 °C and 50 %.
+Remembered.</value>
+  </data>
+  <data name="numericOutdoorTemperature.ToolTip" xml:space="preserve">
+    <value>Temperature and relative humidity where the incoming air comes from: outdoors, a stairwell, the next room.
+The absolute humidity of the inflow is taken from them. Outdoor air, even damp, brings little water when cold:
+2.7 g/m³ at −5 °C and 80 %, against 9.7 g/m³ in a room at +22 °C and 50 %.
+Remembered.</value>
+  </data>
+  <data name="numericOutdoorHumidity.ToolTip" xml:space="preserve">
+    <value>Temperature and relative humidity where the incoming air comes from: outdoors, a stairwell, the next room.
+The absolute humidity of the inflow is taken from them. Outdoor air, even damp, brings little water when cold:
+2.7 g/m³ at −5 °C and 80 %, against 9.7 g/m³ in a room at +22 °C and 50 %.
+Remembered.</value>
+  </data>
+  <data name="labelSourcesCaption.ToolTip" xml:space="preserve">
+    <value>Moisture sources in the room, g/h: breathing and skin, cooking, drying laundry, plants, an aquarium.
+A person at rest gives about 50 g/h; laundry drying indoors — hundreds of grams an hour.
+A negative number is a sink: something takes moisture away, such as a cold wall or an air conditioner.
+“From records” estimates them best. Remembered.</value>
+  </data>
+  <data name="numericSources.ToolTip" xml:space="preserve">
+    <value>Moisture sources in the room, g/h: breathing and skin, cooking, drying laundry, plants, an aquarium.
+A person at rest gives about 50 g/h; laundry drying indoors — hundreds of grams an hour.
+A negative number is a sink: something takes moisture away, such as a cold wall or an air conditioner.
+“From records” estimates them best. Remembered.</value>
+  </data>
+  <data name="labelRatedCaption.ToolTip" xml:space="preserve">
+    <value>Rated capacity of the dehumidifier, L/day — by the standard, at 30 °C and 80 %.
+In an ordinary room it removes much less: the drier and colder the air, the less,
+and below ≈ 35 % a compressor dehumidifier hardly dries at all.
+The model takes removal as proportional to (ρ − ρ at 35 %) and finds the factor from the rated point.
+Remembered.</value>
+  </data>
+  <data name="numericRated.ToolTip" xml:space="preserve">
+    <value>Rated capacity of the dehumidifier, L/day — by the standard, at 30 °C and 80 %.
+In an ordinary room it removes much less: the drier and colder the air, the less,
+and below ≈ 35 % a compressor dehumidifier hardly dries at all.
+The model takes removal as proportional to (ρ − ρ at 35 %) and finds the factor from the rated point.
+Remembered.</value>
+  </data>
+  <data name="labelRatedHint.ToolTip" xml:space="preserve">
+    <value>Rated capacity of the dehumidifier, L/day — by the standard, at 30 °C and 80 %.
+In an ordinary room it removes much less: the drier and colder the air, the less,
+and below ≈ 35 % a compressor dehumidifier hardly dries at all.
+The model takes removal as proportional to (ρ − ρ at 35 %) and finds the factor from the rated point.
+Remembered.</value>
+  </data>
+  <data name="buttonFromRecords.ToolTip" xml:space="preserve">
+    <value>Refine the buffer k, air exchange and sources from all saved records.
+Stretches with the dehumidifier off show how fast humidity approaches equilibrium with the surroundings (n/k)
+and which equilibrium (hence the sources); drying stretches show how fast the dehumidifier brings it down.
+Room volume and rated capacity are taken from the fields — set them correctly first.
+Stretches shorter than 10 minutes or with an almost straight course are ignored.</value>
+  </data>
+  <data name="labelForecast.ToolTip" xml:space="preserve">
+    <value>Inflow — how much water an hour air exchange and sources bring at the current humidity.
+Removal — how much the dehumidifier takes an hour at the current humidity and temperature.
+Without and with the dehumidifier — what humidity the room settles at, and how fast:
+after τ 37 % of the way remains, after 2τ 14 %, after 3τ 5 %.
+To target — when the humidity reaches the target if the dehumidifier runs without pauses.
+Capacity needed — with a lower rated capacity the dehumidifier cannot hold the target.</value>
+  </data>
+</root>

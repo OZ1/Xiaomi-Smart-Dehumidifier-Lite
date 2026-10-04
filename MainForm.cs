@@ -59,6 +59,7 @@ public partial class MainForm : Form
 
 	Recorder? Recorder;          // идётъ запись — иначе null
 	Reading? LastReading;        // послѣднее состояніе — для разсчётовъ
+	CalculatorForm? Calculator;
 
 	/// <summary>Измѣненія за послѣднія два часа, и безъ записи, — по нимъ оцѣнивается, когда влажность дойдётъ до цѣли.</summary>
 	readonly List<Sample>    History = [];
@@ -121,6 +122,9 @@ public partial class MainForm : Form
 
 	protected override void OnFormClosing(FormClosingEventArgs e)
 	{
+		// разсчётъ — окно безъ владѣльца: съ концомъ программы оно исчезаетъ безъ FormClosing
+		// и не сохраняетъ положеніе — закрываемъ его сами
+		Calculator?.Close();
 		if (e.CloseReason == UserClosing)
 		{
 			Settings.Default.Location = WindowState == FormWindowState.Normal ? Location : RestoreBounds.Location;
@@ -397,7 +401,7 @@ public partial class MainForm : Form
 			: Format(EtaNever, forecast.LimitHumidity, source);
 	}
 
-	/// <summary>F5 — запись: изъ любого мѣста окна, какъ кнопки «Наблюденія»;
+	/// <summary>F5 — запись, F7 — разсчёты: изъ любого мѣста окна, какъ кнопки «Наблюденія»;
 	/// запись — только когда ея кнопка доступна (есть связь).</summary>
 	protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
 	{
@@ -405,6 +409,9 @@ public partial class MainForm : Form
 		{
 			case Keys.F5:
 				if (buttonRecord.Enabled) Record_Click(this, EventArgs.Empty);
+				return true;
+			case Keys.F7:
+				Calculator_Click(this, EventArgs.Empty);
 				return true;
 		}
 		return base.ProcessCmdKey(ref msg, keyData);
@@ -454,6 +461,17 @@ public partial class MainForm : Form
 	{
 		buttonRecord.Text    = Recorder is null ? RecordStart : RecordStop;
 		buttonRecord.Enabled = Recorder is not null || Device is not null && textBoxIP.ReadOnly;
+	}
+
+	void Calculator_Click(object? sender, EventArgs e)
+	{
+		if (Calculator is null)
+		{
+			Calculator = new(() => LastReading) { Icon = Icon };
+			Calculator.FormClosed += (_, _) => Calculator = null;
+			Calculator.Show();
+		}
+		else Bring(Calculator);
 	}
 
 	/// <summary>Уже открытое окно — развернуть, если свёрнуто, и вывести наверхъ.</summary>

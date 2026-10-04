@@ -462,6 +462,59 @@
   <data name="ChartWarming" xml:space="preserve">
     <value>warm-up</value>
   </data>
+  <data name="CalcDegrees" xml:space="preserve">
+    <value>{0:0.0} °C</value>
+  </data>
+  <data name="CalcGramsPerKilogram" xml:space="preserve">
+    <value>{0:0.0} g/kg</value>
+  </data>
+  <data name="CalcOther" xml:space="preserve">
+    <value>→ {0:0.#} %</value>
+  </data>
+  <data name="CalcRemove" xml:space="preserve">
+    <value>{0:0} g from the air, {1:0} g with the buffer</value>
+  </data>
+  <data name="CalcNothingToRemove" xml:space="preserve">
+    <value>nothing — humidity is not above target</value>
+  </data>
+  <data name="CalcInflow" xml:space="preserve">
+    <value>Moisture inflow now: {0:0} g/h ({1:0.0} L/day)</value>
+  </data>
+  <data name="CalcRemoval" xml:space="preserve">
+    <value>The dehumidifier removes now: {0:0} g/h ({1:0.0} L/day)</value>
+  </data>
+  <data name="CalcWithout" xml:space="preserve">
+    <value>Without the dehumidifier humidity will head to {0:0} % (τ = {1:0.0} h)</value>
+  </data>
+  <data name="CalcWithoutLimit" xml:space="preserve">
+    <value>Without the dehumidifier: no air exchange — sources raise humidity without limit</value>
+  </data>
+  <data name="CalcWith" xml:space="preserve">
+    <value>With the dehumidifier running nonstop — to {0:0} % (τ = {1:0.0} h)</value>
+  </data>
+  <data name="CalcEta" xml:space="preserve">
+    <value>To target {0:0} %: {1}</value>
+  </data>
+  <data name="CalcNever" xml:space="preserve">
+    <value>Won&apos;t reach target {0:0} %: limit {1:0} %</value>
+  </data>
+  <data name="CalcReached" xml:space="preserve">
+    <value>Target {0:0} % already reached</value>
+  </data>
+  <data name="CalcNeeded" xml:space="preserve">
+    <value>To hold {0:0} %, a rated capacity of at least {1:0.0} L/day is needed</value>
+  </data>
+  <data name="CalcTooLow" xml:space="preserve">
+    <value>Below ≈ {0:0} % a compressor dehumidifier barely dries</value>
+  </data>
+  <data name="CalcFromRecordsNone" xml:space="preserve">
+    <value>The records have no steady stretches (at least 10 minutes) — nothing to refine with.</value>
+  </data>
+  <data name="CalcFromRecordsDone" xml:space="preserve">
+    <value>From the records: “off” stretches — {0}, “drying” — {1}.
+Buffer k = {2:0.0}, air exchange {3:0.00} h⁻¹, sources ≈ {4:0} g/h.
+Room volume and dehumidifier capacity are taken from the fields — check them.</value>
+  </data>
   <data name="CliUsage" xml:space="preserve">
     <value>Control of the Xiaomi Smart Dehumidifier Lite.
 The address and token are taken from the program settings (the same as in the window) or written before the commands.

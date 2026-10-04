@@ -462,6 +462,59 @@
   <data name="ChartWarming" xml:space="preserve">
     <value>загревање</value>
   </data>
+  <data name="CalcDegrees" xml:space="preserve">
+    <value>{0:0.0} °C</value>
+  </data>
+  <data name="CalcGramsPerKilogram" xml:space="preserve">
+    <value>{0:0.0} г/кг</value>
+  </data>
+  <data name="CalcOther" xml:space="preserve">
+    <value>→ {0:0.#} %</value>
+  </data>
+  <data name="CalcRemove" xml:space="preserve">
+    <value>{0:0} г од воздухот, {1:0} г со баферот</value>
+  </data>
+  <data name="CalcNothingToRemove" xml:space="preserve">
+    <value>ништо — влажноста не е над целта</value>
+  </data>
+  <data name="CalcInflow" xml:space="preserve">
+    <value>Прилив на влага сега: {0:0} г/ч ({1:0.0} л/ден)</value>
+  </data>
+  <data name="CalcRemoval" xml:space="preserve">
+    <value>Одвлажнувачот сега отстранува: {0:0} г/ч ({1:0.0} л/ден)</value>
+  </data>
+  <data name="CalcWithout" xml:space="preserve">
+    <value>Без одвлажнувачот влажноста ќе оди кон {0:0} % (τ = {1:0.0} ч)</value>
+  </data>
+  <data name="CalcWithoutLimit" xml:space="preserve">
+    <value>Без одвлажнувачот: нема размена на воздух — изворите ја креваат влажноста без граница</value>
+  </data>
+  <data name="CalcWith" xml:space="preserve">
+    <value>Со одвлажнувачот без прекин — кон {0:0} % (τ = {1:0.0} ч)</value>
+  </data>
+  <data name="CalcEta" xml:space="preserve">
+    <value>До целта {0:0} %: {1}</value>
+  </data>
+  <data name="CalcNever" xml:space="preserve">
+    <value>Нема да ја стигне целта {0:0} %: граница {1:0} %</value>
+  </data>
+  <data name="CalcReached" xml:space="preserve">
+    <value>Целта {0:0} % е веќе достигната</value>
+  </data>
+  <data name="CalcNeeded" xml:space="preserve">
+    <value>За да се одржува {0:0} %, потребен е номинален капацитет од најмалку {1:0.0} л/ден</value>
+  </data>
+  <data name="CalcTooLow" xml:space="preserve">
+    <value>Под ≈ {0:0} % компресорскиот одвлажнувач речиси не суши</value>
+  </data>
+  <data name="CalcFromRecordsNone" xml:space="preserve">
+    <value>Во записите нема рамномерни отсечки (најмалку 10 минути) — нема со што да се прецизира.</value>
+  </data>
+  <data name="CalcFromRecordsDone" xml:space="preserve">
+    <value>Според записите: отсечки „исклучен“ — {0}, „одвлажнува“ — {1}.
+Бафер k = {2:0.0}, размена на воздух {3:0.00} ч⁻¹, извори ≈ {4:0} г/ч.
+Волуменот на собата и капацитетот на одвлажнувачот се земаат од полињата — провери ги.</value>
+  </data>
   <data name="CliUsage" xml:space="preserve">
     <value>Управување со одвлажнувачот Xiaomi Smart Dehumidifier Lite.
 Адресата и токенот се земаат од поставките на програмата (истите како во прозорецот) или се пишуваат пред командите.

@@ -462,6 +462,59 @@
   <data name="ChartWarming" xml:space="preserve">
     <value>nagrzewanie</value>
   </data>
+  <data name="CalcDegrees" xml:space="preserve">
+    <value>{0:0.0} °C</value>
+  </data>
+  <data name="CalcGramsPerKilogram" xml:space="preserve">
+    <value>{0:0.0} g/kg</value>
+  </data>
+  <data name="CalcOther" xml:space="preserve">
+    <value>→ {0:0.#} %</value>
+  </data>
+  <data name="CalcRemove" xml:space="preserve">
+    <value>{0:0} g z powietrza, {1:0} g z buforem</value>
+  </data>
+  <data name="CalcNothingToRemove" xml:space="preserve">
+    <value>nic — wilgotność nie jest powyżej celu</value>
+  </data>
+  <data name="CalcInflow" xml:space="preserve">
+    <value>Dopływ wilgoci teraz: {0:0} g/h ({1:0.0} l/dobę)</value>
+  </data>
+  <data name="CalcRemoval" xml:space="preserve">
+    <value>Osuszacz usuwa teraz: {0:0} g/h ({1:0.0} l/dobę)</value>
+  </data>
+  <data name="CalcWithout" xml:space="preserve">
+    <value>Bez osuszacza wilgotność będzie zmierzać do {0:0} % (τ = {1:0.0} h)</value>
+  </data>
+  <data name="CalcWithoutLimit" xml:space="preserve">
+    <value>Bez osuszacza: brak wymiany powietrza — źródła podnoszą wilgotność bez granic</value>
+  </data>
+  <data name="CalcWith" xml:space="preserve">
+    <value>Z osuszaczem bez przerw — do {0:0} % (τ = {1:0.0} h)</value>
+  </data>
+  <data name="CalcEta" xml:space="preserve">
+    <value>Do celu {0:0} %: {1}</value>
+  </data>
+  <data name="CalcNever" xml:space="preserve">
+    <value>Nie osiągnie celu {0:0} %: granica {1:0} %</value>
+  </data>
+  <data name="CalcReached" xml:space="preserve">
+    <value>Cel {0:0} % już osiągnięty</value>
+  </data>
+  <data name="CalcNeeded" xml:space="preserve">
+    <value>Aby utrzymać {0:0} %, potrzebna jest wydajność znamionowa co najmniej {1:0.0} l/dobę</value>
+  </data>
+  <data name="CalcTooLow" xml:space="preserve">
+    <value>Poniżej ≈ {0:0} % osuszacz sprężarkowy prawie nie osusza</value>
+  </data>
+  <data name="CalcFromRecordsNone" xml:space="preserve">
+    <value>W zapisach nie ma równych odcinków (co najmniej 10 minut) — nie ma czym doprecyzować.</value>
+  </data>
+  <data name="CalcFromRecordsDone" xml:space="preserve">
+    <value>Z zapisów: odcinków „wyłączony” — {0}, „osusza” — {1}.
+Bufor k = {2:0.0}, wymiana powietrza {3:0.00} h⁻¹, źródła ≈ {4:0} g/h.
+Objętość pokoju i wydajność osuszacza są brane z pól — sprawdź je.</value>
+  </data>
   <data name="CliUsage" xml:space="preserve">
     <value>Sterowanie osuszaczem Xiaomi Smart Dehumidifier Lite.
 Adres i token są pobierane z ustawień programu (tych samych co w oknie) albo podawane przed poleceniami.

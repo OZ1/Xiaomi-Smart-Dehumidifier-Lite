@@ -462,6 +462,59 @@
   <data name="ChartWarming" xml:space="preserve">
     <value>zagrijavanje</value>
   </data>
+  <data name="CalcDegrees" xml:space="preserve">
+    <value>{0:0.0} °C</value>
+  </data>
+  <data name="CalcGramsPerKilogram" xml:space="preserve">
+    <value>{0:0.0} g/kg</value>
+  </data>
+  <data name="CalcOther" xml:space="preserve">
+    <value>→ {0:0.#} %</value>
+  </data>
+  <data name="CalcRemove" xml:space="preserve">
+    <value>{0:0} g iz zraka, {1:0} g s puferom</value>
+  </data>
+  <data name="CalcNothingToRemove" xml:space="preserve">
+    <value>ništa — vlažnost nije iznad cilja</value>
+  </data>
+  <data name="CalcInflow" xml:space="preserve">
+    <value>Dotok vlage sada: {0:0} g/h ({1:0.0} l/dan)</value>
+  </data>
+  <data name="CalcRemoval" xml:space="preserve">
+    <value>Odvlaživač sada uklanja: {0:0} g/h ({1:0.0} l/dan)</value>
+  </data>
+  <data name="CalcWithout" xml:space="preserve">
+    <value>Bez odvlaživača vlažnost će ići prema {0:0} % (τ = {1:0.0} h)</value>
+  </data>
+  <data name="CalcWithoutLimit" xml:space="preserve">
+    <value>Bez odvlaživača: nema izmjene zraka — izvori podižu vlažnost bez granice</value>
+  </data>
+  <data name="CalcWith" xml:space="preserve">
+    <value>S odvlaživačem bez prekida — prema {0:0} % (τ = {1:0.0} h)</value>
+  </data>
+  <data name="CalcEta" xml:space="preserve">
+    <value>Do cilja {0:0} %: {1}</value>
+  </data>
+  <data name="CalcNever" xml:space="preserve">
+    <value>Neće dosegnuti cilj {0:0} %: granica {1:0} %</value>
+  </data>
+  <data name="CalcReached" xml:space="preserve">
+    <value>Cilj {0:0} % već je dosegnut</value>
+  </data>
+  <data name="CalcNeeded" xml:space="preserve">
+    <value>Za održavanje {0:0} % potreban je nazivni kapacitet od najmanje {1:0.0} l/dan</value>
+  </data>
+  <data name="CalcTooLow" xml:space="preserve">
+    <value>Ispod ≈ {0:0} % kompresorski odvlaživač gotovo ne suši</value>
+  </data>
+  <data name="CalcFromRecordsNone" xml:space="preserve">
+    <value>U zapisima nema ravnomjernih odsječaka (barem 10 minuta) — nema čime precizirati.</value>
+  </data>
+  <data name="CalcFromRecordsDone" xml:space="preserve">
+    <value>Prema zapisima: odsječaka „isključen” — {0}, „odvlažuje” — {1}.
+Pufer k = {2:0.0}, izmjena zraka {3:0.00} h⁻¹, izvori ≈ {4:0} g/h.
+Obujam sobe i kapacitet odvlaživača uzimaju se iz polja — provjeri ih.</value>
+  </data>
   <data name="CliUsage" xml:space="preserve">
     <value>Upravljanje odvlaživačem Xiaomi Smart Dehumidifier Lite.
 Adresa i token uzimaju se iz postavki programa (iste kao u prozoru) ili se pišu ispred naredbi.

@@ -1,0 +1,405 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+    Microsoft ResX Schema
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="groupAir.Text" xml:space="preserve">
+    <value>Въздух</value>
+  </data>
+  <data name="labelTemperatureCaption.Text" xml:space="preserve">
+    <value>&amp;Температура, °C:</value>
+  </data>
+  <data name="labelHumidityCaption.Text" xml:space="preserve">
+    <value>&amp;Влажност, %:</value>
+  </data>
+  <data name="labelWaterCaption.Text" xml:space="preserve">
+    <value>&amp;Абсолютна влажност, г/м³:</value>
+  </data>
+  <data name="buttonFromDevice.Text" xml:space="preserve">
+    <value>От &amp;изсушителя</value>
+  </data>
+  <data name="labelDewCaption.Text" xml:space="preserve">
+    <value>Точка на оросяване:</value>
+  </data>
+  <data name="labelRatioCaption.Text" xml:space="preserve">
+    <value>Влагосъдържание:</value>
+  </data>
+  <data name="labelOtherCaption.Text" xml:space="preserve">
+    <value>Същата вода при &amp;друга T, °C:</value>
+  </data>
+  <data name="groupRoom.Text" xml:space="preserve">
+    <value>Стая</value>
+  </data>
+  <data name="labelVolumeCaption.Text" xml:space="preserve">
+    <value>&amp;Обем на стаята, м³:</value>
+  </data>
+  <data name="labelBufferCaption.Text" xml:space="preserve">
+    <value>&amp;Буфер k (стени, вещи):</value>
+  </data>
+  <data name="labelTargetCaption.Text" xml:space="preserve">
+    <value>&amp;Цел, %:</value>
+  </data>
+  <data name="labelRemoveCaption.Text" xml:space="preserve">
+    <value>Да се отнеме вода:</value>
+  </data>
+  <data name="groupForecast.Text" xml:space="preserve">
+    <value>Прогноза</value>
+  </data>
+  <data name="labelExchangeCaption.Text" xml:space="preserve">
+    <value>Въздухооб&amp;мен, ч⁻¹:</value>
+  </data>
+  <data name="labelOutdoorCaption.Text" xml:space="preserve">
+    <value>&amp;Навън, °C и %:</value>
+  </data>
+  <data name="numericOutdoorTemperature.AccessibleName" xml:space="preserve">
+    <value>Навън, °C</value>
+  </data>
+  <data name="numericOutdoorHumidity.AccessibleName" xml:space="preserve">
+    <value>Навън, %</value>
+  </data>
+  <data name="labelSourcesCaption.Text" xml:space="preserve">
+    <value>Източници на в&amp;лага, г/ч:</value>
+  </data>
+  <data name="labelRatedCaption.Text" xml:space="preserve">
+    <value>&amp;Капацитет, л/ден:</value>
+  </data>
+  <data name="labelRatedHint.Text" xml:space="preserve">
+    <value>при 30 °C и 80 %</value>
+  </data>
+  <data name="buttonFromRecords.Text" xml:space="preserve">
+    <value>От за&amp;писите</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Изчисление</value>
+  </data>
+  <data name="groupAir.ToolTip" xml:space="preserve">
+    <value>Свойства на въздуха при дадените температура и влажност.
+Налягането на наситените пари е по формулата на Магнус (коефициенти на Алдучов и Ескридж, 1996):
+от −40 до +50 °C грешката е под 0,4 %. Атмосферното налягане се приема нормално, 1013 hPa.</value>
+  </data>
+  <data name="labelTemperatureCaption.ToolTip" xml:space="preserve">
+    <value>Температура на въздуха в стаята, °C.
+От нея зависи колко вода може да задържи въздухът: при +20 °C — до 17,2 g/m³, при +30 °C — вече до 30,3 g/m³.
+Затова една и съща вода при различна температура дава различна относителна влажност:
+изсушителят, като затопля стаята, я сваля още преди да събере вода.
+Бутонът „От изсушителя“ попълва неговото показание.</value>
+  </data>
+  <data name="numericTemperature.ToolTip" xml:space="preserve">
+    <value>Температура на въздуха в стаята, °C.
+От нея зависи колко вода може да задържи въздухът: при +20 °C — до 17,2 g/m³, при +30 °C — вече до 30,3 g/m³.
+Затова една и съща вода при различна температура дава различна относителна влажност:
+изсушителят, като затопля стаята, я сваля още преди да събере вода.
+Бутонът „От изсушителя“ попълва неговото показание.</value>
+  </data>
+  <data name="labelHumidityCaption.ToolTip" xml:space="preserve">
+    <value>Относителна влажност, %: колко вода има във въздуха спрямо най-много възможната при тази температура.
+100 % — въздухът е наситен: повече вода не задържа, излишната се отделя като роса.
+Ако я промениш, абсолютната влажност се преизчислява при същата температура.</value>
+  </data>
+  <data name="numericHumidity.ToolTip" xml:space="preserve">
+    <value>Относителна влажност, %: колко вода има във въздуха спрямо най-много възможната при тази температура.
+100 % — въздухът е наситен: повече вода не задържа, излишната се отделя като роса.
+Ако я промениш, абсолютната влажност се преизчислява при същата температура.</value>
+  </data>
+  <data name="labelWaterCaption.ToolTip" xml:space="preserve">
+    <value>Абсолютна влажност — грамове вода в кубичен метър въздух.
+За разлика от относителната, тя не се променя, когато въздухът се затопля или изстива,
+затова прогнозата се смята именно в нея.
+Можеш да я въведеш и сам — тогава относителната се преизчислява при същата температура.</value>
+  </data>
+  <data name="numericWater.ToolTip" xml:space="preserve">
+    <value>Абсолютна влажност — грамове вода в кубичен метър въздух.
+За разлика от относителната, тя не се променя, когато въздухът се затопля или изстива,
+затова прогнозата се смята именно в нея.
+Можеш да я въведеш и сам — тогава относителната се преизчислява при същата температура.</value>
+  </data>
+  <data name="buttonFromDevice.ToolTip" xml:space="preserve">
+    <value>Попълва температурата, влажността и целта, които изсушителят показва сега.
+В режим сушене на пране целта не се взема — там няма такава.
+Ако изсушителят не е свързан, полетата не се променят.</value>
+  </data>
+  <data name="labelDewCaption.ToolTip" xml:space="preserve">
+    <value>Точка на оросяване — до каква температура трябва да се охлади този въздух, за да се отдели вода от него.
+Прозорец, стена или тръби, по-студени от точката на оросяване, се покриват с конденз, а с времето и с мухъл.
+Компресорният изсушител суши точно така: охлажда изпарителя под точката на оросяване и събира капките.</value>
+  </data>
+  <data name="labelDew.ToolTip" xml:space="preserve">
+    <value>Точка на оросяване — до каква температура трябва да се охлади този въздух, за да се отдели вода от него.
+Прозорец, стена или тръби, по-студени от точката на оросяване, се покриват с конденз, а с времето и с мухъл.
+Компресорният изсушител суши точно така: охлажда изпарителя под точката на оросяване и събира капките.</value>
+  </data>
+  <data name="labelRatioCaption.ToolTip" xml:space="preserve">
+    <value>Влагосъдържание — грамове вода на килограм сух въздух (при нормално налягане).
+Както абсолютната влажност, не зависи от температурата, а освен това и от свиването на въздуха;
+по тази ос се строят психрометричните диаграми.</value>
+  </data>
+  <data name="labelRatio.ToolTip" xml:space="preserve">
+    <value>Влагосъдържание — грамове вода на килограм сух въздух (при нормално налягане).
+Както абсолютната влажност, не зависи от температурата, а освен това и от свиването на въздуха;
+по тази ос се строят психрометричните диаграми.</value>
+  </data>
+  <data name="labelOtherCaption.ToolTip" xml:space="preserve">
+    <value>Каква ще стане относителната влажност, ако този въздух (същата вода на килограм въздух)
+се затопли или охлади до друга температура: до студен прозорец, в мазе, през нощта, навън.
+Над 100 % — при тази температура излишната вода ще се отдели като роса.</value>
+  </data>
+  <data name="numericOtherTemperature.ToolTip" xml:space="preserve">
+    <value>Каква ще стане относителната влажност, ако този въздух (същата вода на килограм въздух)
+се затопли или охлади до друга температура: до студен прозорец, в мазе, през нощта, навън.
+Над 100 % — при тази температура излишната вода ще се отдели като роса.</value>
+  </data>
+  <data name="labelOther.ToolTip" xml:space="preserve">
+    <value>Каква ще стане относителната влажност, ако този въздух (същата вода на килограм въздух)
+се затопли или охлади до друга температура: до студен прозорец, в мазе, през нощта, навън.
+Над 100 % — при тази температура излишната вода ще се отдели като роса.</value>
+  </data>
+  <data name="groupRoom.ToolTip" xml:space="preserve">
+    <value>Колко вода да се отнеме от стаята, за да се стигне целта при същата температура.</value>
+  </data>
+  <data name="labelVolumeCaption.ToolTip" xml:space="preserve">
+    <value>Обем на стаята, m³: площ на пода × височина на тавана; 15 m² при таван 2,7 m — около 40 m³.
+Ако вратите са отворени, брой и съседните стаи: въздухът в тях е общ.
+Запомня се.</value>
+  </data>
+  <data name="numericVolume.ToolTip" xml:space="preserve">
+    <value>Обем на стаята, m³: площ на пода × височина на тавана; 15 m² при таван 2,7 m — около 40 m³.
+Ако вратите са отворени, брой и съседните стаи: въздухът в тях е общ.
+Запомня се.</value>
+  </data>
+  <data name="labelBufferCaption.ToolTip" xml:space="preserve">
+    <value>Буфер k — колко пъти повече вода има в стаята, отколкото само във въздуха ѝ.
+Стените, мебелите, тъканите и хартията поемат влага и я отдават, когато въздухът изсъхва,
+затова сушенето трае по-дълго и отнема повече, отколкото следва само от обема.
+1 — празна стая с гладки стени; колкото повече вещи, дърво и тъкани, толкова по-голямо е k.
+Най-точно го оценява бутонът „От записите“. Запомня се.</value>
+  </data>
+  <data name="numericBuffer.ToolTip" xml:space="preserve">
+    <value>Буфер k — колко пъти повече вода има в стаята, отколкото само във въздуха ѝ.
+Стените, мебелите, тъканите и хартията поемат влага и я отдават, когато въздухът изсъхва,
+затова сушенето трае по-дълго и отнема повече, отколкото следва само от обема.
+1 — празна стая с гладки стени; колкото повече вещи, дърво и тъкани, толкова по-голямо е k.
+Най-точно го оценява бутонът „От записите“. Запомня се.</value>
+  </data>
+  <data name="labelTargetCaption.ToolTip" xml:space="preserve">
+    <value>Целева влажност, %, при същата температура.
+По нея се смятат „Да се отнеме вода“, времето до целта и нужната производителност.
+Най-добре за здравето е 40…50 %.</value>
+  </data>
+  <data name="numericTarget.ToolTip" xml:space="preserve">
+    <value>Целева влажност, %, при същата температура.
+По нея се смятат „Да се отнеме вода“, времето до целта и нужната производителност.
+Най-добре за здравето е 40…50 %.</value>
+  </data>
+  <data name="labelRemoveCaption.ToolTip" xml:space="preserve">
+    <value>Колко вода да се отнеме, за да падне влажността до целта при същата температура.
+Първото число е само от въздуха: обем × разликата в абсолютната влажност сега и при целта.
+Второто е заедно с буфера (× k): приблизително толкова ще събере изсушителят в резервоара,
+без водата, която междувременно ще дойде отвън и от източниците.</value>
+  </data>
+  <data name="labelRemove.ToolTip" xml:space="preserve">
+    <value>Колко вода да се отнеме, за да падне влажността до целта при същата температура.
+Първото число е само от въздуха: обем × разликата в абсолютната влажност сега и при целта.
+Второто е заедно с буфера (× k): приблизително толкова ще събере изсушителят в резервоара,
+без водата, която междувременно ще дойде отвън и от източниците.</value>
+  </data>
+  <data name="groupForecast.ToolTip" xml:space="preserve">
+    <value>Прогноза по модела на стаята:
+k·V·dρ/dt = n·V·(ρ навън − ρ) + S − c·(ρ − ρ min)
+ρ — абсолютна влажност, V — обем, k — буфер, n — въздухообмен, S — източници,
+c — „ефективен поток“ на изсушителя (от номиналната производителност), ρ min — влажност ≈ 35 %.
+Влажността върви към своята граница по експонента с времеконстанта τ = k·V / (n·V + c).
+Температурата се приема за постоянна.</value>
+  </data>
+  <data name="labelExchangeCaption.ToolTip" xml:space="preserve">
+    <value>Кратност на въздухообмена, ч⁻¹: колко пъти в час целият въздух на стаята се сменя с приточен.
+Затворени прозорци и врати — около 0,1…0,5; проветряване, аспирация — 1 и повече.
+Ако навън е по-сухо, въздухообменът помага на сушенето; ако е по-влажно — пречи.
+Най-точно го оценява бутонът „От записите“. Запомня се.</value>
+  </data>
+  <data name="numericExchange.ToolTip" xml:space="preserve">
+    <value>Кратност на въздухообмена, ч⁻¹: колко пъти в час целият въздух на стаята се сменя с приточен.
+Затворени прозорци и врати — около 0,1…0,5; проветряване, аспирация — 1 и повече.
+Ако навън е по-сухо, въздухообменът помага на сушенето; ако е по-влажно — пречи.
+Най-точно го оценява бутонът „От записите“. Запомня се.</value>
+  </data>
+  <data name="labelOutdoorCaption.ToolTip" xml:space="preserve">
+    <value>Температура и относителна влажност там, откъдето идва въздухът: навън, входът, съседната стая.
+От тях се взема абсолютната влажност на притока. Външният въздух, дори влажен, в студа носи малко вода:
+при −5 °C и 80 % — 2,7 g/m³, докато в стая при +22 °C и 50 % — 9,7 g/m³.
+Запомня се.</value>
+  </data>
+  <data name="numericOutdoorTemperature.ToolTip" xml:space="preserve">
+    <value>Температура и относителна влажност там, откъдето идва въздухът: навън, входът, съседната стая.
+От тях се взема абсолютната влажност на притока. Външният въздух, дори влажен, в студа носи малко вода:
+при −5 °C и 80 % — 2,7 g/m³, докато в стая при +22 °C и 50 % — 9,7 g/m³.
+Запомня се.</value>
+  </data>
+  <data name="numericOutdoorHumidity.ToolTip" xml:space="preserve">
+    <value>Температура и относителна влажност там, откъдето идва въздухът: навън, входът, съседната стая.
+От тях се взема абсолютната влажност на притока. Външният въздух, дори влажен, в студа носи малко вода:
+при −5 °C и 80 % — 2,7 g/m³, докато в стая при +22 °C и 50 % — 9,7 g/m³.
+Запомня се.</value>
+  </data>
+  <data name="labelSourcesCaption.ToolTip" xml:space="preserve">
+    <value>Източници на влага в стаята, g/h: дишане и кожа, готвене, съхнещо пране, растения, аквариум.
+Човек в покой — около 50 g/h; пране, съхнещо в стаята — стотици грамове в час.
+Отрицателно число е отток: нещо отнема влага, например студена стена или климатик.
+Най-точно ги оценява бутонът „От записите“. Запомня се.</value>
+  </data>
+  <data name="numericSources.ToolTip" xml:space="preserve">
+    <value>Източници на влага в стаята, g/h: дишане и кожа, готвене, съхнещо пране, растения, аквариум.
+Човек в покой — около 50 g/h; пране, съхнещо в стаята — стотици грамове в час.
+Отрицателно число е отток: нещо отнема влага, например студена стена или климатик.
+Най-точно ги оценява бутонът „От записите“. Запомня се.</value>
+  </data>
+  <data name="labelRatedCaption.ToolTip" xml:space="preserve">
+    <value>Номинална производителност на изсушителя, l/денонощие — по стандарт при 30 °C и 80 %.
+В обикновена стая той отнема много по-малко: колкото по-сух и по-студен е въздухът, толкова по-малко,
+а под ≈ 35 % компресорният изсушител почти не суши.
+Моделът приема отнемането за пропорционално на (ρ − ρ при 35 %) и намира множителя по номиналната точка.
+Запомня се.</value>
+  </data>
+  <data name="numericRated.ToolTip" xml:space="preserve">
+    <value>Номинална производителност на изсушителя, l/денонощие — по стандарт при 30 °C и 80 %.
+В обикновена стая той отнема много по-малко: колкото по-сух и по-студен е въздухът, толкова по-малко,
+а под ≈ 35 % компресорният изсушител почти не суши.
+Моделът приема отнемането за пропорционално на (ρ − ρ при 35 %) и намира множителя по номиналната точка.
+Запомня се.</value>
+  </data>
+  <data name="labelRatedHint.ToolTip" xml:space="preserve">
+    <value>Номинална производителност на изсушителя, l/денонощие — по стандарт при 30 °C и 80 %.
+В обикновена стая той отнема много по-малко: колкото по-сух и по-студен е въздухът, толкова по-малко,
+а под ≈ 35 % компресорният изсушител почти не суши.
+Моделът приема отнемането за пропорционално на (ρ − ρ при 35 %) и намира множителя по номиналната точка.
+Запомня се.</value>
+  </data>
+  <data name="buttonFromRecords.ToolTip" xml:space="preserve">
+    <value>Уточнява буфера k, въздухообмена и източниците по всички запазени записи.
+Отрязъците, когато изсушителят е бил изключен, показват колко бързо влажността върви към равновесие със средата (n/k)
+и към какво (оттук и източниците); отрязъците на сушене — колко бързо я сваля изсушителят.
+Обемът на стаята и номиналната производителност се вземат от полетата — първо ги задай вярно.
+Отрязъци, по-къси от 10 минути или с почти прав ход, не се отчитат.</value>
+  </data>
+  <data name="labelForecast.ToolTip" xml:space="preserve">
+    <value>Приток — колко вода на час носят въздухообменът и източниците при сегашната влажност.
+Изсушителят отнема — колко вода на час отнема той при сегашните влажност и температура.
+Без изсушител и с изсушител — до каква влажност ще стигне стаята и за колко време:
+след τ остават 37 % от пътя, след 2τ — 14 %, след 3τ — 5 %.
+До целта — кога влажността ще стигне целта, ако изсушителят работи без спиране.
+Нужна производителност — с по-малка номинална изсушителят няма да задържи целта.</value>
+  </data>
+</root>

@@ -369,6 +369,9 @@
   <data name="buttonRecord.Text" xml:space="preserve">
     <value>⚫ &amp;Nagrywaj</value>
   </data>
+  <data name="buttonCalculator.Text" xml:space="preserve">
+    <value>Ob&amp;liczenia…</value>
+  </data>
   <data name="labelTemperatureCaption.Location" type="System.Drawing.Point, System.Drawing">
     <value>73, 62</value>
   </data>
@@ -452,5 +455,8 @@
   </data>
   <data name="buttonRecord.ToolTip" xml:space="preserve">
     <value>Rozpocznij lub zatrzymaj nagrywanie (F5)</value>
+  </data>
+  <data name="buttonCalculator.ToolTip" xml:space="preserve">
+    <value>Obliczenia wilgotności (F7)</value>
   </data>
 </root>

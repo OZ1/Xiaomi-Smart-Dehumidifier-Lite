@@ -1,0 +1,405 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+    Microsoft ResX Schema
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="groupAir.Text" xml:space="preserve">
+    <value>Powietrze</value>
+  </data>
+  <data name="labelTemperatureCaption.Text" xml:space="preserve">
+    <value>&amp;Temperatura, °C:</value>
+  </data>
+  <data name="labelHumidityCaption.Text" xml:space="preserve">
+    <value>&amp;Wilgotność, %:</value>
+  </data>
+  <data name="labelWaterCaption.Text" xml:space="preserve">
+    <value>Wilgotność &amp;bezwzględna, g/m³:</value>
+  </data>
+  <data name="buttonFromDevice.Text" xml:space="preserve">
+    <value>Z o&amp;suszacza</value>
+  </data>
+  <data name="labelDewCaption.Text" xml:space="preserve">
+    <value>Punkt rosy:</value>
+  </data>
+  <data name="labelRatioCaption.Text" xml:space="preserve">
+    <value>Zawartość wilgoci:</value>
+  </data>
+  <data name="labelOtherCaption.Text" xml:space="preserve">
+    <value>Ta sama woda przy &amp;innej T, °C:</value>
+  </data>
+  <data name="groupRoom.Text" xml:space="preserve">
+    <value>Pokój</value>
+  </data>
+  <data name="labelVolumeCaption.Text" xml:space="preserve">
+    <value>&amp;Objętość pokoju, m³:</value>
+  </data>
+  <data name="labelBufferCaption.Text" xml:space="preserve">
+    <value>B&amp;ufor k (ściany, rzeczy):</value>
+  </data>
+  <data name="labelTargetCaption.Text" xml:space="preserve">
+    <value>&amp;Cel, %:</value>
+  </data>
+  <data name="labelRemoveCaption.Text" xml:space="preserve">
+    <value>Usunąć wody:</value>
+  </data>
+  <data name="groupForecast.Text" xml:space="preserve">
+    <value>Prognoza</value>
+  </data>
+  <data name="labelExchangeCaption.Text" xml:space="preserve">
+    <value>Wymiana &amp;powietrza, h⁻¹:</value>
+  </data>
+  <data name="labelOutdoorCaption.Text" xml:space="preserve">
+    <value>Na &amp;zewnątrz, °C i %:</value>
+  </data>
+  <data name="numericOutdoorTemperature.AccessibleName" xml:space="preserve">
+    <value>Na zewnątrz, °C</value>
+  </data>
+  <data name="numericOutdoorHumidity.AccessibleName" xml:space="preserve">
+    <value>Na zewnątrz, %</value>
+  </data>
+  <data name="labelSourcesCaption.Text" xml:space="preserve">
+    <value>Źródła wi&amp;lgoci, g/h:</value>
+  </data>
+  <data name="labelRatedCaption.Text" xml:space="preserve">
+    <value>Wy&amp;dajność, l/dobę:</value>
+  </data>
+  <data name="labelRatedHint.Text" xml:space="preserve">
+    <value>przy 30 °C i 80 %</value>
+  </data>
+  <data name="buttonFromRecords.Text" xml:space="preserve">
+    <value>Z z&amp;apisów</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Obliczenie</value>
+  </data>
+  <data name="groupAir.ToolTip" xml:space="preserve">
+    <value>Właściwości powietrza przy podanej temperaturze i wilgotności.
+Ciśnienie pary nasyconej według wzoru Magnusa (współczynniki Alduchova i Eskridge’a, 1996):
+od −40 do +50 °C błąd poniżej 0,4 %. Ciśnienie powietrza przyjęte jako normalne, 1013 hPa.</value>
+  </data>
+  <data name="labelTemperatureCaption.ToolTip" xml:space="preserve">
+    <value>Temperatura powietrza w pomieszczeniu, °C.
+Od niej zależy, ile wody powietrze może utrzymać: w +20 °C do 17,2 g/m³, w +30 °C już do 30,3 g/m³.
+Dlatego ta sama woda w innej temperaturze daje inną wilgotność względną:
+osuszacz, ogrzewając pomieszczenie, obniża ją, zanim jeszcze zbierze wodę.
+Przycisk „Z osuszacza” wpisuje jego odczyt.</value>
+  </data>
+  <data name="numericTemperature.ToolTip" xml:space="preserve">
+    <value>Temperatura powietrza w pomieszczeniu, °C.
+Od niej zależy, ile wody powietrze może utrzymać: w +20 °C do 17,2 g/m³, w +30 °C już do 30,3 g/m³.
+Dlatego ta sama woda w innej temperaturze daje inną wilgotność względną:
+osuszacz, ogrzewając pomieszczenie, obniża ją, zanim jeszcze zbierze wodę.
+Przycisk „Z osuszacza” wpisuje jego odczyt.</value>
+  </data>
+  <data name="labelHumidityCaption.ToolTip" xml:space="preserve">
+    <value>Wilgotność względna, %: ile wody jest w powietrzu w stosunku do największej możliwej w tej temperaturze.
+100 % — powietrze jest nasycone: więcej wody nie utrzyma, nadmiar wykrapla się jako rosa.
+Gdy ją zmienisz, wilgotność bezwzględna przeliczy się przy tej samej temperaturze.</value>
+  </data>
+  <data name="numericHumidity.ToolTip" xml:space="preserve">
+    <value>Wilgotność względna, %: ile wody jest w powietrzu w stosunku do największej możliwej w tej temperaturze.
+100 % — powietrze jest nasycone: więcej wody nie utrzyma, nadmiar wykrapla się jako rosa.
+Gdy ją zmienisz, wilgotność bezwzględna przeliczy się przy tej samej temperaturze.</value>
+  </data>
+  <data name="labelWaterCaption.ToolTip" xml:space="preserve">
+    <value>Wilgotność bezwzględna — gramy wody w metrze sześciennym powietrza.
+W odróżnieniu od względnej nie zmienia się, gdy powietrze się nagrzewa lub stygnie,
+dlatego prognoza liczona jest właśnie w niej.
+Możesz ją wpisać sam — wtedy względna przeliczy się przy tej samej temperaturze.</value>
+  </data>
+  <data name="numericWater.ToolTip" xml:space="preserve">
+    <value>Wilgotność bezwzględna — gramy wody w metrze sześciennym powietrza.
+W odróżnieniu od względnej nie zmienia się, gdy powietrze się nagrzewa lub stygnie,
+dlatego prognoza liczona jest właśnie w niej.
+Możesz ją wpisać sam — wtedy względna przeliczy się przy tej samej temperaturze.</value>
+  </data>
+  <data name="buttonFromDevice.ToolTip" xml:space="preserve">
+    <value>Wpisuje temperaturę, wilgotność i cel, które osuszacz teraz pokazuje.
+W trybie suszenia prania cel nie jest brany — tam go nie ma.
+Jeśli osuszacz nie jest połączony, pola się nie zmieniają.</value>
+  </data>
+  <data name="labelDewCaption.ToolTip" xml:space="preserve">
+    <value>Punkt rosy — do jakiej temperatury trzeba schłodzić to powietrze, żeby wykropliła się z niego woda.
+Okno, ściana lub rury zimniejsze niż punkt rosy pokrywają się skroplinami, a z czasem pleśnią.
+Osuszacz sprężarkowy suszy właśnie tak: chłodzi parownik poniżej punktu rosy i zbiera krople.</value>
+  </data>
+  <data name="labelDew.ToolTip" xml:space="preserve">
+    <value>Punkt rosy — do jakiej temperatury trzeba schłodzić to powietrze, żeby wykropliła się z niego woda.
+Okno, ściana lub rury zimniejsze niż punkt rosy pokrywają się skroplinami, a z czasem pleśnią.
+Osuszacz sprężarkowy suszy właśnie tak: chłodzi parownik poniżej punktu rosy i zbiera krople.</value>
+  </data>
+  <data name="labelRatioCaption.ToolTip" xml:space="preserve">
+    <value>Zawartość wilgoci — gramy wody na kilogram suchego powietrza (przy normalnym ciśnieniu).
+Tak jak wilgotność bezwzględna nie zależy od temperatury, a przy tym ani od sprężenia powietrza;
+wzdłuż tej osi rysuje się wykresy psychrometryczne.</value>
+  </data>
+  <data name="labelRatio.ToolTip" xml:space="preserve">
+    <value>Zawartość wilgoci — gramy wody na kilogram suchego powietrza (przy normalnym ciśnieniu).
+Tak jak wilgotność bezwzględna nie zależy od temperatury, a przy tym ani od sprężenia powietrza;
+wzdłuż tej osi rysuje się wykresy psychrometryczne.</value>
+  </data>
+  <data name="labelOtherCaption.ToolTip" xml:space="preserve">
+    <value>Jaka będzie wilgotność względna, jeśli to powietrze (ta sama woda na kilogram powietrza)
+ogrzać lub schłodzić do innej temperatury: przy zimnym oknie, w piwnicy, w nocy, na dworze.
+Powyżej 100 % — w takiej temperaturze nadmiar wody wykropli się jako rosa.</value>
+  </data>
+  <data name="numericOtherTemperature.ToolTip" xml:space="preserve">
+    <value>Jaka będzie wilgotność względna, jeśli to powietrze (ta sama woda na kilogram powietrza)
+ogrzać lub schłodzić do innej temperatury: przy zimnym oknie, w piwnicy, w nocy, na dworze.
+Powyżej 100 % — w takiej temperaturze nadmiar wody wykropli się jako rosa.</value>
+  </data>
+  <data name="labelOther.ToolTip" xml:space="preserve">
+    <value>Jaka będzie wilgotność względna, jeśli to powietrze (ta sama woda na kilogram powietrza)
+ogrzać lub schłodzić do innej temperatury: przy zimnym oknie, w piwnicy, w nocy, na dworze.
+Powyżej 100 % — w takiej temperaturze nadmiar wody wykropli się jako rosa.</value>
+  </data>
+  <data name="groupRoom.ToolTip" xml:space="preserve">
+    <value>Ile wody usunąć z pomieszczenia, żeby przy tej samej temperaturze osiągnąć cel.</value>
+  </data>
+  <data name="labelVolumeCaption.ToolTip" xml:space="preserve">
+    <value>Kubatura pomieszczenia, m³: powierzchnia podłogi × wysokość sufitu; 15 m² przy suficie 2,7 m — około 40 m³.
+Jeśli drzwi są otwarte, licz też sąsiednie pomieszczenia: powietrze w nich jest wspólne.
+Zapamiętywane.</value>
+  </data>
+  <data name="numericVolume.ToolTip" xml:space="preserve">
+    <value>Kubatura pomieszczenia, m³: powierzchnia podłogi × wysokość sufitu; 15 m² przy suficie 2,7 m — około 40 m³.
+Jeśli drzwi są otwarte, licz też sąsiednie pomieszczenia: powietrze w nich jest wspólne.
+Zapamiętywane.</value>
+  </data>
+  <data name="labelBufferCaption.ToolTip" xml:space="preserve">
+    <value>Bufor k — ile razy więcej wody jest w pomieszczeniu niż w samym jego powietrzu.
+Ściany, meble, tkaniny i papier chłoną wilgoć i oddają ją, gdy powietrze wysycha,
+dlatego suszenie trwa dłużej i usuwa więcej, niż wynikałoby z samej kubatury.
+1 — puste pomieszczenie o gładkich ścianach; im więcej rzeczy, drewna i tkanin, tym większe k.
+Najdokładniej oszacuje go przycisk „Z zapisów”. Zapamiętywane.</value>
+  </data>
+  <data name="numericBuffer.ToolTip" xml:space="preserve">
+    <value>Bufor k — ile razy więcej wody jest w pomieszczeniu niż w samym jego powietrzu.
+Ściany, meble, tkaniny i papier chłoną wilgoć i oddają ją, gdy powietrze wysycha,
+dlatego suszenie trwa dłużej i usuwa więcej, niż wynikałoby z samej kubatury.
+1 — puste pomieszczenie o gładkich ścianach; im więcej rzeczy, drewna i tkanin, tym większe k.
+Najdokładniej oszacuje go przycisk „Z zapisów”. Zapamiętywane.</value>
+  </data>
+  <data name="labelTargetCaption.ToolTip" xml:space="preserve">
+    <value>Wilgotność docelowa, %, przy tej samej temperaturze.
+Według niej liczone są „Usunąć wody”, czas do celu i potrzebna wydajność.
+Najlepsza dla zdrowia jest 40…50 %.</value>
+  </data>
+  <data name="numericTarget.ToolTip" xml:space="preserve">
+    <value>Wilgotność docelowa, %, przy tej samej temperaturze.
+Według niej liczone są „Usunąć wody”, czas do celu i potrzebna wydajność.
+Najlepsza dla zdrowia jest 40…50 %.</value>
+  </data>
+  <data name="labelRemoveCaption.ToolTip" xml:space="preserve">
+    <value>Ile wody usunąć, żeby wilgotność przy tej samej temperaturze spadła do celu.
+Pierwsza liczba — tylko z powietrza: kubatura × różnica wilgotności bezwzględnej teraz i przy celu.
+Druga — razem z buforem (× k): mniej więcej tyle osuszacz zbierze do zbiornika,
+nie licząc wody, która w tym czasie napłynie z zewnątrz i ze źródeł.</value>
+  </data>
+  <data name="labelRemove.ToolTip" xml:space="preserve">
+    <value>Ile wody usunąć, żeby wilgotność przy tej samej temperaturze spadła do celu.
+Pierwsza liczba — tylko z powietrza: kubatura × różnica wilgotności bezwzględnej teraz i przy celu.
+Druga — razem z buforem (× k): mniej więcej tyle osuszacz zbierze do zbiornika,
+nie licząc wody, która w tym czasie napłynie z zewnątrz i ze źródeł.</value>
+  </data>
+  <data name="groupForecast.ToolTip" xml:space="preserve">
+    <value>Prognoza według modelu pomieszczenia:
+k·V·dρ/dt = n·V·(ρ na zewnątrz − ρ) + S − c·(ρ − ρ min)
+ρ — wilgotność bezwzględna, V — kubatura, k — bufor, n — wymiana powietrza, S — źródła,
+c — „przepływ efektywny” osuszacza (z wydajności nominalnej), ρ min — wilgotność ≈ 35 %.
+Wilgotność zbliża się do swojej granicy wykładniczo ze stałą czasową τ = k·V / (n·V + c).
+Temperatura przyjęta jako stała.</value>
+  </data>
+  <data name="labelExchangeCaption.ToolTip" xml:space="preserve">
+    <value>Krotność wymiany powietrza, h⁻¹: ile razy na godzinę całe powietrze pomieszczenia wymienia się na nawiewane.
+Zamknięte okna i drzwi — około 0,1…0,5; wietrzenie, wyciąg — 1 i więcej.
+Jeśli na zewnątrz jest suszej, wymiana powietrza pomaga suszyć; jeśli wilgotniej — przeszkadza.
+Najdokładniej oszacuje ją przycisk „Z zapisów”. Zapamiętywane.</value>
+  </data>
+  <data name="numericExchange.ToolTip" xml:space="preserve">
+    <value>Krotność wymiany powietrza, h⁻¹: ile razy na godzinę całe powietrze pomieszczenia wymienia się na nawiewane.
+Zamknięte okna i drzwi — około 0,1…0,5; wietrzenie, wyciąg — 1 i więcej.
+Jeśli na zewnątrz jest suszej, wymiana powietrza pomaga suszyć; jeśli wilgotniej — przeszkadza.
+Najdokładniej oszacuje ją przycisk „Z zapisów”. Zapamiętywane.</value>
+  </data>
+  <data name="labelOutdoorCaption.ToolTip" xml:space="preserve">
+    <value>Temperatura i wilgotność względna tam, skąd napływa powietrze: na dworze, na klatce schodowej, w sąsiednim pomieszczeniu.
+Z nich brana jest wilgotność bezwzględna napływu. Powietrze zewnętrzne, nawet wilgotne, w zimnie niesie mało wody:
+w −5 °C i 80 % 2,7 g/m³, podczas gdy w pomieszczeniu w +22 °C i 50 % 9,7 g/m³.
+Zapamiętywane.</value>
+  </data>
+  <data name="numericOutdoorTemperature.ToolTip" xml:space="preserve">
+    <value>Temperatura i wilgotność względna tam, skąd napływa powietrze: na dworze, na klatce schodowej, w sąsiednim pomieszczeniu.
+Z nich brana jest wilgotność bezwzględna napływu. Powietrze zewnętrzne, nawet wilgotne, w zimnie niesie mało wody:
+w −5 °C i 80 % 2,7 g/m³, podczas gdy w pomieszczeniu w +22 °C i 50 % 9,7 g/m³.
+Zapamiętywane.</value>
+  </data>
+  <data name="numericOutdoorHumidity.ToolTip" xml:space="preserve">
+    <value>Temperatura i wilgotność względna tam, skąd napływa powietrze: na dworze, na klatce schodowej, w sąsiednim pomieszczeniu.
+Z nich brana jest wilgotność bezwzględna napływu. Powietrze zewnętrzne, nawet wilgotne, w zimnie niesie mało wody:
+w −5 °C i 80 % 2,7 g/m³, podczas gdy w pomieszczeniu w +22 °C i 50 % 9,7 g/m³.
+Zapamiętywane.</value>
+  </data>
+  <data name="labelSourcesCaption.ToolTip" xml:space="preserve">
+    <value>Źródła wilgoci w pomieszczeniu, g/h: oddech i skóra, gotowanie, schnące pranie, rośliny, akwarium.
+Człowiek w spoczynku — około 50 g/h; pranie schnące w pomieszczeniu — setki gramów na godzinę.
+Liczba ujemna to odpływ: coś zabiera wilgoć, na przykład zimna ściana lub klimatyzator.
+Najdokładniej oszacuje je przycisk „Z zapisów”. Zapamiętywane.</value>
+  </data>
+  <data name="numericSources.ToolTip" xml:space="preserve">
+    <value>Źródła wilgoci w pomieszczeniu, g/h: oddech i skóra, gotowanie, schnące pranie, rośliny, akwarium.
+Człowiek w spoczynku — około 50 g/h; pranie schnące w pomieszczeniu — setki gramów na godzinę.
+Liczba ujemna to odpływ: coś zabiera wilgoć, na przykład zimna ściana lub klimatyzator.
+Najdokładniej oszacuje je przycisk „Z zapisów”. Zapamiętywane.</value>
+  </data>
+  <data name="labelRatedCaption.ToolTip" xml:space="preserve">
+    <value>Wydajność nominalna osuszacza, l/dobę — według normy przy 30 °C i 80 %.
+W zwykłym pomieszczeniu usuwa znacznie mniej: im suchsze i zimniejsze powietrze, tym mniej,
+a poniżej ≈ 35 % osuszacz sprężarkowy prawie nie suszy.
+Model przyjmuje usuwanie proporcjonalne do (ρ − ρ przy 35 %), a mnożnik wyznacza z punktu nominalnego.
+Zapamiętywane.</value>
+  </data>
+  <data name="numericRated.ToolTip" xml:space="preserve">
+    <value>Wydajność nominalna osuszacza, l/dobę — według normy przy 30 °C i 80 %.
+W zwykłym pomieszczeniu usuwa znacznie mniej: im suchsze i zimniejsze powietrze, tym mniej,
+a poniżej ≈ 35 % osuszacz sprężarkowy prawie nie suszy.
+Model przyjmuje usuwanie proporcjonalne do (ρ − ρ przy 35 %), a mnożnik wyznacza z punktu nominalnego.
+Zapamiętywane.</value>
+  </data>
+  <data name="labelRatedHint.ToolTip" xml:space="preserve">
+    <value>Wydajność nominalna osuszacza, l/dobę — według normy przy 30 °C i 80 %.
+W zwykłym pomieszczeniu usuwa znacznie mniej: im suchsze i zimniejsze powietrze, tym mniej,
+a poniżej ≈ 35 % osuszacz sprężarkowy prawie nie suszy.
+Model przyjmuje usuwanie proporcjonalne do (ρ − ρ przy 35 %), a mnożnik wyznacza z punktu nominalnego.
+Zapamiętywane.</value>
+  </data>
+  <data name="buttonFromRecords.ToolTip" xml:space="preserve">
+    <value>Doprecyzowuje bufor k, wymianę powietrza i źródła na podstawie wszystkich zapisanych zapisów.
+Odcinki z wyłączonym osuszaczem pokazują, jak szybko wilgotność zbliża się do równowagi z otoczeniem (n/k)
+i do jakiej (stąd źródła); odcinki suszenia — jak szybko obniża ją osuszacz.
+Kubatura pomieszczenia i wydajność nominalna brane są z pól — najpierw ustaw je poprawnie.
+Odcinki krótsze niż 10 minut lub o prawie prostym przebiegu nie są brane pod uwagę.</value>
+  </data>
+  <data name="labelForecast.ToolTip" xml:space="preserve">
+    <value>Napływ — ile wody na godzinę wnoszą wymiana powietrza i źródła przy obecnej wilgotności.
+Osuszacz usuwa — ile wody na godzinę usuwa przy obecnej wilgotności i temperaturze.
+Bez osuszacza i z nim — do jakiej wilgotności dojdzie pomieszczenie i w jakim czasie:
+po τ zostaje 37 % drogi, po 2τ 14 %, po 3τ 5 %.
+Do celu — kiedy wilgotność osiągnie cel, jeśli osuszacz pracuje bez przerw.
+Potrzebna wydajność — z mniejszą nominalną osuszacz nie utrzyma celu.</value>
+  </data>
+</root>

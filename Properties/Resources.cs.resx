@@ -462,6 +462,59 @@
   <data name="ChartWarming" xml:space="preserve">
     <value>zahřívání</value>
   </data>
+  <data name="CalcDegrees" xml:space="preserve">
+    <value>{0:0.0} °C</value>
+  </data>
+  <data name="CalcGramsPerKilogram" xml:space="preserve">
+    <value>{0:0.0} g/kg</value>
+  </data>
+  <data name="CalcOther" xml:space="preserve">
+    <value>→ {0:0.#} %</value>
+  </data>
+  <data name="CalcRemove" xml:space="preserve">
+    <value>{0:0} g ze vzduchu, {1:0} g s pufrem</value>
+  </data>
+  <data name="CalcNothingToRemove" xml:space="preserve">
+    <value>nic — vlhkost není nad cílem</value>
+  </data>
+  <data name="CalcInflow" xml:space="preserve">
+    <value>Přítok vlhkosti nyní: {0:0} g/h ({1:0.0} l/den)</value>
+  </data>
+  <data name="CalcRemoval" xml:space="preserve">
+    <value>Odvlhčovač nyní odebírá: {0:0} g/h ({1:0.0} l/den)</value>
+  </data>
+  <data name="CalcWithout" xml:space="preserve">
+    <value>Bez odvlhčovače půjde vlhkost k {0:0} % (τ = {1:0.0} h)</value>
+  </data>
+  <data name="CalcWithoutLimit" xml:space="preserve">
+    <value>Bez odvlhčovače: žádná výměna vzduchu — zdroje zvyšují vlhkost bez omezení</value>
+  </data>
+  <data name="CalcWith" xml:space="preserve">
+    <value>S odvlhčovačem bez přestávek — k {0:0} % (τ = {1:0.0} h)</value>
+  </data>
+  <data name="CalcEta" xml:space="preserve">
+    <value>Do cíle {0:0} %: {1}</value>
+  </data>
+  <data name="CalcNever" xml:space="preserve">
+    <value>Cíle {0:0} % nedosáhne: mez {1:0} %</value>
+  </data>
+  <data name="CalcReached" xml:space="preserve">
+    <value>Cíl {0:0} % je už dosažen</value>
+  </data>
+  <data name="CalcNeeded" xml:space="preserve">
+    <value>K udržení {0:0} % je třeba jmenovitý výkon alespoň {1:0.0} l/den</value>
+  </data>
+  <data name="CalcTooLow" xml:space="preserve">
+    <value>Pod ≈ {0:0} % kompresorový odvlhčovač téměř nesuší</value>
+  </data>
+  <data name="CalcFromRecordsNone" xml:space="preserve">
+    <value>V záznamech nejsou ustálené úseky (alespoň 10 minut) — není čím upřesnit.</value>
+  </data>
+  <data name="CalcFromRecordsDone" xml:space="preserve">
+    <value>Podle záznamů: úseků „vypnuto“ — {0}, „odvlhčuje“ — {1}.
+Pufr k = {2:0.0}, výměna vzduchu {3:0.00} h⁻¹, zdroje ≈ {4:0} g/h.
+Objem místnosti a výkon odvlhčovače se berou z polí — zkontroluj je.</value>
+  </data>
   <data name="CliUsage" xml:space="preserve">
     <value>Ovládání odvlhčovače Xiaomi Smart Dehumidifier Lite.
 Adresa a token se berou z nastavení programu (stejné jako v okně) nebo se píší před příkazy.

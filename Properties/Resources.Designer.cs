@@ -1113,6 +1113,159 @@ namespace DehumidifierControl.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на {0:0.0} °Ц.
+        /// </summary>
+        internal static string CalcDegrees {
+            get {
+                return ResourceManager.GetString("CalcDegrees", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на {0:0.0} г/кг.
+        /// </summary>
+        internal static string CalcGramsPerKilogram {
+            get {
+                return ResourceManager.GetString("CalcGramsPerKilogram", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на → {0:0.#} %.
+        /// </summary>
+        internal static string CalcOther {
+            get {
+                return ResourceManager.GetString("CalcOther", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на {0:0} г изъ воздуха, {1:0} г съ буферомъ.
+        /// </summary>
+        internal static string CalcRemove {
+            get {
+                return ResourceManager.GetString("CalcRemove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на ничего — влажность не выше цѣли.
+        /// </summary>
+        internal static string CalcNothingToRemove {
+            get {
+                return ResourceManager.GetString("CalcNothingToRemove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Притокъ влаги сейчасъ: {0:0} г/ч ({1:0.0} л/сутки).
+        /// </summary>
+        internal static string CalcInflow {
+            get {
+                return ResourceManager.GetString("CalcInflow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Осушитель снимаетъ сейчасъ: {0:0} г/ч ({1:0.0} л/сутки).
+        /// </summary>
+        internal static string CalcRemoval {
+            get {
+                return ResourceManager.GetString("CalcRemoval", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Безъ осушителя влажность пойдётъ къ {0:0} % (τ = {1:0.0} ч).
+        /// </summary>
+        internal static string CalcWithout {
+            get {
+                return ResourceManager.GetString("CalcWithout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Безъ осушителя: воздухообмѣна нѣтъ — источники поднимаютъ влажность безъ предѣла.
+        /// </summary>
+        internal static string CalcWithoutLimit {
+            get {
+                return ResourceManager.GetString("CalcWithoutLimit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Съ осушителемъ безъ остановокъ — къ {0:0} % (τ = {1:0.0} ч).
+        /// </summary>
+        internal static string CalcWith {
+            get {
+                return ResourceManager.GetString("CalcWith", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на До цѣли {0:0} %: {1}.
+        /// </summary>
+        internal static string CalcEta {
+            get {
+                return ResourceManager.GetString("CalcEta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на До цѣли {0:0} % не дойдётъ: предѣлъ {1:0} %.
+        /// </summary>
+        internal static string CalcNever {
+            get {
+                return ResourceManager.GetString("CalcNever", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Цѣль {0:0} % уже достигнута.
+        /// </summary>
+        internal static string CalcReached {
+            get {
+                return ResourceManager.GetString("CalcReached", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Чтобы держать {0:0} %, нужна паспортная производительность не меньше {1:0.0} л/сутки.
+        /// </summary>
+        internal static string CalcNeeded {
+            get {
+                return ResourceManager.GetString("CalcNeeded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Ниже ≈ {0:0} % компрессорный осушитель почти не сушитъ.
+        /// </summary>
+        internal static string CalcTooLow {
+            get {
+                return ResourceManager.GetString("CalcTooLow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Въ записяхъ нѣтъ ровныхъ отрѣзковъ (не короче 10 минутъ) — уточнить нечѣмъ..
+        /// </summary>
+        internal static string CalcFromRecordsNone {
+            get {
+                return ResourceManager.GetString("CalcFromRecordsNone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на По записямъ: отрѣзковъ «выключенъ» — {0}, «осушаетъ» — {1}..
+        /// </summary>
+        internal static string CalcFromRecordsDone {
+            get {
+                return ResourceManager.GetString("CalcFromRecordsDone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Подключенъ къ {0}.
         /// </summary>
         internal static string ConnectedTo {

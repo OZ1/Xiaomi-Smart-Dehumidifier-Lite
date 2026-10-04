@@ -462,6 +462,59 @@
   <data name="ChartWarming" xml:space="preserve">
     <value>загряване</value>
   </data>
+  <data name="CalcDegrees" xml:space="preserve">
+    <value>{0:0.0} °C</value>
+  </data>
+  <data name="CalcGramsPerKilogram" xml:space="preserve">
+    <value>{0:0.0} г/кг</value>
+  </data>
+  <data name="CalcOther" xml:space="preserve">
+    <value>→ {0:0.#} %</value>
+  </data>
+  <data name="CalcRemove" xml:space="preserve">
+    <value>{0:0} г от въздуха, {1:0} г с буфера</value>
+  </data>
+  <data name="CalcNothingToRemove" xml:space="preserve">
+    <value>нищо — влажността не е над целта</value>
+  </data>
+  <data name="CalcInflow" xml:space="preserve">
+    <value>Приток на влага сега: {0:0} г/ч ({1:0.0} л/ден)</value>
+  </data>
+  <data name="CalcRemoval" xml:space="preserve">
+    <value>Изсушителят сега отнема: {0:0} г/ч ({1:0.0} л/ден)</value>
+  </data>
+  <data name="CalcWithout" xml:space="preserve">
+    <value>Без изсушителя влажността ще върви към {0:0} % (τ = {1:0.0} ч)</value>
+  </data>
+  <data name="CalcWithoutLimit" xml:space="preserve">
+    <value>Без изсушителя: няма въздухообмен — източниците повишават влажността без граница</value>
+  </data>
+  <data name="CalcWith" xml:space="preserve">
+    <value>С изсушителя без спиране — към {0:0} % (τ = {1:0.0} ч)</value>
+  </data>
+  <data name="CalcEta" xml:space="preserve">
+    <value>До целта {0:0} %: {1}</value>
+  </data>
+  <data name="CalcNever" xml:space="preserve">
+    <value>Няма да стигне целта {0:0} %: граница {1:0} %</value>
+  </data>
+  <data name="CalcReached" xml:space="preserve">
+    <value>Целта {0:0} % вече е достигната</value>
+  </data>
+  <data name="CalcNeeded" xml:space="preserve">
+    <value>За да се поддържа {0:0} %, е нужен номинален капацитет поне {1:0.0} л/ден</value>
+  </data>
+  <data name="CalcTooLow" xml:space="preserve">
+    <value>Под ≈ {0:0} % компресорният изсушител почти не изсушава</value>
+  </data>
+  <data name="CalcFromRecordsNone" xml:space="preserve">
+    <value>В записите няма равни отрязъци (поне 10 минути) — няма с какво да се уточни.</value>
+  </data>
+  <data name="CalcFromRecordsDone" xml:space="preserve">
+    <value>По записите: отрязъци „изключен“ — {0}, „изсушава“ — {1}.
+Буфер k = {2:0.0}, въздухообмен {3:0.00} ч⁻¹, източници ≈ {4:0} г/ч.
+Обемът на стаята и капацитетът на изсушителя се вземат от полетата — провери ги.</value>
+  </data>
   <data name="CliUsage" xml:space="preserve">
     <value>Управление на изсушителя Xiaomi Smart Dehumidifier Lite.
 Адресът и токенът се вземат от настройките на програмата (същите като в прозореца) или се пишат преди командите.

@@ -1,0 +1,1625 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+    Microsoft ResX Schema
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <metadata name="groupAir.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="labelTemperatureCaption.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="labelTemperatureCaption.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="labelTemperatureCaption.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 26</value>
+  </data>
+  <data name="labelTemperatureCaption.Size" type="System.Drawing.Size, System.Drawing">
+    <value>102, 15</value>
+  </data>
+  <data name="labelTemperatureCaption.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="labelTemperatureCaption.Text" xml:space="preserve">
+    <value>&amp;Температура, °Ц:</value>
+  </data>
+  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="labelTemperatureCaption.ToolTip" xml:space="preserve">
+    <value>Температура воздуха въ комнатѣ, °Ц.
+Отъ неё зависитъ, сколько воды воздухъ можетъ держать: при +20 °Ц — до 17,2 г/м³, при +30 °Ц — уже до 30,3 г/м³.
+Поэтому одна и та же вода при разной температурѣ — разная относительная влажность:
+осушитель, нагрѣвая комнату, сбиваетъ её ещё до того, какъ соберётъ воду.
+Кнопка «Изъ осушителя» подставляетъ его показаніе.</value>
+  </data>
+  <data name="&gt;&gt;labelTemperatureCaption.Name" xml:space="preserve">
+    <value>labelTemperatureCaption</value>
+  </data>
+  <data name="&gt;&gt;labelTemperatureCaption.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelTemperatureCaption.Parent" xml:space="preserve">
+    <value>groupAir</value>
+  </data>
+  <data name="&gt;&gt;labelTemperatureCaption.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="numericTemperature.Location" type="System.Drawing.Point, System.Drawing">
+    <value>210, 24</value>
+  </data>
+  <data name="numericTemperature.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 23</value>
+  </data>
+  <data name="numericTemperature.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="numericTemperature.ToolTip" xml:space="preserve">
+    <value>Температура воздуха въ комнатѣ, °Ц.
+Отъ неё зависитъ, сколько воды воздухъ можетъ держать: при +20 °Ц — до 17,2 г/м³, при +30 °Ц — уже до 30,3 г/м³.
+Поэтому одна и та же вода при разной температурѣ — разная относительная влажность:
+осушитель, нагрѣвая комнату, сбиваетъ её ещё до того, какъ соберётъ воду.
+Кнопка «Изъ осушителя» подставляетъ его показаніе.</value>
+  </data>
+  <data name="&gt;&gt;numericTemperature.Name" xml:space="preserve">
+    <value>numericTemperature</value>
+  </data>
+  <data name="&gt;&gt;numericTemperature.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numericTemperature.Parent" xml:space="preserve">
+    <value>groupAir</value>
+  </data>
+  <data name="&gt;&gt;numericTemperature.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="trackTemperature.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="trackTemperature.Location" type="System.Drawing.Point, System.Drawing">
+    <value>440, 24</value>
+  </data>
+  <data name="trackTemperature.Size" type="System.Drawing.Size, System.Drawing">
+    <value>240, 24</value>
+  </data>
+  <data name="trackTemperature.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;trackTemperature.Name" xml:space="preserve">
+    <value>trackTemperature</value>
+  </data>
+  <data name="&gt;&gt;trackTemperature.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;trackTemperature.Parent" xml:space="preserve">
+    <value>groupAir</value>
+  </data>
+  <data name="&gt;&gt;trackTemperature.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <metadata name="labelHumidityCaption.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="labelHumidityCaption.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelHumidityCaption.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 55</value>
+  </data>
+  <data name="labelHumidityCaption.Size" type="System.Drawing.Size, System.Drawing">
+    <value>86, 15</value>
+  </data>
+  <data name="labelHumidityCaption.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="labelHumidityCaption.Text" xml:space="preserve">
+    <value>&amp;Влажность, %:</value>
+  </data>
+  <data name="labelHumidityCaption.ToolTip" xml:space="preserve">
+    <value>Относительная влажность, %: сколько воды въ воздухѣ отъ наибольшаго возможнаго при этой температурѣ.
+100 % — воздухъ насыщенъ: больше воды онъ не удержитъ, лишняя выпадаетъ росою.
+Мѣняешь её — абсолютная влажность пересчитывается при той же температурѣ.</value>
+  </data>
+  <data name="&gt;&gt;labelHumidityCaption.Name" xml:space="preserve">
+    <value>labelHumidityCaption</value>
+  </data>
+  <data name="&gt;&gt;labelHumidityCaption.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelHumidityCaption.Parent" xml:space="preserve">
+    <value>groupAir</value>
+  </data>
+  <data name="&gt;&gt;labelHumidityCaption.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="numericHumidity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>210, 53</value>
+  </data>
+  <data name="numericHumidity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 23</value>
+  </data>
+  <data name="numericHumidity.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="numericHumidity.ToolTip" xml:space="preserve">
+    <value>Относительная влажность, %: сколько воды въ воздухѣ отъ наибольшаго возможнаго при этой температурѣ.
+100 % — воздухъ насыщенъ: больше воды онъ не удержитъ, лишняя выпадаетъ росою.
+Мѣняешь её — абсолютная влажность пересчитывается при той же температурѣ.</value>
+  </data>
+  <data name="&gt;&gt;numericHumidity.Name" xml:space="preserve">
+    <value>numericHumidity</value>
+  </data>
+  <data name="&gt;&gt;numericHumidity.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numericHumidity.Parent" xml:space="preserve">
+    <value>groupAir</value>
+  </data>
+  <data name="&gt;&gt;numericHumidity.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="trackHumidity.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="trackHumidity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>440, 53</value>
+  </data>
+  <data name="trackHumidity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>240, 24</value>
+  </data>
+  <data name="trackHumidity.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;trackHumidity.Name" xml:space="preserve">
+    <value>trackHumidity</value>
+  </data>
+  <data name="&gt;&gt;trackHumidity.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;trackHumidity.Parent" xml:space="preserve">
+    <value>groupAir</value>
+  </data>
+  <data name="&gt;&gt;trackHumidity.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <metadata name="labelWaterCaption.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="labelWaterCaption.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelWaterCaption.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 84</value>
+  </data>
+  <data name="labelWaterCaption.Size" type="System.Drawing.Size, System.Drawing">
+    <value>170, 15</value>
+  </data>
+  <data name="labelWaterCaption.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="labelWaterCaption.Text" xml:space="preserve">
+    <value>&amp;Абсолютная влажность, г/м³:</value>
+  </data>
+  <data name="labelWaterCaption.ToolTip" xml:space="preserve">
+    <value>Абсолютная влажность — граммовъ воды въ кубометрѣ воздуха.
+Въ отличіе отъ относительной, она не мѣняется, когда воздухъ грѣется или остываетъ,
+поэтому прогнозъ считается именно въ ней.
+Можно ввести и самому — тогда относительная пересчитается при той же температурѣ.</value>
+  </data>
+  <data name="&gt;&gt;labelWaterCaption.Name" xml:space="preserve">
+    <value>labelWaterCaption</value>
+  </data>
+  <data name="&gt;&gt;labelWaterCaption.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelWaterCaption.Parent" xml:space="preserve">
+    <value>groupAir</value>
+  </data>
+  <data name="&gt;&gt;labelWaterCaption.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="numericWater.Location" type="System.Drawing.Point, System.Drawing">
+    <value>210, 82</value>
+  </data>
+  <data name="numericWater.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 23</value>
+  </data>
+  <data name="numericWater.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="numericWater.ToolTip" xml:space="preserve">
+    <value>Абсолютная влажность — граммовъ воды въ кубометрѣ воздуха.
+Въ отличіе отъ относительной, она не мѣняется, когда воздухъ грѣется или остываетъ,
+поэтому прогнозъ считается именно въ ней.
+Можно ввести и самому — тогда относительная пересчитается при той же температурѣ.</value>
+  </data>
+  <data name="&gt;&gt;numericWater.Name" xml:space="preserve">
+    <value>numericWater</value>
+  </data>
+  <data name="&gt;&gt;numericWater.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numericWater.Parent" xml:space="preserve">
+    <value>groupAir</value>
+  </data>
+  <data name="&gt;&gt;numericWater.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="trackWater.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="trackWater.Location" type="System.Drawing.Point, System.Drawing">
+    <value>440, 82</value>
+  </data>
+  <data name="trackWater.Size" type="System.Drawing.Size, System.Drawing">
+    <value>240, 24</value>
+  </data>
+  <data name="trackWater.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;trackWater.Name" xml:space="preserve">
+    <value>trackWater</value>
+  </data>
+  <data name="&gt;&gt;trackWater.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;trackWater.Parent" xml:space="preserve">
+    <value>groupAir</value>
+  </data>
+  <data name="&gt;&gt;trackWater.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <metadata name="buttonFromDevice.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="buttonFromDevice.Location" type="System.Drawing.Point, System.Drawing">
+    <value>300, 23</value>
+  </data>
+  <data name="buttonFromDevice.Size" type="System.Drawing.Size, System.Drawing">
+    <value>132, 27</value>
+  </data>
+  <data name="buttonFromDevice.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="buttonFromDevice.Text" xml:space="preserve">
+    <value>Изъ осу&amp;шителя</value>
+  </data>
+  <data name="buttonFromDevice.ToolTip" xml:space="preserve">
+    <value>Подставить температуру, влажность и цѣль, которыя сейчасъ показываетъ осушитель.
+Цѣль въ режимѣ сушки бѣлья не берётся — тамъ ея нѣтъ.
+Если осушитель не подключёнъ, поля не мѣняются.</value>
+  </data>
+  <data name="&gt;&gt;buttonFromDevice.Name" xml:space="preserve">
+    <value>buttonFromDevice</value>
+  </data>
+  <data name="&gt;&gt;buttonFromDevice.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonFromDevice.Parent" xml:space="preserve">
+    <value>groupAir</value>
+  </data>
+  <data name="&gt;&gt;buttonFromDevice.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <metadata name="labelDewCaption.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="labelDewCaption.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelDewCaption.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 113</value>
+  </data>
+  <data name="labelDewCaption.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 15</value>
+  </data>
+  <data name="labelDewCaption.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="labelDewCaption.Text" xml:space="preserve">
+    <value>Точка росы:</value>
+  </data>
+  <data name="labelDewCaption.ToolTip" xml:space="preserve">
+    <value>Точка росы — до какой температуры надо остудить этотъ воздухъ, чтобы изъ него выпала вода.
+Окно, стѣна, трубы холоднѣе точки росы — на нихъ конденсатъ, а со временемъ и плѣсень.
+Компрессорный осушитель сушитъ именно такъ: остужаетъ змѣевикъ ниже точки росы и собираетъ капли.</value>
+  </data>
+  <data name="&gt;&gt;labelDewCaption.Name" xml:space="preserve">
+    <value>labelDewCaption</value>
+  </data>
+  <data name="&gt;&gt;labelDewCaption.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelDewCaption.Parent" xml:space="preserve">
+    <value>groupAir</value>
+  </data>
+  <data name="&gt;&gt;labelDewCaption.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="labelDew.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelDew.Location" type="System.Drawing.Point, System.Drawing">
+    <value>210, 113</value>
+  </data>
+  <data name="labelDew.Size" type="System.Drawing.Size, System.Drawing">
+    <value>19, 15</value>
+  </data>
+  <data name="labelDew.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="labelDew.Text" xml:space="preserve">
+    <value>—</value>
+  </data>
+  <data name="labelDew.ToolTip" xml:space="preserve">
+    <value>Точка росы — до какой температуры надо остудить этотъ воздухъ, чтобы изъ него выпала вода.
+Окно, стѣна, трубы холоднѣе точки росы — на нихъ конденсатъ, а со временемъ и плѣсень.
+Компрессорный осушитель сушитъ именно такъ: остужаетъ змѣевикъ ниже точки росы и собираетъ капли.</value>
+  </data>
+  <data name="&gt;&gt;labelDew.Name" xml:space="preserve">
+    <value>labelDew</value>
+  </data>
+  <data name="&gt;&gt;labelDew.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelDew.Parent" xml:space="preserve">
+    <value>groupAir</value>
+  </data>
+  <data name="&gt;&gt;labelDew.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <metadata name="labelRatioCaption.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="labelRatioCaption.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelRatioCaption.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 138</value>
+  </data>
+  <data name="labelRatioCaption.Size" type="System.Drawing.Size, System.Drawing">
+    <value>105, 15</value>
+  </data>
+  <data name="labelRatioCaption.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="labelRatioCaption.Text" xml:space="preserve">
+    <value>Влагосодержаніе:</value>
+  </data>
+  <data name="labelRatioCaption.ToolTip" xml:space="preserve">
+    <value>Влагосодержаніе — граммовъ воды на килограммъ сухаго воздуха (при нормальномъ давленіи).
+Какъ и абсолютная влажность, оно не зависитъ отъ температуры, а вдобавокъ и отъ сжатія воздуха;
+по этой оси строятся психрометрическія діаграммы.</value>
+  </data>
+  <data name="&gt;&gt;labelRatioCaption.Name" xml:space="preserve">
+    <value>labelRatioCaption</value>
+  </data>
+  <data name="&gt;&gt;labelRatioCaption.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelRatioCaption.Parent" xml:space="preserve">
+    <value>groupAir</value>
+  </data>
+  <data name="&gt;&gt;labelRatioCaption.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="labelRatio.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelRatio.Location" type="System.Drawing.Point, System.Drawing">
+    <value>210, 138</value>
+  </data>
+  <data name="labelRatio.Size" type="System.Drawing.Size, System.Drawing">
+    <value>19, 15</value>
+  </data>
+  <data name="labelRatio.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="labelRatio.Text" xml:space="preserve">
+    <value>—</value>
+  </data>
+  <data name="labelRatio.ToolTip" xml:space="preserve">
+    <value>Влагосодержаніе — граммовъ воды на килограммъ сухаго воздуха (при нормальномъ давленіи).
+Какъ и абсолютная влажность, оно не зависитъ отъ температуры, а вдобавокъ и отъ сжатія воздуха;
+по этой оси строятся психрометрическія діаграммы.</value>
+  </data>
+  <data name="&gt;&gt;labelRatio.Name" xml:space="preserve">
+    <value>labelRatio</value>
+  </data>
+  <data name="&gt;&gt;labelRatio.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelRatio.Parent" xml:space="preserve">
+    <value>groupAir</value>
+  </data>
+  <data name="&gt;&gt;labelRatio.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <metadata name="labelOtherCaption.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="labelOtherCaption.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelOtherCaption.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 167</value>
+  </data>
+  <data name="labelOtherCaption.Size" type="System.Drawing.Size, System.Drawing">
+    <value>164, 15</value>
+  </data>
+  <data name="labelOtherCaption.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="labelOtherCaption.Text" xml:space="preserve">
+    <value>Та же вода при &amp;другой T, °Ц:</value>
+  </data>
+  <data name="labelOtherCaption.ToolTip" xml:space="preserve">
+    <value>Какою станетъ относительная влажность, если этотъ воздухъ (ту же воду на килограммъ воздуха)
+нагрѣть или остудить до другой температуры: у холоднаго окна, въ подвалѣ, ночью, на улицѣ.
+Больше 100 % — при такой температурѣ лишняя вода выпадетъ росою.</value>
+  </data>
+  <data name="&gt;&gt;labelOtherCaption.Name" xml:space="preserve">
+    <value>labelOtherCaption</value>
+  </data>
+  <data name="&gt;&gt;labelOtherCaption.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelOtherCaption.Parent" xml:space="preserve">
+    <value>groupAir</value>
+  </data>
+  <data name="&gt;&gt;labelOtherCaption.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="numericOtherTemperature.Location" type="System.Drawing.Point, System.Drawing">
+    <value>210, 165</value>
+  </data>
+  <data name="numericOtherTemperature.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 23</value>
+  </data>
+  <data name="numericOtherTemperature.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="numericOtherTemperature.ToolTip" xml:space="preserve">
+    <value>Какою станетъ относительная влажность, если этотъ воздухъ (ту же воду на килограммъ воздуха)
+нагрѣть или остудить до другой температуры: у холоднаго окна, въ подвалѣ, ночью, на улицѣ.
+Больше 100 % — при такой температурѣ лишняя вода выпадетъ росою.</value>
+  </data>
+  <data name="&gt;&gt;numericOtherTemperature.Name" xml:space="preserve">
+    <value>numericOtherTemperature</value>
+  </data>
+  <data name="&gt;&gt;numericOtherTemperature.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numericOtherTemperature.Parent" xml:space="preserve">
+    <value>groupAir</value>
+  </data>
+  <data name="&gt;&gt;numericOtherTemperature.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="trackOtherTemperature.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="trackOtherTemperature.Location" type="System.Drawing.Point, System.Drawing">
+    <value>440, 165</value>
+  </data>
+  <data name="trackOtherTemperature.Size" type="System.Drawing.Size, System.Drawing">
+    <value>240, 24</value>
+  </data>
+  <data name="trackOtherTemperature.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;trackOtherTemperature.Name" xml:space="preserve">
+    <value>trackOtherTemperature</value>
+  </data>
+  <data name="&gt;&gt;trackOtherTemperature.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;trackOtherTemperature.Parent" xml:space="preserve">
+    <value>groupAir</value>
+  </data>
+  <data name="&gt;&gt;trackOtherTemperature.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="labelOther.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelOther.Location" type="System.Drawing.Point, System.Drawing">
+    <value>300, 167</value>
+  </data>
+  <data name="labelOther.Size" type="System.Drawing.Size, System.Drawing">
+    <value>19, 15</value>
+  </data>
+  <data name="labelOther.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="labelOther.Text" xml:space="preserve">
+    <value>—</value>
+  </data>
+  <data name="labelOther.ToolTip" xml:space="preserve">
+    <value>Какою станетъ относительная влажность, если этотъ воздухъ (ту же воду на килограммъ воздуха)
+нагрѣть или остудить до другой температуры: у холоднаго окна, въ подвалѣ, ночью, на улицѣ.
+Больше 100 % — при такой температурѣ лишняя вода выпадетъ росою.</value>
+  </data>
+  <data name="&gt;&gt;labelOther.Name" xml:space="preserve">
+    <value>labelOther</value>
+  </data>
+  <data name="&gt;&gt;labelOther.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelOther.Parent" xml:space="preserve">
+    <value>groupAir</value>
+  </data>
+  <data name="&gt;&gt;labelOther.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="groupAir.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="groupAir.Size" type="System.Drawing.Size, System.Drawing">
+    <value>696, 200</value>
+  </data>
+  <data name="groupAir.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="groupAir.Text" xml:space="preserve">
+    <value>Воздухъ</value>
+  </data>
+  <data name="groupAir.ToolTip" xml:space="preserve">
+    <value>Свойства воздуха при данныхъ температурѣ и влажности.
+Давленіе насыщеннаго пара — по формулѣ Магнуса (коэффиціенты Алдучова и Эскриджа, 1996):
+отъ −40 до +50 °Ц ошибка меньше 0,4 %. Давленіе воздуха — нормальное, 1013 гПа.</value>
+  </data>
+  <data name="&gt;&gt;groupAir.Name" xml:space="preserve">
+    <value>groupAir</value>
+  </data>
+  <data name="&gt;&gt;groupAir.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupAir.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupAir.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="groupRoom.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="labelVolumeCaption.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="labelVolumeCaption.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelVolumeCaption.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 26</value>
+  </data>
+  <data name="labelVolumeCaption.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 15</value>
+  </data>
+  <data name="labelVolumeCaption.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="labelVolumeCaption.Text" xml:space="preserve">
+    <value>&amp;Объёмъ комнаты, м³:</value>
+  </data>
+  <data name="labelVolumeCaption.ToolTip" xml:space="preserve">
+    <value>Объёмъ комнаты, м³: площадь пола × высота потолка; 15 м² при потолкѣ 2,7 м — около 40 м³.
+Если двери открыты, считай и сосѣднія комнаты: воздухъ въ нихъ общій.
+Запоминается.</value>
+  </data>
+  <data name="&gt;&gt;labelVolumeCaption.Name" xml:space="preserve">
+    <value>labelVolumeCaption</value>
+  </data>
+  <data name="&gt;&gt;labelVolumeCaption.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelVolumeCaption.Parent" xml:space="preserve">
+    <value>groupRoom</value>
+  </data>
+  <data name="&gt;&gt;labelVolumeCaption.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="numericVolume.Location" type="System.Drawing.Point, System.Drawing">
+    <value>210, 24</value>
+  </data>
+  <data name="numericVolume.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 23</value>
+  </data>
+  <data name="numericVolume.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="numericVolume.ToolTip" xml:space="preserve">
+    <value>Объёмъ комнаты, м³: площадь пола × высота потолка; 15 м² при потолкѣ 2,7 м — около 40 м³.
+Если двери открыты, считай и сосѣднія комнаты: воздухъ въ нихъ общій.
+Запоминается.</value>
+  </data>
+  <data name="&gt;&gt;numericVolume.Name" xml:space="preserve">
+    <value>numericVolume</value>
+  </data>
+  <data name="&gt;&gt;numericVolume.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numericVolume.Parent" xml:space="preserve">
+    <value>groupRoom</value>
+  </data>
+  <data name="&gt;&gt;numericVolume.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="trackVolume.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="trackVolume.Location" type="System.Drawing.Point, System.Drawing">
+    <value>440, 24</value>
+  </data>
+  <data name="trackVolume.Size" type="System.Drawing.Size, System.Drawing">
+    <value>240, 24</value>
+  </data>
+  <data name="trackVolume.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;trackVolume.Name" xml:space="preserve">
+    <value>trackVolume</value>
+  </data>
+  <data name="&gt;&gt;trackVolume.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;trackVolume.Parent" xml:space="preserve">
+    <value>groupRoom</value>
+  </data>
+  <data name="&gt;&gt;trackVolume.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <metadata name="labelBufferCaption.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="labelBufferCaption.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelBufferCaption.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 55</value>
+  </data>
+  <data name="labelBufferCaption.Size" type="System.Drawing.Size, System.Drawing">
+    <value>142, 15</value>
+  </data>
+  <data name="labelBufferCaption.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="labelBufferCaption.Text" xml:space="preserve">
+    <value>&amp;Буферъ k (стѣны, вещи):</value>
+  </data>
+  <data name="labelBufferCaption.ToolTip" xml:space="preserve">
+    <value>Буферъ k — во сколько разъ воды въ комнатѣ больше, чѣмъ въ одномъ ея воздухѣ.
+Стѣны, мебель, ткани, бумага впитываютъ влагу и отдаютъ её, когда воздухъ сохнетъ,
+поэтому сушить приходится дольше и больше, чѣмъ слѣдуетъ изъ одного объёма.
+1 — пустая комната съ гладкими стѣнами; чѣмъ больше вещей, дерева, тканей — тѣмъ больше k.
+Точнѣе всего его оцѣниваетъ кнопка «Изъ записей». Запоминается.</value>
+  </data>
+  <data name="&gt;&gt;labelBufferCaption.Name" xml:space="preserve">
+    <value>labelBufferCaption</value>
+  </data>
+  <data name="&gt;&gt;labelBufferCaption.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelBufferCaption.Parent" xml:space="preserve">
+    <value>groupRoom</value>
+  </data>
+  <data name="&gt;&gt;labelBufferCaption.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="numericBuffer.Location" type="System.Drawing.Point, System.Drawing">
+    <value>210, 53</value>
+  </data>
+  <data name="numericBuffer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 23</value>
+  </data>
+  <data name="numericBuffer.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="numericBuffer.ToolTip" xml:space="preserve">
+    <value>Буферъ k — во сколько разъ воды въ комнатѣ больше, чѣмъ въ одномъ ея воздухѣ.
+Стѣны, мебель, ткани, бумага впитываютъ влагу и отдаютъ её, когда воздухъ сохнетъ,
+поэтому сушить приходится дольше и больше, чѣмъ слѣдуетъ изъ одного объёма.
+1 — пустая комната съ гладкими стѣнами; чѣмъ больше вещей, дерева, тканей — тѣмъ больше k.
+Точнѣе всего его оцѣниваетъ кнопка «Изъ записей». Запоминается.</value>
+  </data>
+  <data name="&gt;&gt;numericBuffer.Name" xml:space="preserve">
+    <value>numericBuffer</value>
+  </data>
+  <data name="&gt;&gt;numericBuffer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numericBuffer.Parent" xml:space="preserve">
+    <value>groupRoom</value>
+  </data>
+  <data name="&gt;&gt;numericBuffer.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="trackBuffer.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="trackBuffer.Location" type="System.Drawing.Point, System.Drawing">
+    <value>440, 53</value>
+  </data>
+  <data name="trackBuffer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>240, 24</value>
+  </data>
+  <data name="trackBuffer.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;trackBuffer.Name" xml:space="preserve">
+    <value>trackBuffer</value>
+  </data>
+  <data name="&gt;&gt;trackBuffer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;trackBuffer.Parent" xml:space="preserve">
+    <value>groupRoom</value>
+  </data>
+  <data name="&gt;&gt;trackBuffer.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <metadata name="labelTargetCaption.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="labelTargetCaption.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelTargetCaption.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 84</value>
+  </data>
+  <data name="labelTargetCaption.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 15</value>
+  </data>
+  <data name="labelTargetCaption.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="labelTargetCaption.Text" xml:space="preserve">
+    <value>&amp;Цѣль, %:</value>
+  </data>
+  <data name="labelTargetCaption.ToolTip" xml:space="preserve">
+    <value>Цѣлевая влажность, %, — при той же температурѣ.
+По ней считаются «Убрать воды», время до цѣли и нужная производительность.
+Лучше всего для здоровья 40…50 %.</value>
+  </data>
+  <data name="&gt;&gt;labelTargetCaption.Name" xml:space="preserve">
+    <value>labelTargetCaption</value>
+  </data>
+  <data name="&gt;&gt;labelTargetCaption.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelTargetCaption.Parent" xml:space="preserve">
+    <value>groupRoom</value>
+  </data>
+  <data name="&gt;&gt;labelTargetCaption.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="numericTarget.Location" type="System.Drawing.Point, System.Drawing">
+    <value>210, 82</value>
+  </data>
+  <data name="numericTarget.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 23</value>
+  </data>
+  <data name="numericTarget.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="numericTarget.ToolTip" xml:space="preserve">
+    <value>Цѣлевая влажность, %, — при той же температурѣ.
+По ней считаются «Убрать воды», время до цѣли и нужная производительность.
+Лучше всего для здоровья 40…50 %.</value>
+  </data>
+  <data name="&gt;&gt;numericTarget.Name" xml:space="preserve">
+    <value>numericTarget</value>
+  </data>
+  <data name="&gt;&gt;numericTarget.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numericTarget.Parent" xml:space="preserve">
+    <value>groupRoom</value>
+  </data>
+  <data name="&gt;&gt;numericTarget.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="trackTarget.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="trackTarget.Location" type="System.Drawing.Point, System.Drawing">
+    <value>440, 82</value>
+  </data>
+  <data name="trackTarget.Size" type="System.Drawing.Size, System.Drawing">
+    <value>240, 24</value>
+  </data>
+  <data name="trackTarget.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;trackTarget.Name" xml:space="preserve">
+    <value>trackTarget</value>
+  </data>
+  <data name="&gt;&gt;trackTarget.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;trackTarget.Parent" xml:space="preserve">
+    <value>groupRoom</value>
+  </data>
+  <data name="&gt;&gt;trackTarget.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <metadata name="labelRemoveCaption.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="labelRemoveCaption.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelRemoveCaption.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 113</value>
+  </data>
+  <data name="labelRemoveCaption.Size" type="System.Drawing.Size, System.Drawing">
+    <value>79, 15</value>
+  </data>
+  <data name="labelRemoveCaption.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="labelRemoveCaption.Text" xml:space="preserve">
+    <value>Убрать воды:</value>
+  </data>
+  <data name="labelRemoveCaption.ToolTip" xml:space="preserve">
+    <value>Сколько воды убрать, чтобы при той же температурѣ влажность упала до цѣли.
+Первое число — только изъ воздуха: объёмъ × разность абсолютной влажности сейчасъ и при цѣли.
+Второе — вмѣстѣ съ буферомъ (× k): примѣрно столько осушитель и соберётъ въ бакъ,
+не считая воды, которая за это время придётъ снаружи и отъ источниковъ.</value>
+  </data>
+  <data name="&gt;&gt;labelRemoveCaption.Name" xml:space="preserve">
+    <value>labelRemoveCaption</value>
+  </data>
+  <data name="&gt;&gt;labelRemoveCaption.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelRemoveCaption.Parent" xml:space="preserve">
+    <value>groupRoom</value>
+  </data>
+  <data name="&gt;&gt;labelRemoveCaption.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="labelRemove.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelRemove.Location" type="System.Drawing.Point, System.Drawing">
+    <value>210, 113</value>
+  </data>
+  <data name="labelRemove.Size" type="System.Drawing.Size, System.Drawing">
+    <value>19, 15</value>
+  </data>
+  <data name="labelRemove.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="labelRemove.Text" xml:space="preserve">
+    <value>—</value>
+  </data>
+  <data name="labelRemove.ToolTip" xml:space="preserve">
+    <value>Сколько воды убрать, чтобы при той же температурѣ влажность упала до цѣли.
+Первое число — только изъ воздуха: объёмъ × разность абсолютной влажности сейчасъ и при цѣли.
+Второе — вмѣстѣ съ буферомъ (× k): примѣрно столько осушитель и соберётъ въ бакъ,
+не считая воды, которая за это время придётъ снаружи и отъ источниковъ.</value>
+  </data>
+  <data name="&gt;&gt;labelRemove.Name" xml:space="preserve">
+    <value>labelRemove</value>
+  </data>
+  <data name="&gt;&gt;labelRemove.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelRemove.Parent" xml:space="preserve">
+    <value>groupRoom</value>
+  </data>
+  <data name="&gt;&gt;labelRemove.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="groupRoom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 218</value>
+  </data>
+  <data name="groupRoom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>696, 146</value>
+  </data>
+  <data name="groupRoom.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="groupRoom.Text" xml:space="preserve">
+    <value>Комната</value>
+  </data>
+  <data name="groupRoom.ToolTip" xml:space="preserve">
+    <value>Сколько воды убрать изъ комнаты, чтобы при той же температурѣ дойти до цѣли.</value>
+  </data>
+  <data name="&gt;&gt;groupRoom.Name" xml:space="preserve">
+    <value>groupRoom</value>
+  </data>
+  <data name="&gt;&gt;groupRoom.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupRoom.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupRoom.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <metadata name="groupForecast.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="labelExchangeCaption.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="labelExchangeCaption.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelExchangeCaption.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 26</value>
+  </data>
+  <data name="labelExchangeCaption.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 15</value>
+  </data>
+  <data name="labelExchangeCaption.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="labelExchangeCaption.Text" xml:space="preserve">
+    <value>Воздухообмѣ&amp;нъ, ч⁻¹:</value>
+  </data>
+  <data name="labelExchangeCaption.ToolTip" xml:space="preserve">
+    <value>Кратность воздухообмѣна, ч⁻¹: сколько разъ въ часъ весь воздухъ комнаты смѣняется приточнымъ.
+Закрытыя окна и двери — около 0,1…0,5; провѣтриваніе, вытяжка — 1 и больше.
+Если снаружи суше, воздухообмѣнъ помогаетъ сушить; если влажнѣе — мѣшаетъ.
+Точнѣе всего его оцѣниваетъ кнопка «Изъ записей». Запоминается.</value>
+  </data>
+  <data name="&gt;&gt;labelExchangeCaption.Name" xml:space="preserve">
+    <value>labelExchangeCaption</value>
+  </data>
+  <data name="&gt;&gt;labelExchangeCaption.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelExchangeCaption.Parent" xml:space="preserve">
+    <value>groupForecast</value>
+  </data>
+  <data name="&gt;&gt;labelExchangeCaption.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="numericExchange.Location" type="System.Drawing.Point, System.Drawing">
+    <value>210, 24</value>
+  </data>
+  <data name="numericExchange.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 23</value>
+  </data>
+  <data name="numericExchange.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="numericExchange.ToolTip" xml:space="preserve">
+    <value>Кратность воздухообмѣна, ч⁻¹: сколько разъ въ часъ весь воздухъ комнаты смѣняется приточнымъ.
+Закрытыя окна и двери — около 0,1…0,5; провѣтриваніе, вытяжка — 1 и больше.
+Если снаружи суше, воздухообмѣнъ помогаетъ сушить; если влажнѣе — мѣшаетъ.
+Точнѣе всего его оцѣниваетъ кнопка «Изъ записей». Запоминается.</value>
+  </data>
+  <data name="&gt;&gt;numericExchange.Name" xml:space="preserve">
+    <value>numericExchange</value>
+  </data>
+  <data name="&gt;&gt;numericExchange.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numericExchange.Parent" xml:space="preserve">
+    <value>groupForecast</value>
+  </data>
+  <data name="&gt;&gt;numericExchange.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="trackExchange.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="trackExchange.Location" type="System.Drawing.Point, System.Drawing">
+    <value>440, 24</value>
+  </data>
+  <data name="trackExchange.Size" type="System.Drawing.Size, System.Drawing">
+    <value>240, 24</value>
+  </data>
+  <data name="trackExchange.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;trackExchange.Name" xml:space="preserve">
+    <value>trackExchange</value>
+  </data>
+  <data name="&gt;&gt;trackExchange.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;trackExchange.Parent" xml:space="preserve">
+    <value>groupForecast</value>
+  </data>
+  <data name="&gt;&gt;trackExchange.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <metadata name="labelOutdoorCaption.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="labelOutdoorCaption.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelOutdoorCaption.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 55</value>
+  </data>
+  <data name="labelOutdoorCaption.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 15</value>
+  </data>
+  <data name="labelOutdoorCaption.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="labelOutdoorCaption.Text" xml:space="preserve">
+    <value>&amp;Снаружи, °Ц и %:</value>
+  </data>
+  <data name="labelOutdoorCaption.ToolTip" xml:space="preserve">
+    <value>Температура и относительная влажность тамъ, откуда приходитъ воздухъ: улица, подъѣздъ, сосѣдняя комната.
+Изъ нихъ берётся абсолютная влажность притока. Наружный воздухъ, даже сырой, въ холодъ приноситъ мало воды:
+при −5 °Ц и 80 % — 2,7 г/м³, тогда какъ въ комнатѣ при +22 °Ц и 50 % — 9,7 г/м³.
+Запоминается.</value>
+  </data>
+  <data name="&gt;&gt;labelOutdoorCaption.Name" xml:space="preserve">
+    <value>labelOutdoorCaption</value>
+  </data>
+  <data name="&gt;&gt;labelOutdoorCaption.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelOutdoorCaption.Parent" xml:space="preserve">
+    <value>groupForecast</value>
+  </data>
+  <data name="&gt;&gt;labelOutdoorCaption.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="numericOutdoorTemperature.AccessibleName" xml:space="preserve">
+    <value>Снаружи, °Ц</value>
+  </data>
+  <data name="numericOutdoorTemperature.Location" type="System.Drawing.Point, System.Drawing">
+    <value>210, 53</value>
+  </data>
+  <data name="numericOutdoorTemperature.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 23</value>
+  </data>
+  <data name="numericOutdoorTemperature.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="numericOutdoorTemperature.ToolTip" xml:space="preserve">
+    <value>Температура и относительная влажность тамъ, откуда приходитъ воздухъ: улица, подъѣздъ, сосѣдняя комната.
+Изъ нихъ берётся абсолютная влажность притока. Наружный воздухъ, даже сырой, въ холодъ приноситъ мало воды:
+при −5 °Ц и 80 % — 2,7 г/м³, тогда какъ въ комнатѣ при +22 °Ц и 50 % — 9,7 г/м³.
+Запоминается.</value>
+  </data>
+  <data name="&gt;&gt;numericOutdoorTemperature.Name" xml:space="preserve">
+    <value>numericOutdoorTemperature</value>
+  </data>
+  <data name="&gt;&gt;numericOutdoorTemperature.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numericOutdoorTemperature.Parent" xml:space="preserve">
+    <value>groupForecast</value>
+  </data>
+  <data name="&gt;&gt;numericOutdoorTemperature.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="trackOutdoorTemperature.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="trackOutdoorTemperature.Location" type="System.Drawing.Point, System.Drawing">
+    <value>440, 53</value>
+  </data>
+  <data name="trackOutdoorTemperature.Size" type="System.Drawing.Size, System.Drawing">
+    <value>116, 24</value>
+  </data>
+  <data name="trackOutdoorTemperature.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;trackOutdoorTemperature.Name" xml:space="preserve">
+    <value>trackOutdoorTemperature</value>
+  </data>
+  <data name="&gt;&gt;trackOutdoorTemperature.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;trackOutdoorTemperature.Parent" xml:space="preserve">
+    <value>groupForecast</value>
+  </data>
+  <data name="&gt;&gt;trackOutdoorTemperature.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="numericOutdoorHumidity.AccessibleName" xml:space="preserve">
+    <value>Снаружи, %</value>
+  </data>
+  <data name="numericOutdoorHumidity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>276, 53</value>
+  </data>
+  <data name="numericOutdoorHumidity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 23</value>
+  </data>
+  <data name="numericOutdoorHumidity.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="numericOutdoorHumidity.ToolTip" xml:space="preserve">
+    <value>Температура и относительная влажность тамъ, откуда приходитъ воздухъ: улица, подъѣздъ, сосѣдняя комната.
+Изъ нихъ берётся абсолютная влажность притока. Наружный воздухъ, даже сырой, въ холодъ приноситъ мало воды:
+при −5 °Ц и 80 % — 2,7 г/м³, тогда какъ въ комнатѣ при +22 °Ц и 50 % — 9,7 г/м³.
+Запоминается.</value>
+  </data>
+  <data name="&gt;&gt;numericOutdoorHumidity.Name" xml:space="preserve">
+    <value>numericOutdoorHumidity</value>
+  </data>
+  <data name="&gt;&gt;numericOutdoorHumidity.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numericOutdoorHumidity.Parent" xml:space="preserve">
+    <value>groupForecast</value>
+  </data>
+  <data name="&gt;&gt;numericOutdoorHumidity.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="trackOutdoorHumidity.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="trackOutdoorHumidity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>564, 53</value>
+  </data>
+  <data name="trackOutdoorHumidity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>116, 24</value>
+  </data>
+  <data name="trackOutdoorHumidity.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;trackOutdoorHumidity.Name" xml:space="preserve">
+    <value>trackOutdoorHumidity</value>
+  </data>
+  <data name="&gt;&gt;trackOutdoorHumidity.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;trackOutdoorHumidity.Parent" xml:space="preserve">
+    <value>groupForecast</value>
+  </data>
+  <data name="&gt;&gt;trackOutdoorHumidity.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <metadata name="labelSourcesCaption.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="labelSourcesCaption.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelSourcesCaption.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 84</value>
+  </data>
+  <data name="labelSourcesCaption.Size" type="System.Drawing.Size, System.Drawing">
+    <value>128, 15</value>
+  </data>
+  <data name="labelSourcesCaption.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="labelSourcesCaption.Text" xml:space="preserve">
+    <value>&amp;Источники влаги, г/ч:</value>
+  </data>
+  <data name="labelSourcesCaption.ToolTip" xml:space="preserve">
+    <value>Источники влаги въ комнатѣ, г/ч: дыханіе и кожа, готовка, сохнущее бѣльё, растенія, акваріумъ.
+Человѣкъ въ покоѣ — около 50 г/ч; бѣльё, сохнущее въ комнатѣ, — сотни граммовъ въ часъ.
+Отрицательное число — стокъ: влагу что-то забираетъ, напримѣръ холодная стѣна или кондиціонеръ.
+Точнѣе всего ихъ оцѣниваетъ кнопка «Изъ записей». Запоминается.</value>
+  </data>
+  <data name="&gt;&gt;labelSourcesCaption.Name" xml:space="preserve">
+    <value>labelSourcesCaption</value>
+  </data>
+  <data name="&gt;&gt;labelSourcesCaption.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelSourcesCaption.Parent" xml:space="preserve">
+    <value>groupForecast</value>
+  </data>
+  <data name="&gt;&gt;labelSourcesCaption.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="numericSources.Location" type="System.Drawing.Point, System.Drawing">
+    <value>210, 82</value>
+  </data>
+  <data name="numericSources.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 23</value>
+  </data>
+  <data name="numericSources.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="numericSources.ToolTip" xml:space="preserve">
+    <value>Источники влаги въ комнатѣ, г/ч: дыханіе и кожа, готовка, сохнущее бѣльё, растенія, акваріумъ.
+Человѣкъ въ покоѣ — около 50 г/ч; бѣльё, сохнущее въ комнатѣ, — сотни граммовъ въ часъ.
+Отрицательное число — стокъ: влагу что-то забираетъ, напримѣръ холодная стѣна или кондиціонеръ.
+Точнѣе всего ихъ оцѣниваетъ кнопка «Изъ записей». Запоминается.</value>
+  </data>
+  <data name="&gt;&gt;numericSources.Name" xml:space="preserve">
+    <value>numericSources</value>
+  </data>
+  <data name="&gt;&gt;numericSources.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numericSources.Parent" xml:space="preserve">
+    <value>groupForecast</value>
+  </data>
+  <data name="&gt;&gt;numericSources.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="trackSources.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="trackSources.Location" type="System.Drawing.Point, System.Drawing">
+    <value>440, 82</value>
+  </data>
+  <data name="trackSources.Size" type="System.Drawing.Size, System.Drawing">
+    <value>240, 24</value>
+  </data>
+  <data name="trackSources.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;trackSources.Name" xml:space="preserve">
+    <value>trackSources</value>
+  </data>
+  <data name="&gt;&gt;trackSources.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;trackSources.Parent" xml:space="preserve">
+    <value>groupForecast</value>
+  </data>
+  <data name="&gt;&gt;trackSources.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <metadata name="labelRatedCaption.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="labelRatedCaption.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelRatedCaption.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 113</value>
+  </data>
+  <data name="labelRatedCaption.Size" type="System.Drawing.Size, System.Drawing">
+    <value>174, 15</value>
+  </data>
+  <data name="labelRatedCaption.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="labelRatedCaption.Text" xml:space="preserve">
+    <value>&amp;Производительность, л/сутки:</value>
+  </data>
+  <data name="labelRatedCaption.ToolTip" xml:space="preserve">
+    <value>Паспортная производительность осушителя, л/сутки, — по стандарту при 30 °Ц и 80 %.
+Въ обычной комнатѣ онъ снимаетъ гораздо меньше: чѣмъ суше и холоднѣе воздухъ, тѣмъ меньше,
+а ниже ≈ 35 % компрессорный осушитель почти не сушитъ.
+Модель считаетъ съёмъ пропорціональнымъ (ρ − ρ при 35 %) и по паспортной точкѣ находитъ множитель.
+Запоминается.</value>
+  </data>
+  <data name="&gt;&gt;labelRatedCaption.Name" xml:space="preserve">
+    <value>labelRatedCaption</value>
+  </data>
+  <data name="&gt;&gt;labelRatedCaption.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelRatedCaption.Parent" xml:space="preserve">
+    <value>groupForecast</value>
+  </data>
+  <data name="&gt;&gt;labelRatedCaption.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="numericRated.Location" type="System.Drawing.Point, System.Drawing">
+    <value>210, 111</value>
+  </data>
+  <data name="numericRated.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 23</value>
+  </data>
+  <data name="numericRated.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="numericRated.ToolTip" xml:space="preserve">
+    <value>Паспортная производительность осушителя, л/сутки, — по стандарту при 30 °Ц и 80 %.
+Въ обычной комнатѣ онъ снимаетъ гораздо меньше: чѣмъ суше и холоднѣе воздухъ, тѣмъ меньше,
+а ниже ≈ 35 % компрессорный осушитель почти не сушитъ.
+Модель считаетъ съёмъ пропорціональнымъ (ρ − ρ при 35 %) и по паспортной точкѣ находитъ множитель.
+Запоминается.</value>
+  </data>
+  <data name="&gt;&gt;numericRated.Name" xml:space="preserve">
+    <value>numericRated</value>
+  </data>
+  <data name="&gt;&gt;numericRated.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numericRated.Parent" xml:space="preserve">
+    <value>groupForecast</value>
+  </data>
+  <data name="&gt;&gt;numericRated.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="trackRated.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="trackRated.Location" type="System.Drawing.Point, System.Drawing">
+    <value>440, 111</value>
+  </data>
+  <data name="trackRated.Size" type="System.Drawing.Size, System.Drawing">
+    <value>240, 24</value>
+  </data>
+  <data name="trackRated.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;trackRated.Name" xml:space="preserve">
+    <value>trackRated</value>
+  </data>
+  <data name="&gt;&gt;trackRated.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;trackRated.Parent" xml:space="preserve">
+    <value>groupForecast</value>
+  </data>
+  <data name="&gt;&gt;trackRated.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <metadata name="labelRatedHint.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="labelRatedHint.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelRatedHint.Location" type="System.Drawing.Point, System.Drawing">
+    <value>300, 113</value>
+  </data>
+  <data name="labelRatedHint.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 15</value>
+  </data>
+  <data name="labelRatedHint.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="labelRatedHint.Text" xml:space="preserve">
+    <value>при 30 °Ц и 80 %</value>
+  </data>
+  <data name="labelRatedHint.ToolTip" xml:space="preserve">
+    <value>Паспортная производительность осушителя, л/сутки, — по стандарту при 30 °Ц и 80 %.
+Въ обычной комнатѣ онъ снимаетъ гораздо меньше: чѣмъ суше и холоднѣе воздухъ, тѣмъ меньше,
+а ниже ≈ 35 % компрессорный осушитель почти не сушитъ.
+Модель считаетъ съёмъ пропорціональнымъ (ρ − ρ при 35 %) и по паспортной точкѣ находитъ множитель.
+Запоминается.</value>
+  </data>
+  <data name="&gt;&gt;labelRatedHint.Name" xml:space="preserve">
+    <value>labelRatedHint</value>
+  </data>
+  <data name="&gt;&gt;labelRatedHint.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelRatedHint.Parent" xml:space="preserve">
+    <value>groupForecast</value>
+  </data>
+  <data name="&gt;&gt;labelRatedHint.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <metadata name="buttonFromRecords.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="buttonFromRecords.Location" type="System.Drawing.Point, System.Drawing">
+    <value>300, 23</value>
+  </data>
+  <data name="buttonFromRecords.Size" type="System.Drawing.Size, System.Drawing">
+    <value>132, 27</value>
+  </data>
+  <data name="buttonFromRecords.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="buttonFromRecords.Text" xml:space="preserve">
+    <value>Изъ &amp;записей</value>
+  </data>
+  <data name="buttonFromRecords.ToolTip" xml:space="preserve">
+    <value>Уточнить буферъ k, воздухообмѣнъ и источники по всѣмъ сохранённымъ записямъ.
+Отрѣзки, когда осушитель былъ выключенъ, показываютъ, какъ быстро влажность идётъ къ равновѣсію со средою (n/k)
+и къ какому (отсюда источники); отрѣзки осушенія — какъ быстро её сбиваетъ осушитель.
+Объёмъ комнаты и паспортная производительность берутся изъ полей — сначала задай ихъ вѣрно.
+Отрѣзки короче 10 минутъ и съ почти прямымъ ходомъ влажности не учитываются.</value>
+  </data>
+  <data name="&gt;&gt;buttonFromRecords.Name" xml:space="preserve">
+    <value>buttonFromRecords</value>
+  </data>
+  <data name="&gt;&gt;buttonFromRecords.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonFromRecords.Parent" xml:space="preserve">
+    <value>groupForecast</value>
+  </data>
+  <data name="&gt;&gt;buttonFromRecords.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="labelForecast.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 142</value>
+  </data>
+  <data name="labelForecast.Size" type="System.Drawing.Size, System.Drawing">
+    <value>666, 138</value>
+  </data>
+  <data name="labelForecast.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="labelForecast.ToolTip" xml:space="preserve">
+    <value>Притокъ — сколько воды въ часъ приносятъ воздухообмѣнъ и источники при нынѣшней влажности.
+Осушитель снимаетъ — сколько онъ убираетъ въ часъ при нынѣшнихъ влажности и температурѣ.
+Безъ осушителя и съ осушителемъ — къ какой влажности придётъ комната и за какое время:
+за τ остаётся 37 % пути, за 2τ — 14 %, за 3τ — 5 %.
+До цѣли — когда влажность дойдётъ до цѣли, если осушитель работаетъ безъ остановокъ.
+«Чтобы держать» — какая нужна паспортная производительность: съ меньшею осушитель цѣль не удержитъ.</value>
+  </data>
+  <data name="&gt;&gt;labelForecast.Name" xml:space="preserve">
+    <value>labelForecast</value>
+  </data>
+  <data name="&gt;&gt;labelForecast.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelForecast.Parent" xml:space="preserve">
+    <value>groupForecast</value>
+  </data>
+  <data name="&gt;&gt;labelForecast.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="groupForecast.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 370</value>
+  </data>
+  <data name="groupForecast.Size" type="System.Drawing.Size, System.Drawing">
+    <value>696, 290</value>
+  </data>
+  <data name="groupForecast.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="groupForecast.Text" xml:space="preserve">
+    <value>Прогнозъ</value>
+  </data>
+  <data name="groupForecast.ToolTip" xml:space="preserve">
+    <value>Прогнозъ по модели комнаты:
+k·V·dρ/dt = n·V·(ρ снаружи − ρ) + S − c·(ρ − ρ min)
+ρ — абсолютная влажность, V — объёмъ, k — буферъ, n — воздухообмѣнъ, S — источники,
+c — «эффективный потокъ» осушителя (изъ паспортной производительности), ρ min — влажность ≈ 35 %.
+Влажность идётъ къ своему предѣлу по экспонентѣ съ постоянною времени τ = k·V / (n·V + c).
+Температура считается постоянною.</value>
+  </data>
+  <data name="&gt;&gt;groupForecast.Name" xml:space="preserve">
+    <value>groupForecast</value>
+  </data>
+  <data name="&gt;&gt;groupForecast.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupForecast.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupForecast.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>7, 15</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>720, 672</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Разсчётъ</value>
+  </data>
+  <data name="&gt;&gt;toolTip.Name" xml:space="preserve">
+    <value>toolTip</value>
+  </data>
+  <data name="&gt;&gt;toolTip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>CalculatorForm</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+</root>

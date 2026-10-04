@@ -142,5 +142,17 @@ namespace DehumidifierControl.Properties {
                 this["MoistureSources"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("-1000000, -1000000")]
+        public global::System.Drawing.Point CalculatorLocation {
+            get {
+                return ((global::System.Drawing.Point)(this["CalculatorLocation"]));
+            }
+            set {
+                this["CalculatorLocation"] = value;
+            }
+        }
     }
 }

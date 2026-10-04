@@ -369,6 +369,9 @@
   <data name="buttonRecord.Text" xml:space="preserve">
     <value>⚫ R&amp;ecord</value>
   </data>
+  <data name="buttonCalculator.Text" xml:space="preserve">
+    <value>Calc&amp;ulations…</value>
+  </data>
   <data name="labelHumidityCaption.Location" type="System.Drawing.Point, System.Drawing">
     <value>90, 31</value>
   </data>
@@ -458,5 +461,8 @@
   </data>
   <data name="buttonRecord.ToolTip" xml:space="preserve">
     <value>Start or stop recording (F5)</value>
+  </data>
+  <data name="buttonCalculator.ToolTip" xml:space="preserve">
+    <value>Humidity calculations (F7)</value>
   </data>
 </root>

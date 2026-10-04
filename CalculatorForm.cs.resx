@@ -1,0 +1,405 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+    Microsoft ResX Schema
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="groupAir.Text" xml:space="preserve">
+    <value>Vzduch</value>
+  </data>
+  <data name="labelTemperatureCaption.Text" xml:space="preserve">
+    <value>&amp;Teplota, °C:</value>
+  </data>
+  <data name="labelHumidityCaption.Text" xml:space="preserve">
+    <value>&amp;Vlhkost, %:</value>
+  </data>
+  <data name="labelWaterCaption.Text" xml:space="preserve">
+    <value>&amp;Absolutní vlhkost, g/m³:</value>
+  </data>
+  <data name="buttonFromDevice.Text" xml:space="preserve">
+    <value>Z &amp;odvlhčovače</value>
+  </data>
+  <data name="labelDewCaption.Text" xml:space="preserve">
+    <value>Rosný bod:</value>
+  </data>
+  <data name="labelRatioCaption.Text" xml:space="preserve">
+    <value>Měrná vlhkost:</value>
+  </data>
+  <data name="labelOtherCaption.Text" xml:space="preserve">
+    <value>Stejná voda při &amp;jiné T, °C:</value>
+  </data>
+  <data name="groupRoom.Text" xml:space="preserve">
+    <value>Místnost</value>
+  </data>
+  <data name="labelVolumeCaption.Text" xml:space="preserve">
+    <value>Objem &amp;místnosti, m³:</value>
+  </data>
+  <data name="labelBufferCaption.Text" xml:space="preserve">
+    <value>&amp;Pufr k (stěny, věci):</value>
+  </data>
+  <data name="labelTargetCaption.Text" xml:space="preserve">
+    <value>&amp;Cíl, %:</value>
+  </data>
+  <data name="labelRemoveCaption.Text" xml:space="preserve">
+    <value>Odebrat vody:</value>
+  </data>
+  <data name="groupForecast.Text" xml:space="preserve">
+    <value>Předpověď</value>
+  </data>
+  <data name="labelExchangeCaption.Text" xml:space="preserve">
+    <value>Výměna vzd&amp;uchu, h⁻¹:</value>
+  </data>
+  <data name="labelOutdoorCaption.Text" xml:space="preserve">
+    <value>V&amp;enku, °C a %:</value>
+  </data>
+  <data name="numericOutdoorTemperature.AccessibleName" xml:space="preserve">
+    <value>Venku, °C</value>
+  </data>
+  <data name="numericOutdoorHumidity.AccessibleName" xml:space="preserve">
+    <value>Venku, %</value>
+  </data>
+  <data name="labelSourcesCaption.Text" xml:space="preserve">
+    <value>Z&amp;droje vlhkosti, g/h:</value>
+  </data>
+  <data name="labelRatedCaption.Text" xml:space="preserve">
+    <value>Výko&amp;n, l/den:</value>
+  </data>
+  <data name="labelRatedHint.Text" xml:space="preserve">
+    <value>při 30 °C a 80 %</value>
+  </data>
+  <data name="buttonFromRecords.Text" xml:space="preserve">
+    <value>Ze zá&amp;znamů</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Výpočet</value>
+  </data>
+  <data name="groupAir.ToolTip" xml:space="preserve">
+    <value>Vlastnosti vzduchu při zadané teplotě a vlhkosti.
+Tlak nasycených par podle Magnusova vzorce (koeficienty Alduchova a Eskridge, 1996):
+od −40 do +50 °C je chyba pod 0,4 %. Tlak vzduchu se bere normální, 1013 hPa.</value>
+  </data>
+  <data name="labelTemperatureCaption.ToolTip" xml:space="preserve">
+    <value>Teplota vzduchu v místnosti, °C.
+Na ní závisí, kolik vody vzduch udrží: při +20 °C až 17,2 g/m³, při +30 °C už až 30,3 g/m³.
+Proto stejná voda dává při jiné teplotě jinou relativní vlhkost:
+odvlhčovač, který místnost ohřívá, ji snižuje dřív, než vůbec nějakou vodu sebere.
+Tlačítko „Z odvlhčovače“ doplní jeho údaj.</value>
+  </data>
+  <data name="numericTemperature.ToolTip" xml:space="preserve">
+    <value>Teplota vzduchu v místnosti, °C.
+Na ní závisí, kolik vody vzduch udrží: při +20 °C až 17,2 g/m³, při +30 °C už až 30,3 g/m³.
+Proto stejná voda dává při jiné teplotě jinou relativní vlhkost:
+odvlhčovač, který místnost ohřívá, ji snižuje dřív, než vůbec nějakou vodu sebere.
+Tlačítko „Z odvlhčovače“ doplní jeho údaj.</value>
+  </data>
+  <data name="labelHumidityCaption.ToolTip" xml:space="preserve">
+    <value>Relativní vlhkost, %: kolik vody je ve vzduchu oproti největšímu možnému množství při této teplotě.
+100 % — vzduch je nasycený: víc vody neudrží, přebytek se sráží jako rosa.
+Když ji změníš, absolutní vlhkost se přepočítá při stejné teplotě.</value>
+  </data>
+  <data name="numericHumidity.ToolTip" xml:space="preserve">
+    <value>Relativní vlhkost, %: kolik vody je ve vzduchu oproti největšímu možnému množství při této teplotě.
+100 % — vzduch je nasycený: víc vody neudrží, přebytek se sráží jako rosa.
+Když ji změníš, absolutní vlhkost se přepočítá při stejné teplotě.</value>
+  </data>
+  <data name="labelWaterCaption.ToolTip" xml:space="preserve">
+    <value>Absolutní vlhkost — gramy vody v krychlovém metru vzduchu.
+Na rozdíl od relativní se nemění, když se vzduch ohřívá nebo chladne,
+proto se v ní počítá předpověď.
+Můžeš ji zadat i sám — relativní se pak přepočítá při stejné teplotě.</value>
+  </data>
+  <data name="numericWater.ToolTip" xml:space="preserve">
+    <value>Absolutní vlhkost — gramy vody v krychlovém metru vzduchu.
+Na rozdíl od relativní se nemění, když se vzduch ohřívá nebo chladne,
+proto se v ní počítá předpověď.
+Můžeš ji zadat i sám — relativní se pak přepočítá při stejné teplotě.</value>
+  </data>
+  <data name="buttonFromDevice.ToolTip" xml:space="preserve">
+    <value>Doplní teplotu, vlhkost a cíl, které odvlhčovač právě ukazuje.
+V režimu sušení prádla se cíl nebere — ten tam není.
+Když odvlhčovač není připojen, pole se nemění.</value>
+  </data>
+  <data name="labelDewCaption.ToolTip" xml:space="preserve">
+    <value>Rosný bod — na jakou teplotu je třeba tento vzduch ochladit, aby se z něj začala srážet voda.
+Okno, stěna nebo trubky chladnější než rosný bod se orosí a časem i zplesniví.
+Kompresorový odvlhčovač suší právě takto: chladí výparník pod rosný bod a sbírá kapky.</value>
+  </data>
+  <data name="labelDew.ToolTip" xml:space="preserve">
+    <value>Rosný bod — na jakou teplotu je třeba tento vzduch ochladit, aby se z něj začala srážet voda.
+Okno, stěna nebo trubky chladnější než rosný bod se orosí a časem i zplesniví.
+Kompresorový odvlhčovač suší právě takto: chladí výparník pod rosný bod a sbírá kapky.</value>
+  </data>
+  <data name="labelRatioCaption.ToolTip" xml:space="preserve">
+    <value>Měrná vlhkost — gramy vody na kilogram suchého vzduchu (při normálním tlaku).
+Stejně jako absolutní vlhkost nezávisí na teplotě, a navíc ani na stlačení vzduchu;
+podél této osy se kreslí psychrometrické diagramy.</value>
+  </data>
+  <data name="labelRatio.ToolTip" xml:space="preserve">
+    <value>Měrná vlhkost — gramy vody na kilogram suchého vzduchu (při normálním tlaku).
+Stejně jako absolutní vlhkost nezávisí na teplotě, a navíc ani na stlačení vzduchu;
+podél této osy se kreslí psychrometrické diagramy.</value>
+  </data>
+  <data name="labelOtherCaption.ToolTip" xml:space="preserve">
+    <value>Jaká bude relativní vlhkost, když se tento vzduch (stejná voda na kilogram vzduchu)
+ohřeje nebo ochladí na jinou teplotu: u studeného okna, ve sklepě, v noci, venku.
+Nad 100 % — při takové teplotě se přebytečná voda srazí jako rosa.</value>
+  </data>
+  <data name="numericOtherTemperature.ToolTip" xml:space="preserve">
+    <value>Jaká bude relativní vlhkost, když se tento vzduch (stejná voda na kilogram vzduchu)
+ohřeje nebo ochladí na jinou teplotu: u studeného okna, ve sklepě, v noci, venku.
+Nad 100 % — při takové teplotě se přebytečná voda srazí jako rosa.</value>
+  </data>
+  <data name="labelOther.ToolTip" xml:space="preserve">
+    <value>Jaká bude relativní vlhkost, když se tento vzduch (stejná voda na kilogram vzduchu)
+ohřeje nebo ochladí na jinou teplotu: u studeného okna, ve sklepě, v noci, venku.
+Nad 100 % — při takové teplotě se přebytečná voda srazí jako rosa.</value>
+  </data>
+  <data name="groupRoom.ToolTip" xml:space="preserve">
+    <value>Kolik vody odebrat z místnosti, aby se při stejné teplotě dosáhlo cíle.</value>
+  </data>
+  <data name="labelVolumeCaption.ToolTip" xml:space="preserve">
+    <value>Objem místnosti, m³: plocha podlahy × výška stropu; 15 m² se stropem 2,7 m je asi 40 m³.
+Když jsou dveře otevřené, počítej i sousední místnosti: vzduch v nich je společný.
+Pamatuje se.</value>
+  </data>
+  <data name="numericVolume.ToolTip" xml:space="preserve">
+    <value>Objem místnosti, m³: plocha podlahy × výška stropu; 15 m² se stropem 2,7 m je asi 40 m³.
+Když jsou dveře otevřené, počítej i sousední místnosti: vzduch v nich je společný.
+Pamatuje se.</value>
+  </data>
+  <data name="labelBufferCaption.ToolTip" xml:space="preserve">
+    <value>Pufr k — kolikrát víc vody je v místnosti než jen v jejím vzduchu.
+Stěny, nábytek, látky a papír vlhkost pohlcují a vracejí ji, když vzduch vysychá,
+proto sušení trvá déle a odebere víc, než by odpovídalo samotnému objemu.
+1 — prázdná místnost s hladkými stěnami; čím víc věcí, dřeva a látek, tím větší k.
+Nejpřesněji ho odhadne tlačítko „Ze záznamů“. Pamatuje se.</value>
+  </data>
+  <data name="numericBuffer.ToolTip" xml:space="preserve">
+    <value>Pufr k — kolikrát víc vody je v místnosti než jen v jejím vzduchu.
+Stěny, nábytek, látky a papír vlhkost pohlcují a vracejí ji, když vzduch vysychá,
+proto sušení trvá déle a odebere víc, než by odpovídalo samotnému objemu.
+1 — prázdná místnost s hladkými stěnami; čím víc věcí, dřeva a látek, tím větší k.
+Nejpřesněji ho odhadne tlačítko „Ze záznamů“. Pamatuje se.</value>
+  </data>
+  <data name="labelTargetCaption.ToolTip" xml:space="preserve">
+    <value>Cílová vlhkost, %, při stejné teplotě.
+Podle ní se počítá „Odebrat vody“, čas do cíle a potřebný výkon.
+Pro zdraví je nejlepší 40…50 %.</value>
+  </data>
+  <data name="numericTarget.ToolTip" xml:space="preserve">
+    <value>Cílová vlhkost, %, při stejné teplotě.
+Podle ní se počítá „Odebrat vody“, čas do cíle a potřebný výkon.
+Pro zdraví je nejlepší 40…50 %.</value>
+  </data>
+  <data name="labelRemoveCaption.ToolTip" xml:space="preserve">
+    <value>Kolik vody odebrat, aby vlhkost při stejné teplotě klesla na cíl.
+První číslo je jen ze vzduchu: objem × rozdíl absolutní vlhkosti teď a při cíli.
+Druhé včetně pufru (× k): zhruba tolik odvlhčovač nasbírá do nádržky,
+bez vody, která mezitím přijde zvenčí a ze zdrojů.</value>
+  </data>
+  <data name="labelRemove.ToolTip" xml:space="preserve">
+    <value>Kolik vody odebrat, aby vlhkost při stejné teplotě klesla na cíl.
+První číslo je jen ze vzduchu: objem × rozdíl absolutní vlhkosti teď a při cíli.
+Druhé včetně pufru (× k): zhruba tolik odvlhčovač nasbírá do nádržky,
+bez vody, která mezitím přijde zvenčí a ze zdrojů.</value>
+  </data>
+  <data name="groupForecast.ToolTip" xml:space="preserve">
+    <value>Předpověď podle modelu místnosti:
+k·V·dρ/dt = n·V·(ρ venku − ρ) + S − c·(ρ − ρ min)
+ρ — absolutní vlhkost, V — objem, k — pufr, n — výměna vzduchu, S — zdroje,
+c — „efektivní průtok“ odvlhčovače (ze jmenovitého výkonu), ρ min — vlhkost ≈ 35 %.
+Vlhkost se blíží své mezi exponenciálně s časovou konstantou τ = k·V / (n·V + c).
+Teplota se bere jako stálá.</value>
+  </data>
+  <data name="labelExchangeCaption.ToolTip" xml:space="preserve">
+    <value>Intenzita výměny vzduchu, h⁻¹: kolikrát za hodinu se celý vzduch místnosti vymění za přiváděný.
+Zavřená okna a dveře — asi 0,1…0,5; větrání, digestoř — 1 a víc.
+Když je venku sušeji, výměna vzduchu sušení pomáhá; když vlhčeji — škodí.
+Nejpřesněji ji odhadne tlačítko „Ze záznamů“. Pamatuje se.</value>
+  </data>
+  <data name="numericExchange.ToolTip" xml:space="preserve">
+    <value>Intenzita výměny vzduchu, h⁻¹: kolikrát za hodinu se celý vzduch místnosti vymění za přiváděný.
+Zavřená okna a dveře — asi 0,1…0,5; větrání, digestoř — 1 a víc.
+Když je venku sušeji, výměna vzduchu sušení pomáhá; když vlhčeji — škodí.
+Nejpřesněji ji odhadne tlačítko „Ze záznamů“. Pamatuje se.</value>
+  </data>
+  <data name="labelOutdoorCaption.ToolTip" xml:space="preserve">
+    <value>Teplota a relativní vlhkost tam, odkud přichází vzduch: venku, na chodbě, v sousední místnosti.
+Z nich se bere absolutní vlhkost přívodu. Venkovní vzduch, i vlhký, přináší v chladu málo vody:
+při −5 °C a 80 % 2,7 g/m³, kdežto v místnosti při +22 °C a 50 % 9,7 g/m³.
+Pamatuje se.</value>
+  </data>
+  <data name="numericOutdoorTemperature.ToolTip" xml:space="preserve">
+    <value>Teplota a relativní vlhkost tam, odkud přichází vzduch: venku, na chodbě, v sousední místnosti.
+Z nich se bere absolutní vlhkost přívodu. Venkovní vzduch, i vlhký, přináší v chladu málo vody:
+při −5 °C a 80 % 2,7 g/m³, kdežto v místnosti při +22 °C a 50 % 9,7 g/m³.
+Pamatuje se.</value>
+  </data>
+  <data name="numericOutdoorHumidity.ToolTip" xml:space="preserve">
+    <value>Teplota a relativní vlhkost tam, odkud přichází vzduch: venku, na chodbě, v sousední místnosti.
+Z nich se bere absolutní vlhkost přívodu. Venkovní vzduch, i vlhký, přináší v chladu málo vody:
+při −5 °C a 80 % 2,7 g/m³, kdežto v místnosti při +22 °C a 50 % 9,7 g/m³.
+Pamatuje se.</value>
+  </data>
+  <data name="labelSourcesCaption.ToolTip" xml:space="preserve">
+    <value>Zdroje vlhkosti v místnosti, g/h: dech a kůže, vaření, sušící se prádlo, rostliny, akvárium.
+Člověk v klidu asi 50 g/h; prádlo sušené v místnosti stovky gramů za hodinu.
+Záporné číslo je odběr: něco vlhkost odnímá, třeba studená stěna nebo klimatizace.
+Nejpřesněji je odhadne tlačítko „Ze záznamů“. Pamatuje se.</value>
+  </data>
+  <data name="numericSources.ToolTip" xml:space="preserve">
+    <value>Zdroje vlhkosti v místnosti, g/h: dech a kůže, vaření, sušící se prádlo, rostliny, akvárium.
+Člověk v klidu asi 50 g/h; prádlo sušené v místnosti stovky gramů za hodinu.
+Záporné číslo je odběr: něco vlhkost odnímá, třeba studená stěna nebo klimatizace.
+Nejpřesněji je odhadne tlačítko „Ze záznamů“. Pamatuje se.</value>
+  </data>
+  <data name="labelRatedCaption.ToolTip" xml:space="preserve">
+    <value>Jmenovitý výkon odvlhčovače, l/den — podle normy při 30 °C a 80 %.
+V běžné místnosti odebírá mnohem méně: čím sušší a chladnější vzduch, tím méně,
+a pod ≈ 35 % kompresorový odvlhčovač skoro nesuší.
+Model bere odběr úměrný (ρ − ρ při 35 %) a násobitel určí ze jmenovitého bodu.
+Pamatuje se.</value>
+  </data>
+  <data name="numericRated.ToolTip" xml:space="preserve">
+    <value>Jmenovitý výkon odvlhčovače, l/den — podle normy při 30 °C a 80 %.
+V běžné místnosti odebírá mnohem méně: čím sušší a chladnější vzduch, tím méně,
+a pod ≈ 35 % kompresorový odvlhčovač skoro nesuší.
+Model bere odběr úměrný (ρ − ρ při 35 %) a násobitel určí ze jmenovitého bodu.
+Pamatuje se.</value>
+  </data>
+  <data name="labelRatedHint.ToolTip" xml:space="preserve">
+    <value>Jmenovitý výkon odvlhčovače, l/den — podle normy při 30 °C a 80 %.
+V běžné místnosti odebírá mnohem méně: čím sušší a chladnější vzduch, tím méně,
+a pod ≈ 35 % kompresorový odvlhčovač skoro nesuší.
+Model bere odběr úměrný (ρ − ρ při 35 %) a násobitel určí ze jmenovitého bodu.
+Pamatuje se.</value>
+  </data>
+  <data name="buttonFromRecords.ToolTip" xml:space="preserve">
+    <value>Zpřesní pufr k, výměnu vzduchu a zdroje podle všech uložených záznamů.
+Úseky s vypnutým odvlhčovačem ukazují, jak rychle se vlhkost blíží rovnováze s okolím (n/k)
+a jaké (odtud zdroje); úseky sušení ukazují, jak rychle ji odvlhčovač snižuje.
+Objem místnosti a jmenovitý výkon se berou z polí — nejdřív je nastav správně.
+Úseky kratší než 10 minut nebo s téměř přímým průběhem se nepočítají.</value>
+  </data>
+  <data name="labelForecast.ToolTip" xml:space="preserve">
+    <value>Přítok — kolik vody za hodinu přinese výměna vzduchu a zdroje při nynější vlhkosti.
+Odvlhčovač odebírá — kolik vody za hodinu odebere při nynější vlhkosti a teplotě.
+Bez odvlhčovače a s ním — k jaké vlhkosti místnost dojde a jak rychle:
+po τ zbývá 37 % cesty, po 2τ 14 %, po 3τ 5 %.
+Do cíle — kdy vlhkost dosáhne cíle, když odvlhčovač běží bez přestávek.
+Potřebný výkon — s menším jmenovitým výkonem odvlhčovač cíl neudrží.</value>
+  </data>
+</root>

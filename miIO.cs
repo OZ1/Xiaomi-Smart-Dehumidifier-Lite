@@ -1,5 +1,6 @@
 ﻿#pragma warning disable IDE1006 // Нарушение правила именования: Эти слова должны начинаться с прописных символов: siid
 using System.Buffers.Binary;
+using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
@@ -13,34 +14,44 @@ namespace DehumidifierControl;
 using static Properties.Resources;
 
 using static MD5;
+using static Task;
 using static String;
 using static Convert;
 using static JsonNode;
 using static IPAddress;
 using static Stopwatch;
 using static Enumerable;
+using static Interlocked;
 using static PaddingMode;
 using static JsonSerializer;
 using static BinaryPrimitives;
-using static CancellationTokenSource;
+using static TaskCreationOptions;
 
 public sealed class miIOException(string message) : Exception(message);
 public sealed class miIO : IDisposable
 {
+	/// <summary>Сколько командъ осушитель держитъ въ работѣ: на восьмую одновременную отвѣчаетъ busy (провѣрено: изъ 10 сразу — 7 отвѣтовъ, 3 busy).
+	/// Берёмъ съ запасомъ.</summary>
+	const int MaxInFlight = 4;
+
 	static readonly byte[] Hello = [0x21,0x31, 0,32, .. Repeat<byte>(0xFF, 28)];
 
-	readonly string IP;
-	readonly byte[] Token;           // 16 байт
-	readonly byte[] IV;              // 16 байт
-	readonly Aes AES = Aes.Create(); // 16 байт
-	readonly UdpClient Udp = new();
-	readonly SemaphoreSlim Lock = new(1, 1);
+	readonly string IP;                      // адресъ осушителя — для сообщенія, что онъ не отвѣчаетъ
+	readonly byte[] Token;                   // 16 байтъ: изъ него ключъ и векторъ; онъ же стоитъ на мѣстѣ контрольной суммы, пока она считается
+	readonly byte[] IV;                      // 16 байтъ: векторъ AES-CBC = MD5(ключъ + токенъ)
+	readonly Aes AES = Aes.Create();         // 16 байтъ  ключъ   AES-128 = MD5(токенъ)
+	readonly UdpClient Udp = new();          // портъ 54321
+	readonly SemaphoreSlim HelloLock = new(1, 1); // hello по одному: отвѣтъ на него безъ id, и ждётъ его одинъ HelloWaiter
+	readonly SemaphoreSlim InFlight = new(MaxInFlight, MaxInFlight); // команды въ пути, не больше MaxInFlight
+	readonly ConcurrentDictionary<int, TaskCompletionSource<JsonObject>> Pending = new(); // посланныя команды по id; цикл пріёма раздаётъ имъ отвѣты
+	readonly CancellationTokenSource Closing = new(); // останавливаетъ цикл пріёма въ Dispose
+	TaskCompletionSource<byte[]>? HelloWaiter; // ждётъ отвѣта на hello, пока тотъ въ пути
 
-	uint DeviceId;
-	uint Stamp;
-	long StampAt;
-	bool Handshaken;
-	int MessageId = Random.Shared.Next(1, 9000);
+	uint DeviceId;   // номеръ устройства изъ отвѣта на hello — пишется въ каждый пакетъ
+	uint Stamp;      // часы устройства изъ отвѣта на hello, секунды
+	long StampAt;    // когда пришёлъ Stamp (Stopwatch): часы устройства досчитываемъ сами — пакетъ съ меткой изъ прошлаго оно отбрасываетъ
+	bool Handshaken; // hello прошёлъ: номеръ и часы извѣстны
+	int  MessageId = Random.Shared.Next(1, 9000); // id послѣдней команды; начало случайное, чтобы запоздалый отвѣтъ прошлаго запуска не совпалъ съ нашимъ
 
 	public TimeSpan Timeout { get; set; } = new(0, 0, seconds: 3);
 
@@ -57,81 +68,129 @@ public sealed class miIO : IDisposable
 		Token .CopyTo(keyToken[16..]);
 		IV = HashData(keyToken);
 		Udp.Connect(Parse(ip), 54321);
+		_ = Run(ReceiveLoopAsync); // циклъ пріёма — сразу въ пулѣ потоковъ, не на потокѣ создателя (въ окнѣ это UI-потокъ)
 	}
 
+	/// <summary>Команды не ждутъ другъ друга: каждая кладётся въ Pending подъ своимъ id и ждётъ, пока цикл пріёма отдастъ ей отвѣтъ.</summary>
 	public async Task<JsonNode?> SendAsync(string method, JsonNode? parameters = null, CancellationToken ct = default)
 	{
-		await Lock.WaitAsync(ct);
+		await InFlight.WaitAsync(ct);
 		try
 		{
+			int busy = 0;
 			bool answered = Handshaken; // отвѣчало ли устройство на hello — чтобы вѣрно назвать причину неудачи
+			bool hello   = !Handshaken;
 			for (int attempt = 0; attempt < 3; attempt++)
 			{
-				if (!Handshaken || attempt > 0)
+				if (hello)
 				{
 					if (!await HandshakeAsync(ct)) continue; // осушитель иногда пропускаетъ hello — это одна попытка, а не конецъ
 					answered = true;
+					hello = false;
 				}
 
-				int id = ++MessageId;
+				int id = Increment(ref MessageId);
 				JsonObject request = new()
 				{
 					["id"] = id,
 					["method"] = method,
 					["params"] = parameters?.DeepClone() ?? new JsonArray(),
 				};
-				await Udp.SendAsync(BuildPacket(SerializeToUtf8Bytes(request)), ct);
-
-				long started = GetTimestamp();
-				while (GetElapsedTime(started) is var elapsed && elapsed < Timeout)
+				TaskCompletionSource<JsonObject> waiter = new(RunContinuationsAsynchronously);
+				Pending[id] = waiter;
+				JsonObject response;
+				try
 				{
-					var data = await ReceiveAsync(Timeout - elapsed, ct);
-					if (data is null) break;
-
-					JsonObject? response = ParsePacket(data);
-					if (response?["id"] is not JsonValue rid || !rid.TryGetValue(out int got) || got != id) continue;
-					if (response["error"] is { } error)
-						throw new miIOException($"{method}: {error.ToJsonString()}");
-					return response["result"];
+					await Udp.SendAsync(BuildPacket(SerializeToUtf8Bytes(request)), ct);
+					response = await waiter.Task.WaitAsync(Timeout, ct);
 				}
+				catch (TimeoutException)
+				{
+					hello = true; // слѣдующая попытка — съ новымъ hello
+					continue;
+				}
+				finally
+				{
+					Pending.TryRemove(id, out _); // отвѣтъ, пришедшій послѣ, уже некому отдать — пропадётъ
+				}
+				if (response["error"] is { } error)
+				{
+					// Кодъ отвѣта «занятъ»: {"code":-30012,"message":"busy."} — команда не выполнена, её можно повторить.
+					if (error["code"] is JsonValue c && c.TryGetValue(out int code) && code == -30012 && busy++ < 10)
+					{
+						await Delay(100/*мс*/, ct);
+						attempt--; // не считаемъ попыткой, потому что команда не дошла до осушителя
+						continue;
+					}
+					throw new miIOException($"{method}: {error.ToJsonString()}");
+				}
+				return response["result"];
 			}
 			throw new miIOException(answered ? NoReply : Format(DeviceSilent, IP));
 		}
 		finally
 		{
-			Lock.Release();
+			InFlight.Release();
 		}
 	}
 
 	/// <summary>Hello: узнать номеръ устройства и его часы. false — устройство не отвѣтило.</summary>
 	async Task<bool> HandshakeAsync(CancellationToken ct)
 	{
-		await Udp.SendAsync(Hello, ct);
-		var data = await ReceiveAsync(Timeout, ct);
-		if (data is null || data.Length < 32)
-			return false;
-		DeviceId = ReadUInt32BigEndian(data.AsSpan(8));
-		Stamp    = ReadUInt32BigEndian(data.AsSpan(12));
-		StampAt  = GetTimestamp();
-		Handshaken = true;
-		return true;
-	}
-
-	async Task<byte[]?> ReceiveAsync(TimeSpan timeout, CancellationToken ct)
-	{
-		using CancellationTokenSource cts = CreateLinkedTokenSource(ct);
-		cts.CancelAfter(timeout);
+		await HelloLock.WaitAsync(ct);
 		try
 		{
-			return (await Udp.ReceiveAsync(cts.Token)).Buffer;
+			TaskCompletionSource<byte[]> waiter = new(RunContinuationsAsynchronously);
+			HelloWaiter = waiter;
+			await Udp.SendAsync(Hello, ct);
+			byte[] data;
+			try
+			{
+				data = await waiter.Task.WaitAsync(Timeout, ct);
+			}
+			catch (TimeoutException)
+			{
+				return false;
+			}
+			finally
+			{
+				HelloWaiter = null;
+			}
+			DeviceId = ReadUInt32BigEndian(data.AsSpan(8));
+			Stamp    = ReadUInt32BigEndian(data.AsSpan(12));
+			StampAt  = GetTimestamp();
+			Handshaken = true;
+			return true;
 		}
-		catch (OperationCanceledException) when (!ct.IsCancellationRequested)
+		finally
 		{
-			return null;
+			HelloLock.Release();
 		}
-		catch (SocketException)
+	}
+
+	/// <summary>Единственный читатель сокета: отвѣтъ на hello (голый заголовокъ, 32 байта) — тому, кто ждётъ hello,
+	/// отвѣтъ на команду — той, чей id въ нёмъ; чужое и битое пропускается.</summary>
+	async Task ReceiveLoopAsync()
+	{
+		while (!Closing.IsCancellationRequested)
 		{
-			return null; // ICMP «порт недоступенъ» и подобное — считаемъ, что отвѣта нѣтъ
+			byte[] data;
+			try
+			{
+				data = (await Udp.ReceiveAsync(Closing.Token).ConfigureAwait(false)).Buffer;
+			}
+			catch (Exception e) when (e is OperationCanceledException or ObjectDisposedException)
+			{
+				return; // Dispose
+			}
+			catch (SocketException)
+			{
+				continue; // ICMP «порт недоступенъ» и подобное — отвѣта нѣтъ, ждущіе дождутся своего Timeout
+			}
+			if (data.Length == 32)
+				HelloWaiter?.TrySetResult(data);
+			else if (ParsePacket(data) is { } response && response["id"] is JsonValue rid && rid.TryGetValue(out int id) && Pending.TryRemove(id, out var waiter))
+				waiter.TrySetResult(response);
 		}
 	}
 
@@ -176,8 +235,11 @@ public sealed class miIO : IDisposable
 
 	public void Dispose()
 	{
+		Closing.Cancel(); // цикл пріёма выходитъ
 		Udp.Dispose();
 		AES.Dispose();
-		Lock.Dispose();
+		HelloLock.Dispose();
+		InFlight.Dispose();
+		Closing.Dispose();
 	}
 }

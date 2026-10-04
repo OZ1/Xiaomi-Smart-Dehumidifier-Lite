@@ -459,8 +459,59 @@
   <data name="DurationDays" xml:space="preserve">
     <value>{0} d {1} h</value>
   </data>
+  <data name="ChartEmpty" xml:space="preserve">
+    <value>Žádné záznamy. Spusť nahrávání tlačítkem „Nahrávat“ v hlavním okně, nebo vyber relaci vlevo.</value>
+  </data>
+  <data name="ChartNoData" xml:space="preserve">
+    <value>žádná data</value>
+  </data>
+  <data name="ChartLost" xml:space="preserve">
+    <value>spojení ztraceno — hodnoty jsou staré</value>
+  </data>
+  <data name="ChartHumidity" xml:space="preserve">
+    <value>Vlhkost, %</value>
+  </data>
+  <data name="ChartTarget" xml:space="preserve">
+    <value>cíl</value>
+  </data>
+  <data name="ChartTemperature" xml:space="preserve">
+    <value>Teplota, °C</value>
+  </data>
+  <data name="ChartWater" xml:space="preserve">
+    <value>Voda, g/m³</value>
+  </data>
+  <data name="ChartDewPoint" xml:space="preserve">
+    <value>rosný bod</value>
+  </data>
   <data name="ChartWarming" xml:space="preserve">
     <value>zahřívání</value>
+  </data>
+  <data name="SessionsDeleteQuestion" xml:space="preserve">
+    <value>Smazat relací: {0}? Nepůjde je obnovit.</value>
+  </data>
+  <data name="SessionLive" xml:space="preserve">
+    <value>Do této relace se právě nahrává — nejprve nahrávání zastav.</value>
+  </data>
+  <data name="CutQuestion" xml:space="preserve">
+    <value>Vyříznout ze záznamu {0:g} — {1:g}?</value>
+  </data>
+  <data name="TrimQuestion" xml:space="preserve">
+    <value>Ponechat v záznamu jen {0:g} — {1:g}?</value>
+  </data>
+  <data name="ModelNone" xml:space="preserve">
+    <value>V relaci nejsou ustálené úseky (alespoň 10 minut a se 4 změnami vlhkosti) — model není podle čeho odhadnout.</value>
+  </data>
+  <data name="ModelOff" xml:space="preserve">
+    <value>Vypnuto {0:t}–{1:t}: τ = {2:0.0} h, směřovala k {3:0.0} g/m³ ({4:0} %), přítok ≈ {5:0} g/h</value>
+  </data>
+  <data name="ModelDrying" xml:space="preserve">
+    <value>{6} {0:t}–{1:t}: τ = {2:0.0} h, směřovala k {3:0.0} g/m³ ({4:0} %), odvlhčování po odečtení přítoku ≈ {5:0} g/h</value>
+  </data>
+  <data name="ModelBounded" xml:space="preserve">
+    <value> — průběh téměř přímý, mez nespolehlivá</value>
+  </data>
+  <data name="ModelBasis" xml:space="preserve">
+    <value>Gramy za hodinu — pro objem {0:0.#} m³ a pufr k = {1:0.#} z výpočtů.</value>
   </data>
   <data name="CalcDegrees" xml:space="preserve">
     <value>{0:0.0} °C</value>

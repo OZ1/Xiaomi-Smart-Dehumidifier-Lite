@@ -1104,11 +1104,164 @@ namespace DehumidifierControl.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Записей нѣтъ. Начни запись кнопкою «Вести запись» въ главномъ окнѣ, или выбери сеансъ слѣва..
+        /// </summary>
+        internal static string ChartEmpty {
+            get {
+                return ResourceManager.GetString("ChartEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на нѣтъ данныхъ.
+        /// </summary>
+        internal static string ChartNoData {
+            get {
+                return ResourceManager.GetString("ChartNoData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на связь потеряна — значенія прежнія.
+        /// </summary>
+        internal static string ChartLost {
+            get {
+                return ResourceManager.GetString("ChartLost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Влажность, %.
+        /// </summary>
+        internal static string ChartHumidity {
+            get {
+                return ResourceManager.GetString("ChartHumidity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на цѣль.
+        /// </summary>
+        internal static string ChartTarget {
+            get {
+                return ResourceManager.GetString("ChartTarget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Температура, °Ц.
+        /// </summary>
+        internal static string ChartTemperature {
+            get {
+                return ResourceManager.GetString("ChartTemperature", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Вода, г/м³.
+        /// </summary>
+        internal static string ChartWater {
+            get {
+                return ResourceManager.GetString("ChartWater", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на роса.
+        /// </summary>
+        internal static string ChartDewPoint {
+            get {
+                return ResourceManager.GetString("ChartDewPoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на прогрѣвъ.
         /// </summary>
         internal static string ChartWarming {
             get {
                 return ResourceManager.GetString("ChartWarming", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Удалить сеансовъ: {0}? Вернуть ихъ будетъ нельзя..
+        /// </summary>
+        internal static string SessionsDeleteQuestion {
+            get {
+                return ResourceManager.GetString("SessionsDeleteQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Въ этотъ сеансъ сейчасъ идётъ запись — сначала останови её..
+        /// </summary>
+        internal static string SessionLive {
+            get {
+                return ResourceManager.GetString("SessionLive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Вырѣзать изъ записи {0:g} — {1:g}?.
+        /// </summary>
+        internal static string CutQuestion {
+            get {
+                return ResourceManager.GetString("CutQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Оставить въ записи только {0:g} — {1:g}?.
+        /// </summary>
+        internal static string TrimQuestion {
+            get {
+                return ResourceManager.GetString("TrimQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Ровныхъ отрѣзковъ (не короче 10 минутъ и съ 4 смѣнами влажности) въ сеансѣ нѣтъ — модель оцѣнить не по чему..
+        /// </summary>
+        internal static string ModelNone {
+            get {
+                return ResourceManager.GetString("ModelNone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Выключенъ {0:t}–{1:t}: τ = {2:0.0} ч, шла къ {3:0.0} г/м³ ({4:0} %), притокъ ≈ {5:0} г/ч.
+        /// </summary>
+        internal static string ModelOff {
+            get {
+                return ResourceManager.GetString("ModelOff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на {6} {0:t}–{1:t}: τ = {2:0.0} ч, шла къ {3:0.0} г/м³ ({4:0} %), осушеніе за вычетомъ притока ≈ {5:0} г/ч.
+        /// </summary>
+        internal static string ModelDrying {
+            get {
+                return ResourceManager.GetString("ModelDrying", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на  — ходъ почти прямой, предѣлъ ненадёженъ.
+        /// </summary>
+        internal static string ModelBounded {
+            get {
+                return ResourceManager.GetString("ModelBounded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Граммы въ часъ — при объёмѣ {0:0.#} м³ и буферѣ k = {1:0.#} изъ разсчётовъ..
+        /// </summary>
+        internal static string ModelBasis {
+            get {
+                return ResourceManager.GetString("ModelBasis", resourceCulture);
             }
         }
         

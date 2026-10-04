@@ -447,6 +447,9 @@
   <data name="buttonRecord.ToolTip" xml:space="preserve">
     <value>Започни или спри записа (F5)</value>
   </data>
+  <data name="buttonCharts.ToolTip" xml:space="preserve">
+    <value>Графики на записите (F6)</value>
+  </data>
   <data name="buttonCalculator.ToolTip" xml:space="preserve">
     <value>Изчисления на влажността (F7)</value>
   </data>

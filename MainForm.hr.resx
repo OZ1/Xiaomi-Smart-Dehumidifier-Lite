@@ -369,6 +369,9 @@
   <data name="buttonRecord.Text" xml:space="preserve">
     <value>⚫ Sni&amp;maj</value>
   </data>
+  <data name="buttonCharts.Text" xml:space="preserve">
+    <value>&amp;Grafikoni…</value>
+  </data>
   <data name="buttonCalculator.Text" xml:space="preserve">
     <value>&amp;Izračuni…</value>
   </data>
@@ -461,6 +464,9 @@
   </data>
   <data name="buttonRecord.ToolTip" xml:space="preserve">
     <value>Pokreni ili zaustavi snimanje (F5)</value>
+  </data>
+  <data name="buttonCharts.ToolTip" xml:space="preserve">
+    <value>Grafikoni zapisa (F6)</value>
   </data>
   <data name="buttonCalculator.ToolTip" xml:space="preserve">
     <value>Izračuni vlažnosti (F7)</value>

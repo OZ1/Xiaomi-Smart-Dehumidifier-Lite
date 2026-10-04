@@ -459,8 +459,59 @@
   <data name="DurationDays" xml:space="preserve">
     <value>{0} д {1} ч</value>
   </data>
+  <data name="ChartEmpty" xml:space="preserve">
+    <value>Няма записи. Започни запис с бутона „Записвай“ в главния прозорец или избери сесия вляво.</value>
+  </data>
+  <data name="ChartNoData" xml:space="preserve">
+    <value>няма данни</value>
+  </data>
+  <data name="ChartLost" xml:space="preserve">
+    <value>връзката е загубена — стойностите са стари</value>
+  </data>
+  <data name="ChartHumidity" xml:space="preserve">
+    <value>Влажност, %</value>
+  </data>
+  <data name="ChartTarget" xml:space="preserve">
+    <value>цел</value>
+  </data>
+  <data name="ChartTemperature" xml:space="preserve">
+    <value>Температура, °C</value>
+  </data>
+  <data name="ChartWater" xml:space="preserve">
+    <value>Вода, г/м³</value>
+  </data>
+  <data name="ChartDewPoint" xml:space="preserve">
+    <value>роса</value>
+  </data>
   <data name="ChartWarming" xml:space="preserve">
     <value>загряване</value>
+  </data>
+  <data name="SessionsDeleteQuestion" xml:space="preserve">
+    <value>Да се изтрият ли сесии: {0}? Няма да могат да се възстановят.</value>
+  </data>
+  <data name="SessionLive" xml:space="preserve">
+    <value>В тази сесия в момента се записва — първо спри записа.</value>
+  </data>
+  <data name="CutQuestion" xml:space="preserve">
+    <value>Да се изреже ли от записа {0:g} — {1:g}?</value>
+  </data>
+  <data name="TrimQuestion" xml:space="preserve">
+    <value>Да остане ли в записа само {0:g} — {1:g}?</value>
+  </data>
+  <data name="ModelNone" xml:space="preserve">
+    <value>В сесията няма равни отрязъци (поне 10 минути и с 4 промени на влажността) — моделът няма по какво да се оцени.</value>
+  </data>
+  <data name="ModelOff" xml:space="preserve">
+    <value>Изключен {0:t}–{1:t}: τ = {2:0.0} ч, вървеше към {3:0.0} г/м³ ({4:0} %), приток ≈ {5:0} г/ч</value>
+  </data>
+  <data name="ModelDrying" xml:space="preserve">
+    <value>{6} {0:t}–{1:t}: τ = {2:0.0} ч, вървеше към {3:0.0} г/м³ ({4:0} %), изсушаване след приспадане на притока ≈ {5:0} г/ч</value>
+  </data>
+  <data name="ModelBounded" xml:space="preserve">
+    <value> — ходът е почти прав, границата е ненадеждна</value>
+  </data>
+  <data name="ModelBasis" xml:space="preserve">
+    <value>Грамове на час — при обем {0:0.#} м³ и буфер k = {1:0.#} от изчисленията.</value>
   </data>
   <data name="CalcDegrees" xml:space="preserve">
     <value>{0:0.0} °C</value>

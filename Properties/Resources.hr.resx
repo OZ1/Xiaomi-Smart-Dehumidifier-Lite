@@ -459,8 +459,59 @@
   <data name="DurationDays" xml:space="preserve">
     <value>{0} d {1} h</value>
   </data>
+  <data name="ChartEmpty" xml:space="preserve">
+    <value>Nema zapisa. Pokreni snimanje gumbom „Snimaj” u glavnom prozoru ili odaberi sesiju lijevo.</value>
+  </data>
+  <data name="ChartNoData" xml:space="preserve">
+    <value>nema podataka</value>
+  </data>
+  <data name="ChartLost" xml:space="preserve">
+    <value>veza izgubljena — vrijednosti su stare</value>
+  </data>
+  <data name="ChartHumidity" xml:space="preserve">
+    <value>Vlažnost, %</value>
+  </data>
+  <data name="ChartTarget" xml:space="preserve">
+    <value>cilj</value>
+  </data>
+  <data name="ChartTemperature" xml:space="preserve">
+    <value>Temperatura, °C</value>
+  </data>
+  <data name="ChartWater" xml:space="preserve">
+    <value>Voda, g/m³</value>
+  </data>
+  <data name="ChartDewPoint" xml:space="preserve">
+    <value>rosište</value>
+  </data>
   <data name="ChartWarming" xml:space="preserve">
     <value>zagrijavanje</value>
+  </data>
+  <data name="SessionsDeleteQuestion" xml:space="preserve">
+    <value>Izbrisati sesija: {0}? Neće ih se moći vratiti.</value>
+  </data>
+  <data name="SessionLive" xml:space="preserve">
+    <value>U ovu sesiju upravo se snima — najprije zaustavi snimanje.</value>
+  </data>
+  <data name="CutQuestion" xml:space="preserve">
+    <value>Izrezati iz zapisa {0:g} — {1:g}?</value>
+  </data>
+  <data name="TrimQuestion" xml:space="preserve">
+    <value>Zadržati u zapisu samo {0:g} — {1:g}?</value>
+  </data>
+  <data name="ModelNone" xml:space="preserve">
+    <value>U sesiji nema ravnomjernih odsječaka (barem 10 minuta i s 4 promjene vlažnosti) — model se nema po čemu procijeniti.</value>
+  </data>
+  <data name="ModelOff" xml:space="preserve">
+    <value>Isključen {0:t}–{1:t}: τ = {2:0.0} h, išla prema {3:0.0} g/m³ ({4:0} %), dotok ≈ {5:0} g/h</value>
+  </data>
+  <data name="ModelDrying" xml:space="preserve">
+    <value>{6} {0:t}–{1:t}: τ = {2:0.0} h, išla prema {3:0.0} g/m³ ({4:0} %), odvlaživanje umanjeno za dotok ≈ {5:0} g/h</value>
+  </data>
+  <data name="ModelBounded" xml:space="preserve">
+    <value> — tijek gotovo ravan, granica nepouzdana</value>
+  </data>
+  <data name="ModelBasis" xml:space="preserve">
+    <value>Grami na sat — uz obujam {0:0.#} m³ i pufer k = {1:0.#} iz izračuna.</value>
   </data>
   <data name="CalcDegrees" xml:space="preserve">
     <value>{0:0.0} °C</value>

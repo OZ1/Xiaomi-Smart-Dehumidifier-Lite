@@ -2406,6 +2406,33 @@
   <data name="&gt;&gt;buttonRecord.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <metadata name="buttonCharts.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="buttonCharts.Location" type="System.Drawing.Point, System.Drawing">
+    <value>161, 66</value>
+  </data>
+  <data name="buttonCharts.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 27</value>
+  </data>
+  <data name="buttonCharts.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="buttonCharts.Text" xml:space="preserve">
+    <value>&amp;Графики…</value>
+  </data>
+  <data name="&gt;&gt;buttonCharts.Name" xml:space="preserve">
+    <value>buttonCharts</value>
+  </data>
+  <data name="&gt;&gt;buttonCharts.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonCharts.Parent" xml:space="preserve">
+    <value>groupWatch</value>
+  </data>
+  <data name="&gt;&gt;buttonCharts.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
   <metadata name="buttonCalculator.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
@@ -2999,6 +3026,9 @@
   </data>
   <data name="buttonRecord.ToolTip" xml:space="preserve">
     <value>Начать или остановить запись (F5)</value>
+  </data>
+  <data name="buttonCharts.ToolTip" xml:space="preserve">
+    <value>Дневникъ записей (F6)</value>
   </data>
   <data name="buttonCalculator.ToolTip" xml:space="preserve">
     <value>Разсчётъ влажности (F7)</value>

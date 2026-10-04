@@ -59,6 +59,7 @@ public partial class MainForm : Form
 
 	Recorder? Recorder;          // идётъ запись — иначе null
 	Reading? LastReading;        // послѣднее состояніе — для разсчётовъ
+	ChartsForm? Charts;
 	CalculatorForm? Calculator;
 
 	/// <summary>Измѣненія за послѣднія два часа, и безъ записи, — по нимъ оцѣнивается, когда влажность дойдётъ до цѣли.</summary>
@@ -122,8 +123,9 @@ public partial class MainForm : Form
 
 	protected override void OnFormClosing(FormClosingEventArgs e)
 	{
-		// разсчётъ — окно безъ владѣльца: съ концомъ программы оно исчезаетъ безъ FormClosing
-		// и не сохраняетъ положеніе — закрываемъ его сами
+		// калькуляторъ и графики — окна безъ владѣльца: съ концомъ программы они исчезаютъ безъ FormClosing
+		// и не сохраняютъ положеніе — закрываемъ ихъ сами
+		Charts?.Close();
 		Calculator?.Close();
 		if (e.CloseReason == UserClosing)
 		{
@@ -401,7 +403,7 @@ public partial class MainForm : Form
 			: Format(EtaNever, forecast.LimitHumidity, source);
 	}
 
-	/// <summary>F5 — запись, F7 — разсчёты: изъ любого мѣста окна, какъ кнопки «Наблюденія»;
+	/// <summary>F5 — запись, F6 — графики, F7 — разсчёты: изъ любого мѣста окна, какъ кнопки «Наблюденія»;
 	/// запись — только когда ея кнопка доступна (есть связь).</summary>
 	protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
 	{
@@ -409,6 +411,9 @@ public partial class MainForm : Form
 		{
 			case Keys.F5:
 				if (buttonRecord.Enabled) Record_Click(this, EventArgs.Empty);
+				return true;
+			case Keys.F6:
+				Charts_Click(this, EventArgs.Empty);
 				return true;
 			case Keys.F7:
 				Calculator_Click(this, EventArgs.Empty);
@@ -435,10 +440,12 @@ public partial class MainForm : Form
 			SetStatus(ex.Message, error: true);
 			return;
 		}
+		Recorder.LineWritten += (_, _) => Charts?.LineWritten();
 		if (LastReading is {} reading && !PollFailed)
 			Recorder.Add(Now, reading);
 		SetStatus(Format(RecordStarted, GetFileName(Recorder.Path)));
 		UpdateRecordButton();
+		Charts?.RecordingChanged();
 	}
 
 	void StopRecording()
@@ -454,6 +461,7 @@ public partial class MainForm : Form
 			SetStatus(ex.Message, error: true);
 		}
 		UpdateRecordButton();
+		Charts?.RecordingChanged();
 	}
 
 	/// <summary>Начать запись можно, пока подключены; остановить — всегда.</summary>
@@ -461,6 +469,17 @@ public partial class MainForm : Form
 	{
 		buttonRecord.Text    = Recorder is null ? RecordStart : RecordStop;
 		buttonRecord.Enabled = Recorder is not null || Device is not null && textBoxIP.ReadOnly;
+	}
+
+	void Charts_Click(object? sender, EventArgs e)
+	{
+		if (Charts is null)
+		{
+			Charts = new(() => Recorder) { Icon = Icon, OpenCalculator = () => Calculator_Click(this, EventArgs.Empty) };
+			Charts.FormClosed += (_, _) => Charts = null;
+			Charts.Show();
+		}
+		else Bring(Charts);
 	}
 
 	void Calculator_Click(object? sender, EventArgs e)

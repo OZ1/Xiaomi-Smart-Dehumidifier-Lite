@@ -169,7 +169,7 @@ public partial class CalculatorForm : Form
 	RoomModel Model() => new(Value(numericVolume), Value(numericBuffer), Value(numericExchange),
 		AbsoluteHumidity(Value(numericOutdoorTemperature), Value(numericOutdoorHumidity)), Value(numericSources), FlowFromRated(Value(numericRated)));
 
-	/// <summary>Поля модели — въ настройки сразу: главное окно считаетъ прогнозъ по нимъ, не дожидаясь закрытія разсчёта.
+	/// <summary>Поля модели — въ настройки сразу: главное окно и графики считаютъ прогнозъ по нимъ, не дожидаясь закрытія разсчёта.
 	/// На дискъ — при закрытіи.</summary>
 	void Remember()
 	{

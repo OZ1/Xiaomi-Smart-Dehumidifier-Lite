@@ -369,6 +369,9 @@
   <data name="buttonRecord.Text" xml:space="preserve">
     <value>⚫ R&amp;ecord</value>
   </data>
+  <data name="buttonCharts.Text" xml:space="preserve">
+    <value>C&amp;harts…</value>
+  </data>
   <data name="buttonCalculator.Text" xml:space="preserve">
     <value>Calc&amp;ulations…</value>
   </data>
@@ -461,6 +464,9 @@
   </data>
   <data name="buttonRecord.ToolTip" xml:space="preserve">
     <value>Start or stop recording (F5)</value>
+  </data>
+  <data name="buttonCharts.ToolTip" xml:space="preserve">
+    <value>Charts of the records (F6)</value>
   </data>
   <data name="buttonCalculator.ToolTip" xml:space="preserve">
     <value>Humidity calculations (F7)</value>

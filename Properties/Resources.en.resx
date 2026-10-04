@@ -198,11 +198,11 @@
   <data name="BadResponse" xml:space="preserve">
     <value>Unexpected response to {0}.</value>
   </data>
-  <data name="NoMIoTAttribute" xml:space="preserve">
-    <value>Property {0} has no [MIoT] attribute.</value>
-  </data>
   <data name="WriteRejected" xml:space="preserve">
     <value>The device rejected the write: {0}</value>
+  </data>
+  <data name="ReadRejected" xml:space="preserve">
+    <value>The device did not return property {0}: {1}</value>
   </data>
   <data name="ActionRejected" xml:space="preserve">
     <value>The device rejected action ({0}, {1}): {2}</value>
@@ -211,7 +211,7 @@
     <value>the property cannot be read (-4001)</value>
   </data>
   <data name="Error4002" xml:space="preserve">
-    <value>the property cannot be written now (-4002); for example, target humidity cannot be changed in clothes drying mode</value>
+    <value>the dehumidifier does not accept this now (-4002): when off it does not change the mode, target or timer, and in clothes drying mode — the target</value>
   </data>
   <data name="Error4003" xml:space="preserve">
     <value>no such property, action or event (-4003)</value>
@@ -355,13 +355,13 @@
     <value>best (40…50 %)</value>
   </data>
   <data name="ComfortNormal" xml:space="preserve">
-    <value>normal (51…60 %)</value>
+    <value>normal (51…59 %)</value>
   </data>
   <data name="ComfortHumid" xml:space="preserve">
-    <value>humid (61…70 %)</value>
+    <value>humid (60…69 %)</value>
   </data>
   <data name="ComfortTooHumid" xml:space="preserve">
-    <value>too humid (above 70 %)</value>
+    <value>too humid (70 % and above)</value>
   </data>
   <data name="CliUsage" xml:space="preserve">
     <value>Control of the Xiaomi Smart Dehumidifier Lite.

@@ -198,11 +198,11 @@
   <data name="BadResponse" xml:space="preserve">
     <value>Неочекуван одговор на {0}.</value>
   </data>
-  <data name="NoMIoTAttribute" xml:space="preserve">
-    <value>Својството {0} нема атрибут [MIoT].</value>
-  </data>
   <data name="WriteRejected" xml:space="preserve">
     <value>Уредот го одби запишувањето: {0}</value>
+  </data>
+  <data name="ReadRejected" xml:space="preserve">
+    <value>Уредот не го врати својството {0}: {1}</value>
   </data>
   <data name="ActionRejected" xml:space="preserve">
     <value>Уредот го одби дејството ({0}, {1}): {2}</value>
@@ -211,7 +211,7 @@
     <value>својството не може да се прочита (-4001)</value>
   </data>
   <data name="Error4002" xml:space="preserve">
-    <value>својството сега не може да се запише (-4002); на пример, целната влажност не се менува во режим сушење алишта</value>
+    <value>одвлажнувачот сега тоа не го прифаќа (-4002): исклучен не ги менува режимот, целта и тајмерот, а во режим сушење алишта — целта</value>
   </data>
   <data name="Error4003" xml:space="preserve">
     <value>нема такво својство, дејство или настан (-4003)</value>
@@ -355,13 +355,13 @@
     <value>најдобро (40…50 %)</value>
   </data>
   <data name="ComfortNormal" xml:space="preserve">
-    <value>нормално (51…60 %)</value>
+    <value>нормално (51…59 %)</value>
   </data>
   <data name="ComfortHumid" xml:space="preserve">
-    <value>повлажно (61…70 %)</value>
+    <value>повлажно (60…69 %)</value>
   </data>
   <data name="ComfortTooHumid" xml:space="preserve">
-    <value>премногу влажно (над 70 %)</value>
+    <value>премногу влажно (од 70 %)</value>
   </data>
   <data name="CliUsage" xml:space="preserve">
     <value>Управување со одвлажнувачот Xiaomi Smart Dehumidifier Lite.

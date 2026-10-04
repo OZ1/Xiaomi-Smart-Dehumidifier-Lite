@@ -198,11 +198,11 @@
   <data name="BadResponse" xml:space="preserve">
     <value>Neočakávaná odpoveď na {0}.</value>
   </data>
-  <data name="NoMIoTAttribute" xml:space="preserve">
-    <value>Vlastnosť {0} nemá atribút [MIoT].</value>
-  </data>
   <data name="WriteRejected" xml:space="preserve">
     <value>Zariadenie odmietlo zápis: {0}</value>
+  </data>
+  <data name="ReadRejected" xml:space="preserve">
+    <value>Zariadenie nevrátilo vlastnosť {0}: {1}</value>
   </data>
   <data name="ActionRejected" xml:space="preserve">
     <value>Zariadenie odmietlo akciu ({0}, {1}): {2}</value>
@@ -211,7 +211,7 @@
     <value>vlastnosť nemožno prečítať (-4001)</value>
   </data>
   <data name="Error4002" xml:space="preserve">
-    <value>vlastnosť teraz nemožno zapísať (-4002); napríklad cieľovú vlhkosť nemožno meniť v režime sušenia bielizne</value>
+    <value>odvlhčovač to teraz neprijíma (-4002): vypnutý nemení režim, cieľ ani časovač a v režime sušenia bielizne cieľ</value>
   </data>
   <data name="Error4003" xml:space="preserve">
     <value>taká vlastnosť, akcia ani udalosť neexistuje (-4003)</value>
@@ -355,13 +355,13 @@
     <value>najlepšie (40…50 %)</value>
   </data>
   <data name="ComfortNormal" xml:space="preserve">
-    <value>normálne (51…60 %)</value>
+    <value>normálne (51…59 %)</value>
   </data>
   <data name="ComfortHumid" xml:space="preserve">
-    <value>vlhkejšie (61…70 %)</value>
+    <value>vlhkejšie (60…69 %)</value>
   </data>
   <data name="ComfortTooHumid" xml:space="preserve">
-    <value>príliš vlhko (nad 70 %)</value>
+    <value>príliš vlhko (od 70 %)</value>
   </data>
   <data name="CliUsage" xml:space="preserve">
     <value>Ovládanie odvlhčovača Xiaomi Smart Dehumidifier Lite.

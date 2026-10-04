@@ -198,11 +198,11 @@
   <data name="BadResponse" xml:space="preserve">
     <value>Nieoczekiwana odpowiedź na {0}.</value>
   </data>
-  <data name="NoMIoTAttribute" xml:space="preserve">
-    <value>Właściwość {0} nie ma atrybutu [MIoT].</value>
-  </data>
   <data name="WriteRejected" xml:space="preserve">
     <value>Urządzenie odrzuciło zapis: {0}</value>
+  </data>
+  <data name="ReadRejected" xml:space="preserve">
+    <value>Urządzenie nie zwróciło właściwości {0}: {1}</value>
   </data>
   <data name="ActionRejected" xml:space="preserve">
     <value>Urządzenie odrzuciło akcję ({0}, {1}): {2}</value>
@@ -211,7 +211,7 @@
     <value>właściwości nie można odczytać (-4001)</value>
   </data>
   <data name="Error4002" xml:space="preserve">
-    <value>właściwości nie można teraz zapisać (-4002); na przykład docelowej wilgotności nie można zmieniać w trybie suszenia prania</value>
+    <value>osuszacz teraz tego nie przyjmuje (-4002): wyłączony nie zmienia trybu, celu ani timera, a w trybie suszenia prania — celu</value>
   </data>
   <data name="Error4003" xml:space="preserve">
     <value>nie ma takiej właściwości, akcji ani zdarzenia (-4003)</value>
@@ -355,13 +355,13 @@
     <value>najlepiej (40…50 %)</value>
   </data>
   <data name="ComfortNormal" xml:space="preserve">
-    <value>w normie (51…60 %)</value>
+    <value>w normie (51…59 %)</value>
   </data>
   <data name="ComfortHumid" xml:space="preserve">
-    <value>dość wilgotno (61…70 %)</value>
+    <value>dość wilgotno (60…69 %)</value>
   </data>
   <data name="ComfortTooHumid" xml:space="preserve">
-    <value>za wilgotno (powyżej 70 %)</value>
+    <value>za wilgotno (od 70 %)</value>
   </data>
   <data name="CliUsage" xml:space="preserve">
     <value>Sterowanie osuszaczem Xiaomi Smart Dehumidifier Lite.

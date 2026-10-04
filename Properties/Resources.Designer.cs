@@ -375,7 +375,7 @@ namespace DehumidifierControl.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на влажновато (61…70 %).
+        ///   Ищет локализованную строку, похожую на влажновато (60…69 %).
         /// </summary>
         internal static string ComfortHumid {
             get {
@@ -393,7 +393,7 @@ namespace DehumidifierControl.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на норма (51…60 %).
+        ///   Ищет локализованную строку, похожую на норма (51…59 %).
         /// </summary>
         internal static string ComfortNormal {
             get {
@@ -411,7 +411,7 @@ namespace DehumidifierControl.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на слишкомъ влажно (выше 70 %).
+        ///   Ищет локализованную строку, похожую на слишкомъ влажно (отъ 70 %).
         /// </summary>
         internal static string ComfortTooHumid {
             get {
@@ -492,7 +492,7 @@ namespace DehumidifierControl.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на свойство сейчасъ нельзя записать (-4002); цѣлевую влажность, напримѣръ, нельзя мѣнять въ режимѣ сушки бѣлья.
+        ///   Ищет локализованную строку, похожую на /.
         /// </summary>
         internal static string Error4002 {
             get {
@@ -717,15 +717,6 @@ namespace DehumidifierControl.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на У свойства {0} нѣтъ атрибута [MIoT]..
-        /// </summary>
-        internal static string NoMIoTAttribute {
-            get {
-                return ResourceManager.GetString("NoMIoTAttribute", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Ищет локализованную строку, похожую на Нѣтъ отвѣта на команду — скорѣе всего, токенъ невѣренъ..
         /// </summary>
         internal static string NoReply {
@@ -749,6 +740,15 @@ namespace DehumidifierControl.Properties {
         internal static string PowerOn {
             get {
                 return ResourceManager.GetString("PowerOn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Устройство не отдало свойство {0}: {1}.
+        /// </summary>
+        internal static string ReadRejected {
+            get {
+                return ResourceManager.GetString("ReadRejected", resourceCulture);
             }
         }
         

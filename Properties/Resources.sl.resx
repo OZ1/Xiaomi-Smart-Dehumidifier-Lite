@@ -198,11 +198,11 @@
   <data name="BadResponse" xml:space="preserve">
     <value>Nepričakovan odgovor na {0}.</value>
   </data>
-  <data name="NoMIoTAttribute" xml:space="preserve">
-    <value>Lastnost {0} nima atributa [MIoT].</value>
-  </data>
   <data name="WriteRejected" xml:space="preserve">
     <value>Naprava je zavrnila zapis: {0}</value>
+  </data>
+  <data name="ReadRejected" xml:space="preserve">
+    <value>Naprava ni vrnila lastnosti {0}: {1}</value>
   </data>
   <data name="ActionRejected" xml:space="preserve">
     <value>Naprava je zavrnila dejanje ({0}, {1}): {2}</value>
@@ -211,7 +211,7 @@
     <value>lastnosti ni mogoče prebrati (-4001)</value>
   </data>
   <data name="Error4002" xml:space="preserve">
-    <value>lastnosti zdaj ni mogoče zapisati (-4002); ciljne vlažnosti na primer ni mogoče spreminjati v režimu sušenja perila</value>
+    <value>razvlaževalnik tega zdaj ne sprejme (-4002): izklopljen ne spreminja režima, cilja in časovnika, v režimu sušenja perila pa cilja</value>
   </data>
   <data name="Error4003" xml:space="preserve">
     <value>takšne lastnosti, dejanja ali dogodka ni (-4003)</value>
@@ -355,13 +355,13 @@
     <value>najbolje (40…50 %)</value>
   </data>
   <data name="ComfortNormal" xml:space="preserve">
-    <value>normalno (51…60 %)</value>
+    <value>normalno (51…59 %)</value>
   </data>
   <data name="ComfortHumid" xml:space="preserve">
-    <value>vlažneje (61…70 %)</value>
+    <value>vlažneje (60…69 %)</value>
   </data>
   <data name="ComfortTooHumid" xml:space="preserve">
-    <value>prevlažno (nad 70 %)</value>
+    <value>prevlažno (od 70 %)</value>
   </data>
   <data name="CliUsage" xml:space="preserve">
     <value>Upravljanje razvlaževalnika Xiaomi Smart Dehumidifier Lite.

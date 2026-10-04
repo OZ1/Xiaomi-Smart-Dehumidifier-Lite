@@ -49,7 +49,6 @@ public partial class MainForm : Form
 	bool Updating;
 	bool Refreshing;
 	bool PollFailed; // послѣдній опросъ не удался — сообщеніе объ этомъ снимемъ, когда связь вернётся
-	uint? TimerLeft; // сколько минутъ осталось, если таймеръ идётъ (8.3) — для времени выключенія
 
 	readonly Font ValueFont; // жирный, изъ дизайнера — для значеній, на которыя надо обратить вниманіе
 	readonly Font QuietFont; // нежирный — для «всё въ порядкѣ»: неисправность отсутствуетъ, прогрѣва нѣтъ
@@ -180,104 +179,6 @@ public partial class MainForm : Form
 		else Disconnect();
 	}
 
-	void Power_CheckedChanged(object? sender, EventArgs e)
-	{
-		checkBoxPower.Text = checkBoxPower.Checked ? PowerOn : PowerOff;
-		SetFlag(nameof(State.dehumidifier), checkBoxPower);
-	}
-
-	void Mode_SelectedIndexChanged(object? sender, EventArgs e)
-	{
-		if (Updating) return;
-		int mode = listBoxMode.SelectedIndex;
-		if (mode < 0) return;
-		_ = RunAsync(d => d.SetAsync((nameof(State.dehumidifier_mode), (byte)mode)));
-	}
-
-	void Target_ValueChanged(object? sender, EventArgs e)
-	{
-		labelTarget.Text = $"{trackBarTarget.Value} %";
-		if (!Updating) ReStart(targetDebounceTimer);
-	}
-
-	void TargetDebounce_Tick(object? sender, EventArgs e)
-	{
-		targetDebounceTimer.Stop();
-		byte target = (byte)trackBarTarget.Value;
-		_ = RunAsync(d => d.SetAsync((nameof(State.dehumidifier_target_humidity), target)));
-	}
-
-	static void ReStart(Timer timer)
-	{
-		timer.Stop();
-		timer.Start();
-	}
-
-	void Light_SelectedIndexChanged(object? sender, EventArgs e)
-	{
-		int level = listBoxLight.SelectedIndex; // 0 выключена, 1 тусклая, 2 яркая
-		if (Updating || level < 0) return;
-		_ = RunAsync(d => d.SetAsync((nameof(State.indicator_light_mode), (byte)level)));
-	}
-
-	void     LightOn_CheckedChanged(object? sender, EventArgs e) => SetFlag(nameof(State.indicator_light         ), checkBoxLight);
-	void       Sound_CheckedChanged(object? sender, EventArgs e) => SetFlag(nameof(State.alarm                   ), checkBoxSound);
-	void        Lock_CheckedChanged(object? sender, EventArgs e) => SetFlag(nameof(State.physical_controls_locked), checkBoxLock);
-	void DryAfterOff_CheckedChanged(object? sender, EventArgs e) => SetFlag(nameof(State.dm_service_dry_after_off), checkBoxDryAfterOff);
-
-	void Timer_CheckedChanged(object? sender, EventArgs e)
-	{
-		if (Updating) return;
-		uint minutes = (uint)numericTimerMinutes.Value;
-		_ = RunAsync(d => checkBoxTimer.Checked
-			? d.SetAsync((nameof(State.delay_time), minutes), (nameof(State.delay), true))
-			: d.SetAsync((nameof(State.delay), false)));
-	}
-
-	void TimerMinutes_ValueChanged(object? sender, EventArgs e)
-	{
-		ShowTimeOff();
-		if (!Updating && checkBoxTimer.Checked) ReStart(delayDebounceTimer);
-	}
-
-	/// <summary>Время выключенія, пока фокусъ не въ полѣ: сейчасъ + таймеръ; если таймеръ уже идётъ — сейчасъ + осталось.</summary>
-	void ShowTimeOff()
-	{
-		if (dateTimeOff.Focused) return; // въ полѣ пишетъ человѣкъ — не мѣшаемъ
-		dateTimeOff.Value = Now.AddMinutes(TimerLeft ?? (double)numericTimerMinutes.Value);
-	}
-
-	/// <summary>Въ полѣ времени выключенія пишетъ человѣкъ: минуты таймера = это время − сейчасъ.
-	/// Время, которое сегодня уже прошло, — завтрашнее; минуты прижимаются къ предѣламъ поля минутъ.</summary>
-	void TimeOff_ValueChanged(object? sender, EventArgs e)
-	{
-		if (!dateTimeOff.Focused) return; // мѣняемъ сами изъ ShowTimeOff — не отвѣчаемъ
-		DateTime now = Now;
-		DateTime off = now.Date + FromMinutes(Floor(dateTimeOff.Value.TimeOfDay.TotalMinutes)); // секунды не видны — отбрасываемъ
-		if (off <= now) off = off.AddDays(1);
-		numericTimerMinutes.Value = Clamp((decimal)Ceiling((off - now).TotalMinutes), numericTimerMinutes.Minimum, numericTimerMinutes.Maximum);
-	}
-
-	void DelayDebounce_Tick(object? sender, EventArgs e)
-	{
-		delayDebounceTimer.Stop();
-		uint minutes = (uint)numericTimerMinutes.Value;
-		_ = RunAsync(d => d.SetAsync((nameof(State.delay_time), minutes), (nameof(State.delay), true)));
-	}
-
-	void Toggle_Click(object? sender, EventArgs e) => _ = RunAsync(d => d.ToggleAsync());
-	void LoopMode_Click(object? sender, EventArgs e) => _ = RunAsync(d => d.LoopModeAsync());
-	void ResetFilter_Click(object? sender, EventArgs e)
-	{
-		if (MessageBox.Show(this, ResetFilterQuestion, Text, OKCancel, Question) == DialogResult.OK)
-			_ = RunAsync(d => d.ResetFilterAsync());
-	}
-
-	async void PollTimer_Tick(object? sender, EventArgs e)
-	{
-		if (!Refreshing) await RefreshStateAsync();
-	}
-
 	// ───── связь съ устройствомъ ─────
 
 	async Task ConnectAsync()
@@ -352,6 +253,32 @@ public partial class MainForm : Form
 		AcceptButton = connected ? null : buttonConnect;
 	}
 
+	async Task RunAsync(Func<Dehumidifier, Task> action)
+	{
+		if (Device is not { } device) return;
+		UseWaitCursor = true;
+		try
+		{
+			await action(device);
+			SetStatus(""); // команда прошла — прежнее сообщеніе объ ошибкѣ больше не къ мѣсту
+		}
+		catch (Exception ex)
+		{
+			SetStatus(ex.Message, error: true);
+		}
+		finally
+		{
+			UseWaitCursor = false;
+		}
+		await RefreshStateAsync(); // и подтвердить, и откатить элементы при ошибкѣ
+	}
+
+	void SetFlag(string prop, CheckBox box)
+	{
+		bool value = box.Checked;
+		if (!Updating) _ = RunAsync(d => d.SetAsync((prop, value)));
+	}
+
 	async Task RefreshStateAsync()
 	{
 		if (Device is not { } device) return;
@@ -384,32 +311,6 @@ public partial class MainForm : Form
 		}
 	}
 
-	async Task RunAsync(Func<Dehumidifier, Task> action)
-	{
-		if (Device is not { } device) return;
-		UseWaitCursor = true;
-		try
-		{
-			await action(device);
-			SetStatus(""); // команда прошла — прежнее сообщеніе объ ошибкѣ больше не къ мѣсту
-		}
-		catch (Exception ex)
-		{
-			SetStatus(ex.Message, error: true);
-		}
-		finally
-		{
-			UseWaitCursor = false;
-		}
-		await RefreshStateAsync(); // и подтвердить, и откатить элементы при ошибкѣ
-	}
-
-	void SetFlag(string prop, CheckBox box)
-	{
-		bool value = box.Checked;
-		if (!Updating) _ = RunAsync(d => d.SetAsync((prop, value)));
-	}
-
 	void ApplyState(State s)
 	{
 		Updating = true;
@@ -435,8 +336,6 @@ public partial class MainForm : Form
 			labelWarming.Font      = notWarming ? QuietFont : ValueFont;
 			labelDryLeft.Text = s.dm_service_dry_left_time is ushort left and > 0 ? $"{left / 60}:{left % 60:00}" : "—";
 			labelTimerLeft.Text = s.delay == true && s.delay_remain_time is { } r ? $"{r / 60}:{r % 60:00}" : "—";
-			TimerLeft           = s.delay == true ?  s.delay_remain_time : null;
-
 			if (s.dehumidifier is { } power) checkBoxPower.Checked = power;
 			listBoxMode.SelectedIndex = s.dehumidifier_mode is byte mode and < 3 ? mode : -1;
 			if (s.dehumidifier_target_humidity is { } target && !targetDebounceTimer.Enabled && !trackBarTarget.Capture) trackBarTarget.Value = Clamp(target, trackBarTarget.Minimum, trackBarTarget.Maximum);
@@ -452,8 +351,7 @@ public partial class MainForm : Form
 			if (s.physical_controls_locked is { } locked) checkBoxLock       .Checked = locked;
 			if (s.dm_service_dry_after_off is { } dry   ) checkBoxDryAfterOff.Checked = dry;
 			if (s.delay                    is { } delay ) checkBoxTimer      .Checked = delay;
-			if (s.delay_time is uint minutes and > 0 && !delayDebounceTimer.Enabled && !numericTimerMinutes.Focused) numericTimerMinutes.Value = Clamp(minutes, 1, 720);
-			ShowTimeOff();
+			UpdateTimer(s);
 		}
 		finally
 		{
@@ -472,6 +370,165 @@ public partial class MainForm : Form
 	{
 		toolStripStatusTime.Text = time;
 		toolStripStatusTime.AccessibleName = $"{toolStripStatusTime.ToolTipText} {time}".TrimEnd();
+	}
+
+
+	void Power_CheckedChanged(object? sender, EventArgs e)
+	{
+		checkBoxPower.Text = checkBoxPower.Checked ? PowerOn : PowerOff;
+		SetFlag(nameof(State.dehumidifier), checkBoxPower);
+	}
+
+	void Mode_SelectedIndexChanged(object? sender, EventArgs e)
+	{
+		if (Updating) return;
+		int mode = listBoxMode.SelectedIndex;
+		if (mode < 0) return;
+		_ = RunAsync(d => d.SetAsync((nameof(State.dehumidifier_mode), (byte)mode)));
+	}
+
+	void Target_ValueChanged(object? sender, EventArgs e)
+	{
+		labelTarget.Text = $"{trackBarTarget.Value} %";
+		if (!Updating) ReStart(targetDebounceTimer);
+	}
+
+	void TargetDebounce_Tick(object? sender, EventArgs e)
+	{
+		targetDebounceTimer.Stop();
+		byte target = (byte)trackBarTarget.Value;
+		_ = RunAsync(d => d.SetAsync((nameof(State.dehumidifier_target_humidity), target)));
+	}
+
+	static void ReStart(Timer timer)
+	{
+		timer.Stop();
+		timer.Start();
+	}
+
+	void Light_SelectedIndexChanged(object? sender, EventArgs e)
+	{
+		int level = listBoxLight.SelectedIndex; // 0 выключена, 1 тусклая, 2 яркая
+		if (Updating || level < 0) return;
+		_ = RunAsync(d => d.SetAsync((nameof(State.indicator_light_mode), (byte)level)));
+	}
+
+	void     LightOn_CheckedChanged(object? sender, EventArgs e) => SetFlag(nameof(State.indicator_light         ), checkBoxLight);
+	void       Sound_CheckedChanged(object? sender, EventArgs e) => SetFlag(nameof(State.alarm                   ), checkBoxSound);
+	void        Lock_CheckedChanged(object? sender, EventArgs e) => SetFlag(nameof(State.physical_controls_locked), checkBoxLock);
+	void DryAfterOff_CheckedChanged(object? sender, EventArgs e) => SetFlag(nameof(State.dm_service_dry_after_off), checkBoxDryAfterOff);
+
+	// ───── таймеръ выключенія ─────
+	// Осушитель знаетъ только минуты: delay_remain_time — сколько осталось, цѣлыхъ. Запись delay_time сама запускаетъ таймеръ,
+	// delay = true сбросилъ бы его на 60 минутъ, delay = false выключаетъ (провѣрено).
+	// Мигъ выключенія хранитъ само поле времени — съ датою и долями минуты, которыхъ не видно: пока таймеръ идётъ, оно стоитъ на мѣстѣ,
+	// а поле минутъ отматываетъ остатокъ.
+
+	/// <summary>Таймеръ изъ опроса. Идётъ — въ полѣ минутъ остатокъ, мигъ выключенія остаётся, если сходится съ остаткомъ;
+	/// не идётъ — время выключенія = сейчасъ + минуты поля.</summary>
+	void UpdateTimer(State s)
+	{
+		if (delayDebounceTimer.Enabled) return; // человѣкъ правитъ минуты или время — до записи опросъ ихъ не трогаетъ
+		DateTime now = Now;
+		if (s.delay == true && s.delay_remain_time is uint remain)
+		{
+			// поле минутъ отматываетъ остатокъ; TimerMinutes_ValueChanged при этомъ молчитъ — идётъ опросъ (Updating)
+			if (!numericTimerMinutes.Focused) ShowTimeRemain(remain);
+			KeepTimeOff(now.AddMinutes(remain));
+		}
+		else
+		{
+			// таймеръ стоитъ: время выключенія бѣжитъ вмѣстѣ съ часами — съ ихъ долею минуты таймеръ и запустится
+			ShowTimeOff(now.AddMinutes((double)numericTimerMinutes.Value));
+		}
+	}
+
+	/// <summary>По минутамъ мигъ выключенія извѣстенъ лишь до минуты, поэтому поле времени съ его долями минуты остаётся, пока сходится съ ними:
+	/// таймеръ запустили мы или время выбрали въ полѣ. Разошлось на минуту и больше — запустили не мы (кнопкой, изъ Mi Home)
+	/// или поправили минуты: ставимъ по минутамъ.</summary>
+	void KeepTimeOff(DateTime byMinutes)
+	{
+		if (Abs((dateTimeOff.Value - byMinutes).TotalMinutes) >= 1) ShowTimeOff(byMinutes);
+	}
+
+	/// <summary>Время выключенія въ поле — если человѣкъ въ нёмъ не пишетъ. Вызоветъ TimeOff_ValueChanged, но тотъ безъ фокуса молчитъ.</summary>
+	void ShowTimeOff(DateTime off)
+	{
+		if (!dateTimeOff.Focused)
+			 dateTimeOff.Value = off; // въ полѣ пишетъ человѣкъ — не мѣшаемъ
+	}
+
+	/// <summary>Минуты въ поле, прижатыя къ его предѣламъ. Вызоветъ TimerMinutes_ValueChanged (если число измѣнилось):
+	/// изъ опроса тотъ молчитъ (Updating), изъ правки времени — какъ правка минутъ.</summary>
+	void ShowTimeRemain(decimal minutes) =>numericTimerMinutes.Value = Clamp(minutes, numericTimerMinutes.Minimum, numericTimerMinutes.Maximum);
+
+	/// <summary>Человѣкъ правитъ время выключенія: часы и минуты — изъ поля, доля минуты — сейчасъ (съ нею таймеръ и запустится),
+	/// поэтому до выключенія ровно цѣлыя минуты. Дата — ближайшая: прошедшее сегодня — завтра.</summary>
+	void TimeOff_ValueChanged(object? sender, EventArgs e)
+	{
+		if (Updating || !dateTimeOff.Focused) return; // мѣняемъ сами — не отвѣчаемъ
+		DateTime now = Now;
+		DateTime mins = dateTimeOff.Value;
+		// часы и минуты поля безъ его доли минуты + доля минуты сейчасъ: время выключенія отстоитъ отъ сейчасъ на цѣлыя минуты
+		DateTime off = now.Date.AddTicks(mins.TimeOfDay.Ticks - mins.Ticks % TicksPerMinute
+		/**/                                                  +  now.Ticks % TicksPerMinute);
+		if (off <= now) off = off.AddDays(1); // это время сегодня уже прошло — значитъ, завтра
+		ShowTimeRemain((decimal)Round((off - now).TotalMinutes)); // Round — только отъ погрѣшности double: минуты и такъ цѣлыя
+		// → TimerMinutes_ValueChanged: флажокъ стоитъ — отложенная запись, нѣтъ — ShowTimeOff, который при фокусѣ здѣсь не пишетъ
+	}
+
+	/// <summary>Человѣкъ правитъ минуты: таймеръ идётъ — перезапустится съ ними, когда перестанутъ мѣнять; не идётъ — сдвигается время выключенія.</summary>
+	void TimerMinutes_ValueChanged(object? sender, EventArgs e)
+	{
+		if (Updating) return; // поле отматываетъ остатокъ — это не правка
+		if (checkBoxTimer.Checked) ReStart(delayDebounceTimer); // писать, когда перестанутъ мѣнять: стрѣлки и колесо даютъ много событій подрядъ
+		else ShowTimeOff(Now.AddMinutes((double)numericTimerMinutes.Value)); // таймеръ стоитъ — запись не нужна, только время выключенія
+	}
+
+	/// <summary>Минуты или время перестали мѣнять 700 мс назадъ — перезапустить таймеръ съ ними.</summary>
+	void DelayDebounce_Tick(object? sender, EventArgs e)
+	{
+		delayDebounceTimer.Stop();
+		StartTimer();
+	}
+
+	/// <summary>Флажокъ таймера: поставили — запустить на минуты поля, сняли — выключить.</summary>
+	void Timer_CheckedChanged(object? sender, EventArgs e)
+	{
+		if (Updating) return; // флажокъ ставитъ опросъ — это не правка
+		delayDebounceTimer.Stop(); // отложенная запись больше не нужна: пишемъ сейчасъ
+		if (checkBoxTimer.Checked)
+		{
+			StartTimer();
+		}
+		else
+		{
+			ShowTimeOff(Now.AddMinutes((double)numericTimerMinutes.Value)); // таймеръ стоитъ — время выключенія снова бѣжитъ съ часами
+			_ = RunAsync(d => d.SetAsync((nameof(State.delay), false)));
+		}
+	}
+
+	/// <summary>Запустить таймеръ на минуты поля — съ этого мига: его доля минуты и ложится въ поле времени, отъ неё осушитель и отсчитываетъ.</summary>
+	void StartTimer()
+	{
+		uint minutes = (uint)numericTimerMinutes.Value;
+		Updating = true; // свою запись не считать правкою — иначе на стыкѣ минутъ TimeOff_ValueChanged пересчиталъ бы минуты на одну меньше
+		dateTimeOff.Value = Now.AddMinutes(minutes); // и при фокусѣ въ полѣ: правка уже кончилась — запись идётъ, когда перестали мѣнять
+		Updating = false;
+		_ = RunAsync(d => d.SetAsync((nameof(State.delay_time), minutes))); // только время: оно же и включаетъ таймеръ
+	}
+
+	void Toggle_Click(object? sender, EventArgs e) => _ = RunAsync(d => d.ToggleAsync());
+	void LoopMode_Click(object? sender, EventArgs e) => _ = RunAsync(d => d.LoopModeAsync());
+	void ResetFilter_Click(object? sender, EventArgs e)
+	{
+		if (MessageBox.Show(this, ResetFilterQuestion, Text, OKCancel, Question) == DialogResult.OK)
+			_ = RunAsync(d => d.ResetFilterAsync());
+	}
+
+	async void PollTimer_Tick(object? sender, EventArgs e)
+	{
+		if (!Refreshing) await RefreshStateAsync();
 	}
 
 	/// <summary>Свой цвѣтъ — только безъ высокой контрастности; въ ней — системный цвѣтъ текста, какъ у всего окна.</summary>

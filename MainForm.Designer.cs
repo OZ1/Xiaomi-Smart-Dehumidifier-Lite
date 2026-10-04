@@ -68,32 +68,32 @@ partial class MainForm
 		Label labelLightModeId;
 		Label labelTimerValueId;
 		Label labelTimerMnutes;
-		buttonConnect = new Button();
-		textBoxToken = new TextBox();
 		textBoxIP = new TextBox();
-		labelTimerLeft = new Label();
-		labelDryLeft = new Label();
-		labelWarming = new Label();
-		labelFault = new Label();
-		labelTemperature = new Label();
+		textBoxToken = new TextBox();
+		buttonConnect = new Button();
 		labelHumidity = new Label();
+		labelTemperature = new Label();
+		labelFault = new Label();
+		labelWarming = new Label();
+		labelDryLeft = new Label();
+		labelTimerLeft = new Label();
 		toolStripStatusLabel = new ToolStripStatusLabel();
 		toolStripStatusTime = new ToolStripStatusLabel();
 		groupControls = new GroupBox();
+		checkBoxPower = new CheckBox();
+		listBoxMode = new ListBox();
 		buttonLoopMode = new Button();
-		checkBoxTimer = new CheckBox();
-		numericTimerMinutes = new NumericUpDown();
-		dateTimeOff = new DateTimePicker();
-		checkBoxDryAfterOff = new CheckBox();
-		checkBoxLock = new CheckBox();
-		checkBoxSound = new CheckBox();
-		listBoxLight = new ListBox();
-		checkBoxLight = new CheckBox();
 		labelTarget = new Label();
 		panelTargetScale = new Panel();
 		trackBarTarget = new TrackBar();
-		listBoxMode = new ListBox();
-		checkBoxPower = new CheckBox();
+		checkBoxLight = new CheckBox();
+		listBoxLight = new ListBox();
+		checkBoxSound = new CheckBox();
+		checkBoxLock = new CheckBox();
+		checkBoxDryAfterOff = new CheckBox();
+		checkBoxTimer = new CheckBox();
+		numericTimerMinutes = new NumericUpDown();
+		dateTimeOff = new DateTimePicker();
 		toolTip = new ToolTip(components);
 		pollTimer = new Timer(components);
 		targetDebounceTimer = new Timer(components);
@@ -136,8 +136,8 @@ partial class MainForm
 		groupState.SuspendLayout();
 		statusStrip.SuspendLayout();
 		groupControls.SuspendLayout();
-		((System.ComponentModel.ISupportInitialize)numericTimerMinutes).BeginInit();
 		((System.ComponentModel.ISupportInitialize)trackBarTarget).BeginInit();
+		((System.ComponentModel.ISupportInitialize)numericTimerMinutes).BeginInit();
 		SuspendLayout();
 		// 
 		// labelToken
@@ -221,12 +221,10 @@ partial class MainForm
 		groupConnection.Name = "groupConnection";
 		groupConnection.TabStop = false;
 		// 
-		// buttonConnect
+		// textBoxIP
 		// 
-		resources.ApplyResources(buttonConnect, "buttonConnect");
-		buttonConnect.Name = "buttonConnect";
-		buttonConnect.UseVisualStyleBackColor = true;
-		buttonConnect.Click += Connect_Click;
+		resources.ApplyResources(textBoxIP, "textBoxIP");
+		textBoxIP.Name = "textBoxIP";
 		// 
 		// textBoxToken
 		// 
@@ -234,10 +232,12 @@ partial class MainForm
 		textBoxToken.CharacterCasing = CharacterCasing.Upper;
 		textBoxToken.Name = "textBoxToken";
 		// 
-		// textBoxIP
+		// buttonConnect
 		// 
-		resources.ApplyResources(textBoxIP, "textBoxIP");
-		textBoxIP.Name = "textBoxIP";
+		resources.ApplyResources(buttonConnect, "buttonConnect");
+		buttonConnect.Name = "buttonConnect";
+		buttonConnect.UseVisualStyleBackColor = true;
+		buttonConnect.Click += Connect_Click;
 		// 
 		// groupState
 		// 
@@ -263,41 +263,16 @@ partial class MainForm
 		groupState.Name = "groupState";
 		groupState.TabStop = false;
 		// 
-		// labelTimerLeft
-		// 
-		resources.ApplyResources(labelTimerLeft, "labelTimerLeft");
-		labelTimerLeft.Name = "labelTimerLeft";
-		// 
-		// labelDryLeft
-		// 
-		resources.ApplyResources(labelDryLeft, "labelDryLeft");
-		labelDryLeft.Name = "labelDryLeft";
-		// 
-		// labelWarming
-		// 
-		resources.ApplyResources(labelWarming, "labelWarming");
-		labelWarming.Name = "labelWarming";
-		// 
-		// labelFault
-		// 
-		resources.ApplyResources(labelFault, "labelFault");
-		labelFault.Name = "labelFault";
-		// 
-		// labelTemperature
-		// 
-		resources.ApplyResources(labelTemperature, "labelTemperature");
-		labelTemperature.Name = "labelTemperature";
-		// 
-		// labelHumidity
-		// 
-		resources.ApplyResources(labelHumidity, "labelHumidity");
-		labelHumidity.Name = "labelHumidity";
-		// 
 		// labelHumidityId
 		// 
 		resources.ApplyResources(labelHumidityId, "labelHumidityId");
 		labelHumidityId.ForeColor = SystemColors.GrayText;
 		labelHumidityId.Name = "labelHumidityId";
+		// 
+		// labelHumidity
+		// 
+		resources.ApplyResources(labelHumidity, "labelHumidity");
+		labelHumidity.Name = "labelHumidity";
 		// 
 		// labelTemperatureId
 		// 
@@ -305,11 +280,21 @@ partial class MainForm
 		labelTemperatureId.ForeColor = SystemColors.GrayText;
 		labelTemperatureId.Name = "labelTemperatureId";
 		// 
+		// labelTemperature
+		// 
+		resources.ApplyResources(labelTemperature, "labelTemperature");
+		labelTemperature.Name = "labelTemperature";
+		// 
 		// labelFaultId
 		// 
 		resources.ApplyResources(labelFaultId, "labelFaultId");
 		labelFaultId.ForeColor = SystemColors.GrayText;
 		labelFaultId.Name = "labelFaultId";
+		// 
+		// labelFault
+		// 
+		resources.ApplyResources(labelFault, "labelFault");
+		labelFault.Name = "labelFault";
 		// 
 		// labelWarmingId
 		// 
@@ -317,11 +302,21 @@ partial class MainForm
 		labelWarmingId.ForeColor = SystemColors.GrayText;
 		labelWarmingId.Name = "labelWarmingId";
 		// 
+		// labelWarming
+		// 
+		resources.ApplyResources(labelWarming, "labelWarming");
+		labelWarming.Name = "labelWarming";
+		// 
 		// labelDryLeftId
 		// 
 		resources.ApplyResources(labelDryLeftId, "labelDryLeftId");
 		labelDryLeftId.ForeColor = SystemColors.GrayText;
 		labelDryLeftId.Name = "labelDryLeftId";
+		// 
+		// labelDryLeft
+		// 
+		resources.ApplyResources(labelDryLeft, "labelDryLeft");
+		labelDryLeft.Name = "labelDryLeft";
 		// 
 		// labelTimerLeftId
 		// 
@@ -329,10 +324,15 @@ partial class MainForm
 		labelTimerLeftId.ForeColor = SystemColors.GrayText;
 		labelTimerLeftId.Name = "labelTimerLeftId";
 		// 
+		// labelTimerLeft
+		// 
+		resources.ApplyResources(labelTimerLeft, "labelTimerLeft");
+		labelTimerLeft.Name = "labelTimerLeft";
+		// 
 		// statusStrip
 		// 
-		statusStrip.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel, toolStripStatusTime });
 		resources.ApplyResources(statusStrip, "statusStrip");
+		statusStrip.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel, toolStripStatusTime });
 		statusStrip.Name = "statusStrip";
 		statusStrip.ShowItemToolTips = true;
 		statusStrip.SizingGrip = false;
@@ -456,6 +456,21 @@ partial class MainForm
 		groupControls.Name = "groupControls";
 		groupControls.TabStop = false;
 		// 
+		// checkBoxPower
+		// 
+		resources.ApplyResources(checkBoxPower, "checkBoxPower");
+		checkBoxPower.Name = "checkBoxPower";
+		checkBoxPower.UseVisualStyleBackColor = true;
+		checkBoxPower.CheckedChanged += Power_CheckedChanged;
+		// 
+		// listBoxMode
+		// 
+		resources.ApplyResources(listBoxMode, "listBoxMode");
+		listBoxMode.FormattingEnabled = true;
+		listBoxMode.Items.AddRange(new object[] { resources.GetString("listBoxMode.Items"), resources.GetString("listBoxMode.Items1"), resources.GetString("listBoxMode.Items2") });
+		listBoxMode.Name = "listBoxMode";
+		listBoxMode.SelectedIndexChanged += Mode_SelectedIndexChanged;
+		// 
 		// buttonLoopMode
 		// 
 		resources.ApplyResources(buttonLoopMode, "buttonLoopMode");
@@ -463,66 +478,6 @@ partial class MainForm
 		toolTip.SetToolTip(buttonLoopMode, resources.GetString("buttonLoopMode.ToolTip"));
 		buttonLoopMode.UseVisualStyleBackColor = true;
 		buttonLoopMode.Click += LoopMode_Click;
-		// 
-		// checkBoxTimer
-		// 
-		resources.ApplyResources(checkBoxTimer, "checkBoxTimer");
-		checkBoxTimer.Name = "checkBoxTimer";
-		checkBoxTimer.UseVisualStyleBackColor = true;
-		checkBoxTimer.CheckedChanged += Timer_CheckedChanged;
-		// 
-		// numericTimerMinutes
-		// 
-		resources.ApplyResources(numericTimerMinutes, "numericTimerMinutes");
-		numericTimerMinutes.Maximum = new decimal(new int[] { 720, 0, 0, 0 });
-		numericTimerMinutes.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
-		numericTimerMinutes.Name = "numericTimerMinutes";
-		numericTimerMinutes.Value = new decimal(new int[] { 60, 0, 0, 0 });
-		numericTimerMinutes.ValueChanged += TimerMinutes_ValueChanged;
-		// 
-		// dateTimeOff
-		// 
-		resources.ApplyResources(dateTimeOff, "dateTimeOff");
-		dateTimeOff.Format = DateTimePickerFormat.Custom;
-		dateTimeOff.Name = "dateTimeOff";
-		dateTimeOff.ShowUpDown = true;
-		dateTimeOff.ValueChanged += TimeOff_ValueChanged;
-		// 
-		// checkBoxDryAfterOff
-		// 
-		resources.ApplyResources(checkBoxDryAfterOff, "checkBoxDryAfterOff");
-		checkBoxDryAfterOff.Name = "checkBoxDryAfterOff";
-		checkBoxDryAfterOff.UseVisualStyleBackColor = true;
-		checkBoxDryAfterOff.CheckedChanged += DryAfterOff_CheckedChanged;
-		// 
-		// checkBoxLock
-		// 
-		resources.ApplyResources(checkBoxLock, "checkBoxLock");
-		checkBoxLock.Name = "checkBoxLock";
-		checkBoxLock.UseVisualStyleBackColor = true;
-		checkBoxLock.CheckedChanged += Lock_CheckedChanged;
-		// 
-		// checkBoxSound
-		// 
-		resources.ApplyResources(checkBoxSound, "checkBoxSound");
-		checkBoxSound.Name = "checkBoxSound";
-		checkBoxSound.UseVisualStyleBackColor = true;
-		checkBoxSound.CheckedChanged += Sound_CheckedChanged;
-		// 
-		// listBoxLight
-		// 
-		resources.ApplyResources(listBoxLight, "listBoxLight");
-		listBoxLight.FormattingEnabled = true;
-		listBoxLight.Items.AddRange(new object[] { resources.GetString("listBoxLight.Items"), resources.GetString("listBoxLight.Items1"), resources.GetString("listBoxLight.Items2") });
-		listBoxLight.Name = "listBoxLight";
-		listBoxLight.SelectedIndexChanged += Light_SelectedIndexChanged;
-		// 
-		// checkBoxLight
-		// 
-		resources.ApplyResources(checkBoxLight, "checkBoxLight");
-		checkBoxLight.Name = "checkBoxLight";
-		checkBoxLight.UseVisualStyleBackColor = true;
-		checkBoxLight.CheckedChanged += LightOn_CheckedChanged;
 		// 
 		// labelTarget
 		// 
@@ -544,20 +499,65 @@ partial class MainForm
 		trackBarTarget.Value = 50;
 		trackBarTarget.ValueChanged += Target_ValueChanged;
 		// 
-		// listBoxMode
+		// checkBoxLight
 		// 
-		resources.ApplyResources(listBoxMode, "listBoxMode");
-		listBoxMode.FormattingEnabled = true;
-		listBoxMode.Items.AddRange(new object[] { resources.GetString("listBoxMode.Items"), resources.GetString("listBoxMode.Items1"), resources.GetString("listBoxMode.Items2") });
-		listBoxMode.Name = "listBoxMode";
-		listBoxMode.SelectedIndexChanged += Mode_SelectedIndexChanged;
+		resources.ApplyResources(checkBoxLight, "checkBoxLight");
+		checkBoxLight.Name = "checkBoxLight";
+		checkBoxLight.UseVisualStyleBackColor = true;
+		checkBoxLight.CheckedChanged += LightOn_CheckedChanged;
 		// 
-		// checkBoxPower
+		// listBoxLight
 		// 
-		resources.ApplyResources(checkBoxPower, "checkBoxPower");
-		checkBoxPower.Name = "checkBoxPower";
-		checkBoxPower.UseVisualStyleBackColor = true;
-		checkBoxPower.CheckedChanged += Power_CheckedChanged;
+		resources.ApplyResources(listBoxLight, "listBoxLight");
+		listBoxLight.FormattingEnabled = true;
+		listBoxLight.Items.AddRange(new object[] { resources.GetString("listBoxLight.Items"), resources.GetString("listBoxLight.Items1"), resources.GetString("listBoxLight.Items2") });
+		listBoxLight.Name = "listBoxLight";
+		listBoxLight.SelectedIndexChanged += Light_SelectedIndexChanged;
+		// 
+		// checkBoxSound
+		// 
+		resources.ApplyResources(checkBoxSound, "checkBoxSound");
+		checkBoxSound.Name = "checkBoxSound";
+		checkBoxSound.UseVisualStyleBackColor = true;
+		checkBoxSound.CheckedChanged += Sound_CheckedChanged;
+		// 
+		// checkBoxLock
+		// 
+		resources.ApplyResources(checkBoxLock, "checkBoxLock");
+		checkBoxLock.Name = "checkBoxLock";
+		checkBoxLock.UseVisualStyleBackColor = true;
+		checkBoxLock.CheckedChanged += Lock_CheckedChanged;
+		// 
+		// checkBoxDryAfterOff
+		// 
+		resources.ApplyResources(checkBoxDryAfterOff, "checkBoxDryAfterOff");
+		checkBoxDryAfterOff.Name = "checkBoxDryAfterOff";
+		checkBoxDryAfterOff.UseVisualStyleBackColor = true;
+		checkBoxDryAfterOff.CheckedChanged += DryAfterOff_CheckedChanged;
+		// 
+		// checkBoxTimer
+		// 
+		resources.ApplyResources(checkBoxTimer, "checkBoxTimer");
+		checkBoxTimer.Name = "checkBoxTimer";
+		checkBoxTimer.UseVisualStyleBackColor = true;
+		checkBoxTimer.CheckedChanged += Timer_CheckedChanged;
+		// 
+		// numericTimerMinutes
+		// 
+		resources.ApplyResources(numericTimerMinutes, "numericTimerMinutes");
+		numericTimerMinutes.Increment = new decimal(new int[] { 15, 0, 0, 0 });
+		numericTimerMinutes.Maximum = new decimal(new int[] { 65535, 0, 0, 0 });
+		numericTimerMinutes.Name = "numericTimerMinutes";
+		numericTimerMinutes.Value = new decimal(new int[] { 60, 0, 0, 0 });
+		numericTimerMinutes.ValueChanged += TimerMinutes_ValueChanged;
+		// 
+		// dateTimeOff
+		// 
+		resources.ApplyResources(dateTimeOff, "dateTimeOff");
+		dateTimeOff.Format = DateTimePickerFormat.Custom;
+		dateTimeOff.Name = "dateTimeOff";
+		dateTimeOff.ShowUpDown = true;
+		dateTimeOff.ValueChanged += TimeOff_ValueChanged;
 		// 
 		// pollTimer
 		// 
@@ -594,8 +594,8 @@ partial class MainForm
 		statusStrip.PerformLayout();
 		groupControls.ResumeLayout(false);
 		groupControls.PerformLayout();
-		((System.ComponentModel.ISupportInitialize)numericTimerMinutes).EndInit();
 		((System.ComponentModel.ISupportInitialize)trackBarTarget).EndInit();
+		((System.ComponentModel.ISupportInitialize)numericTimerMinutes).EndInit();
 		ResumeLayout(false);
 		PerformLayout();
 	}

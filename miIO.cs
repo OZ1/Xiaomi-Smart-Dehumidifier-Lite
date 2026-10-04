@@ -74,7 +74,7 @@ public sealed class miIO : IDisposable
 	/// <summary>Команды не ждутъ другъ друга: каждая кладётся въ Pending подъ своимъ id и ждётъ, пока цикл пріёма отдастъ ей отвѣтъ.</summary>
 	public async Task<JsonNode?> SendAsync(string method, JsonNode? parameters = null, CancellationToken ct = default)
 	{
-		await InFlight.WaitAsync(ct);
+		await InFlight.WaitAsync(ct).ConfigureAwait(false); // здѣсь и далѣе — не возвращаться въ контекстъ вызвавшаго: въ UI вернётся только его собственный await
 		try
 		{
 			int busy = 0;
@@ -84,7 +84,7 @@ public sealed class miIO : IDisposable
 			{
 				if (hello)
 				{
-					if (!await HandshakeAsync(ct)) continue; // осушитель иногда пропускаетъ hello — это одна попытка, а не конецъ
+					if (!await HandshakeAsync(ct).ConfigureAwait(false)) continue; // осушитель иногда пропускаетъ hello — это одна попытка, а не конецъ
 					answered = true;
 					hello = false;
 				}
@@ -101,8 +101,8 @@ public sealed class miIO : IDisposable
 				JsonObject response;
 				try
 				{
-					await Udp.SendAsync(BuildPacket(SerializeToUtf8Bytes(request)), ct);
-					response = await waiter.Task.WaitAsync(Timeout, ct);
+					await Udp.SendAsync(BuildPacket(SerializeToUtf8Bytes(request)), ct).ConfigureAwait(false);
+					response = await waiter.Task.WaitAsync(Timeout, ct).ConfigureAwait(false);
 				}
 				catch (TimeoutException)
 				{
@@ -118,7 +118,7 @@ public sealed class miIO : IDisposable
 					// Кодъ отвѣта «занятъ»: {"code":-30012,"message":"busy."} — команда не выполнена, её можно повторить.
 					if (error["code"] is JsonValue c && c.TryGetValue(out int code) && code == -30012 && busy++ < 10)
 					{
-						await Delay(100/*мс*/, ct);
+						await Delay(100/*мс*/, ct).ConfigureAwait(false);
 						attempt--; // не считаемъ попыткой, потому что команда не дошла до осушителя
 						continue;
 					}
@@ -137,16 +137,16 @@ public sealed class miIO : IDisposable
 	/// <summary>Hello: узнать номеръ устройства и его часы. false — устройство не отвѣтило.</summary>
 	async Task<bool> HandshakeAsync(CancellationToken ct)
 	{
-		await HelloLock.WaitAsync(ct);
+		await HelloLock.WaitAsync(ct).ConfigureAwait(false);
 		try
 		{
 			TaskCompletionSource<byte[]> waiter = new(RunContinuationsAsynchronously);
 			HelloWaiter = waiter;
-			await Udp.SendAsync(Hello, ct);
+			await Udp.SendAsync(Hello, ct).ConfigureAwait(false);
 			byte[] data;
 			try
 			{
-				data = await waiter.Task.WaitAsync(Timeout, ct);
+				data = await waiter.Task.WaitAsync(Timeout, ct).ConfigureAwait(false);
 			}
 			catch (TimeoutException)
 			{

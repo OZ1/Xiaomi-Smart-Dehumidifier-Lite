@@ -111,7 +111,7 @@ public sealed class Dehumidifier(miIO Client) : IDisposable
 		State state = new();
 		foreach (JsonArray request in ByResponseSize(MIoT.Values.Select(Get)))
 		{
-			if (await Client.SendAsync("get_properties", request, ct) is not JsonArray results)
+			if (await Client.SendAsync("get_properties", request, ct).ConfigureAwait(false) is not JsonArray results) // не возвращаться въ контекстъ вызвавшаго — какъ и въ miIO
 				throw new miIOException(Format(BadResponse, "get_properties"));
 			foreach (JsonNode? r in results)
 				if (r is not null && Key(r) is { } key && Code(r) == 0 && Props.TryGetValue(key, out PropertyInfo? prop))
@@ -159,7 +159,7 @@ public sealed class Dehumidifier(miIO Client) : IDisposable
 
 	async Task SetAsync(JsonArray request)
 	{
-		if (await Client.SendAsync("set_properties", request) is not JsonArray results)
+		if (await Client.SendAsync("set_properties", request).ConfigureAwait(false) is not JsonArray results)
 			throw new miIOException(Format(BadResponse, "set_properties"));
 		List<JsonNode?> failed = [.. results.Where(r => Code(r) != 0)];
 		if (failed.Count > 0)
@@ -187,7 +187,7 @@ public sealed class Dehumidifier(miIO Client) : IDisposable
 
 	async Task ActionAsync(byte siid, byte aiid)
 	{
-		JsonNode? result = await Client.SendAsync("action", Action(siid, aiid));
+		JsonNode? result = await Client.SendAsync("action", Action(siid, aiid)).ConfigureAwait(false);
 		if (Code(result) is not 0 and var code)
 			throw new miIOException(Format(ActionRejected, siid, aiid, ErrorText(code)));
 	}

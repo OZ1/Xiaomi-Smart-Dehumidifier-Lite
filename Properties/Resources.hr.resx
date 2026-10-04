@@ -279,6 +279,9 @@
   <data name="CliBadLight" xml:space="preserve">
     <value>„{0}”: potrebno je dim|bright i/ili on|off.</value>
   </data>
+  <data name="CliLightTwice" xml:space="preserve">
+    <value>„{0}”: light prima prekidač (on|off) i jačinu (dim|bright) najviše jednom.</value>
+  </data>
   <data name="CliUnknownCommand" xml:space="preserve">
     <value>Nepoznata naredba „{0}”.</value>
   </data>
@@ -345,6 +348,45 @@
   <data name="CliErrorIn" xml:space="preserve">
     <value>Greška u „{0}”: {1}</value>
   </data>
+  <data name="CliSound" xml:space="preserve">
+    <value>Zvuk tipki:</value>
+  </data>
+  <data name="CliLock" xml:space="preserve">
+    <value>Blokada tipki:</value>
+  </data>
+  <data name="CliDryAfterOff" xml:space="preserve">
+    <value>Sušenje nakon isključivanja:</value>
+  </data>
+  <data name="CliTimer" xml:space="preserve">
+    <value>Tajmer:</value>
+  </data>
+  <data name="CliWarming" xml:space="preserve">
+    <value>Zagrijavanje:</value>
+  </data>
+  <data name="CliRemaining" xml:space="preserve">
+    <value>{0}, još {1}</value>
+  </data>
+  <data name="CliToggled" xml:space="preserve">
+    <value>Napajanje je prebačeno.</value>
+  </data>
+  <data name="CliNextMode" xml:space="preserve">
+    <value>Prebačeno na sljedeći režim.</value>
+  </data>
+  <data name="CliFilterReset" xml:space="preserve">
+    <value>Brojač filtra poništen.</value>
+  </data>
+  <data name="CliBadSwitch" xml:space="preserve">
+    <value>„{0}”: potrebno je on ili off.</value>
+  </data>
+  <data name="CliBadTimer" xml:space="preserve">
+    <value>„{0}”: tajmer su minute od 1 do 65535, sati:minute (1:30) ili off.</value>
+  </data>
+  <data name="CliBadProperty" xml:space="preserve">
+    <value>„{0}”: svojstvo je siid.piid za čitanje ili siid.piid=vrijednost za upis, na primjer 2.5 ili 2.5=45.</value>
+  </data>
+  <data name="CliPropertySet" xml:space="preserve">
+    <value>Upisano: {0} = {1}.</value>
+  </data>
   <data name="ComfortTooDry" xml:space="preserve">
     <value>presuho (ispod 30 %)</value>
   </data>
@@ -370,16 +412,29 @@ Adresa i token uzimaju se iz postavki programa (iste kao u prozoru).
   Dehumidifier.exe status                    stanje
   Dehumidifier.exe on                        uključi
   Dehumidifier.exe off                       isključi
+  Dehumidifier.exe toggle                    prebaci napajanje
   Dehumidifier.exe humidity 40…70            ciljna vlažnost, %
   Dehumidifier.exe mode smart|sleep|dry      režim: pametni, noćni, sušenje rublja
+  Dehumidifier.exe next                      sljedeći režim
   Dehumidifier.exe light on|off dim|bright   osvjetljenje: prekidač i (ili) jačina
+  Dehumidifier.exe sound on|off              zvuk tipki
+  Dehumidifier.exe lock on|off               blokada tipki
+  Dehumidifier.exe dry-after-off on|off      sušenje nakon isključivanja
+  Dehumidifier.exe timer 1…65535|1:30|off    tajmer isključivanja: minute, sati:minute ili isključi
+  Dehumidifier.exe reset-filter              poništi brojač filtra
+  Dehumidifier.exe 2.5                       pročitaj MIoT svojstvo siid.piid
+  Dehumidifier.exe 2.5=45                    upiši: broj, on|off ili JSON
 
-Ruski sinonimi: состояніе, включить, выключить, влажность, режимъ умный|ночной|сушка,
-подсвѣтка включить|выключить тусклая|яркая.
+Ruski sinonimi: состояніе, включить, выключить, переключить, влажность, режимъ умный|ночной|сушка,
+слѣдующій, подсвѣтка включить|выключить тусклая|яркая, звукъ, блокировка, просушка, таймеръ,
+сбросъ-фильтра.
 
 Kod light prekidač (on|off) i jačina (dim|bright) su neovisni: može jedno od njih ili oboje,
 bilo kojim redom. light dim mijenja samo jačinu, light on dim — oboje:
   Dehumidifier.exe light on dim status
+
+siid.piid je broj MIoT svojstva, kao ispod natpisa u prozoru: tako se čita i upisuje i ono
+čega nema u naredbama. Upis ne provjerava tip ni granice.
 
 Može se zadati više naredbi zaredom, izvršit će se redom:
   Dehumidifier.exe mode smart humidity 45 status
@@ -388,5 +443,14 @@ Ako uređaj odbije, izvršavanje se zaustavlja na toj naredbi.
 Bez parametara otvara se prozor.
 
 Izlazni kod: 0 — uspjeh, 1 — greška veze ili odbijanje uređaja, 2 — neispravna naredba.</value>
+  </data>
+  <data name="DurationMinutes" xml:space="preserve">
+    <value>{0} min</value>
+  </data>
+  <data name="DurationHours" xml:space="preserve">
+    <value>{0} h {1:00} min</value>
+  </data>
+  <data name="DurationDays" xml:space="preserve">
+    <value>{0} d {1} h</value>
   </data>
 </root>

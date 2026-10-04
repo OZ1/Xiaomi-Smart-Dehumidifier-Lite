@@ -279,6 +279,9 @@
   <data name="CliBadLight" xml:space="preserve">
     <value>«{0}»: нужно dim|bright (тусклая|яркая) и/или on|off (включить|выключить).</value>
   </data>
+  <data name="CliLightTwice" xml:space="preserve">
+    <value>«{0}»: у light выключатель (on|off) и яркость (dim|bright) — не больше одного раза каждый (включить|выключить, тусклая|яркая).</value>
+  </data>
   <data name="CliUnknownCommand" xml:space="preserve">
     <value>Неизвѣстная команда «{0}».</value>
   </data>
@@ -345,6 +348,45 @@
   <data name="CliErrorIn" xml:space="preserve">
     <value>Ошибка въ «{0}»: {1}</value>
   </data>
+  <data name="CliSound" xml:space="preserve">
+    <value>Звукъ кнопокъ:</value>
+  </data>
+  <data name="CliLock" xml:space="preserve">
+    <value>Блокировка кнопокъ:</value>
+  </data>
+  <data name="CliDryAfterOff" xml:space="preserve">
+    <value>Просушка послѣ выключенія:</value>
+  </data>
+  <data name="CliTimer" xml:space="preserve">
+    <value>Таймеръ:</value>
+  </data>
+  <data name="CliWarming" xml:space="preserve">
+    <value>Прогрѣвъ:</value>
+  </data>
+  <data name="CliRemaining" xml:space="preserve">
+    <value>{0}, осталось {1}</value>
+  </data>
+  <data name="CliToggled" xml:space="preserve">
+    <value>Питаніе переключено.</value>
+  </data>
+  <data name="CliNextMode" xml:space="preserve">
+    <value>Режимъ переключёнъ на слѣдующій.</value>
+  </data>
+  <data name="CliFilterReset" xml:space="preserve">
+    <value>Счётчикъ фильтра сброшенъ.</value>
+  </data>
+  <data name="CliBadSwitch" xml:space="preserve">
+    <value>«{0}»: нужно on или off (включить или выключить).</value>
+  </data>
+  <data name="CliBadTimer" xml:space="preserve">
+    <value>«{0}»: таймеръ — минуты отъ 1 до 65535, часы:минуты (1:30) или off (выключить).</value>
+  </data>
+  <data name="CliBadProperty" xml:space="preserve">
+    <value>«{0}»: свойство — siid.piid для чтенія или siid.piid=значеніе для записи, напримѣръ 2.5 или 2.5=45.</value>
+  </data>
+  <data name="CliPropertySet" xml:space="preserve">
+    <value>Записано: {0} = {1}.</value>
+  </data>
   <data name="ComfortTooDry" xml:space="preserve">
     <value>слишкомъ сухо (ниже 30 %)</value>
   </data>
@@ -370,16 +412,29 @@
   Dehumidifier.exe status                    состояніе
   Dehumidifier.exe on                        включить
   Dehumidifier.exe off                       выключить
+  Dehumidifier.exe toggle                    переключить питаніе
   Dehumidifier.exe humidity 40…70            цѣлевая влажность, %
   Dehumidifier.exe mode smart|sleep|dry      режимъ: умный, ночной, сушка бѣлья
+  Dehumidifier.exe next                      слѣдующій режимъ
   Dehumidifier.exe light on|off dim|bright   подсвѣтка: выключатель и (или) яркость
+  Dehumidifier.exe sound on|off              звукъ кнопокъ
+  Dehumidifier.exe lock on|off               блокировка кнопокъ
+  Dehumidifier.exe dry-after-off on|off      просушка послѣ выключенія
+  Dehumidifier.exe timer 1…65535|1:30|off    таймеръ выключенія: минуты, часы:минуты или выключить
+  Dehumidifier.exe reset-filter              сбросить счётчикъ фильтра
+  Dehumidifier.exe 2.5                       прочитать свойство MIoT siid.piid
+  Dehumidifier.exe 2.5=45                    записать: число, on|off или JSON
 
-Русскія синонимы: состояніе, включить, выключить, влажность, режимъ умный|ночной|сушка,
-подсвѣтка включить|выключить тусклая|яркая.
+Русскія синонимы: состояніе, включить, выключить, переключить, влажность, режимъ умный|ночной|сушка,
+слѣдующій, подсвѣтка включить|выключить тусклая|яркая, звукъ, блокировка, просушка, таймеръ,
+сбросъ-фильтра.
 
 У light выключатель (on|off) и яркость (dim|bright) независимы: можно одно изъ нихъ или оба,
 въ любомъ порядкѣ. light dim мѣняетъ только яркость, light on dim — и то, и другое:
   Dehumidifier.exe light on dim status
+
+siid.piid — номеръ свойства MIoT, какъ подъ подписями въ окнѣ: такъ читается и пишется и то,
+чего нѣтъ въ командахъ. Запись — безъ провѣрки тѵпа и предѣловъ.
 
 Команды можно писать нѣсколько подрядъ, онѣ выполнятся по порядку:
   Dehumidifier.exe mode smart humidity 45 status
@@ -388,5 +443,14 @@
 Безъ параметровъ открывается окно.
 
 Кодъ выхода: 0 — успѣхъ, 1 — ошибка связи или отказъ устройства, 2 — невѣрная команда.</value>
+  </data>
+  <data name="DurationMinutes" xml:space="preserve">
+    <value>{0} мин</value>
+  </data>
+  <data name="DurationHours" xml:space="preserve">
+    <value>{0} ч {1:00} мин</value>
+  </data>
+  <data name="DurationDays" xml:space="preserve">
+    <value>{0} сут {1} ч</value>
   </data>
 </root>

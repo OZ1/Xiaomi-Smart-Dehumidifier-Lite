@@ -149,7 +149,7 @@ public sealed class Dehumidifier(miIO Client) : IDisposable
 	};
 
 	public Task SetAsync(byte siid, byte piid, JsonNode value) => SetAsync(new JsonArray(Set(siid, piid, value)));
-	public Task SetAsync(params (string Name, JsonNode Value)[] values)
+	public Task SetAsync(params IEnumerable<(string Name, JsonNode Value)> values)
 	{
 		JsonArray request = [];
 		foreach ((string name, JsonNode value) in values)

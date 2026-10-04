@@ -279,6 +279,9 @@
   <data name="CliBadLight" xml:space="preserve">
     <value>„{0}“: нужно е dim|bright и/или on|off.</value>
   </data>
+  <data name="CliLightTwice" xml:space="preserve">
+    <value>„{0}“: light приема ключ (on|off) и яркост (dim|bright) най-много по веднъж.</value>
+  </data>
   <data name="CliUnknownCommand" xml:space="preserve">
     <value>Непозната команда „{0}“.</value>
   </data>
@@ -345,6 +348,45 @@
   <data name="CliErrorIn" xml:space="preserve">
     <value>Грешка в „{0}“: {1}</value>
   </data>
+  <data name="CliSound" xml:space="preserve">
+    <value>Звук на бутоните:</value>
+  </data>
+  <data name="CliLock" xml:space="preserve">
+    <value>Блокиране на бутоните:</value>
+  </data>
+  <data name="CliDryAfterOff" xml:space="preserve">
+    <value>Сушене след изключване:</value>
+  </data>
+  <data name="CliTimer" xml:space="preserve">
+    <value>Таймер:</value>
+  </data>
+  <data name="CliWarming" xml:space="preserve">
+    <value>Загряване:</value>
+  </data>
+  <data name="CliRemaining" xml:space="preserve">
+    <value>{0}, остават {1}</value>
+  </data>
+  <data name="CliToggled" xml:space="preserve">
+    <value>Захранването е превключено.</value>
+  </data>
+  <data name="CliNextMode" xml:space="preserve">
+    <value>Превключено на следващия режим.</value>
+  </data>
+  <data name="CliFilterReset" xml:space="preserve">
+    <value>Броячът на филтъра е нулиран.</value>
+  </data>
+  <data name="CliBadSwitch" xml:space="preserve">
+    <value>„{0}“: нужно е on или off.</value>
+  </data>
+  <data name="CliBadTimer" xml:space="preserve">
+    <value>„{0}“: таймерът е минути от 1 до 65535, часове:минути (1:30) или off.</value>
+  </data>
+  <data name="CliBadProperty" xml:space="preserve">
+    <value>„{0}“: свойството е siid.piid за четене или siid.piid=стойност за запис, например 2.5 или 2.5=45.</value>
+  </data>
+  <data name="CliPropertySet" xml:space="preserve">
+    <value>Записано: {0} = {1}.</value>
+  </data>
   <data name="ComfortTooDry" xml:space="preserve">
     <value>твърде сухо (под 30 %)</value>
   </data>
@@ -370,16 +412,29 @@
   Dehumidifier.exe status                    състояние
   Dehumidifier.exe on                        включване
   Dehumidifier.exe off                       изключване
+  Dehumidifier.exe toggle                    превключи захранването
   Dehumidifier.exe humidity 40…70            целева влажност, %
   Dehumidifier.exe mode smart|sleep|dry      режим: интелигентен, нощен, сушене на дрехи
+  Dehumidifier.exe next                      следващ режим
   Dehumidifier.exe light on|off dim|bright   подсветка: превключвател и (или) яркост
+  Dehumidifier.exe sound on|off              звук на бутоните
+  Dehumidifier.exe lock on|off               блокиране на бутоните
+  Dehumidifier.exe dry-after-off on|off      сушене след изключване
+  Dehumidifier.exe timer 1…65535|1:30|off    таймер за изключване: минути, часове:минути или изключи
+  Dehumidifier.exe reset-filter              нулиране на брояча на филтъра
+  Dehumidifier.exe 2.5                       прочети свойство MIoT siid.piid
+  Dehumidifier.exe 2.5=45                    запиши: число, on|off или JSON
 
-Руски синоними: состояніе, включить, выключить, влажность, режимъ умный|ночной|сушка,
-подсвѣтка включить|выключить тусклая|яркая.
+Руски синоними: состояніе, включить, выключить, переключить, влажность, режимъ умный|ночной|сушка,
+слѣдующій, подсвѣтка включить|выключить тусклая|яркая, звукъ, блокировка, просушка, таймеръ,
+сбросъ-фильтра.
 
 При light превключвателят (on|off) и яркостта (dim|bright) са независими: може едното или двете,
 в произволен ред. light dim променя само яркостта, light on dim — и двете:
   Dehumidifier.exe light on dim status
+
+siid.piid е номерът на свойство MIoT, както под надписите в прозореца: така се чете и записва
+и това, което го няма в командите. Записът не проверява типа и границите.
 
 Може да се зададат няколко команди подред, ще се изпълнят поред:
   Dehumidifier.exe mode smart humidity 45 status
@@ -388,5 +443,14 @@
 Без параметри се отваря прозорецът.
 
 Код на изход: 0 — успех, 1 — грешка във връзката или отказ на устройството, 2 — невалидна команда.</value>
+  </data>
+  <data name="DurationMinutes" xml:space="preserve">
+    <value>{0} мин</value>
+  </data>
+  <data name="DurationHours" xml:space="preserve">
+    <value>{0} ч {1:00} мин</value>
+  </data>
+  <data name="DurationDays" xml:space="preserve">
+    <value>{0} д {1} ч</value>
   </data>
 </root>

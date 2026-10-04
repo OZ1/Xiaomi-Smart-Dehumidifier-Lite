@@ -279,6 +279,9 @@
   <data name="CliBadLight" xml:space="preserve">
     <value>„{0}”: potrzeba dim|bright i/lub on|off.</value>
   </data>
+  <data name="CliLightTwice" xml:space="preserve">
+    <value>„{0}”: light przyjmuje włącznik (on|off) i jasność (dim|bright) najwyżej raz.</value>
+  </data>
   <data name="CliUnknownCommand" xml:space="preserve">
     <value>Nieznane polecenie „{0}”.</value>
   </data>
@@ -345,6 +348,45 @@
   <data name="CliErrorIn" xml:space="preserve">
     <value>Błąd w „{0}”: {1}</value>
   </data>
+  <data name="CliSound" xml:space="preserve">
+    <value>Dźwięk przycisków:</value>
+  </data>
+  <data name="CliLock" xml:space="preserve">
+    <value>Blokada przycisków:</value>
+  </data>
+  <data name="CliDryAfterOff" xml:space="preserve">
+    <value>Suszenie po wyłączeniu:</value>
+  </data>
+  <data name="CliTimer" xml:space="preserve">
+    <value>Timer:</value>
+  </data>
+  <data name="CliWarming" xml:space="preserve">
+    <value>Rozgrzewanie:</value>
+  </data>
+  <data name="CliRemaining" xml:space="preserve">
+    <value>{0}, pozostało {1}</value>
+  </data>
+  <data name="CliToggled" xml:space="preserve">
+    <value>Zasilanie przełączone.</value>
+  </data>
+  <data name="CliNextMode" xml:space="preserve">
+    <value>Przełączono na następny tryb.</value>
+  </data>
+  <data name="CliFilterReset" xml:space="preserve">
+    <value>Licznik filtra wyzerowany.</value>
+  </data>
+  <data name="CliBadSwitch" xml:space="preserve">
+    <value>„{0}”: potrzeba on lub off.</value>
+  </data>
+  <data name="CliBadTimer" xml:space="preserve">
+    <value>„{0}”: timer to minuty od 1 do 65535, godziny:minuty (1:30) lub off.</value>
+  </data>
+  <data name="CliBadProperty" xml:space="preserve">
+    <value>„{0}”: właściwość to siid.piid do odczytu lub siid.piid=wartość do zapisu, na przykład 2.5 lub 2.5=45.</value>
+  </data>
+  <data name="CliPropertySet" xml:space="preserve">
+    <value>Zapisano: {0} = {1}.</value>
+  </data>
   <data name="ComfortTooDry" xml:space="preserve">
     <value>za sucho (poniżej 30 %)</value>
   </data>
@@ -370,16 +412,29 @@ Adres i token są pobierane z ustawień programu (tych samych co w oknie).
   Dehumidifier.exe status                    stan
   Dehumidifier.exe on                        włącz
   Dehumidifier.exe off                       wyłącz
+  Dehumidifier.exe toggle                    przełącz zasilanie
   Dehumidifier.exe humidity 40…70            docelowa wilgotność, %
   Dehumidifier.exe mode smart|sleep|dry      tryb: inteligentny, nocny, suszenie prania
+  Dehumidifier.exe next                      następny tryb
   Dehumidifier.exe light on|off dim|bright   podświetlenie: włącznik i (lub) jasność
+  Dehumidifier.exe sound on|off              dźwięk przycisków
+  Dehumidifier.exe lock on|off               blokada przycisków
+  Dehumidifier.exe dry-after-off on|off      suszenie po wyłączeniu
+  Dehumidifier.exe timer 1…65535|1:30|off    timer wyłączenia: minuty, godziny:minuty lub wyłącz
+  Dehumidifier.exe reset-filter              wyzeruj licznik filtra
+  Dehumidifier.exe 2.5                       odczytaj właściwość MIoT siid.piid
+  Dehumidifier.exe 2.5=45                    zapisz: liczba, on|off lub JSON
 
-Rosyjskie synonimy: состояніе, включить, выключить, влажность, режимъ умный|ночной|сушка,
-подсвѣтка включить|выключить тусклая|яркая.
+Rosyjskie synonimy: состояніе, включить, выключить, переключить, влажность, режимъ умный|ночной|сушка,
+слѣдующій, подсвѣтка включить|выключить тусклая|яркая, звукъ, блокировка, просушка, таймеръ,
+сбросъ-фильтра.
 
 W light włącznik (on|off) i jasność (dim|bright) są niezależne: można podać jedno z nich lub oba,
 w dowolnej kolejności. light dim zmienia tylko jasność, light on dim — jedno i drugie:
   Dehumidifier.exe light on dim status
+
+siid.piid to numer właściwości MIoT, jak pod etykietami w oknie: tak można czytać i zapisywać
+to, czego nie ma w poleceniach. Zapis nie sprawdza typu ani granic.
 
 Można podać kilka poleceń po kolei, wykonają się w tej kolejności:
   Dehumidifier.exe mode smart humidity 45 status
@@ -388,5 +443,14 @@ Gdy urządzenie odmówi, wykonywanie zatrzymuje się na tym poleceniu.
 Bez parametrów otwiera się okno.
 
 Kod wyjścia: 0 — sukces, 1 — błąd połączenia lub odmowa urządzenia, 2 — nieprawidłowe polecenie.</value>
+  </data>
+  <data name="DurationMinutes" xml:space="preserve">
+    <value>{0} min</value>
+  </data>
+  <data name="DurationHours" xml:space="preserve">
+    <value>{0} h {1:00} min</value>
+  </data>
+  <data name="DurationDays" xml:space="preserve">
+    <value>{0} d {1} h</value>
   </data>
 </root>

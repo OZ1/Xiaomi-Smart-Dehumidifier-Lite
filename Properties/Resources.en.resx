@@ -279,6 +279,9 @@
   <data name="CliBadLight" xml:space="preserve">
     <value>“{0}”: dim|bright and/or on|off is needed.</value>
   </data>
+  <data name="CliLightTwice" xml:space="preserve">
+    <value>“{0}”: light takes the switch (on|off) and the brightness (dim|bright) at most once each.</value>
+  </data>
   <data name="CliUnknownCommand" xml:space="preserve">
     <value>Unknown command “{0}”.</value>
   </data>
@@ -345,6 +348,45 @@
   <data name="CliErrorIn" xml:space="preserve">
     <value>Error in “{0}”: {1}</value>
   </data>
+  <data name="CliSound" xml:space="preserve">
+    <value>Button sound:</value>
+  </data>
+  <data name="CliLock" xml:space="preserve">
+    <value>Button lock:</value>
+  </data>
+  <data name="CliDryAfterOff" xml:space="preserve">
+    <value>Drying after switch-off:</value>
+  </data>
+  <data name="CliTimer" xml:space="preserve">
+    <value>Timer:</value>
+  </data>
+  <data name="CliWarming" xml:space="preserve">
+    <value>Warm-up:</value>
+  </data>
+  <data name="CliRemaining" xml:space="preserve">
+    <value>{0}, {1} left</value>
+  </data>
+  <data name="CliToggled" xml:space="preserve">
+    <value>Power toggled.</value>
+  </data>
+  <data name="CliNextMode" xml:space="preserve">
+    <value>Switched to the next mode.</value>
+  </data>
+  <data name="CliFilterReset" xml:space="preserve">
+    <value>Filter counter reset.</value>
+  </data>
+  <data name="CliBadSwitch" xml:space="preserve">
+    <value>“{0}”: on or off is needed.</value>
+  </data>
+  <data name="CliBadTimer" xml:space="preserve">
+    <value>“{0}”: the timer is minutes from 1 to 65535, hours:minutes (1:30) or off.</value>
+  </data>
+  <data name="CliBadProperty" xml:space="preserve">
+    <value>“{0}”: a property is siid.piid to read or siid.piid=value to write, for example 2.5 or 2.5=45.</value>
+  </data>
+  <data name="CliPropertySet" xml:space="preserve">
+    <value>Written: {0} = {1}.</value>
+  </data>
   <data name="ComfortTooDry" xml:space="preserve">
     <value>too dry (below 30 %)</value>
   </data>
@@ -370,16 +412,29 @@ The address and token are taken from the program settings (the same as in the wi
   Dehumidifier.exe status                    state
   Dehumidifier.exe on                        switch on
   Dehumidifier.exe off                       switch off
+  Dehumidifier.exe toggle                    toggle power
   Dehumidifier.exe humidity 40…70            target humidity, %
   Dehumidifier.exe mode smart|sleep|dry      mode: smart, sleep, clothes drying
+  Dehumidifier.exe next                      next mode
   Dehumidifier.exe light on|off dim|bright   light: switch and (or) brightness
+  Dehumidifier.exe sound on|off              button sound
+  Dehumidifier.exe lock on|off               button lock
+  Dehumidifier.exe dry-after-off on|off      drying after switch-off
+  Dehumidifier.exe timer 1…65535|1:30|off    shutdown timer: minutes, hours:minutes or off
+  Dehumidifier.exe reset-filter              reset the filter counter
+  Dehumidifier.exe 2.5                       read MIoT property siid.piid
+  Dehumidifier.exe 2.5=45                    write: a number, on|off or JSON
 
-Russian synonyms: состояніе, включить, выключить, влажность, режимъ умный|ночной|сушка,
-подсвѣтка включить|выключить тусклая|яркая.
+Russian synonyms: состояніе, включить, выключить, переключить, влажность, режимъ умный|ночной|сушка,
+слѣдующій, подсвѣтка включить|выключить тусклая|яркая, звукъ, блокировка, просушка, таймеръ,
+сбросъ-фильтра.
 
 For light, the switch (on|off) and the brightness (dim|bright) are independent: give either or both,
 in any order. light dim changes only the brightness, light on dim changes both:
   Dehumidifier.exe light on dim status
+
+siid.piid is the MIoT property number, as under the labels in the window: this reads and writes
+what the commands do not cover. Writing does not check the type or limits.
 
 Several commands can be given in a row; they run in order:
   Dehumidifier.exe mode smart humidity 45 status
@@ -388,5 +443,14 @@ If the device refuses, execution stops at that command.
 Without parameters the window opens.
 
 Exit code: 0 — success, 1 — connection error or device refusal, 2 — invalid command.</value>
+  </data>
+  <data name="DurationMinutes" xml:space="preserve">
+    <value>{0} min</value>
+  </data>
+  <data name="DurationHours" xml:space="preserve">
+    <value>{0} h {1:00} min</value>
+  </data>
+  <data name="DurationDays" xml:space="preserve">
+    <value>{0} d {1} h</value>
   </data>
 </root>

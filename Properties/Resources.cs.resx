@@ -279,6 +279,9 @@
   <data name="CliBadLight" xml:space="preserve">
     <value>„{0}“: je třeba dim|bright a/nebo on|off.</value>
   </data>
+  <data name="CliLightTwice" xml:space="preserve">
+    <value>„{0}“: light přijímá vypínač (on|off) a jas (dim|bright) nejvýše jednou.</value>
+  </data>
   <data name="CliUnknownCommand" xml:space="preserve">
     <value>Neznámý příkaz „{0}“.</value>
   </data>
@@ -345,6 +348,45 @@
   <data name="CliErrorIn" xml:space="preserve">
     <value>Chyba v „{0}“: {1}</value>
   </data>
+  <data name="CliSound" xml:space="preserve">
+    <value>Zvuk tlačítek:</value>
+  </data>
+  <data name="CliLock" xml:space="preserve">
+    <value>Blokování tlačítek:</value>
+  </data>
+  <data name="CliDryAfterOff" xml:space="preserve">
+    <value>Sušení po vypnutí:</value>
+  </data>
+  <data name="CliTimer" xml:space="preserve">
+    <value>Časovač:</value>
+  </data>
+  <data name="CliWarming" xml:space="preserve">
+    <value>Zahřívání:</value>
+  </data>
+  <data name="CliRemaining" xml:space="preserve">
+    <value>{0}, zbývá {1}</value>
+  </data>
+  <data name="CliToggled" xml:space="preserve">
+    <value>Napájení přepnuto.</value>
+  </data>
+  <data name="CliNextMode" xml:space="preserve">
+    <value>Přepnuto na další režim.</value>
+  </data>
+  <data name="CliFilterReset" xml:space="preserve">
+    <value>Počítadlo filtru vynulováno.</value>
+  </data>
+  <data name="CliBadSwitch" xml:space="preserve">
+    <value>„{0}“: je třeba on nebo off.</value>
+  </data>
+  <data name="CliBadTimer" xml:space="preserve">
+    <value>„{0}“: časovač je minuty od 1 do 65535, hodiny:minuty (1:30) nebo off.</value>
+  </data>
+  <data name="CliBadProperty" xml:space="preserve">
+    <value>„{0}“: vlastnost je siid.piid pro čtení nebo siid.piid=hodnota pro zápis, například 2.5 nebo 2.5=45.</value>
+  </data>
+  <data name="CliPropertySet" xml:space="preserve">
+    <value>Zapsáno: {0} = {1}.</value>
+  </data>
   <data name="ComfortTooDry" xml:space="preserve">
     <value>příliš sucho (pod 30 %)</value>
   </data>
@@ -370,16 +412,29 @@ Adresa a token se berou z nastavení programu (stejné jako v okně).
   Dehumidifier.exe status                    stav
   Dehumidifier.exe on                        zapnout
   Dehumidifier.exe off                       vypnout
+  Dehumidifier.exe toggle                    přepnout napájení
   Dehumidifier.exe humidity 40…70            cílová vlhkost, %
   Dehumidifier.exe mode smart|sleep|dry      režim: chytrý, noční, sušení prádla
+  Dehumidifier.exe next                      další režim
   Dehumidifier.exe light on|off dim|bright   podsvícení: vypínač a (nebo) jas
+  Dehumidifier.exe sound on|off              zvuk tlačítek
+  Dehumidifier.exe lock on|off               blokování tlačítek
+  Dehumidifier.exe dry-after-off on|off      sušení po vypnutí
+  Dehumidifier.exe timer 1…65535|1:30|off    časovač vypnutí: minuty, hodiny:minuty nebo vypnout
+  Dehumidifier.exe reset-filter              vynulovat počítadlo filtru
+  Dehumidifier.exe 2.5                       přečíst vlastnost MIoT siid.piid
+  Dehumidifier.exe 2.5=45                    zapsat: číslo, on|off nebo JSON
 
-Ruská synonyma: состояніе, включить, выключить, влажность, режимъ умный|ночной|сушка,
-подсвѣтка включить|выключить тусклая|яркая.
+Ruská synonyma: состояніе, включить, выключить, переключить, влажность, режимъ умный|ночной|сушка,
+слѣдующій, подсвѣтка включить|выключить тусклая|яркая, звукъ, блокировка, просушка, таймеръ,
+сбросъ-фильтра.
 
 U light jsou vypínač (on|off) a jas (dim|bright) nezávislé: lze zadat jedno z nich nebo obojí,
 v libovolném pořadí. light dim mění jen jas, light on dim — obojí:
   Dehumidifier.exe light on dim status
+
+siid.piid je číslo vlastnosti MIoT jako pod popisky v okně: tak lze číst a zapisovat i to,
+co příkazy nepokrývají. Zápis nekontroluje typ ani meze.
 
 Příkazů lze zadat několik za sebou, provedou se postupně:
   Dehumidifier.exe mode smart humidity 45 status
@@ -388,5 +443,14 @@ Když zařízení odmítne, provádění se zastaví na tomto příkazu.
 Bez parametrů se otevře okno.
 
 Návratový kód: 0 — úspěch, 1 — chyba spojení nebo odmítnutí zařízením, 2 — neplatný příkaz.</value>
+  </data>
+  <data name="DurationMinutes" xml:space="preserve">
+    <value>{0} min</value>
+  </data>
+  <data name="DurationHours" xml:space="preserve">
+    <value>{0} h {1:00} min</value>
+  </data>
+  <data name="DurationDays" xml:space="preserve">
+    <value>{0} d {1} h</value>
   </data>
 </root>

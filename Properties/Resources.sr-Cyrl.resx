@@ -279,6 +279,9 @@
   <data name="CliBadLight" xml:space="preserve">
     <value>„{0}“: потребно је dim|bright и/или on|off.</value>
   </data>
+  <data name="CliLightTwice" xml:space="preserve">
+    <value>„{0}“: light прима прекидач (on|off) и јачину (dim|bright) највише по једном.</value>
+  </data>
   <data name="CliUnknownCommand" xml:space="preserve">
     <value>Непозната команда „{0}“.</value>
   </data>
@@ -345,6 +348,45 @@
   <data name="CliErrorIn" xml:space="preserve">
     <value>Грешка у „{0}“: {1}</value>
   </data>
+  <data name="CliSound" xml:space="preserve">
+    <value>Звук тастера:</value>
+  </data>
+  <data name="CliLock" xml:space="preserve">
+    <value>Блокада тастера:</value>
+  </data>
+  <data name="CliDryAfterOff" xml:space="preserve">
+    <value>Сушење после искључења:</value>
+  </data>
+  <data name="CliTimer" xml:space="preserve">
+    <value>Тајмер:</value>
+  </data>
+  <data name="CliWarming" xml:space="preserve">
+    <value>Загревање:</value>
+  </data>
+  <data name="CliRemaining" xml:space="preserve">
+    <value>{0}, још {1}</value>
+  </data>
+  <data name="CliToggled" xml:space="preserve">
+    <value>Напајање је пребачено.</value>
+  </data>
+  <data name="CliNextMode" xml:space="preserve">
+    <value>Пребачено на следећи режим.</value>
+  </data>
+  <data name="CliFilterReset" xml:space="preserve">
+    <value>Бројач филтера је ресетован.</value>
+  </data>
+  <data name="CliBadSwitch" xml:space="preserve">
+    <value>„{0}“: потребно је on или off.</value>
+  </data>
+  <data name="CliBadTimer" xml:space="preserve">
+    <value>„{0}“: тајмер је минути од 1 до 65535, сати:минути (1:30) или off.</value>
+  </data>
+  <data name="CliBadProperty" xml:space="preserve">
+    <value>„{0}“: својство је siid.piid за читање или siid.piid=вредност за упис, на пример 2.5 или 2.5=45.</value>
+  </data>
+  <data name="CliPropertySet" xml:space="preserve">
+    <value>Уписано: {0} = {1}.</value>
+  </data>
   <data name="ComfortTooDry" xml:space="preserve">
     <value>сувише суво (испод 30 %)</value>
   </data>
@@ -370,16 +412,29 @@
   Dehumidifier.exe status                    стање
   Dehumidifier.exe on                        укључи
   Dehumidifier.exe off                       искључи
+  Dehumidifier.exe toggle                    пребаци напајање
   Dehumidifier.exe humidity 40…70            циљна влажност, %
   Dehumidifier.exe mode smart|sleep|dry      режим: паметни, ноћни, сушење веша
+  Dehumidifier.exe next                      следећи режим
   Dehumidifier.exe light on|off dim|bright   осветљење: прекидач и (или) јачина
+  Dehumidifier.exe sound on|off              звук тастера
+  Dehumidifier.exe lock on|off               блокада тастера
+  Dehumidifier.exe dry-after-off on|off      сушење после искључења
+  Dehumidifier.exe timer 1…65535|1:30|off    тајмер искључења: минути, сати:минути или искључи
+  Dehumidifier.exe reset-filter              ресетуј бројач филтера
+  Dehumidifier.exe 2.5                       прочитај MIoT својство siid.piid
+  Dehumidifier.exe 2.5=45                    упиши: број, on|off или JSON
 
-Руски синоними: состояніе, включить, выключить, влажность, режимъ умный|ночной|сушка,
-подсвѣтка включить|выключить тусклая|яркая.
+Руски синоними: состояніе, включить, выключить, переключить, влажность, режимъ умный|ночной|сушка,
+слѣдующій, подсвѣтка включить|выключить тусклая|яркая, звукъ, блокировка, просушка, таймеръ,
+сбросъ-фильтра.
 
 Код light прекидач (on|off) и јачина (dim|bright) су независни: може једно од њих или оба,
 било којим редом. light dim мења само јачину, light on dim — и једно и друго:
   Dehumidifier.exe light on dim status
+
+siid.piid је број MIoT својства, као испод натписа у прозору: тако се чита и уписује и оно
+чега нема у командама. Упис не проверава тип ни границе.
 
 Може се задати више команди заредом, извршиће се по реду:
   Dehumidifier.exe mode smart humidity 45 status
@@ -388,5 +443,14 @@
 Без параметара отвара се прозор.
 
 Излазни код: 0 — успех, 1 — грешка везе или одбијање уређаја, 2 — неисправна команда.</value>
+  </data>
+  <data name="DurationMinutes" xml:space="preserve">
+    <value>{0} мин</value>
+  </data>
+  <data name="DurationHours" xml:space="preserve">
+    <value>{0} ч {1:00} мин</value>
+  </data>
+  <data name="DurationDays" xml:space="preserve">
+    <value>{0} д {1} ч</value>
   </data>
 </root>

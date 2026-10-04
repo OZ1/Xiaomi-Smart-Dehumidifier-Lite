@@ -279,6 +279,9 @@
   <data name="CliBadLight" xml:space="preserve">
     <value>»{0}«: potrebno je dim|bright in/ali on|off.</value>
   </data>
+  <data name="CliLightTwice" xml:space="preserve">
+    <value>»{0}«: light sprejme stikalo (on|off) in svetlost (dim|bright) največ enkrat.</value>
+  </data>
   <data name="CliUnknownCommand" xml:space="preserve">
     <value>Neznan ukaz »{0}«.</value>
   </data>
@@ -345,6 +348,45 @@
   <data name="CliErrorIn" xml:space="preserve">
     <value>Napaka v »{0}«: {1}</value>
   </data>
+  <data name="CliSound" xml:space="preserve">
+    <value>Zvok gumbov:</value>
+  </data>
+  <data name="CliLock" xml:space="preserve">
+    <value>Zaklep gumbov:</value>
+  </data>
+  <data name="CliDryAfterOff" xml:space="preserve">
+    <value>Sušenje po izklopu:</value>
+  </data>
+  <data name="CliTimer" xml:space="preserve">
+    <value>Časovnik:</value>
+  </data>
+  <data name="CliWarming" xml:space="preserve">
+    <value>Ogrevanje:</value>
+  </data>
+  <data name="CliRemaining" xml:space="preserve">
+    <value>{0}, še {1}</value>
+  </data>
+  <data name="CliToggled" xml:space="preserve">
+    <value>Napajanje preklopljeno.</value>
+  </data>
+  <data name="CliNextMode" xml:space="preserve">
+    <value>Preklopljeno na naslednji režim.</value>
+  </data>
+  <data name="CliFilterReset" xml:space="preserve">
+    <value>Števec filtra ponastavljen.</value>
+  </data>
+  <data name="CliBadSwitch" xml:space="preserve">
+    <value>»{0}«: potrebno je on ali off.</value>
+  </data>
+  <data name="CliBadTimer" xml:space="preserve">
+    <value>»{0}«: časovnik so minute od 1 do 65535, ure:minute (1:30) ali off.</value>
+  </data>
+  <data name="CliBadProperty" xml:space="preserve">
+    <value>»{0}«: lastnost je siid.piid za branje ali siid.piid=vrednost za zapis, na primer 2.5 ali 2.5=45.</value>
+  </data>
+  <data name="CliPropertySet" xml:space="preserve">
+    <value>Zapisano: {0} = {1}.</value>
+  </data>
   <data name="ComfortTooDry" xml:space="preserve">
     <value>presuho (pod 30 %)</value>
   </data>
@@ -370,16 +412,29 @@ Naslov in žeton se vzameta iz nastavitev programa (enaka kot v oknu).
   Dehumidifier.exe status                    stanje
   Dehumidifier.exe on                        vklopi
   Dehumidifier.exe off                       izklopi
+  Dehumidifier.exe toggle                    preklopi napajanje
   Dehumidifier.exe humidity 40…70            ciljna vlažnost, %
   Dehumidifier.exe mode smart|sleep|dry      režim: pametni, nočni, sušenje perila
+  Dehumidifier.exe next                      naslednji režim
   Dehumidifier.exe light on|off dim|bright   osvetlitev: stikalo in (ali) svetlost
+  Dehumidifier.exe sound on|off              zvok gumbov
+  Dehumidifier.exe lock on|off               zaklep gumbov
+  Dehumidifier.exe dry-after-off on|off      sušenje po izklopu
+  Dehumidifier.exe timer 1…65535|1:30|off    časovnik izklopa: minute, ure:minute ali izklopi
+  Dehumidifier.exe reset-filter              ponastavi števec filtra
+  Dehumidifier.exe 2.5                       preberi lastnost MIoT siid.piid
+  Dehumidifier.exe 2.5=45                    zapiši: število, on|off ali JSON
 
-Ruski sinonimi: состояніе, включить, выключить, влажность, режимъ умный|ночной|сушка,
-подсвѣтка включить|выключить тусклая|яркая.
+Ruski sinonimi: состояніе, включить, выключить, переключить, влажность, режимъ умный|ночной|сушка,
+слѣдующій, подсвѣтка включить|выключить тусклая|яркая, звукъ, блокировка, просушка, таймеръ,
+сбросъ-фильтра.
 
 Pri light sta stikalo (on|off) in svetlost (dim|bright) neodvisna: lahko eno od njiju ali oba,
 v poljubnem vrstnem redu. light dim spremeni le svetlost, light on dim — oboje:
   Dehumidifier.exe light on dim status
+
+siid.piid je številka lastnosti MIoT, kot pod napisi v oknu: tako se bere in zapisuje tudi to,
+česar ukazi ne pokrivajo. Zapis ne preverja vrste in meja.
 
 Ukazov lahko podate več zapored, izvedli se bodo po vrsti:
   Dehumidifier.exe mode smart humidity 45 status
@@ -388,5 +443,14 @@ Najprej se preveri cela vrstica: če je v njej napaka, se ne izvede nič.
 Brez parametrov se odpre okno.
 
 Izhodna koda: 0 — uspeh, 1 — napaka povezave ali zavrnitev naprave, 2 — neveljaven ukaz.</value>
+  </data>
+  <data name="DurationMinutes" xml:space="preserve">
+    <value>{0} min</value>
+  </data>
+  <data name="DurationHours" xml:space="preserve">
+    <value>{0} h {1:00} min</value>
+  </data>
+  <data name="DurationDays" xml:space="preserve">
+    <value>{0} d {1} h</value>
   </data>
 </root>

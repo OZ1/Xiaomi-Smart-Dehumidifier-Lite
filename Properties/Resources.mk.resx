@@ -279,6 +279,9 @@
   <data name="CliBadLight" xml:space="preserve">
     <value>„{0}“: потребно е dim|bright и/или on|off.</value>
   </data>
+  <data name="CliLightTwice" xml:space="preserve">
+    <value>„{0}“: light прима прекинувач (on|off) и осветленост (dim|bright) најмногу по еднаш.</value>
+  </data>
   <data name="CliUnknownCommand" xml:space="preserve">
     <value>Непозната команда „{0}“.</value>
   </data>
@@ -345,6 +348,45 @@
   <data name="CliErrorIn" xml:space="preserve">
     <value>Грешка во „{0}“: {1}</value>
   </data>
+  <data name="CliSound" xml:space="preserve">
+    <value>Звук на копчињата:</value>
+  </data>
+  <data name="CliLock" xml:space="preserve">
+    <value>Заклучување на копчињата:</value>
+  </data>
+  <data name="CliDryAfterOff" xml:space="preserve">
+    <value>Сушење по исклучување:</value>
+  </data>
+  <data name="CliTimer" xml:space="preserve">
+    <value>Тајмер:</value>
+  </data>
+  <data name="CliWarming" xml:space="preserve">
+    <value>Загревање:</value>
+  </data>
+  <data name="CliRemaining" xml:space="preserve">
+    <value>{0}, уште {1}</value>
+  </data>
+  <data name="CliToggled" xml:space="preserve">
+    <value>Напојувањето е префрлено.</value>
+  </data>
+  <data name="CliNextMode" xml:space="preserve">
+    <value>Префрлено на следниот режим.</value>
+  </data>
+  <data name="CliFilterReset" xml:space="preserve">
+    <value>Бројачот на филтерот е ресетиран.</value>
+  </data>
+  <data name="CliBadSwitch" xml:space="preserve">
+    <value>„{0}“: потребно е on или off.</value>
+  </data>
+  <data name="CliBadTimer" xml:space="preserve">
+    <value>„{0}“: тајмерот е минути од 1 до 65535, часови:минути (1:30) или off.</value>
+  </data>
+  <data name="CliBadProperty" xml:space="preserve">
+    <value>„{0}“: својството е siid.piid за читање или siid.piid=вредност за запишување, на пример 2.5 или 2.5=45.</value>
+  </data>
+  <data name="CliPropertySet" xml:space="preserve">
+    <value>Запишано: {0} = {1}.</value>
+  </data>
   <data name="ComfortTooDry" xml:space="preserve">
     <value>премногу суво (под 30 %)</value>
   </data>
@@ -370,16 +412,29 @@
   Dehumidifier.exe status                    состојба
   Dehumidifier.exe on                        вклучување
   Dehumidifier.exe off                       исклучување
+  Dehumidifier.exe toggle                    префрли го напојувањето
   Dehumidifier.exe humidity 40…70            целна влажност, %
   Dehumidifier.exe mode smart|sleep|dry      режим: паметен, ноќен, сушење алишта
+  Dehumidifier.exe next                      следен режим
   Dehumidifier.exe light on|off dim|bright   светлина: прекинувач и (или) осветленост
+  Dehumidifier.exe sound on|off              звук на копчињата
+  Dehumidifier.exe lock on|off               заклучување на копчињата
+  Dehumidifier.exe dry-after-off on|off      сушење по исклучување
+  Dehumidifier.exe timer 1…65535|1:30|off    тајмер за исклучување: минути, часови:минути или исклучи
+  Dehumidifier.exe reset-filter              ресетирај го бројачот на филтерот
+  Dehumidifier.exe 2.5                       прочитај MIoT својство siid.piid
+  Dehumidifier.exe 2.5=45                    запиши: број, on|off или JSON
 
-Руски синоними: состояніе, включить, выключить, влажность, режимъ умный|ночной|сушка,
-подсвѣтка включить|выключить тусклая|яркая.
+Руски синоними: состояніе, включить, выключить, переключить, влажность, режимъ умный|ночной|сушка,
+слѣдующій, подсвѣтка включить|выключить тусклая|яркая, звукъ, блокировка, просушка, таймеръ,
+сбросъ-фильтра.
 
 Кај light прекинувачот (on|off) и осветленоста (dim|bright) се независни: може едното или двете,
 во било кој редослед. light dim ја менува само осветленоста, light on dim — двете:
   Dehumidifier.exe light on dim status
+
+siid.piid е бројот на MIoT својство, како под натписите во прозорецот: така се чита и запишува
+и она што го нема во командите. Запишувањето не ги проверува типот и границите.
 
 Може да се зададат повеќе команди една по друга, ќе се извршат по ред:
   Dehumidifier.exe mode smart humidity 45 status
@@ -388,5 +443,14 @@
 Без параметри се отвора прозорецот.
 
 Излезен код: 0 — успех, 1 — нема врска или уредот одбил, 2 — неважечка команда.</value>
+  </data>
+  <data name="DurationMinutes" xml:space="preserve">
+    <value>{0} мин</value>
+  </data>
+  <data name="DurationHours" xml:space="preserve">
+    <value>{0} ч {1:00} мин</value>
+  </data>
+  <data name="DurationDays" xml:space="preserve">
+    <value>{0} д {1} ч</value>
   </data>
 </root>

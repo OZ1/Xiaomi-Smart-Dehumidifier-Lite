@@ -124,11 +124,47 @@ namespace DehumidifierControl.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на «{0}»: свойство — siid.piid для чтенія или siid.piid=значеніе для записи, напримѣръ 2.5 или 2.5=45..
+        /// </summary>
+        internal static string CliBadProperty {
+            get {
+                return ResourceManager.GetString("CliBadProperty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на «{0}»: нужно on или off (включить или выключить)..
+        /// </summary>
+        internal static string CliBadSwitch {
+            get {
+                return ResourceManager.GetString("CliBadSwitch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на «{0}»: таймеръ — минуты отъ 1 до 65535, часы:минуты (1:30) или off (выключить)..
+        /// </summary>
+        internal static string CliBadTimer {
+            get {
+                return ResourceManager.GetString("CliBadTimer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на яркость {0}.
         /// </summary>
         internal static string CliBrightness {
             get {
                 return ResourceManager.GetString("CliBrightness", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Просушка послѣ выключенія:.
+        /// </summary>
+        internal static string CliDryAfterOff {
+            get {
+                return ResourceManager.GetString("CliDryAfterOff", resourceCulture);
             }
         }
         
@@ -165,6 +201,15 @@ namespace DehumidifierControl.Properties {
         internal static string CliFault {
             get {
                 return ResourceManager.GetString("CliFault", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Счётчикъ фильтра сброшенъ..
+        /// </summary>
+        internal static string CliFilterReset {
+            get {
+                return ResourceManager.GetString("CliFilterReset", resourceCulture);
             }
         }
         
@@ -214,6 +259,24 @@ namespace DehumidifierControl.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на «{0}»: у light выключатель (on|off) и яркость (dim|bright) — не больше одного раза каждый (включить|выключить, тусклая|яркая)..
+        /// </summary>
+        internal static string CliLightTwice {
+            get {
+                return ResourceManager.GetString("CliLightTwice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Блокировка кнопокъ:.
+        /// </summary>
+        internal static string CliLock {
+            get {
+                return ResourceManager.GetString("CliLock", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Режимъ:.
         /// </summary>
         internal static string CliMode {
@@ -228,6 +291,15 @@ namespace DehumidifierControl.Properties {
         internal static string CliModeSet {
             get {
                 return ResourceManager.GetString("CliModeSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Режимъ переключёнъ на слѣдующій..
+        /// </summary>
+        internal static string CliNextMode {
+            get {
+                return ResourceManager.GetString("CliNextMode", resourceCulture);
             }
         }
         
@@ -273,6 +345,33 @@ namespace DehumidifierControl.Properties {
         internal static string CliPower {
             get {
                 return ResourceManager.GetString("CliPower", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Записано: {0} = {1}..
+        /// </summary>
+        internal static string CliPropertySet {
+            get {
+                return ResourceManager.GetString("CliPropertySet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на {0}, осталось {1}.
+        /// </summary>
+        internal static string CliRemaining {
+            get {
+                return ResourceManager.GetString("CliRemaining", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Звукъ кнопокъ:.
+        /// </summary>
+        internal static string CliSound {
+            get {
+                return ResourceManager.GetString("CliSound", resourceCulture);
             }
         }
         
@@ -340,6 +439,24 @@ namespace DehumidifierControl.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Таймеръ:.
+        /// </summary>
+        internal static string CliTimer {
+            get {
+                return ResourceManager.GetString("CliTimer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Питаніе переключено..
+        /// </summary>
+        internal static string CliToggled {
+            get {
+                return ResourceManager.GetString("CliToggled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Неизвѣстная команда «{0}»..
         /// </summary>
         internal static string CliUnknownCommand {
@@ -362,6 +479,15 @@ namespace DehumidifierControl.Properties {
         internal static string CliUsage {
             get {
                 return ResourceManager.GetString("CliUsage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Прогрѣвъ:.
+        /// </summary>
+        internal static string CliWarming {
+            get {
+                return ResourceManager.GetString("CliWarming", resourceCulture);
             }
         }
         
@@ -470,6 +596,33 @@ namespace DehumidifierControl.Properties {
         internal static string Disconnected {
             get {
                 return ResourceManager.GetString("Disconnected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на {0} сут {1} ч.
+        /// </summary>
+        internal static string DurationDays {
+            get {
+                return ResourceManager.GetString("DurationDays", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на {0} ч {1:00} мин.
+        /// </summary>
+        internal static string DurationHours {
+            get {
+                return ResourceManager.GetString("DurationHours", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на {0} мин.
+        /// </summary>
+        internal static string DurationMinutes {
+            get {
+                return ResourceManager.GetString("DurationMinutes", resourceCulture);
             }
         }
         

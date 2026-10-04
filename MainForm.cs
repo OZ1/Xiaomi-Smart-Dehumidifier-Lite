@@ -2,6 +2,7 @@
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
+using System.Numerics;
 using System.Runtime.InteropServices;
 
 namespace DehumidifierControl;
@@ -11,16 +12,22 @@ using Properties;
 using static Properties.Resources;
 
 using static Uri;
-using static Math;
 using static Size;
+using static Int32;
+using static Single;
+using static Double;
 using static String;
-using static Convert;
+using static Vector3;
+using static Matrix3x2;
+using static Matrix4x4;
 using static DateTime;
 using static TimeSpan;
 using static Color;
 using static SystemColors;
 using static StringComparison;
 using static FontStyle;
+using static Enumerable;
+using static LayoutKind;
 using static CheckState;
 using static CloseReason;
 using static TextRenderer;
@@ -146,7 +153,7 @@ public partial class MainForm : Form
 			int end = 0;
 			for (int octet = 0; octet < octets; octet++)
 				end += address[end..length].IndexOf('.') + 1; // по точку послѣ octets-го октета включительно
-			return new string(address[..end]);
+			return new(address[..end]);
 		}
 	}
 
@@ -319,8 +326,8 @@ public partial class MainForm : Form
 			labelTemperature.Text   = s.environment_temperature is { } t ? Format(TemperatureFormat, t) : "—";
 			RoomHumidity            = s.environment_relative_umidity;
 			labelHumidity.Text      = s.environment_relative_umidity is { } h ? $"{h} %" : "—";
-			labelHumidity.ForeColor = s.environment_relative_umidity is { } hc ? Accent(Darker(ComfortColor(HumidityComfort(hc)))) : ControlText;
-			string? comfort         = s.environment_relative_umidity is { } hd ?               ComfortText (HumidityComfort(hd)) : null; // ступень словами: для экраннаго чтеца и подсказкой
+			labelHumidity.ForeColor = s.environment_relative_umidity is { } hc ? Accent(Darker(HumidityColor(hc))) : ControlText;
+			string? comfort         = s.environment_relative_umidity is { } hd ? ComfortText(HumidityComfort(hd)) : null; // ступень словами: для экраннаго чтеца и подсказкой
 			if (labelHumidity.AccessibleDescription != comfort)
 			{
 				labelHumidity.AccessibleDescription = comfort;
@@ -460,7 +467,7 @@ public partial class MainForm : Form
 
 	/// <summary>Минуты въ поле, прижатыя къ его предѣламъ. Вызоветъ TimerMinutes_ValueChanged (если число измѣнилось):
 	/// изъ опроса тотъ молчитъ (Updating), изъ правки времени — какъ правка минутъ.</summary>
-	void ShowTimeRemain(decimal minutes) =>numericTimerMinutes.Value = Clamp(minutes, numericTimerMinutes.Minimum, numericTimerMinutes.Maximum);
+	void ShowTimeRemain(decimal minutes) =>numericTimerMinutes.Value = decimal.Clamp(minutes, numericTimerMinutes.Minimum, numericTimerMinutes.Maximum);
 
 	/// <summary>Человѣкъ правитъ время выключенія: часы и минуты — изъ поля, доля минуты — сейчасъ (съ нею таймеръ и запустится),
 	/// поэтому до выключенія ровно цѣлыя минуты. Дата — ближайшая: прошедшее сегодня — завтра.</summary>
@@ -536,26 +543,105 @@ public partial class MainForm : Form
 
 	// ───── шкала подъ ползункомъ цѣлевой влажности ─────
 
+	/// <summary>Цвѣтъ ближе къ чёрному: каждая составляющая × factor. При 0,6 крупное число почти чёрное, но ступень ещё узнаётся.</summary>
+	static Color Darker(Color color, float factor = .6f) => FromArgb(
+		(int)Round(color.R * factor),
+		(int)Round(color.G * factor),
+		(int)Round(color.B * factor));
+
 	/// <summary>Рекомендуемый діапазонъ цѣлевой влажности изъ атрибута [MIoT] (по спецификаціи и руководству 40…70);
 	/// само устройство принимаетъ 0…100 — провѣрено, поэтому ползунокъ шире.</summary>
 	static readonly (int Min, int Max) Recommended = RecommendedRange();
 	static          (int Min, int Max)               RecommendedRange()
 	{
 		MIoTAttribute id = MIoT(nameof(State.dehumidifier_target_humidity));
-		return (ToInt32(id.Min), ToInt32(id.Max));
+		return (id.Min, id.Max);
 	}
 
 	/// <summary>Цвѣтъ ступени Comfort въ окнѣ: и у влажности въ комнатѣ, и на полоскѣ подъ шкалой.</summary>
-	/// <summary>Цвѣтъ ближе къ чёрному: каждая составляющая × factor. При 0,6 крупное число почти чёрное, но ступень ещё узнаётся.</summary>
-	static Color Darker(Color color, float factor = 0.6f) => FromArgb((int)Round(color.R * factor), (int)Round(color.G * factor), (int)Round(color.B * factor));
-
 	static Color ComfortColor(Comfort comfort) => comfort switch
 	{
-		Ideal => ForestGreen,
-		Normal => OliveDrab,
-		Dry or Humid => Darker(DarkOrange, 0.8f), // чистый DarkOrange на сѣромъ фонѣ — 2:1, полоскѣ и треугольнику нужно 3:1 (WCAG 1.4.11)
-		_ => Firebrick,
+		Ideal => ForestGreen, Normal => Olive, Dry or Humid => Chocolate, _ => Firebrick
 	};
+
+	// ───── плавный цвѣтъ влажности: площадки и переходы въ OKLCH ─────
+
+	/// <summary>Половина ширины перехода, %: внутри ступени цвѣтъ стоитъ, за 3 % до границы и 3 % послѣ — переливается въ сосѣдній.</summary>
+	const double HumidityBlendPercent = 3;
+
+	/// <summary>Матрицы OKLab (Björn Ottosson, 2020): линейный sRGB → LMS и LMS въ кубическомъ корнѣ → Lab; обратныя — ихъ обращеніемъ.</summary>
+	static readonly Matrix4x4 LinearToLMS = Matrix(0.4122214708f,  0.5363325363f,  0.0514459929f,
+	/**/                                           0.2119034982f,  0.6806995451f,  0.1073969566f,
+	/**/                                           0.0883024619f,  0.2817188376f,  0.6299787005f);
+	static readonly Matrix4x4 LMSToLab    = Matrix(0.2104542553f,  0.7936177850f, -0.0040720468f,
+	/**/                                           1.9779984951f, -2.4285922050f,  0.4505937099f,
+	/**/                                           0.0259040371f,  0.7827717662f, -0.8086757660f);
+	static readonly Matrix4x4 LabToLMS    = Inverse(LMSToLab);
+	static readonly Matrix4x4 LMSToLinear = Inverse(LinearToLMS);
+
+	/// <summary>Матрица 3×3, записанная строками, какъ въ статьѣ. Vector3.Transform умножаетъ вектор-строку на матрицу (v·M),
+	/// а въ статьѣ — матрица на вектор-столбецъ (M·v), поэтому кладётся транспонированной.</summary>
+	static Matrix4x4 Matrix(float m11, float m12, float m13,
+	/**/                    float m21, float m22, float m23,
+	/**/                    float m31, float m32, float m33) => new(
+		m11, m21, m31, 0,
+		m12, m22, m32, 0,
+		m13, m23, m33, 0,
+		0,   0,   0,   1);
+
+	static Matrix4x4 Inverse(Matrix4x4 matrix) => Invert(matrix, out Matrix4x4 inverse) ? inverse : throw new ArgumentException(null, nameof(matrix));
+
+	/// <summary>Цвѣтъ влажности: на площадкѣ — цвѣтъ ступени, у границы — переходъ въ OKLCH по smoothstep (3t² − 2t³):
+	/// у краёвъ перехода цвѣтъ мѣняется медленно, поэтому площадка переходитъ въ переливъ безъ излома.
+	/// Граница ступеней — посерединѣ между послѣднимъ значеніемъ одной и первымъ слѣдующей (ComfortStarts − 0,5);
+	/// ступени шире двухъ переходовъ, поэтому влажность бываетъ у одной границы самое большее.</summary>
+	static Color HumidityColor(byte humidity)
+	{
+		for (int i = 0; i < ComfortStarts.Length; i++)
+		{
+			double  d =  humidity - ComfortStarts[i] + 0.5; // разстояніе до границы между ступенями i и i + 1
+			if (Abs(d) > HumidityBlendPercent) continue;
+			double t = (d + HumidityBlendPercent) / (2 * HumidityBlendPercent);
+			Color a = ComfortColor((Comfort) i);
+			Color b = ComfortColor((Comfort)(i + 1));
+			return MixOKLCH(a, b, (float)(t * t * (3 - 2 * t)));
+
+			/// <summary>Смѣсь двухъ цвѣтовъ въ OKLCH: всѣ три составляющія — линейно, тонъ — по короткой дугѣ.
+			/// Въ OKLCH равные шаги и на глазъ равны, поэтому переливъ ровный, безъ грязной середины, какъ въ RGB.</summary>
+			static Color MixOKLCH(Color a, Color b, float t)
+			{
+				Vector3 from = ToOKLCH(a), to = ToOKLCH(b);
+				float dh = to.Z - from.Z;
+				if (dh >  float.Pi) dh -= float.Tau;
+				if (dh < -float.Pi) dh += float.Tau;
+				return FromOKLCH(Lerp(from, to with { Z = from.Z + dh }, t));
+			}
+
+			/// <summary>sRGB → OKLCH: (свѣтлота 0…1, насыщенность, тонъ въ радіанахъ).</summary>
+			static Vector3 ToOKLCH(Color color)
+			{
+				static float Linear(byte c)
+				{
+					float  v = c / 255f;
+					return v <= 0.04045f ? v / 12.92f : Pow((v + 0.055f) / 1.055f, 2.4f);
+				}
+				Vector3 lms = Transform(new(Linear(color.R), Linear(color.G), Linear(color.B)), LinearToLMS);
+				Vector3 lab = Transform(new(Cbrt(lms.X), Cbrt(lms.Y), Cbrt(lms.Z)), LMSToLab);
+				return new(lab.X, new Vector2(lab.Y, lab.Z).Length(), Atan2(lab.Z, lab.Y));
+			}
+
+			/// <summary>OKLCH → sRGB; что вышло за охватъ sRGB — прижимается къ 0…255.</summary>
+			static Color FromOKLCH(Vector3 lch)
+			{
+				(float sin, float cos) = SinCos(lch.Z);
+				Vector3 lms = Transform(new(lch.X, lch.Y * cos, lch.Y * sin), LabToLMS);
+				Vector3 rgb = Transform(lms * lms * lms, LMSToLinear);
+				static int Gamma(float c) => (int)Round(255 * Clamp(c <= 0.0031308f ? 12.92f * c : 1.055f * Pow(c, 1 / 2.4f) - 0.055f, 0, 1));
+				return FromArgb(Gamma(rgb.X), Gamma(rgb.Y), Gamma(rgb.Z));
+			}
+		}
+		return ComfortColor(HumidityComfort(humidity)); // далеко отъ всѣхъ границъ — на площадкѣ
+	}
 
 	/// <summary>Шкала подъ ползункомъ: числа, кратныя 10; рекомендуемыя (40…70) темнѣе и подчёркнуты полоской,
 	/// раскрашенной по ступенямъ Comfort; подъ ней треугольникъ — влажность въ комнатѣ цвѣтомъ ея ступени.</summary>
@@ -568,17 +654,18 @@ public partial class MainForm : Form
 		{
 			string text = value.ToString();
 			Size size = MeasureText(text, font, Size.Empty, NoPadding);
-			bool recommended = value >= Recommended.Min && value <= Recommended.Max;
-			DrawText(e.Graphics, text, font, new Point(offset + TargetX(value) - size.Width / 2, 0),
-				recommended ? ControlText : GrayText, NoPadding);
+			Point pt = new(offset + TargetX(value) - size.Width / 2, 0);
+			bool recommended = Recommended.Min <= value && value <= Recommended.Max;
+			DrawText(e.Graphics, text, font, pt, recommended ? ControlText : GrayText, NoPadding);
 			height = size.Height;
 		}
+
 		// полоска по одной единицѣ влажности: отрѣзокъ [v, v+1] цвѣтомъ ступени значенія v; края выступаютъ на 6 точекъ
 		using Pen pen = new(Highlight, 2);
 		for (int v = Recommended.Min; v < Recommended.Max; v++)
 		{
 			pen.Color = Accent(ComfortColor(HumidityComfort((byte)v)));
-			int x1 = offset + TargetX(v) - (v == Recommended.Min ? 6 : 0);
+			int x1 = offset + TargetX(v    ) - (v == Recommended.Min     ? 6 : 0);
 			int x2 = offset + TargetX(v + 1) + (v == Recommended.Max - 1 ? 6 : 0);
 			e.Graphics.DrawLine(pen, x1, height + 1, x2, height + 1);
 		}
@@ -587,7 +674,8 @@ public partial class MainForm : Form
 		if (RoomHumidity is { } room)
 		{
 			int x = offset + TargetX(room), top = height + 4;
-			Point[] triangle = [new(x, top), new(x - 4, top + 6), new(x + 4, top + 6)];
+			ReadOnlySpan<Point> triangle = [new(x, top), new(x - 4, top + 6),
+			/**/                                         new(x + 4, top + 6)];
 			using SolidBrush brush = new(Accent(ComfortColor(HumidityComfort(room))));
 			e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 			e.Graphics.FillPolygon(brush, triangle);
@@ -601,19 +689,18 @@ public partial class MainForm : Form
 			const int TBM_GETTHUMBRECT   = 0x0400 + 25;
 			const int TBM_GETCHANNELRECT = 0x0400 + 26;
 
-			RECT channel = default, thumb = default;
-			SendMessage(trackBarTarget.Handle, TBM_GETCHANNELRECT, 0, ref channel);
-			SendMessage(trackBarTarget.Handle, TBM_GETTHUMBRECT, 0, ref thumb);
+			SendMessage(trackBarTarget.Handle, TBM_GETCHANNELRECT, 0, out RECT channel);
+			SendMessage(trackBarTarget.Handle, TBM_GETTHUMBRECT,   0, out RECT thumb);
 			int half = (thumb.Right - thumb.Left) / 2;
 			int from = channel.Left + half, to = channel.Right - half;
 			return from + (to - from) * (value - trackBarTarget.Minimum) / (trackBarTarget.Maximum - trackBarTarget.Minimum);
 
 			[SuppressMessage("Interoperability", "SYSLIB1054: Используйте LibraryImportAttribute вместо DllImportAttribute для генерирования кода маршализации P/Invoke во время компиляции")]
 			[DllImport("User32", ExactSpelling = true, EntryPoint = "SendMessageW")]
-			static extern nint SendMessage(nint hWnd, int msg, nint wParam, ref RECT lParam);
+			static extern nint SendMessage(nint hWnd, int msg, nint wParam, out RECT lParam);
 		}
 	}
 
-	[StructLayout(LayoutKind.Sequential)]
+	[StructLayout(Sequential)]
 	struct RECT { public int Left, Top, Right, Bottom; }
 }

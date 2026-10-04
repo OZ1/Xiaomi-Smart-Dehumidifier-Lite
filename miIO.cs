@@ -15,22 +15,24 @@ using static Properties.Resources;
 using static MD5;
 using static String;
 using static Convert;
-using static Encoding;
 using static JsonNode;
 using static IPAddress;
 using static Stopwatch;
+using static Enumerable;
+using static PaddingMode;
+using static JsonSerializer;
 using static BinaryPrimitives;
 using static CancellationTokenSource;
 
 public sealed class miIOException(string message) : Exception(message);
 public sealed class miIO : IDisposable
 {
-	static readonly byte[] Hello = FromHexString("21310020" + new string('f', 56));
+	static readonly byte[] Hello = [0x21,0x31, 0,32, .. Repeat<byte>(0xFF, 28)];
 
 	readonly string IP;
-	readonly byte[] Token;
-	readonly byte[] IV;
-	readonly Aes AES = Aes.Create();
+	readonly byte[] Token;           // 16 байт
+	readonly byte[] IV;              // 16 байт
+	readonly Aes AES = Aes.Create(); // 16 байт
 	readonly UdpClient Udp = new();
 	readonly SemaphoreSlim Lock = new(1, 1);
 
@@ -42,14 +44,18 @@ public sealed class miIO : IDisposable
 
 	public TimeSpan Timeout { get; set; } = new(0, 0, seconds: 3);
 
-	public miIO(string ip, string tokenHex)
+	public miIO(string ip, ReadOnlySpan<char> tokenHex)
 	{
 		IP = ip;
 		Token = FromHexString(tokenHex);
 		if (Token.Length != 16)
 			throw new ArgumentException(TokenFormat, nameof(tokenHex));
-		AES.Key = HashData(Token);
-		IV = HashData([.. AES.Key, .. Token]);
+		byte[]     aesKey = HashData(Token);
+		AES.Key =  aesKey;
+		Span<byte>    keyToken = stackalloc byte[32];
+		aesKey.CopyTo(keyToken);
+		Token .CopyTo(keyToken[16..]);
+		IV = HashData(keyToken);
 		Udp.Connect(Parse(ip), 54321);
 	}
 
@@ -74,7 +80,7 @@ public sealed class miIO : IDisposable
 					["method"] = method,
 					["params"] = parameters?.DeepClone() ?? new JsonArray(),
 				};
-				await Udp.SendAsync(BuildPacket(UTF8.GetBytes(request.ToJsonString())), ct);
+				await Udp.SendAsync(BuildPacket(SerializeToUtf8Bytes(request)), ct);
 
 				long started = GetTimestamp();
 				while (GetElapsedTime(started) is var elapsed && elapsed < Timeout)
@@ -83,7 +89,7 @@ public sealed class miIO : IDisposable
 					if (data is null) break;
 
 					JsonObject? response = ParsePacket(data);
-					if (response?["id"] is not JsonValue rid || !rid.TryGetValue<int>(out var got) || got != id) continue;
+					if (response?["id"] is not JsonValue rid || !rid.TryGetValue(out int got) || got != id) continue;
 					if (response["error"] is { } error)
 						throw new miIOException($"{method}: {error.ToJsonString()}");
 					return response["result"];
@@ -129,36 +135,38 @@ public sealed class miIO : IDisposable
 		}
 	}
 
-	byte[] BuildPacket(byte[] payload)
+	byte[] BuildPacket(ReadOnlySpan<byte> payload)
 	{
-		byte[] encrypted = AES.EncryptCbc(payload, IV, PaddingMode.PKCS7);
-		byte[] packet = new byte[32 + encrypted.Length];
+		Span<byte> hash = stackalloc byte[16];
+		byte[] packet = new byte[32 + AES.GetCiphertextLengthCbc(payload.Length, PKCS7)];
+		_ = AES.EncryptCbc(payload, IV, packet.AsSpan(32), PKCS7);
 		uint stamp = Stamp + (uint)GetElapsedTime(StampAt).TotalSeconds;
 		WriteUInt16BigEndian(packet, 0x2131);
 		WriteUInt16BigEndian(packet.AsSpan(2), (ushort)packet.Length);
 		WriteUInt32BigEndian(packet.AsSpan(8), DeviceId);
 		WriteUInt32BigEndian(packet.AsSpan(12), stamp);
-		Token.CopyTo(packet, 16);
-		encrypted.CopyTo(packet, 32);
-		HashData(packet).CopyTo(packet, 16); // контрольная сумма считается съ токеномъ на ея мѣстѣ
-		return packet;
+		Token.CopyTo(packet.AsSpan(16));
+		_ = HashData(packet, hash);
+		hash .CopyTo(packet.AsSpan(16));
+		return       packet;
 	}
 
 	JsonObject? ParsePacket(ReadOnlySpan<byte> data)
 	{
-		if (data.Length <= 32 || data[0] != 0x21 || data[1] != 0x31)
-			return null;
-		byte[] check = [.. data];
-		Token.CopyTo(check, 16);
-		if (!HashData(check).AsSpan().SequenceEqual(data.Slice(16, 16)))
-			return null;
+		if (data.Length <= 32 || data[0] != 0x21 || data[1] != 0x31) return null;
+		// пакетъ осушителя — до ~1100 байтъ (отвѣтъ не длиннѣе ~1024): буферы на стекѣ; чужой огромный — въ кучѣ
+		Span<byte>   hash = stackalloc byte[16];
+		Span<byte>   check = data.Length > 2048 ? new byte[data.Length]
+		/**/                             : stackalloc byte[data.Length];
+		data .CopyTo(check);
+		Token.CopyTo(check[16..]); // контрольная сумма считается съ токеномъ на ея мѣстѣ
+		_ = HashData(check, hash);
+		if (!data[16..32].SequenceEqual(hash)) return null;
 		try
 		{
-			ReadOnlySpan<byte> plain = AES.DecryptCbc(data[32..], IV, PaddingMode.PKCS7);
-			int length = plain.Length;
-			while (length > 0 && plain[length - 1] == 0)
-				length--;
-			return JsonNode.Parse(plain[..length]) as JsonObject;
+			Span<byte> plain = check[..^32]; // тотъ же буферъ: шифротекстъ уже провѣренъ, копія больше не нужна
+			int length = AES.DecryptCbc(data[32..], IV, plain, PKCS7);
+			return JsonNode.Parse(plain[..length].TrimEnd((byte)0)) as JsonObject;
 		}
 		catch (Exception e) when (e is CryptographicException or JsonException)
 		{

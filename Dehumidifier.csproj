@@ -38,7 +38,7 @@
 		<PropertyGroup>
 			<VersionResource>$(IntermediateOutputPath)Version.res</VersionResource>
 		</PropertyGroup>
-		<Exec Command="pwsh -NoProfile -ExecutionPolicy Bypass -File &quot;$(MSBuildProjectDirectory)\Properties\VersionResource.ps1&quot; -Out &quot;$(VersionResource)&quot; -Csv &quot;$(MSBuildProjectDirectory)\store\описанія.csv&quot; -Icon &quot;$(MSBuildProjectDirectory)\$(ApplicationIcon)&quot; -Manifest &quot;$(MSBuildProjectDirectory)\Properties\app.manifest&quot; -FileVersion &quot;$(FileVersion)&quot; -InformationalVersion &quot;$(InformationalVersion)&quot; -Copyright &quot;$(Copyright)&quot;" />
+		<Exec Command="pwsh -NoProfile -ExecutionPolicy Bypass -File &quot;$(MSBuildProjectDirectory)\Properties\VersionResource.ps1&quot; -Out &quot;$(VersionResource)&quot; -Csv &quot;$(MSBuildProjectDirectory)\store\upload\описанія.csv&quot; -Icon &quot;$(MSBuildProjectDirectory)\$(ApplicationIcon)&quot; -Manifest &quot;$(MSBuildProjectDirectory)\Properties\app.manifest&quot; -FileVersion &quot;$(FileVersion)&quot; -InformationalVersion &quot;$(InformationalVersion)&quot; -Copyright &quot;$(Copyright)&quot;" />
 		<PropertyGroup>
 			<!-- значокъ и манифестъ уже въ .res; компиляторъ не принимаетъ ихъ вмѣстѣ съ Win32Resource -->
 			<Win32Resource>$(VersionResource)</Win32Resource>

@@ -1,21 +1,30 @@
 ﻿#Requires -Version 7
 <#
 .SYNOPSIS
-    Снимки окна для Microsoft Store на каждомъ языкѣ карточки: store\screenshots\main-<языкъ>-1920x1080.png.
+	Снимки окна для Microsoft Store на каждомъ языкѣ карточки: store\upload\main-<языкъ>-1920x1080.png.
 
 .DESCRIPTION
-    Форма запускается въ этомъ процессѣ съ нужной культурой и подключается къ осушителю
-    по адресу и токену изъ свѣжайшаго user.config оконной программы. Заголовокъ и подзаголовокъ
-    слѣва — Title и ShortDescription изъ store\описанія.csv. Нужна сборка Release.
+	Карточка — папка store\upload: описанія.csv и снимки, больше ничего, какъ требуетъ
+	Partner Center → Import listings → Import folder (одинъ CSV и картинки).
+	Въ DesktopScreenshot1 каждаго языка — upload/main-<языкъ>-1920x1080.png: путь отъ имени папки.
+
+	Форма запускается въ этомъ процессѣ съ нужной культурой и подключается къ осушителю
+	по адресу и токену изъ свѣжайшаго user.config оконной программы. Заголовокъ и подзаголовокъ
+	слѣва — Title и ShortDescription изъ описанія.csv. Нужна сборка Release.
 
 .EXAMPLE
-    pwsh -STA -File store\screenshots.ps1
+	pwsh -STA -File store\screenshots.ps1
 
 .EXAMPLE
-    pwsh -STA -Command "& store\screenshots.ps1 -Langs ru, en"
+	pwsh -STA -Command "& store\screenshots.ps1 -Langs ru, en"
 #>
-param([string] $Root = (Split-Path $PSScriptRoot), [string[]] $Langs = @('ru', 'sr-cyrl', 'bg', 'mk', 'sk', 'sl', 'hr', 'cs', 'pl', 'en'))
+param([string[]] $Langs) # по умолчанію — всѣ языки описанія.csv
 $ErrorActionPreference = 'Stop'
+$root    = Split-Path $PSScriptRoot
+$listing = Join-Path $PSScriptRoot 'upload'
+$csvPath = Join-Path $listing 'описанія.csv'
+if (-not $Langs) { $Langs = ((Get-Content $csvPath -TotalCount 1 -Encoding utf8) -split ',') | Select-Object -Skip 4 }
+if ([Threading.Thread]::CurrentThread.GetApartmentState() -ne 'STA') { throw 'Снимки — только въ pwsh -STA.' }
 Add-Type -AssemblyName System.Windows.Forms, System.Drawing
 Add-Type @'
 using System; using System.Runtime.InteropServices;
@@ -24,7 +33,7 @@ public static class Dwm { public struct RECT { public int L, T, R, B; }
  [DllImport("user32.dll")] public static extern bool GetWindowRect(IntPtr h, out RECT r);
  [DllImport("dwmapi.dll")] public static extern int DwmGetWindowAttribute(IntPtr h, int a, out RECT r, int size); }
 '@
-$asm = [Reflection.Assembly]::LoadFrom("$Root\bin\Release\net10.0-windows\win-x64\Dehumidifier.dll")
+$asm = [Reflection.Assembly]::LoadFrom("$root\bin\Release\net10.0-windows\win-x64\Dehumidifier.dll")
 [Windows.Forms.Application]::SetHighDpiMode('SystemAware') | Out-Null
 [Windows.Forms.Application]::EnableVisualStyles()
 
@@ -36,9 +45,8 @@ $st = $asm.GetTypes() | Where-Object Name -eq 'Settings' | Select-Object -First 
 $settings = $st.GetProperty('Default').GetValue($null)
 $set = { param($n, $v) $st.GetProperty($n).SetValue($settings, $v) }
 
-$csv = Import-Csv "$Root\store\описанія.csv"
+$csv = Import-Csv $csvPath
 $row = { param($f) $csv | Where-Object Field -eq $f }
-$out = New-Item -ItemType Directory -Force "$Root\store\screenshots"
 
 foreach ($lang in $Langs) {
 	$culture = [Globalization.CultureInfo]::new(($lang -eq 'sr-cyrl') ? 'sr-Cyrl-RS' : $lang)
@@ -77,7 +85,7 @@ foreach ($lang in $Langs) {
 	$ty = [int](($H - $th - 30 - $subh) / 2)
 	$g.DrawString($title, $titleFont, $ink, [Drawing.RectangleF]::new(120, $ty, $tw, $th + 10))
 	$g.DrawString($sub, $subFont, $gray, [Drawing.RectangleF]::new(124, $ty + $th + 30, $tw, $subh + 10))
-	$file = Join-Path $out "main-$lang-1920x1080.png"
+	$file = Join-Path $listing "main-$lang-1920x1080.png"
 	$canvas.Save($file, [Drawing.Imaging.ImageFormat]::Png)
 	"$lang → $file"
 }

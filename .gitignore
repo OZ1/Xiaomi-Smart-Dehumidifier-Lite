@@ -10,3 +10,4 @@ obj/
 
 # собранные пакеты для Store
 store/out/
+store/upload/main-*-1920x1080.png

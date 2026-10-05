@@ -6,6 +6,8 @@
 # Версія exe берётся изъ мѣтки безъ «v»; безъ мѣтки — 0.0.0-ci.<номеръ прогона>.
 # По мѣткѣ и при ручномъ запускѣ собирается ещё пакетъ для Microsoft Store (store/pack.ps1) —
 # артефактъ Dehumidifier_<версія>.msixupload для Partner Center; версія — изъ мѣтки, дополненная нулями до четырёхъ чиселъ.
+# Карточка для Import listings → Import folder — папка store/upload въ репозиторіи; снимки въ ней
+# (store/screenshots.ps1) — только у себя: нужны осушитель въ сѣти и окно.
 
 name: Сборка и выпускъ
 
@@ -98,13 +100,17 @@ jobs:
       run: |
         prev=$(git describe --tags --abbrev=0 "$TAG^" 2>/dev/null || true)
         {
-          echo "## Что измѣнилось${prev:+ съ $prev}"
+          echo "<details>" # сводка свёрнута; пустая строка послѣ summary — чтобы внутри работалъ Markdown
+          echo "<summary>Что измѣнилось${prev:+ съ $prev}</summary>"
           for c in $(git rev-list --no-merges "${prev:+$prev..}$TAG"); do
             echo
             git log -1 --format='- **%ad** %s' --date=format:%d.%m.%Y "$c"
             body=$(git log -1 --format=%b "$c" | grep -v -i '^co-authored-by:' | sed -e :a -e '/^\n*$/{$d;N;ba' -e '}')
             if [ -n "$body" ]; then printf '\n%s\n' "$body" | sed 's/^/  /;s/^ *$//'; fi
           done
+          echo
+          echo "</details>"
+          echo
         } > notes.md
 
     - name: Create GitHub release

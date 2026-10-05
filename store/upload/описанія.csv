@@ -170,7 +170,77 @@ Command line: Dehumidifier.exe status, Dehumidifier.exe mode smart humidity 45 �
 The dehumidifier’s IP address and token (32 hexadecimal digits) are required. You can obtain the token from your Mi Home account using the third-party utility Xiaomi-cloud-tokens-extractor.
 
 This program is unofficial and is not affiliated with Xiaomi. Xiaomi is a trademark of Xiaomi Inc."
-ReleaseNotes,3,Текст,,Первый выпускъ.,Прво издање.,Първо издание.,Прво издание.,Prvé vydanie.,Prva izdaja.,Prvo izdanje.,První vydání.,Pierwsze wydanie.,First release.
+ReleaseNotes,3,Текст,,"Что новаго:
+• Трей: свёрнутое окно прячется въ область уведомленій. Значокъ — капля цвѣтомъ влажности, подсказка — влажность и ея оцѣнка словами. Меню значка: питаніе; режимъ съ цѣлевой влажностью 40–70 % или любой; подсвѣтка и яркость, звукъ, блокировка кнопокъ, просушка; сбросъ фильтра. Въ открытомъ меню работаютъ клавиши-цифры.
+• Цвѣтъ влажности у границъ нормы мѣняется плавно; цвѣта мягче, число читается лучше.
+• Таймеръ: набранное время выключенія больше не теряется при щелчкѣ по «Таймеру»; таймеръ, запущенный кнопкой или изъ Mi Home, показывается вѣрно.
+• Адресъ не заданъ — поле предлагаетъ начало адреса вашей сѣти.
+• Командная строка: toggle, next, sound, lock, dry-after-off, timer, reset-filter, чтеніе и запись любого свойства по siid.piid; status показываетъ больше.
+• Отвѣтъ быстрѣе: команды не ждутъ другъ друга, потерянная не задерживаетъ остальныя.
+• Свойства файла программы — на языкѣ Windows.","Шта је ново:
+• Област обавештења: умањени прозор се скрива у област обавештења. Иконица је кап у боји влажности, а опис алатке приказује влажност и њену оцену речима. Мени иконице: напајање; режим са циљном влажношћу 40–70 % или било којом; позадинско осветљење и јачина, звук, блокада дугмади, сушење након искључивања; ресетовање филтера. У отвореном менију раде тастери са бројевима.
+• Боја влажности се на границама нормалног опсега мења глатко; боје су блаже, а број је читљивији.
+• Тајмер: унето време искључивања се више не губи при клику на „Тајмер“; тајмер покренут дугметом или из Mi Home приказује се исправно.
+• Ако адреса није задата, поље предлаже почетак адресе ваше мреже.
+• Командна линија: toggle, next, sound, lock, dry-after-off, timer, reset-filter, читање и уписивање било ког својства по siid.piid; status приказује више.
+• Бржи одзив: команде не чекају једна другу, изгубљена команда не задржава остале.
+• Својства датотеке програма — на језику Windows-а.","Какво ново:
+• Област за уведомяване: минимизираният прозорец се скрива в областта за уведомяване. Иконата е капка в цвета на влажността, а подсказката показва влажността и оценката ѝ с думи. Меню на иконата: захранване; режим с целева влажност 40–70 % или произволна; подсветка и яркост, звук, заключване на бутоните, сушене след изключване; нулиране на филтъра. В отвореното меню работят цифровите клавиши.
+• Цветът на влажността се променя плавно около границите на нормалния диапазон; цветовете са по-меки, а числото се чете по-лесно.
+• Таймер: въведеният час на изключване вече не се губи при щракване върху „Таймер“; таймер, пуснат с бутона или от Mi Home, се показва правилно.
+• Ако адресът не е зададен, полето предлага началото на адреса на вашата мрежа.
+• Команден ред: toggle, next, sound, lock, dry-after-off, timer, reset-filter, четене и запис на всяко свойство по siid.piid; status показва повече.
+• По-бърз отговор: командите не се чакат една друга, изгубена команда не задържа останалите.
+• Свойствата на файла на програмата — на езика на Windows.","Што е ново:
+• Област за известувања: минимизираниот прозорец се крие во областа за известувања. Иконата е капка во бојата на влажноста, а описот ја прикажува влажноста и нејзината оценка со зборови. Мени на иконата: напојување; режим со целна влажност 40–70 % или која било; осветлување и осветленост, звук, заклучување на копчињата, сушење по исклучувањето; ресетирање на филтерот. Во отвореното мени работат копчињата со бројки.
+• Бојата на влажноста се менува мазно околу границите на нормалниот опсег; боите се поблаги, а бројот е почитлив.
+• Тајмер: внесеното време на исклучување повеќе не се губи при клик на „Тајмер“; тајмер вклучен со копчето или од Mi Home се прикажува точно.
+• Ако адресата не е зададена, полето го предлага почетокот на адресата на вашата мрежа.
+• Командна линија: toggle, next, sound, lock, dry-after-off, timer, reset-filter, читање и запишување на кое било својство по siid.piid; status прикажува повеќе.
+• Побрз одзив: командите не се чекаат една со друга, изгубена команда не ги задржува останатите.
+• Својствата на датотеката на програмата — на јазикот на Windows.","Čo je nové:
+• Oblasť oznámení: minimalizované okno sa skryje do oblasti oznámení. Ikona je kvapka vo farbe vlhkosti, popis zobrazuje vlhkosť a jej slovné hodnotenie. Ponuka ikony: napájanie; režim s cieľovou vlhkosťou 40–70 % alebo ľubovoľnou; podsvietenie a jas, zvuk, uzamknutie tlačidiel, sušenie po vypnutí; vynulovanie filtra. V otvorenej ponuke fungujú číselné klávesy.
+• Farba vlhkosti sa pri hraniciach normálneho rozsahu mení plynulo; farby sú jemnejšie a číslo je čitateľnejšie.
+• Časovač: zadaný čas vypnutia sa už nestratí po kliknutí na „Časovač“; časovač spustený tlačidlom alebo z Mi Home sa zobrazuje správne.
+• Ak adresa nie je zadaná, pole ponúkne začiatok adresy vašej siete.
+• Príkazový riadok: toggle, next, sound, lock, dry-after-off, timer, reset-filter, čítanie a zápis ľubovoľnej vlastnosti podľa siid.piid; status zobrazuje viac.
+• Rýchlejšia odozva: príkazy na seba nečakajú, stratený príkaz nezdržiava ostatné.
+• Vlastnosti súboru programu — v jazyku Windows.","Kaj je novega:
+• Območje za obvestila: pomanjšano okno se skrije v območje za obvestila. Ikona je kapljica v barvi vlažnosti, opis orodja prikaže vlažnost in njeno besedno oceno. Meni ikone: napajanje; način delovanja s ciljno vlažnostjo 40–70 % ali poljubno; osvetlitev in svetlost, zvok, zaklepanje gumbov, sušenje po izklopu; ponastavitev filtra. V odprtem meniju delujejo številske tipke.
+• Barva vlažnosti se ob mejah običajnega območja spreminja zvezno; barve so mehkejše, število pa bolj berljivo.
+• Časovnik: vnesen čas izklopa se ob kliku na »Časovnik« ne izgubi več; časovnik, zagnan z gumbom ali iz Mi Home, je prikazan pravilno.
+• Če naslov ni nastavljen, polje ponudi začetek naslova vašega omrežja.
+• Ukazna vrstica: toggle, next, sound, lock, dry-after-off, timer, reset-filter, branje in pisanje poljubne lastnosti po siid.piid; status prikaže več.
+• Hitrejši odziv: ukazi ne čakajo drug na drugega, izgubljen ukaz ne zadržuje ostalih.
+• Lastnosti datoteke programa — v jeziku sistema Windows.","Što je novo:
+• Područje obavijesti: minimizirani prozor skriva se u područje obavijesti. Ikona je kap u boji vlažnosti, a opis prikazuje vlažnost i njezinu ocjenu riječima. Izbornik ikone: napajanje; način rada s ciljanom vlažnošću 40–70 % ili bilo kojom; osvjetljenje tipki i svjetlina, zvuk, zaključavanje tipki, sušenje nakon isključivanja; poništavanje filtra. U otvorenom izborniku rade brojčane tipke.
+• Boja vlažnosti glatko se mijenja oko granica normalnog raspona; boje su blaže, a broj čitljiviji.
+• Tajmer: uneseno vrijeme isključivanja više se ne gubi pri kliku na „Tajmer”; tajmer pokrenut tipkom ili iz Mi Home prikazuje se ispravno.
+• Ako adresa nije zadana, polje predlaže početak adrese vaše mreže.
+• Naredbeni redak: toggle, next, sound, lock, dry-after-off, timer, reset-filter, čitanje i pisanje bilo kojeg svojstva po siid.piid; status prikazuje više.
+• Brži odziv: naredbe ne čekaju jedna drugu, izgubljena naredba ne zadržava ostale.
+• Svojstva datoteke programa — na jeziku sustava Windows.","Co je nového:
+• Oznamovací oblast: minimalizované okno se skryje do oznamovací oblasti. Ikona je kapka v barvě vlhkosti, popisek ukazuje vlhkost a její slovní hodnocení. Nabídka ikony: napájení; režim s cílovou vlhkostí 40–70 % nebo libovolnou; podsvícení a jas, zvuk, uzamčení tlačítek, sušení po vypnutí; reset filtru. V otevřené nabídce fungují číselné klávesy.
+• Barva vlhkosti se u hranic normálního rozmezí mění plynule; barvy jsou jemnější a číslo čitelnější.
+• Časovač: zadaný čas vypnutí se už neztratí po kliknutí na „Časovač“; časovač spuštěný tlačítkem nebo z Mi Home se zobrazuje správně.
+• Není-li adresa zadána, pole nabídne začátek adresy vaší sítě.
+• Příkazový řádek: toggle, next, sound, lock, dry-after-off, timer, reset-filter, čtení a zápis libovolné vlastnosti podle siid.piid; status ukazuje víc.
+• Rychlejší odezva: příkazy na sebe nečekají, ztracený příkaz nezdržuje ostatní.
+• Vlastnosti souboru programu — v jazyce Windows.","Co nowego:
+• Obszar powiadomień: zminimalizowane okno chowa się do obszaru powiadomień. Ikona to kropla w kolorze wilgotności, a podpowiedź pokazuje wilgotność i jej ocenę słowami. Menu ikony: zasilanie; tryb z docelową wilgotnością 40–70 % lub dowolną; podświetlenie i jasność, dźwięk, blokada przycisków, osuszanie po wyłączeniu; reset filtra. W otwartym menu działają klawisze cyfr.
+• Kolor wilgotności zmienia się płynnie przy granicach prawidłowego zakresu; kolory są łagodniejsze, a liczba czytelniejsza.
+• Timer: wpisana godzina wyłączenia nie ginie już po kliknięciu „Timer”; timer uruchomiony przyciskiem lub z Mi Home jest pokazywany poprawnie.
+• Jeśli adres nie jest podany, pole podpowiada początek adresu Twojej sieci.
+• Wiersz poleceń: toggle, next, sound, lock, dry-after-off, timer, reset-filter, odczyt i zapis dowolnej właściwości po siid.piid; status pokazuje więcej.
+• Szybsza reakcja: polecenia nie czekają na siebie, zgubione polecenie nie wstrzymuje pozostałych.
+• Właściwości pliku programu — w języku systemu Windows.","What’s new:
+• Notification area: the minimized window hides in the notification area. The icon is a drop in the humidity color; its tooltip shows the humidity and how it rates. The icon menu: power; mode with target humidity 40–70% or any value; backlight and brightness, sound, button lock, drying after shutdown; filter reset. Number keys work in the open menu.
+• The humidity color changes smoothly near the edges of the normal range; colors are softer and the number is easier to read.
+• Timer: the typed shutdown time is no longer lost when you click “Timer”; a timer started with the button or from Mi Home is shown correctly.
+• If no address is set, the field suggests the start of your network’s address.
+• Command line: toggle, next, sound, lock, dry-after-off, timer, reset-filter, reading and writing any property by siid.piid; status shows more.
+• Faster response: commands no longer wait for each other, and a lost command doesn’t hold up the rest.
+• The program file’s properties are in the Windows language."
 Title,4,Текст,,Пультъ для осушителя Xiaomi,Даљински за Xiaomi одвлаживач,Дистанционно управление за обезвлажнител Xiaomi,Далечински управувач за одвлажнувач Xiaomi,Diaľkové ovládanie pre odvlhčovač Xiaomi,Daljinski za razvlaževalnik Xiaomi,Daljinski za Xiaomi odvlaživač,Dálkové ovládání pro odvlhčovač Xiaomi,Pilot do osuszacza Xiaomi,Remote Control for Xiaomi Dehumidifier
 ShortTitle,5,Текст,,,,,,,,,,,
 SortTitle,6,Текст,,,,,,,,,,,
@@ -179,7 +249,7 @@ ShortDescription,8,Текст,,Неоффиціальный пультъ для 
 DevStudio,9,Текст,,Ољег Зонов,Ољег Зонов,Олег Зонов,Олег Зонов,Oľeg Zonov,Oljeg Zonov,Oljeg Zonov,Oleg Zonov,Oleg Zonow,Oleg Zonov
 CopyrightTrademarkInformation,12,Текст,,Программа не связана съ Xiaomi и не одобрена ею. Xiaomi — товарный знакъ Xiaomi Inc.,Програм није повезан са компанијом Xiaomi нити га је она одобрила. Xiaomi је жиг компаније Xiaomi Inc.,Програмата не е свързана с Xiaomi и не е одобрена от нея. Xiaomi е търговска марка на Xiaomi Inc.,Програмата не е поврзана со Xiaomi и не е одобрена од неа. Xiaomi е трговска марка на Xiaomi Inc.,Program nie je prepojený so spoločnosťou Xiaomi a nebol ňou schválený. Xiaomi je ochranná známka spoločnosti Xiaomi Inc.,Program ni povezan s družbo Xiaomi in ga ta ni odobrila. Xiaomi je blagovna znamka družbe Xiaomi Inc.,Program nije povezan s tvrtkom Xiaomi niti ga je ona odobrila. Xiaomi je zaštitni znak tvrtke Xiaomi Inc.,Program není spojen se společností Xiaomi a nebyl jí schválen. Xiaomi je ochranná známka společnosti Xiaomi Inc.,Program nie jest powiązany z firmą Xiaomi ani nie został przez nią zatwierdzony. Xiaomi jest znakiem towarowym firmy Xiaomi Inc.,The program is not affiliated with Xiaomi and has not been approved by Xiaomi. Xiaomi is a trademark of Xiaomi Inc.
 AdditionalLicenseTerms,13,Текст,,,,,,,,,,,
-DesktopScreenshot1,100,Относительный путь (или URL-адрес файла в Центре партнеров),,https://developer.microsoft.com/en-us/dashboard/apps/9ND0GCJ0FB0X/submissions/1152921505702035357/listings/1152922700028012371/listingassets/3023646772210801499,https://developer.microsoft.com/en-us/dashboard/apps/9ND0GCJ0FB0X/submissions/1152921505702035357/listings/1152922700028012373/listingassets/3060342948187000107,https://developer.microsoft.com/en-us/dashboard/apps/9ND0GCJ0FB0X/submissions/1152921505702035357/listings/1152922700028012375/listingassets/3030391720201806084,https://developer.microsoft.com/en-us/dashboard/apps/9ND0GCJ0FB0X/submissions/1152921505702035357/listings/1152922700028012377/listingassets/3006752637087951300,https://developer.microsoft.com/en-us/dashboard/apps/9ND0GCJ0FB0X/submissions/1152921505702035357/listings/1152922700028012379/listingassets/3064329700829610915,https://developer.microsoft.com/en-us/dashboard/apps/9ND0GCJ0FB0X/submissions/1152921505702035357/listings/1152922700028012381/listingassets/3064415130327628607,https://developer.microsoft.com/en-us/dashboard/apps/9ND0GCJ0FB0X/submissions/1152921505702035357/listings/1152922700028012383/listingassets/3062439695621427946,https://developer.microsoft.com/en-us/dashboard/apps/9ND0GCJ0FB0X/submissions/1152921505702035357/listings/1152922700028012385/listingassets/3013422981275120340,https://developer.microsoft.com/en-us/dashboard/apps/9ND0GCJ0FB0X/submissions/1152921505702035357/listings/1152922700028012387/listingassets/3021775828766841589,https://developer.microsoft.com/en-us/dashboard/apps/9ND0GCJ0FB0X/submissions/1152921505702035357/listings/1152922700028013229/listingassets/3069305065152780676
+DesktopScreenshot1,100,Относительный путь (или URL-адрес файла в Центре партнеров),,upload/main-ru-1920x1080.png,upload/main-sr-cyrl-1920x1080.png,upload/main-bg-1920x1080.png,upload/main-mk-1920x1080.png,upload/main-sk-1920x1080.png,upload/main-sl-1920x1080.png,upload/main-hr-1920x1080.png,upload/main-cs-1920x1080.png,upload/main-pl-1920x1080.png,upload/main-en-1920x1080.png
 DesktopScreenshot2,101,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
 DesktopScreenshot3,102,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
 DesktopScreenshot4,103,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,

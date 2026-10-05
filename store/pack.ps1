@@ -1,15 +1,16 @@
 ﻿#Requires -Version 7
 <#
 .SYNOPSIS
-    Собираетъ пакетъ для Microsoft Store: самодостаточныя сборки въ MSIX, затѣмъ .msixbundle и .msixupload.
+	Собираетъ пакетъ для Microsoft Store: самодостаточныя сборки въ MSIX, затѣмъ .msixbundle и .msixupload.
 
 .DESCRIPTION
-    Значенія Identity — изъ Partner Center → Управленіе продуктомъ → Идентификація продукта.
-    Store подписываетъ пакетъ самъ, поэтому здѣсь онъ не подписывается.
-    Нуженъ Windows SDK (makeappx.exe). Результатъ — въ store\out\.
+	Значенія Identity — изъ Partner Center → Управленіе продуктомъ → Идентификація продукта.
+	Store подписываетъ пакетъ самъ, поэтому здѣсь онъ не подписывается.
+	Нуженъ Windows SDK (makeappx.exe). Результатъ — въ store\out\.
+	Названія и краткія описанія — изъ карточки store\upload\описанія.csv; снимки — store\screenshots.ps1.
 
 .EXAMPLE
-    pwsh -File store\pack.ps1 -Name 12345OZone.Pult -Publisher "CN=…" -PublisherDisplayName OZone -Version 1.0.0.0
+	pwsh -File store\pack.ps1 -Name 12345OZone.Pult -Publisher "CN=…" -PublisherDisplayName OZone -Version 1.0.0.0
 #>
 param(
 	[string]   $Name                 = 'F1E3C9D5.Xiaomi',
@@ -20,8 +21,9 @@ param(
 )
 
 $ErrorActionPreference = 'Stop'
-$root = Split-Path $PSScriptRoot
-$out  = Join-Path $PSScriptRoot 'out'
+$root    = Split-Path $PSScriptRoot
+$csvPath = Join-Path $PSScriptRoot 'upload\описанія.csv'
+$out     = Join-Path $PSScriptRoot 'out'
 
 if ($Version -notmatch '^\d+\.\d+\.\d+\.0$') { throw 'Версія для Store — четыре числа, послѣднее 0: напримѣръ 1.0.0.0.' }
 $makeappx = Get-ChildItem 'C:\Program Files (x86)\Windows Kits\10\bin' -Directory |
@@ -56,7 +58,7 @@ foreach ($n in 16, 24, 32, 48, 256) { # панель задачъ и меню «
 # Имена должны совпадать съ зарезервированными въ Partner Center.
 $x = { param($s) [Security.SecurityElement]::Escape($s) }
 $strings = New-Item -ItemType Directory (Join-Path $out 'pri\Strings')
-$csv = Import-Csv (Join-Path $PSScriptRoot 'описанія.csv')
+$csv = Import-Csv $csvPath
 $title = $csv | Where-Object Field -eq 'Title'; $short = $csv | Where-Object Field -eq 'ShortDescription'
 $languages = ([xml](Get-Content (Join-Path $PSScriptRoot 'AppxManifest.xml') -Raw)).Package.Resources.Resource.Language
 foreach ($lang in $languages) {
@@ -66,10 +68,10 @@ foreach ($lang in $languages) {
 	[IO.File]::WriteAllText((Join-Path $dir 'Resources.resw'), @"
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-	<resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
-	<resheader name="version"><value>2.0</value></resheader>
-	<data name="AppDisplayName" xml:space="preserve"><value>$(& $x $appTitle)</value></data>
-	<data name="AppDescription" xml:space="preserve"><value>$(& $x $desc)</value></data>
+<resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+<resheader name="version"><value>2.0</value></resheader>
+<data name="AppDisplayName" xml:space="preserve"><value>$(& $x $appTitle)</value></data>
+<data name="AppDescription" xml:space="preserve"><value>$(& $x $desc)</value></data>
 </root>
 "@, [Text.UTF8Encoding]::new($false))
 }

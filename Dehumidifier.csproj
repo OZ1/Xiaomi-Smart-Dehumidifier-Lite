@@ -58,6 +58,11 @@
 		<CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
 	</PropertyGroup>
 
+	<!-- приспособы — отдѣльныя программы для провѣрки (запускъ — dotnet run съ ключомъ file), въ сборку пульта не входятъ -->
+	<ItemGroup>
+		<Compile Remove="приспособы\**" />
+	</ItemGroup>
+
 	<ItemGroup>
 		<Compile Update="Properties\Settings.Designer.cs">
 			<DesignTimeSharedInput>True</DesignTimeSharedInput>

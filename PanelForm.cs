@@ -199,12 +199,17 @@ public sealed class PanelForm : Form
 	/// у края — что это край рамки: тянется за него, оставаясь квадратнымъ. Правый щелчокъ по «заголовку» — своё меню, а не системное.</summary>
 	protected override void WndProc(ref Message m)
 	{
-		const int WM_NCHITTEST = 0x84, WM_CONTEXTMENU = 0x7B, WM_SIZING = 0x214, HTCLIENT = 1, HTCAPTION = 2;
+		const int WM_NCHITTEST = 0x84, WM_CONTEXTMENU = 0x7B, WM_NCRBUTTONUP = 0xA5, WM_SIZING = 0x214, HTCLIENT = 1, HTCAPTION = 2;
 		switch (m.Msg)
 		{
+			case WM_CONTEXTMENU when menu.Visible: // уже показано по правому щелчку
+				return;
 			case WM_CONTEXTMENU:
 				Point at = m.LParam == -1 ? PointToScreen(new(Width / 2, Height / 2)) : ScreenPoint(m.LParam);
 				menu.Show(at);
+				return;
+			case WM_NCRBUTTONUP: // правый щелчокъ по «заголовку» или краю: самъ Windows WM_CONTEXTMENU слоистому окну тутъ не шлётъ
+				menu.Show(ScreenPoint(m.LParam));
 				return;
 			case WM_SIZING:
 				KeepSquare((int)m.WParam, m.LParam);
@@ -283,6 +288,11 @@ public sealed class PanelForm : Form
 	protected override void OnMouseUp(MouseEventArgs e)
 	{
 		base.OnMouseUp(e);
+		if (e.Button == MouseButtons.Right) // и по кнопкѣ — то же меню
+		{
+			menu.Show(this, e.Location);
+			return;
+		}
 		PanelButton? pressed = Pressed;
 		Pressed = null;
 		if (e.Button == MouseButtons.Left && pressed is { Enabled: true } && pressed == ButtonAt(e.Location))

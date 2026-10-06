@@ -85,10 +85,12 @@ public partial class MainForm : Form
 
 	public MainForm()
 	{
-		InitializeComponent();//⏻\uE7E8
+		InitializeComponent();//⏻
 
 		ValueFont = labelFault.Font;
 		QuietFont = new(ValueFont, Regular);
+
+		toolStripPanel.ToolTipText = toolStripPanel.AccessibleName = SmallWindow;
 
 		if (Settings.Default.Location.X > -1000000)
 		{
@@ -112,13 +114,30 @@ public partial class MainForm : Form
 		ShowTray();
 	}
 
-	/// <summary>Въ OnLoad — подключеніе: съ await, а исключенія его должны прійти въ циклъ сообщеній.</summary>
-	protected override void OnLoad(EventArgs e)
+	protected override async void OnLoad(EventArgs e)
 	{
 		base.OnLoad(e);
 		if (DesignMode) return;
+		await StartAsync();
+	}
+
+	protected override void OnShown(EventArgs e)
+	{
+		base.OnShown(e);
+		WasShown = true;
+	}
+
+	bool Started;
+	bool WasShown; // окно показывали — его положеніе есть что сохранять (при запускѣ съ панелью его могутъ и не открыть)
+
+	/// <summary>Подключеніе съ await, исключенія котораго должны прійти въ циклъ сообщеній, —
+	/// одинъ разъ: изъ OnLoad или изъ панели, если окно не показываютъ.</summary>
+	internal async Task StartAsync()
+	{
+		if (Started) return;
+		Started = true;
 		if (textBoxToken.Text.Length > 0)
-			Connect_Click(buttonConnect, e);
+			await ConnectAsync();
 	}
 
 	protected override void OnFormClosing(FormClosingEventArgs e)
@@ -127,7 +146,7 @@ public partial class MainForm : Form
 		// и не сохраняютъ положеніе — закрываемъ ихъ сами
 		Charts?.Close();
 		Calculator?.Close();
-		if (e.CloseReason == UserClosing)
+		if (WasShown) // и при выходѣ изъ панели (ApplicationExitCall), не только крестикомъ
 		{
 			Settings.Default.Location = WindowState == FormWindowState.Normal ? Location : RestoreBounds.Location;
 			Settings.Default.Save();
@@ -162,7 +181,9 @@ public partial class MainForm : Form
 
 	// ───── связь съ устройствомъ ─────
 
-	async void Connect_Click(object? sender, EventArgs e)
+	async void Connect_Click(object? sender, EventArgs e) => await ConnectAsync();
+
+	async Task ConnectAsync()
 	{
 		// всегда изъ полей: въ нихъ уже то, что дали командная строка или настройки, а послѣ неудачи — исправленное человѣкомъ
 		if (Address(textBoxIP.Text.Trim()) is not { } ip)
@@ -210,6 +231,7 @@ public partial class MainForm : Form
 			textBoxIP.Focus();
 			Device?.Dispose();
 			Device = null;
+			SetLastState(null);
 		}
 	}
 
@@ -229,10 +251,73 @@ public partial class MainForm : Form
 		LastReading = null;
 		labelWater.Text = labelEta.Text = "—";
 		SetConnected(false);
+		SetLastState(null);
 		SetStatus(Disconnected);
 		SetUpdated("");
 		textBoxIP.Focus();
 	}
+
+	// ───── для панели: состояніе, команды, переключеніе оконъ ─────
+
+	/// <summary>Послѣднее состояніе изъ опроса; null — связи нѣтъ (не подключены, не вышло, обрывъ).</summary>
+	internal State? LastState { get; private set; }
+
+	/// <summary>Пришло состояніе или связь пропала (null).</summary>
+	internal event Action<State?>? StateChanged;
+
+	void SetLastState(State? state)
+	{
+		LastState = state;
+		StateChanged?.Invoke(state);
+	}
+
+	/// <summary>Послѣдняя извѣстная цѣль режима (осушитель сообщаетъ только текущую).</summary>
+	internal byte? KnownTarget(byte mode) => mode < ModeTargets.Length ? ModeTargets[mode] : null;
+
+	/// <summary>Что сейчасъ въ строкѣ состоянія — подсказкою къ значку «нѣтъ связи» на панели.</summary>
+	internal string StatusText => toolStripStatusLabel.Text ?? "";
+
+	internal Task PowerAsync(bool on) => RunAsync(d => d.SetAsync((nameof(State.dehumidifier), on)));
+
+	/// <summary>Режимъ; выключенъ — сначала включить: выключенный режимъ не принимаетъ (−4002).</summary>
+	internal Task ModeAsync(byte mode) => RunAsync(async d =>
+	{
+		if (LastState?.dehumidifier != true) await d.SetAsync((nameof(State.dehumidifier), true));
+		await d.SetAsync((nameof(State.dehumidifier_mode), mode));
+	});
+
+	internal Task TargetAsync(byte target) => RunAsync(d => d.SetAsync((nameof(State.dehumidifier_target_humidity), target)));
+
+	/// <summary>Подключиться снова — съ адресомъ и токеномъ изъ полей (то есть изъ настроекъ или командной строки).</summary>
+	internal Task ReconnectAsync() => Device is null ? ConnectAsync() : Task.CompletedTask;
+
+	/// <summary>Показать окно (и изъ трея).</summary>
+	internal void ShowWindow() => RestoreFromTray();
+
+	/// <summary>Показать окно: не подключены — съ фокусомъ въ адресѣ; подключены — на кнопкѣ разрыва (рамка подключенія появится, когда отключатся).</summary>
+	internal void ShowConnectionEditor()
+	{
+		ShowWindow();
+		if (Device is null) textBoxIP.Focus();
+		else buttonDisconnect.Focus();
+	}
+
+	/// <summary>Спрятать окно, когда на экранъ выходитъ панель (и значокъ трея — онъ только для свёрнутаго окна).</summary>
+	internal void HideForPanel()
+	{
+		notifyIcon.Visible = false;
+		Hide();
+	}
+
+	/// <summary>Перейти на панель — задаётъ тотъ, кто ведётъ оба окна; null — кнопки въ строкѣ состоянія нѣтъ.</summary>
+	[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+	internal Action? SwitchToPanel
+	{
+		get;
+		set { field = value; toolStripPanel.Visible = value is not null; }
+	}
+
+	void Panel_Click(object? sender, EventArgs e) => SwitchToPanel?.Invoke();
 
 	async Task RunAsync(Func<Dehumidifier, Task> action)
 	{
@@ -271,6 +356,7 @@ public partial class MainForm : Form
 			ApplyState(state);
 			Observe(new(state));
 			groupControls.Enabled = true;
+			SetLastState(state);
 			SetUpdated($"{Now:T}"); // слѣва не трогаемъ: тамъ можетъ быть сообщеніе объ ошибкѣ
 			if (PollFailed)
 			{
@@ -283,6 +369,7 @@ public partial class MainForm : Form
 			SetStatus(ex.Message, error: true);
 			PollFailed = true;
 			LinkLost();
+			SetLastState(null);
 		}
 		catch
 		{

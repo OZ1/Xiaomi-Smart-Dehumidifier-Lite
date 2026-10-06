@@ -1462,5 +1462,59 @@ namespace DehumidifierControl.Properties {
                 return ResourceManager.GetString("ConnectedTo", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Включить или выключить.
+        /// </summary>
+        internal static string PanelPower {
+            get {
+                return ResourceManager.GetString("PanelPower", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Большое окно.
+        /// </summary>
+        internal static string PanelBigWindow {
+            get {
+                return ResourceManager.GetString("PanelBigWindow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Маленькое окно.
+        /// </summary>
+        internal static string SmallWindow {
+            get {
+                return ResourceManager.GetString("SmallWindow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Выходъ.
+        /// </summary>
+        internal static string PanelExit {
+            get {
+                return ResourceManager.GetString("PanelExit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Адресъ и токенъ….
+        /// </summary>
+        internal static string PanelAddress {
+            get {
+                return ResourceManager.GetString("PanelAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Нѣтъ связи.
+        /// </summary>
+        internal static string PanelNoLink {
+            get {
+                return ResourceManager.GetString("PanelNoLink", resourceCulture);
+            }
+        }
     }
 }

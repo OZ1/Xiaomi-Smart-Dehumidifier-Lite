@@ -44,8 +44,16 @@ $assets   = New-Item -ItemType Directory (Join-Path $out 'Assets')
 $icons    = New-Item -ItemType Directory (Join-Path $out 'icons')
 $packages = New-Item -ItemType Directory (Join-Path $out 'packages')
 
-# ───── значки: тѣмъ же рисункомъ, что Dehumidifier.ico ─────
-& (Join-Path $root 'make-icon.ps1') -PreviewDir $icons -Sizes 16, 24, 32, 44, 48, 50, 150, 256
+# ───── значки: store\logo.png, уменьшенный до каждаго размѣра ─────
+Add-Type -AssemblyName System.Drawing
+$logo = [Drawing.Image]::FromFile((Join-Path $PSScriptRoot 'logo.png'))
+foreach ($n in 16, 24, 32, 44, 48, 50, 150, 256) {
+	$bmp = [Drawing.Bitmap]::new($n, $n); $g = [Drawing.Graphics]::FromImage($bmp)
+	$g.InterpolationMode = 'HighQualityBicubic'; $g.PixelOffsetMode = 'HighQuality'; $g.CompositingQuality = 'HighQuality'
+	$g.DrawImage($logo, 0, 0, $n, $n); $g.Dispose()
+	$bmp.Save((Join-Path $icons "icon$n.png"), [Drawing.Imaging.ImageFormat]::Png); $bmp.Dispose()
+}
+$logo.Dispose()
 Copy-Item "$icons\icon44.png"  "$assets\Square44x44Logo.png"
 Copy-Item "$icons\icon150.png" "$assets\Square150x150Logo.png"
 Copy-Item "$icons\icon50.png"  "$assets\StoreLogo.png"

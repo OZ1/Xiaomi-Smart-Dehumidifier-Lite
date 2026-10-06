@@ -166,5 +166,29 @@ namespace DehumidifierControl.Properties {
                 this["CalculatorLocation"] = value;
             }
         }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("-1000000, -1000000")]
+        public global::System.Drawing.Point PanelLocation {
+            get {
+                return ((global::System.Drawing.Point)(this["PanelLocation"]));
+            }
+            set {
+                this["PanelLocation"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool StartupPanel {
+            get {
+                return ((bool)(this["StartupPanel"]));
+            }
+            set {
+                this["StartupPanel"] = value;
+            }
+        }
     }
 }

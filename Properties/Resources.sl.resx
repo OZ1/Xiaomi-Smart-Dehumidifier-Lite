@@ -625,4 +625,22 @@ Izhodna koda: 0 — uspeh, 1 — napaka povezave ali zavrnitev naprave, 2 — ne
   <data name="ConnectedTo" xml:space="preserve">
     <value>Povezano z {0}</value>
   </data>
+  <data name="PanelPower" xml:space="preserve">
+    <value>Vklopi ali izklopi</value>
+  </data>
+  <data name="PanelBigWindow" xml:space="preserve">
+    <value>Veliko okno</value>
+  </data>
+  <data name="SmallWindow" xml:space="preserve">
+    <value>Majhno okno</value>
+  </data>
+  <data name="PanelExit" xml:space="preserve">
+    <value>Izhod</value>
+  </data>
+  <data name="PanelAddress" xml:space="preserve">
+    <value>Naslov in žeton…</value>
+  </data>
+  <data name="PanelNoLink" xml:space="preserve">
+    <value>Ni povezave</value>
+  </data>
 </root>

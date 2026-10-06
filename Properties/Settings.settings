@@ -38,5 +38,11 @@
     <Setting Name="CalculatorLocation" Type="System.Drawing.Point" Scope="User">
       <Value Profile="(Default)">-1000000, -1000000</Value>
     </Setting>
+    <Setting Name="PanelLocation" Type="System.Drawing.Point" Scope="User">
+      <Value Profile="(Default)">-1000000, -1000000</Value>
+    </Setting>
+    <Setting Name="StartupPanel" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

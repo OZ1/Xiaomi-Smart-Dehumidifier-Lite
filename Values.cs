@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System.Globalization;
+using System.Net;
 using System.Net.Sockets;
 using System.Text;
 
@@ -53,6 +54,9 @@ static class Values
 
 	/// <summary>Остатокъ въ шестидесятыхъ: секунды — «мин:сс», минуты — «ч:мм».</summary>
 	public static string Clock(uint value) => $"{value / 60}:{value % 60:00}";
+
+	/// <summary>Съ заглавной буквы — по правиламъ языка интерфейса.</summary>
+	public static string Capital(string text) => text.Length > 0 ? CultureInfo.CurrentCulture.TextInfo.ToUpper(text[0]) + text[1..] : text;
 
 	public static string Temperature(float celsius) => Format(TemperatureFormat, celsius);
 

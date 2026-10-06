@@ -625,4 +625,22 @@ siid.piid е бројот на MIoT својство, како под натпи
   <data name="ConnectedTo" xml:space="preserve">
     <value>Поврзан со {0}</value>
   </data>
+  <data name="PanelPower" xml:space="preserve">
+    <value>Вклучи или исклучи</value>
+  </data>
+  <data name="PanelBigWindow" xml:space="preserve">
+    <value>Голем прозорец</value>
+  </data>
+  <data name="SmallWindow" xml:space="preserve">
+    <value>Мал прозорец</value>
+  </data>
+  <data name="PanelExit" xml:space="preserve">
+    <value>Излез</value>
+  </data>
+  <data name="PanelAddress" xml:space="preserve">
+    <value>Адреса и токен…</value>
+  </data>
+  <data name="PanelNoLink" xml:space="preserve">
+    <value>Нема врска</value>
+  </data>
 </root>

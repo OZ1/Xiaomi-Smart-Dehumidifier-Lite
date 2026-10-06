@@ -42,7 +42,50 @@ static class App
 			return CLI.RunAsync(args, skip).GetAwaiter().GetResult();
 
 		ApplicationConfiguration.Initialize();
-		Application.Run(new MainForm());
+		Application.Run(new WindowsContext());
 		return 0;
+	}
+}
+
+/// <summary>Два окна, на экранѣ одно: панель (маленькое) или большое. Какое показано послѣднимъ, то и откроется при слѣдующемъ запускѣ
+/// (настройка StartupPanel). Закрыть то, что на экранѣ, — выйти изъ программы: Application.Exit закрываетъ и второе (оно дѣлаетъ свою уборку).</summary>
+sealed class WindowsContext : ApplicationContext
+{
+	readonly MainForm Main;
+	readonly PanelForm Panel;
+	bool Exiting;
+
+	public WindowsContext()
+	{
+		Main = new() { SwitchToPanel = ShowPanel };
+		Panel = new(Main, ShowMain);
+		Main.FormClosed += (_, _) => Exit();
+		Panel.FormClosed += (_, _) => Exit();
+		_ = Main.Handle; // большое окно — въ Application.OpenForms, даже если его не показывали: при выходѣ и оно закроется по правиламъ
+		if (Properties.Settings.Default.StartupPanel) Panel.Show();
+		else Main.Show();
+	}
+
+	void ShowPanel()
+	{
+		Properties.Settings.Default.StartupPanel = true;
+		Main.HideForPanel();
+		Panel.Show();
+		Panel.Activate();
+	}
+
+	void ShowMain()
+	{
+		Properties.Settings.Default.StartupPanel = false;
+		Panel.Hide();
+		Main.ShowWindow();
+	}
+
+	void Exit()
+	{
+		if (Exiting) return;
+		Exiting = true;
+		Properties.Settings.Default.Save();
+		Application.Exit();
 	}
 }

@@ -625,4 +625,22 @@ Izlazni kod: 0 — uspjeh, 1 — greška veze ili odbijanje uređaja, 2 — neis
   <data name="ConnectedTo" xml:space="preserve">
     <value>Povezano s {0}</value>
   </data>
+  <data name="PanelPower" xml:space="preserve">
+    <value>Uključi ili isključi</value>
+  </data>
+  <data name="PanelBigWindow" xml:space="preserve">
+    <value>Veliki prozor</value>
+  </data>
+  <data name="SmallWindow" xml:space="preserve">
+    <value>Mali prozor</value>
+  </data>
+  <data name="PanelExit" xml:space="preserve">
+    <value>Izlaz</value>
+  </data>
+  <data name="PanelAddress" xml:space="preserve">
+    <value>Adresa i token…</value>
+  </data>
+  <data name="PanelNoLink" xml:space="preserve">
+    <value>Nema veze</value>
+  </data>
 </root>

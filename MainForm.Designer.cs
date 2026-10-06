@@ -89,6 +89,7 @@ partial class MainForm
 		buttonDisconnect = new GlyphButton();
 		toolStripStatusLabel = new ToolStripStatusLabel();
 		toolStripStatusTime = new ToolStripStatusLabel();
+		toolStripPanel = new ToolStripButton();
 		menuMode = new ToolStripMenuItem();
 		menuModeSmart = new ToolStripMenuItem();
 		menuSmart40 = new ToolStripMenuItem();
@@ -395,7 +396,7 @@ partial class MainForm
 		// statusStrip
 		// 
 		resources.ApplyResources(statusStrip, "statusStrip");
-		statusStrip.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel, toolStripStatusTime });
+		statusStrip.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel, toolStripStatusTime, toolStripPanel });
 		statusStrip.Name = "statusStrip";
 		statusStrip.ShowItemToolTips = true;
 		statusStrip.SizingGrip = false;
@@ -411,6 +412,15 @@ partial class MainForm
 		// 
 		resources.ApplyResources(toolStripStatusTime, "toolStripStatusTime");
 		toolStripStatusTime.Name = "toolStripStatusTime";
+		// 
+		// toolStripPanel
+		// 
+		toolStripPanel.DisplayStyle = ToolStripItemDisplayStyle.Text;
+		toolStripPanel.Font = new Font("Segoe Fluent Icons", 9F);
+		toolStripPanel.Name = "toolStripPanel";
+		toolStripPanel.Text = "";
+		toolStripPanel.Visible = false;
+		toolStripPanel.Click += Panel_Click;
 		// 
 		// labelTimeOff
 		// 
@@ -935,6 +945,7 @@ partial class MainForm
 	private TextBox textBoxToken;
 	private Button buttonConnect;
 	private GlyphButton buttonDisconnect;
+	private ToolStripButton toolStripPanel;
 	private GroupBox groupConnection;
 	private GroupBox groupState;
 	private GroupBox groupWatch;

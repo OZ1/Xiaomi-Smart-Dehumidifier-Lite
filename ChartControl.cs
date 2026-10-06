@@ -27,6 +27,7 @@ using static CollectionsMarshal;
 /// <summary>Графики записи съ общею осью времени: вверху влажность и цѣль на полосахъ комфорта, ниже — температура и вода въ воздухѣ,
 /// внизу — лента состоянія (выключенъ, режимъ, прогрѣвъ, неисправность). Значеніе держится до слѣдующей строки — линіи ступенчатыя;
 /// послѣ lost до слѣдующей строки — пунктиромъ, вырѣзанное (stop…rec) — пусто.
+/// Долгіе промежутки безъ показаній сжаты на оси времени въ узкія заштрихованныя полосы.
 /// Колесо — масштабъ, перетаскиваніе — сдвигъ, Shift+перетаскиваніе — выдѣленіе, двойной щелчокъ — всё.
 /// Графики рисуются въ картинку и перерисовываются, только когда мѣняются строки, видъ или размѣръ;
 /// курсоръ, выдѣленіе и рамка фокуса — поверхъ картинки: мышь водятъ — графики заново не рисуются.</summary>
@@ -37,11 +38,19 @@ public sealed class ChartControl : Control
 	(double Min, double Max) HumidityRange, TemperatureRange, WaterRange; // предѣлы осей по всѣмъ строкамъ — тоже разъ
 	DateTime? LiveEnd; // запись идётъ — послѣднее значеніе тянется до этого времени
 	DateTime First, Last;
-	DateTime ViewFrom, ViewTo;
+	double ViewFrom, ViewTo; // видимый кусокъ оси: секунды отъ First, сжатые промежутки — по GapWidth
 	Point? Mouse;
 	Point DragStart;
-	DateTime DragFrom, DragTo, SelectStart;
+	double DragFrom, DragTo;
+	DateTime SelectStart;
 	bool Dragging, Selecting;
+
+	/// <summary>Сжатый промежутокъ безъ показаній: настоящія начало и конецъ и гдѣ онъ начинается на оси.</summary>
+	readonly record struct Gap(DateTime From, DateTime To, double At);
+	List<Gap> Gaps = [];
+	double GapWidth; // сколько секундъ оси занимаетъ каждый сжатый промежутокъ
+
+	double AxisEnd => Axis(Last);
 
 	// нарисованные графики — безъ курсора, выдѣленія и рамки фокуса. Буферъ GDI, какъ у двойной буферизаціи WinForms, а не Bitmap:
 	// на картинкѣ изъ Graphics.FromImage ClearType у TextRenderer мѣшается не съ тѣмъ фономъ и даётъ тёмную кайму
@@ -73,24 +82,36 @@ public sealed class ChartControl : Control
 		Measure();
 		if (samples.Count > 0)
 		{
-			bool atEnd = ViewTo >= Last; // смотрѣли на конецъ — и дальше идёмъ за нимъ
+			bool atEnd = ViewTo >= AxisEnd; // смотрѣли на конецъ — и дальше идёмъ за нимъ
+			double span = ViewTo - ViewFrom;
+			DateTime from = TimeAt(ViewFrom), to = TimeAt(ViewTo); // видимое — по настоящему времени: сжатіе сейчасъ перестроится
+			bool fromStart = from <= First;
 			First = samples[0].Time;
 			Last = liveEnd is { } live && live > samples[^1].Time ? live : samples[^1].Time;
 			if (Last <= First) Last = First.AddMinutes(1);
+			BuildGaps();
 			if (!keepView)
 			{
 				Selection = null;
-				ViewFrom = First;
-				ViewTo = Last;
+				ViewFrom = 0;
+				ViewTo = AxisEnd;
 			}
 			else if (atEnd)
 			{
-				TimeSpan span = ViewTo - ViewFrom;
-				ViewTo = Last;
-				if (ViewFrom > First) ViewFrom = Last - span;
+				ViewTo = AxisEnd;
+				ViewFrom = fromStart ? Axis(from) : ViewTo - span;
+			}
+			else
+			{
+				ViewFrom = Axis(from);
+				ViewTo = Axis(to);
 			}
 		}
-		else Selection = null;
+		else
+		{
+			Selection = null;
+			Gaps = [];
+		}
 		Redraw();
 	}
 
@@ -131,15 +152,16 @@ public sealed class ChartControl : Control
 		if (to <= from) return;
 		if (from < First) First = from;
 		if (to > Last) Last = to;
-		ViewFrom = from;
-		ViewTo = to;
+		BuildGaps();
+		ViewFrom = Axis(from);
+		ViewTo = Axis(to);
 		Redraw();
 	}
 
 	public void ShowAll()
 	{
-		ViewFrom = First;
-		ViewTo = Last;
+		ViewFrom = 0;
+		ViewTo = AxisEnd;
 		Redraw();
 	}
 
@@ -179,14 +201,104 @@ public sealed class ChartControl : Control
 	float X(DateTime time)
 	{
 		Rectangle plot = Plot;
-		return plot.Left + (float)((time - ViewFrom).TotalSeconds / Max(1, (ViewTo - ViewFrom).TotalSeconds) * plot.Width);
+		return plot.Left + (float)((Axis(time) - ViewFrom) / Max(1, ViewTo - ViewFrom) * plot.Width);
 	}
 
-	DateTime Time(int x)
+	/// <summary>Мѣсто на оси подъ точкою x.</summary>
+	double AxisAt(int x)
 	{
 		Rectangle plot = Plot;
-		return ViewFrom + TimeSpan.FromSeconds((x - plot.Left) * (ViewTo - ViewFrom).TotalSeconds / Max(1, plot.Width));
+		return ViewFrom + (x - plot.Left) * (ViewTo - ViewFrom) / Max(1, plot.Width);
 	}
+
+	DateTime Time(int x) => TimeAt(AxisAt(x));
+
+	// ───── сжатіе промежутковъ ─────
+
+	/// <summary>Короче этого промежутокъ не сжимается.</summary>
+	static readonly TimeSpan MinGap = TimeSpan.FromMinutes(5);
+
+	/// <summary>Промежутки безъ показаній — послѣ stop и lost, до первой строки и послѣ конца записи — сжимаются до GapWidth:
+	/// каждый не шире 2 % записаннаго времени, всѣ вмѣстѣ — не шире его четверти. Не длиннѣе двухъ GapWidth — остаются какъ есть.</summary>
+	void BuildGaps()
+	{
+		Gaps = [];
+		if (Samples.Count == 0) return; // ShowRange бываетъ и на періодѣ безъ записей
+		List<(DateTime From, DateTime To)> empty = [];
+		void Add(DateTime from, DateTime to) { if (to - from >= MinGap) empty.Add((from, to)); }
+		Add(First, Samples[0].Time);
+		for (int i = 0; i + 1 < Samples.Count; i++)
+			if (Samples[i].Kind is Stop or Lost) Add(Samples[i].Time, Samples[i + 1].Time);
+		Add(EndOf(Samples.Count - 1), Last);
+
+		double recorded = (Last - First).TotalSeconds - empty.Sum(e => (e.To - e.From).TotalSeconds);
+		GapWidth = Max(30, Min(recorded / 50, recorded / 4 / Max(1, empty.Count)));
+		double cut = 0; // на сколько секундъ ось уже короче настоящаго времени
+		foreach ((DateTime from, DateTime to) in empty)
+		{
+			double length = (to - from).TotalSeconds;
+			if (length <= GapWidth * 2) continue;
+			Gaps.Add(new(from, to, (from - First).TotalSeconds - cut));
+			cut += length - GapWidth;
+		}
+	}
+
+	/// <summary>Послѣдній сжатый промежутокъ, начавшійся раньше time; −1 — такого нѣтъ.</summary>
+	int GapBefore(DateTime time)
+	{
+		int low = 0, high = Gaps.Count - 1, found = -1;
+		while (low <= high)
+		{
+			int middle = (low + high) / 2;
+			if (Gaps[middle].From < time)
+			{
+				found = middle;
+				low = middle + 1;
+			}
+			else high = middle - 1;
+		}
+		return found;
+	}
+
+	/// <summary>То же по мѣсту на оси.</summary>
+	int GapBefore(double axis)
+	{
+		int low = 0, high = Gaps.Count - 1, found = -1;
+		while (low <= high)
+		{
+			int middle = (low + high) / 2;
+			if (Gaps[middle].At < axis)
+			{
+				found = middle;
+				low = middle + 1;
+			}
+			else high = middle - 1;
+		}
+		return found;
+	}
+
+	/// <summary>Время → мѣсто на оси: въ сжатомъ промежуткѣ время идётъ быстрѣе, внѣ ихъ — какъ есть.</summary>
+	double Axis(DateTime time)
+	{
+		int i = GapBefore(time);
+		if (i < 0) return (time - First).TotalSeconds;
+		Gap gap = Gaps[i];
+		return time < gap.To ? gap.At + (time - gap.From) / (gap.To - gap.From) * GapWidth
+		/**/                 : gap.At + GapWidth + (time - gap.To).TotalSeconds;
+	}
+
+	/// <summary>Мѣсто на оси → время; обратное Axis.</summary>
+	DateTime TimeAt(double axis)
+	{
+		int i = GapBefore(axis);
+		if (i < 0) return First + TimeSpan.FromSeconds(axis);
+		Gap gap = Gaps[i];
+		return axis < gap.At + GapWidth ? gap.From + (gap.To - gap.From) * ((axis - gap.At) / GapWidth)
+		/**/                            : gap.To + TimeSpan.FromSeconds(axis - gap.At - GapWidth);
+	}
+
+	/// <summary>Сжатый промежутокъ въ этомъ мѣстѣ оси; null — тамъ записанное время.</summary>
+	Gap? GapAt(double axis) => GapBefore(axis) is >= 0 and int i && axis < Gaps[i].At + GapWidth ? Gaps[i] : null;
 
 	static float Y(Rectangle pane, double value, (double Min, double Max) range) => (float)(pane.Bottom - (value - range.Min) / (range.Max - range.Min) * pane.Height);
 
@@ -272,6 +384,7 @@ public sealed class ChartControl : Control
 		Font small = Small;
 		DrawComfort(g, humidityPane, HumidityRange);
 		DrawTimeGrid(g, humidityPane, temperaturePane, band, small);
+		DrawGaps(g, humidityPane, temperaturePane);
 		DrawAxis(g, humidityPane, HumidityRange, 10, "0", left: true, small, HumidityLine);
 		DrawAxis(g, temperaturePane, TemperatureRange, Step(TemperatureRange, temperaturePane.Height, small), "0.#", left: true, small, TemperatureLine);
 		DrawAxis(g, temperaturePane, WaterRange, Step(WaterRange, temperaturePane.Height, small), "0.#", left: false, small, WaterLine);
@@ -281,6 +394,7 @@ public sealed class ChartControl : Control
 		DrawSeries(g, temperaturePane, TemperatureRange, i => Samples[i].State.Temperature, TemperatureLine, 2);
 		DrawSeries(g, temperaturePane, WaterRange, i => Waters[i], WaterLine, 2);
 		DrawBand(g, band);
+		DrawGaps(g, band);
 
 		using (Pen frame = new(ControlDark))
 		{
@@ -323,24 +437,56 @@ public sealed class ChartControl : Control
 
 	static readonly TimeSpan[] TimeSteps = [.. new[] { 1, 2, 5, 10, 15, 30, 60, 120, 180, 360, 720, 1440, 2880, 10080 }.Select(m => TimeSpan.FromMinutes(m))];
 
+	/// <summary>Сѣтка и подписи времени — только на записанныхъ кускахъ, между сжатыми промежутками; подпись, налѣзающая на прежнюю, пропускается.</summary>
 	void DrawTimeGrid(Graphics g, Rectangle humidity, Rectangle temperature, Rectangle band, Font font)
 	{
-		bool days = (ViewTo - ViewFrom).TotalDays > 1 || ViewFrom.Date != ViewTo.Date;
+		DateTime from = TimeAt(ViewFrom), to = TimeAt(ViewTo);
+		bool days = (to - from).TotalDays > 1 || from.Date != to.Date;
 		string format = days ? "dd.MM HH:mm" : "HH:mm";
 		int labelWidth = MeasureText(days ? "00.00 00:00" : "00:00", font).Width + Px(12); // образецъ подписи по format: цифры — самыя широкія
-		TimeSpan step = TimeSteps.FirstOrDefault(s => X(ViewFrom + s) - X(ViewFrom) >= labelWidth, TimeSteps[^1]);
-		DateTime tick = new(ViewFrom.Ticks / step.Ticks * step.Ticks); // кратно шагу по мѣстному времени
-		if (step >= TimeSpan.FromDays(1)) tick = ViewFrom.Date;
+		double perSecond = Plot.Width / Max(1, ViewTo - ViewFrom); // точекъ на секунду внѣ сжатыхъ промежутковъ
+		TimeSpan step = TimeSteps.FirstOrDefault(s => s.TotalSeconds * perSecond >= labelWidth, TimeSteps[^1]);
 		using Pen grid = new(HighContrast ? GrayText : FromArgb(40, ControlText)) { DashStyle = Dot };
-		for (; tick <= ViewTo; tick += step)
+		int free = int.MinValue; // съ этой точки подпись уже не налѣзетъ на прежнюю
+		DateTime piece = from; // начало записаннаго куска
+		for (int i = Max(0, GapBefore(from)); i <= Gaps.Count && piece < to; i++)
 		{
-			if (tick < ViewFrom) continue;
-			float x = X(tick);
-			g.DrawLine(grid, x, humidity.Top, x, humidity.Bottom);
-			g.DrawLine(grid, x, temperature.Top, x, temperature.Bottom);
-			string text = tick.ToString(format);
-			Size size = MeasureText(text, font);
-			DrawText(g, text, font, new Point((int)x - size.Width / 2, band.Bottom + Px(3)), ControlText, NoPadding);
+			(DateTime gapFrom, DateTime gapTo) = i < Gaps.Count ? (Gaps[i].From, Gaps[i].To) : (to, to);
+			if (piece < gapFrom) Ticks(piece, gapFrom < to ? gapFrom : to);
+			if (piece < gapTo) piece = gapTo;
+		}
+
+		void Ticks(DateTime start, DateTime end)
+		{
+			DateTime tick = step >= TimeSpan.FromDays(1) ? start.Date : new(start.Ticks / step.Ticks * step.Ticks); // кратно шагу по мѣстному времени
+			for (; tick <= end; tick += step)
+			{
+				if (tick < start) continue;
+				float x = X(tick);
+				g.DrawLine(grid, x, humidity.Top, x, humidity.Bottom);
+				g.DrawLine(grid, x, temperature.Top, x, temperature.Bottom);
+				string text = tick.ToString(format);
+				Size size = MeasureText(text, font);
+				int left = (int)x - size.Width / 2;
+				if (left < free) continue;
+				DrawText(g, text, font, new Point(left, band.Bottom + Px(3)), ControlText, NoPadding);
+				free = left + size.Width + Px(6);
+			}
+		}
+	}
+
+	/// <summary>Сжатые промежутки — косою штриховкою: время тамъ идётъ не въ масштабѣ.</summary>
+	void DrawGaps(Graphics g, params ReadOnlySpan<Rectangle> panes)
+	{
+		using HatchBrush hatch = new(LightDownwardDiagonal, HighContrast ? GrayText : FromArgb(70, GrayText), Transparent);
+		for (int i = Max(0, GapBefore(ViewFrom)); i < Gaps.Count && Gaps[i].At < ViewTo; i++)
+		{
+			float x1 = X(Gaps[i].From), x2 = X(Gaps[i].To);
+			foreach (Rectangle pane in panes)
+			{
+				float left = Max(x1, pane.Left), right = Min(x2, pane.Right);
+				if (right > left) g.FillRectangle(hatch, left, pane.Top, right - left, pane.Height);
+			}
 		}
 	}
 
@@ -369,7 +515,7 @@ public sealed class ChartControl : Control
 		g.SetClip(pane);
 		float? previousY = null;
 		float left = pane.Left - 2, right = pane.Right + 2;
-		for (int i = Max(0, IndexAt(ViewFrom)); i < Samples.Count; i++)
+		for (int i = Max(0, IndexAt(TimeAt(ViewFrom))); i < Samples.Count; i++)
 		{
 			Sample sample = Samples[i];
 			float x1 = X(sample.Time);
@@ -407,7 +553,7 @@ public sealed class ChartControl : Control
 		GraphicsState saved = g.Save();
 		g.SetClip(band);
 		(float From, float To, Color Color, bool Lost, bool Warming)? run = null;
-		for (int i = Max(0, IndexAt(ViewFrom)); i < Samples.Count; i++)
+		for (int i = Max(0, IndexAt(TimeAt(ViewFrom))); i < Samples.Count; i++)
 		{
 			Sample sample = Samples[i];
 			float x1 = X(sample.Time);
@@ -484,7 +630,8 @@ public sealed class ChartControl : Control
 		DateTime time = Time(mouse.X);
 		int i = IndexAt(time);
 		StringBuilder lines = new(); // Append съ $"…" пишетъ прямо въ буферъ, безъ промежуточныхъ строкъ
-		lines.Append($"{time:dd.MM HH:mm:ss}");
+		if (GapAt(AxisAt(mouse.X)) is { } gap) lines.Append($"{gap.From:dd.MM HH:mm} — {gap.To:dd.MM HH:mm}"); // время въ сжатомъ — не въ масштабѣ: весь промежутокъ
+		else lines.Append($"{time:dd.MM HH:mm:ss}");
 		if (i < 0 || Samples[i].Kind == Stop || time > EndOf(i))
 			lines.Append('\n').Append(ChartNoData);
 		else
@@ -515,18 +662,19 @@ public sealed class ChartControl : Control
 
 	// ───── мышь и клавиши ─────
 
-	static readonly TimeSpan MinView = TimeSpan.FromMinutes(2);
+	const double MinView = 2 * 60; // секундъ оси
 
-	void SetView(DateTime from, DateTime to)
+	/// <summary>Показать кусокъ оси [from; to] (секунды отъ First, промежутки сжаты).</summary>
+	void SetView(double from, double to)
 	{
-		TimeSpan span = to - from;
-		TimeSpan whole = Last - First;
+		double span = to - from;
+		double whole = AxisEnd;
 		if (span < MinView) span = MinView;
-		TimeSpan max = whole * 1.5 + MinView;
+		double max = whole * 1.5 + MinView;
 		if (span > max) span = max;
-		DateTime middle = from + (to - from) / 2;
+		double middle = (from + to) / 2;
 		from = middle - span / 2;
-		DateTime lowest = First - whole * 0.25, highest = Last + whole * 0.25; // не уходить далеко за края
+		double lowest = -whole * 0.25, highest = whole * 1.25; // не уходить далеко за края
 		if (from < lowest) from = lowest;
 		if (from + span > highest) from = highest - span;
 		ViewFrom = from;
@@ -534,17 +682,17 @@ public sealed class ChartControl : Control
 		Redraw();
 	}
 
-	void Zoom(double factor, DateTime around)
+	void Zoom(double factor, double around)
 	{
-		double left = (around - ViewFrom).TotalSeconds * factor, right = (ViewTo - around).TotalSeconds * factor;
-		SetView(around - TimeSpan.FromSeconds(left), around + TimeSpan.FromSeconds(right));
+		double left = (around - ViewFrom) * factor, right = (ViewTo - around) * factor;
+		SetView(around - left, around + right);
 	}
 
 	protected override void OnMouseWheel(MouseEventArgs e)
 	{
 		base.OnMouseWheel(e);
 		if (Samples.Count == 0) return;
-		Zoom(Pow(1.25, -e.Delta / 120.0), Time(e.X));
+		Zoom(Pow(1.25, -e.Delta / 120.0), AxisAt(e.X));
 	}
 
 	protected override void OnMouseDown(MouseEventArgs e)
@@ -577,7 +725,7 @@ public sealed class ChartControl : Control
 		Mouse = e.Location;
 		if (Dragging)
 		{
-			TimeSpan shift = TimeSpan.FromSeconds((DragStart.X - e.X) * (DragTo - DragFrom).TotalSeconds / Max(1, Plot.Width));
+			double shift = (DragStart.X - e.X) * (DragTo - DragFrom) / Max(1, Plot.Width);
 			SetView(DragFrom + shift, DragTo + shift);
 		}
 		else if (Selecting)
@@ -620,8 +768,8 @@ public sealed class ChartControl : Control
 	{
 		base.OnKeyDown(e);
 		if (Samples.Count == 0) return;
-		TimeSpan span = ViewTo - ViewFrom;
-		DateTime middle = ViewFrom + span / 2;
+		double span = ViewTo - ViewFrom;
+		double middle = ViewFrom + span / 2;
 		switch (e.KeyCode)
 		{
 			case Keys.Left: SetView(ViewFrom - span / 10, ViewTo - span / 10); break;

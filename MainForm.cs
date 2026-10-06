@@ -619,7 +619,7 @@ public partial class MainForm : Form
 	}
 
 	/// <summary>Высота спрятанной рамки подключенія вмѣстѣ съ промежуткомъ подъ нею — на столько поднято всё ниже; 0 — рамка на мѣстѣ, какъ въ дизайнерѣ.
-	/// Присвоеніе передвигаетъ: окно и его наименьшій размѣръ мѣняютъ высоту на разницу, рамки ниже сдвигаются,
+	/// Присвоеніе передвигаетъ: окно мѣняетъ высоту на разницу, рамки ниже сдвигаются,
 	/// растянутая по высотѣ («Управленіе») сохраняетъ высоту.</summary>
 	int HiddenConnectionGroupHeight { get; set
 	{
@@ -629,9 +629,10 @@ public partial class MainForm : Form
 		// мѣста — до смѣны высоты окна: якорь снизу у «Управленія» растягиваетъ его не всегда (у ещё не показаннаго окна — нѣтъ),
 		// поэтому ставимъ всё явно, а не поправляемъ растянутое
 		Rectangle state = groupState.Bounds, controls = groupControls.Bounds, watch = groupWatch.Bounds;
-		Size client = ClientSize; // наименьшій размѣръ — вмѣстѣ съ окномъ, иначе окно не ужмётся
-		MinimumSize = new(MinimumSize.Width, MinimumSize.Height + below);
-		ClientSize = new(client.Width, client.Height + below);
+		// высота окна закрѣплена: MinimumSize = MaximumSize; новая — черезъ нихъ же, а порядокъ такой, чтобы наименьшая не стала больше наибольшей
+		Size min = new(MinimumSize.Width, Height + below), max = new(MaximumSize.Width, Height + below);
+		if (below > 0) (MaximumSize, MinimumSize) = (max, min);
+		else (MinimumSize, MaximumSize) = (min, max);
 		groupState   .SetBounds(state   .Left, state   .Top + below, state   .Width, state   .Height);
 		groupControls.SetBounds(controls.Left, controls.Top + below, controls.Width, controls.Height);
 		groupWatch   .SetBounds(watch   .Left, watch   .Top + below, watch   .Width, watch   .Height);

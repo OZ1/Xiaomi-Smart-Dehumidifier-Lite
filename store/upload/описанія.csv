@@ -530,8 +530,8 @@ SurfaceHubScreenshotCaption28,577,Текст,,,,,,,,,,,
 SurfaceHubScreenshotCaption29,578,Текст,,,,,,,,,,,
 SurfaceHubScreenshotCaption30,579,Текст,,,,,,,,,,,
 StoreLogo720x1080,600,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
-StoreLogo1080x1080,601,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
-StoreLogo300x300,602,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
+StoreLogo1080x1080,601,Относительный путь (или URL-адрес файла в Центре партнеров),,upload/logo-1080x1080.png,upload/logo-1080x1080.png,upload/logo-1080x1080.png,upload/logo-1080x1080.png,upload/logo-1080x1080.png,upload/logo-1080x1080.png,upload/logo-1080x1080.png,upload/logo-1080x1080.png,upload/logo-1080x1080.png,upload/logo-1080x1080.png
+StoreLogo300x300,602,Относительный путь (или URL-адрес файла в Центре партнеров),,upload/logo-300x300.png,upload/logo-300x300.png,upload/logo-300x300.png,upload/logo-300x300.png,upload/logo-300x300.png,upload/logo-300x300.png,upload/logo-300x300.png,upload/logo-300x300.png,upload/logo-300x300.png,upload/logo-300x300.png
 OverrideLogosForWin10,603,True/False,,False,False,False,False,False,False,False,False,False,False
 StoreLogoOverride150x150,604,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
 StoreLogoOverride71x71,605,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
@@ -585,13 +585,13 @@ RecommendedHardwareReq8,857,Текст,,,,,,,,,,,
 RecommendedHardwareReq9,858,Текст,,,,,,,,,,,
 RecommendedHardwareReq10,859,Текст,,,,,,,,,,,
 RecommendedHardwareReq11,860,Текст,,,,,,,,,,,
-SearchTerm1,900,Текст,,осушитель,одвлаживач,Xiaomi,одвлажнувач,odvlhčovač,razvlaževalnik,odvlaživač,odvlhčovač,osuszacz,Xiaomi
-SearchTerm2,901,Текст,,Xiaomi,dehumidifier,dehumidifier,Xiaomi,Xiaomi,Xiaomi,Xiaomi,Xiaomi,Xiaomi,Mi Home
-SearchTerm3,902,Текст,,dehumidifier,Mi Home,Mi Home,dehumidifier,dehumidifier,dehumidifier,dehumidifier,dehumidifier,dehumidifier,miIO
-SearchTerm4,903,Текст,,Mi Home,miIO,miIO,Mi Home,Mi Home,Mi Home,Mi Home,Mi Home,Mi Home,MIoT
-SearchTerm5,904,Текст,,miIO,MIoT,MIoT,miIO,miIO,miIO,miIO,miIO,miIO,humidity
-SearchTerm6,905,Текст,,MIoT,влажност,влажност,MIoT,MIoT,MIoT,MIoT,MIoT,MIoT,dehumidifier
-SearchTerm7,906,Текст,,влажность,Xiaomi,обезвлажнител,влажност,vlhkosť,vlažnost,vlažnost,vlhkost,wilgotność,
+SearchTerm1,900,Текст,,dehumidifier,dehumidifier,dehumidifier,dehumidifier,dehumidifier,dehumidifier,dehumidifier,dehumidifier,dehumidifier,dehumidifier
+SearchTerm2,901,Текст,,Mi Home,Mi Home,Mi Home,Mi Home,Mi Home,Mi Home,Mi Home,Mi Home,Mi Home,Mi Home
+SearchTerm3,902,Текст,,miIO,miIO,miIO,miIO,miIO,miIO,miIO,miIO,miIO,miIO
+SearchTerm4,903,Текст,,MIoT,MIoT,MIoT,MIoT,MIoT,MIoT,MIoT,MIoT,MIoT,MIoT
+SearchTerm5,904,Текст,,осушитель,одвлаживач,обезвлажнител,одвлажнувач,odvlhčovač,razvlaževalnik,odvlaživač,odvlhčovač,osuszacz,smart home
+SearchTerm6,905,Текст,,пульт,даљински,дистанционно,далечински,diaľkové ovládanie,daljinec,daljinski,dálkové ovládání,pilot,remote control
+SearchTerm7,906,Текст,,влажность,влажност,влажност,влажност,vlhkosť,vlažnost,vlažnost,vlhkost,wilgotność,humidity
 TrailerToPlayAtTopOfListing,999,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
 Trailer1,1000,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,
 Trailer2,1001,Относительный путь (или URL-адрес файла в Центре партнеров),,,,,,,,,,,

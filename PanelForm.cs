@@ -118,13 +118,13 @@ public sealed class PanelForm : Form
 	void LayoutPanel()
 	{
 		if (ClientSize.Width <= 0) return;
-		int size = (int)S(40); // кружокъ 30 + мѣсто для кольца выбраннаго режима
+		int size = (int)S(32); // кружокъ 24 + мѣсто для кольца выбраннаго режима
 		Rectangle At(float x, float y, int side) => new((int)(S(x) - side / 2f), (int)(S(y) - side / 2f), side, side);
-		buttonAuto .Bounds = At(56, 110, size);
-		buttonNight.Bounds = At(100, 110, size);
-		buttonDry  .Bounds = At(144, 110, size);
-		buttonPower.Bounds = At(100, 154, size);
-		buttonWifi .Bounds = At(36, 66, (int)S(24));
+		buttonAuto .Bounds = At(62, 108, size);
+		buttonNight.Bounds = At(100, 108, size);
+		buttonDry  .Bounds = At(138, 108, size);
+		buttonPower.Bounds = At(100, 144, size);
+		buttonWifi .Bounds = At(34, 60, (int)S(22));
 		buttonMain .Bounds = At(181, 181, (int)S(20));
 		Redraw();
 	}
@@ -522,7 +522,7 @@ public sealed class PanelForm : Form
 	/// Flash — «подбѣливаніе»: свѣтлый ореолъ подъ цифрами и сами цифры свѣтлѣе.</summary>
 	void DrawDigits(Graphics g, string text)
 	{
-		float w = S(26), h = S(46), gap = S(12), top = S(32), left = S(100) - (2 * w + gap) / 2;
+		float w = S(30), h = S(52), gap = S(14), top = S(34), left = S(100) - (2 * w + gap) / 2;
 		Color ink = Linked ? Dark : Pale;
 		if (Flash > 0) ink = Blend(ink, White, 0.6f * Flash);
 		using Pen pen = new(ink, S(3.2f)) { StartCap = LineCap.Round, EndCap = LineCap.Round };

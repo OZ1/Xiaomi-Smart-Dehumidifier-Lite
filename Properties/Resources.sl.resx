@@ -629,7 +629,7 @@ Izhodna koda: 0 — uspeh, 1 — napaka povezave ali zavrnitev naprave, 2 — ne
     <value>Vklopi ali izklopi</value>
   </data>
   <data name="PanelBigWindow" xml:space="preserve">
-    <value>Veliko okno</value>
+    <value>Razširi</value>
   </data>
   <data name="SmallWindow" xml:space="preserve">
     <value>Majhno okno</value>

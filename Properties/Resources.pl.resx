@@ -629,7 +629,7 @@ Kod wyjścia: 0 — sukces, 1 — błąd połączenia lub odmowa urządzenia, 2 
     <value>Włącz lub wyłącz</value>
   </data>
   <data name="PanelBigWindow" xml:space="preserve">
-    <value>Duże okno</value>
+    <value>Rozwiń</value>
   </data>
   <data name="SmallWindow" xml:space="preserve">
     <value>Małe okno</value>

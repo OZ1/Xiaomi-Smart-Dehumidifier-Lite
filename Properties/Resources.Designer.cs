@@ -1473,7 +1473,7 @@ namespace DehumidifierControl.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Большое окно.
+        ///   Ищет локализованную строку, похожую на Развернуть.
         /// </summary>
         internal static string PanelBigWindow {
             get {

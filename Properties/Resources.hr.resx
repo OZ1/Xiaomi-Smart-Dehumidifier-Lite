@@ -629,7 +629,7 @@ Izlazni kod: 0 — uspjeh, 1 — greška veze ili odbijanje uređaja, 2 — neis
     <value>Uključi ili isključi</value>
   </data>
   <data name="PanelBigWindow" xml:space="preserve">
-    <value>Veliki prozor</value>
+    <value>Proširi</value>
   </data>
   <data name="SmallWindow" xml:space="preserve">
     <value>Mali prozor</value>

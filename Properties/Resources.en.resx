@@ -629,7 +629,7 @@ Exit code: 0 — success, 1 — connection error or device refusal, 2 — invali
     <value>Turn on or off</value>
   </data>
   <data name="PanelBigWindow" xml:space="preserve">
-    <value>Full window</value>
+    <value>Expand</value>
   </data>
   <data name="SmallWindow" xml:space="preserve">
     <value>Compact window</value>

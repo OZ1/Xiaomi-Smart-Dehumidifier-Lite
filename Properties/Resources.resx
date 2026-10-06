@@ -629,7 +629,7 @@ siid.piid — номеръ свойства MIoT, какъ подъ подпис
     <value>Включить или выключить</value>
   </data>
   <data name="PanelBigWindow" xml:space="preserve">
-    <value>Большое окно</value>
+    <value>Развернуть</value>
   </data>
   <data name="SmallWindow" xml:space="preserve">
     <value>Маленькое окно</value>

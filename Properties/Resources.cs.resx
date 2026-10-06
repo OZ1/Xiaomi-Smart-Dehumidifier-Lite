@@ -629,7 +629,7 @@ Návratový kód: 0 — úspěch, 1 — chyba spojení nebo odmítnutí zaříze
     <value>Zapnout nebo vypnout</value>
   </data>
   <data name="PanelBigWindow" xml:space="preserve">
-    <value>Velké okno</value>
+    <value>Rozbalit</value>
   </data>
   <data name="SmallWindow" xml:space="preserve">
     <value>Malé okno</value>

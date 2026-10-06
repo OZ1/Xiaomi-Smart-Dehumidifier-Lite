@@ -635,7 +635,7 @@ Izlazni kod: 0 — uspjeh, 1 — greška veze ili odbijanje uređaja, 2 — neis
     <value>Mali prozor</value>
   </data>
   <data name="PanelExit" xml:space="preserve">
-    <value>Izlaz</value>
+    <value>Zatvori</value>
   </data>
   <data name="PanelAddress" xml:space="preserve">
     <value>Adresa i token…</value>

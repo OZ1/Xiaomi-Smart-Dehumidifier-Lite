@@ -1491,7 +1491,7 @@ namespace DehumidifierControl.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Выходъ.
+        ///   Ищет локализованную строку, похожую на Закрыть.
         /// </summary>
         internal static string PanelExit {
             get {

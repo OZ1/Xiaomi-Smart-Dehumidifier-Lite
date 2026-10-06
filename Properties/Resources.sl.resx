@@ -635,7 +635,7 @@ Izhodna koda: 0 — uspeh, 1 — napaka povezave ali zavrnitev naprave, 2 — ne
     <value>Majhno okno</value>
   </data>
   <data name="PanelExit" xml:space="preserve">
-    <value>Izhod</value>
+    <value>Zapri</value>
   </data>
   <data name="PanelAddress" xml:space="preserve">
     <value>Naslov in žeton…</value>

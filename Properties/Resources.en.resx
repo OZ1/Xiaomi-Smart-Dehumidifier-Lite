@@ -635,7 +635,7 @@ Exit code: 0 — success, 1 — connection error or device refusal, 2 — invali
     <value>Compact window</value>
   </data>
   <data name="PanelExit" xml:space="preserve">
-    <value>Exit</value>
+    <value>Close</value>
   </data>
   <data name="PanelAddress" xml:space="preserve">
     <value>Address and token…</value>

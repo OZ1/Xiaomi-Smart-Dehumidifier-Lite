@@ -635,7 +635,7 @@ Návratový kód: 0 — úspěch, 1 — chyba spojení nebo odmítnutí zaříze
     <value>Malé okno</value>
   </data>
   <data name="PanelExit" xml:space="preserve">
-    <value>Konec</value>
+    <value>Zavřít</value>
   </data>
   <data name="PanelAddress" xml:space="preserve">
     <value>Adresa a token…</value>

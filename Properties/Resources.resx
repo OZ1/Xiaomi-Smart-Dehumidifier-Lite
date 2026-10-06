@@ -635,7 +635,7 @@ siid.piid — номеръ свойства MIoT, какъ подъ подпис
     <value>Маленькое окно</value>
   </data>
   <data name="PanelExit" xml:space="preserve">
-    <value>Выходъ</value>
+    <value>Закрыть</value>
   </data>
   <data name="PanelAddress" xml:space="preserve">
     <value>Адресъ и токенъ…</value>

@@ -635,7 +635,7 @@ Kod wyjścia: 0 — sukces, 1 — błąd połączenia lub odmowa urządzenia, 2 
     <value>Małe okno</value>
   </data>
   <data name="PanelExit" xml:space="preserve">
-    <value>Zakończ</value>
+    <value>Zamknij</value>
   </data>
   <data name="PanelAddress" xml:space="preserve">
     <value>Adres i token…</value>

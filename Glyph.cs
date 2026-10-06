@@ -9,27 +9,21 @@ using static Color;
 /// <summary>Рисованные значки: что рисовать — здѣсь, когда и какимъ цвѣтомъ — рѣшаетъ окно.</summary>
 static class Glyph
 {
-	/// <summary>Вилка и розетка разведены — щёлкни, чтобы разъединить. Въ квадратѣ bounds.</summary>
+	/// <summary>Вилка и розетка разведены — щёлкни, чтобы разъединить. Въ квадратѣ bounds.
+	/// Картинка PlugsApart.png (рисуетъ make-plugs.ps1) чёрная — здѣсь уменьшается до bounds и красится въ color.</summary>
 	public static void PlugsApart(Graphics g, Rectangle bounds, Color color)
 	{
-		int size = bounds.Width;
-		g.SmoothingMode = SmoothingMode.AntiAlias;
-		g.TranslateTransform(bounds.X, bounds.Y);
-		{
-			float u = size / 16f;
-			using Pen        cord = new(color, Max(1, 1.4f * u)) { StartCap = LineCap.Round, EndCap = LineCap.Round };
-			using SolidBrush body = new(color);
-			g.TranslateTransform(size / 2f, size / 2f); // наискосокъ, какъ на привычномъ значкѣ
-			g.RotateTransform(-45);
-			g.TranslateTransform(-size / 2f, -size / 2f);
-			g.DrawLine     (cord, 0.5f  * u, 8    * u,  2.5f * u, 8    * u); // вилка: шнуръ,
-			g.FillRectangle(body, 2.5f  * u, 5    * u,  3.5f * u, 6    * u); // корпусъ
-			g.DrawLine     (cord,  6    * u, 6.5f * u,  7.5f * u, 6.5f * u); // и два штыря;
-			g.DrawLine     (cord,  6    * u, 9.5f * u,  7.5f * u, 9.5f * u);
-			g.FillRectangle(body, 10    * u, 5    * u,  3.5f * u, 6    * u); // зазоръ — и розетка
-			g.DrawLine     (cord, 13.5f * u, 8    * u, 15.5f * u, 8    * u); // со шнуромъ
-		}
-		g.ResetTransform();
+		using Bitmap source = new(typeof(Glyph), "PlugsApart.png");
+		using System.Drawing.Imaging.ImageAttributes paint = new();
+		paint.SetColorMatrix(new([ // прозрачность — какъ въ картинкѣ, цвѣтъ — color
+			[0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0],
+			[0, 0, 0, 0, 0],
+			[0, 0, 0, 1, 0],
+			[color.R / 255f, color.G / 255f, color.B / 255f, 0, 1]]));
+		g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+		g.PixelOffsetMode = PixelOffsetMode.HighQuality;
+		g.DrawImage(source, bounds, 0, 0, source.Width, source.Height, GraphicsUnit.Pixel, paint);
 	}
 
 	/// <summary>Крупная капля во весь значокъ: остріе вверху, брюшко внизу; тонкій ободокъ — тёмный на свѣтлой панели задачъ, свѣтлый на тёмной:

@@ -71,6 +71,11 @@
 		</Compile>
 	</ItemGroup>
 
+	<!-- значокъ кнопки «Подключенъ къ …»: рисуетъ make-plugs.ps1, можно править въ графическомъ редакторѣ -->
+	<ItemGroup>
+		<EmbeddedResource Include="PlugsApart.png" LogicalName="DehumidifierControl.PlugsApart.png" />
+	</ItemGroup>
+
 	<ItemGroup>
 		<EmbeddedResource Update="Properties\Resources.resx">
 			<Generator>ResXFileCodeGenerator</Generator>

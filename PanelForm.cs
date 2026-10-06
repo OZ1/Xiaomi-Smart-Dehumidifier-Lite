@@ -17,8 +17,9 @@ using static SystemInformation;
 using State = DehumidifierState;
 using Timer = System.Windows.Forms.Timer;
 
-/// <summary>Маленькое окно, похожее на верхъ осушителя: тонкія сегментныя цифры влажности на сѣромъ дискѣ, подъ ними кружки —
-/// выключатель, авто (умный), ночной, сушка бѣлья. Таскается за любое мѣсто; гаечный ключъ въ углу — большое окно.
+/// <summary>Маленькое окно, похожее на верхъ осушителя: кругъ съ квадратнымъ уголкомъ справа внизу; тонкія сегментныя цифры влажности,
+/// подъ ними кружки — авто (умный), ночной, сушка бѣлья, подъ ночнымъ — выключатель. Таскается за любое мѣсто, тянется за край (растётъ всё);
+/// гаечный ключъ въ уголкѣ — большое окно.
 /// Опросъ, подключеніе, запись остаются въ MainForm — панель только показываетъ его состояніе и шлётъ команды черезъ него.</summary>
 public sealed class PanelForm : Form
 {
@@ -87,42 +88,78 @@ public sealed class PanelForm : Form
 		}
 	}
 
-	// ───── окно: углы, перетаскиваніе, положеніе ─────
+	// ───── окно: форма, размѣръ, перетаскиваніе, положеніе ─────
 
-	float S(float pixels) => pixels * DeviceDpi / 96f;
+	/// <summary>Окно квадратное, вся раскладка — въ единицахъ квадрата 200×200: растягивается окно — растётъ и всё въ нёмъ.</summary>
+	const float Unit = 200;
+	float S(float units) => units * ClientSize.Width / Unit;
 
-	/// <summary>Раскладка — въ точкахъ при 96 DPI: окно 220×230, дискъ, цифры, рядъ кружковъ, ключъ въ углу.</summary>
-	void LayoutPanel()
+	/// <summary>Предѣлы стороны окна, точки при 96 DPI.</summary>
+	const int MinSide = 150, MaxSide = 600;
+
+	int Px(int pixels) => pixels * DeviceDpi / 96;
+
+	/// <summary>Кругъ, у котораго правая нижняя четверть — квадратный уголокъ (тамъ ключъ). inset — отступъ внутрь (для обводки).</summary>
+	GraphicsPath Outline(float inset)
 	{
-		Size size0 = new((int)S(220), (int)S(230));
-		MinimumSize = MaximumSize = Size.Empty; // иначе прежнія границы не дадутъ поменять размѣръ при новомъ DPI
-		Size = size0;
-		MinimumSize = MaximumSize = size0;      // при смѣнѣ DPI Windows предлагаетъ свой прямоугольникъ — размѣръ держимъ свой
-		int size = (int)S(40); // кружокъ 30 + мѣсто для кольца выбраннаго режима
-		PanelButton[] row = [buttonPower, buttonAuto, buttonNight, buttonDry];
-		for (int i = 0; i < row.Length; i++)
-			row[i].Bounds = new((int)(S(110 + (i - 1.5f) * 44) - size / 2f), (int)(S(140) - size / 2f), size, size);
-		buttonWifi.Bounds = new((int)S(32), (int)S(59), (int)S(24), (int)S(24));
-		buttonMain.Bounds = new((int)S(196), (int)S(206), (int)S(20), (int)S(20));
-		if (!RoundedByDwm) Region = new(RoundRect(new(0, 0, ClientSize.Width, ClientSize.Height), S(10)));
-		Invalidate();
+		float w = ClientSize.Width - 2 * inset, h = ClientSize.Height - 2 * inset, r = S(14);
+		GraphicsPath path = new();
+		path.AddArc(inset, inset, w, h, 90, 270);                         // низъ → лѣво → верхъ → право
+		path.AddLine(inset + w, inset + h / 2, inset + w, inset + h - r); // правый край уголка
+		path.AddArc(inset + w - 2 * r, inset + h - 2 * r, 2 * r, 2 * r, 0, 90);
+		path.CloseFigure();                                               // нижній край уголка — къ низу круга
+		return path;
 	}
 
-	bool RoundedByDwm;
+	/// <summary>Раскладка: цифры въ верхней половинѣ, подъ ними рядъ — авто, ночной, сушка, подъ ночнымъ — выключатель; Wi‑Fi слѣва отъ цифръ, ключъ въ уголкѣ.</summary>
+	void LayoutPanel()
+	{
+		if (ClientSize.Width <= 0) return;
+		int size = (int)S(40); // кружокъ 30 + мѣсто для кольца выбраннаго режима
+		Rectangle At(float x, float y, int side) => new((int)(S(x) - side / 2f), (int)(S(y) - side / 2f), side, side);
+		buttonAuto .Bounds = At(56, 110, size);
+		buttonNight.Bounds = At(100, 110, size);
+		buttonDry  .Bounds = At(144, 110, size);
+		buttonPower.Bounds = At(100, 154, size);
+		buttonWifi .Bounds = At(36, 66, (int)S(24));
+		buttonMain .Bounds = At(181, 181, (int)S(20));
+		using GraphicsPath shape = Outline(0);
+		Region = new(shape);
+		Invalidate(true);
+	}
 
 	protected override void OnHandleCreated(EventArgs e)
 	{
 		base.OnHandleCreated(e);
-		int round = 2; // DWMWCP_ROUND — Windows 11; въ Windows 10 атрибута нѣтъ — углы скругляетъ Region
-		RoundedByDwm = DwmSetWindowAttribute(Handle, 33 /*DWMWA_WINDOW_CORNER_PREFERENCE*/, ref round, sizeof(int)) == 0;
+		int square = 1; // DWMWCP_DONOTROUND: форму задаётъ Region, скругленіе Windows 11 ей не нужно
+		_ = DwmSetWindowAttribute(Handle, 33 /*DWMWA_WINDOW_CORNER_PREFERENCE*/, ref square, sizeof(int));
+		SetLimits();
+		int side = Px(Math.Clamp(Settings.Default.PanelSize, MinSide, MaxSide));
+		ClientSize = new(side, side);
+	}
+
+	void SetLimits()
+	{
+		MinimumSize = new(Px(MinSide), Px(MinSide));
+		MaximumSize = new(Px(MaxSide), Px(MaxSide));
+	}
+
+	/// <summary>При смѣнѣ DPI Windows само предлагаетъ размѣръ въ той же мѣрѣ — сдвигаемъ только предѣлы.</summary>
+	protected override void OnDpiChanged(DpiChangedEventArgs e)
+	{
+		MinimumSize = MaximumSize = Size.Empty; // прежніе предѣлы не дали бы принять новый размѣръ
+		base.OnDpiChanged(e);
+		SetLimits();
+	}
+
+	protected override void OnResize(EventArgs e)
+	{
+		base.OnResize(e);
 		LayoutPanel();
 	}
 
-	protected override void OnDpiChanged(DpiChangedEventArgs e)
-	{
-		base.OnDpiChanged(e);
-		LayoutPanel();
-	}
+	/// <summary>Сторона окна въ точкахъ при 96 DPI — въ настройки.</summary>
+	int LogicalSide => ClientSize.Width * 96 / DeviceDpi;
 
 	protected override async void OnLoad(EventArgs e)
 	{
@@ -139,14 +176,20 @@ public sealed class PanelForm : Form
 	protected override void OnVisibleChanged(EventArgs e)
 	{
 		base.OnVisibleChanged(e);
-		if (!Visible && IsHandleCreated) Settings.Default.PanelLocation = Location; // спрятали ради большого окна
+		if (!Visible && IsHandleCreated) Remember(); // спрятали ради большого окна
 	}
 
 	protected override void OnFormClosing(FormClosingEventArgs e)
 	{
-		if (Visible) Settings.Default.PanelLocation = Location;
+		if (Visible) Remember();
 		Settings.Default.Save();
 		base.OnFormClosing(e);
+	}
+
+	void Remember()
+	{
+		Settings.Default.PanelLocation = Location;
+		Settings.Default.PanelSize = LogicalSide;
 	}
 
 	protected override void OnFormClosed(FormClosedEventArgs e)
@@ -157,21 +200,56 @@ public sealed class PanelForm : Form
 		base.OnFormClosed(e);
 	}
 
-	/// <summary>Окно безъ рамки таскается за любое свободное мѣсто: тамъ, гдѣ нѣтъ кнопокъ, оно отвѣчаетъ, что это заголовокъ.
-	/// Правый щелчокъ по такому «заголовку» — своё меню, а не системное.</summary>
+	/// <summary>Окно безъ рамки таскается за любое свободное мѣсто: тамъ, гдѣ нѣтъ кнопокъ, оно отвѣчаетъ, что это заголовокъ;
+	/// у края — что это край рамки: тянется за него, оставаясь квадратнымъ. Правый щелчокъ по «заголовку» — своё меню, а не системное.</summary>
 	protected override void WndProc(ref Message m)
 	{
-		const int WM_NCHITTEST = 0x84, WM_CONTEXTMENU = 0x7B, HTCLIENT = 1, HTCAPTION = 2;
-		if (m.Msg == WM_CONTEXTMENU)
+		const int WM_NCHITTEST = 0x84, WM_CONTEXTMENU = 0x7B, WM_SIZING = 0x214, HTCLIENT = 1, HTCAPTION = 2;
+		switch (m.Msg)
 		{
-			Point at = m.LParam == -1 ? PointToScreen(new(Width / 2, Height / 2)) : new((short)(m.LParam & 0xFFFF), (short)((m.LParam >> 16) & 0xFFFF));
-			menu.Show(at);
-			return;
+			case WM_CONTEXTMENU:
+				Point at = m.LParam == -1 ? PointToScreen(new(Width / 2, Height / 2)) : ScreenPoint(m.LParam);
+				menu.Show(at);
+				return;
+			case WM_SIZING:
+				KeepSquare((int)m.WParam, m.LParam);
+				m.Result = 1;
+				return;
 		}
 		base.WndProc(ref m);
 		if (m.Msg == WM_NCHITTEST && m.Result == HTCLIENT)
-			m.Result = HTCAPTION;
+			m.Result = Edge(PointToClient(ScreenPoint(m.LParam))) ?? HTCAPTION;
 	}
+
+	/// <summary>Точка экрана изъ lParam: двѣ знаковыя половины — лѣвѣе или выше главнаго экрана онѣ отрицательныя.
+	/// unchecked — въ отладкѣ включена провѣрка переполненія, а (short) отъ половины больше 32767 — какъ разъ оно.</summary>
+	static Point ScreenPoint(nint lParam) => unchecked(new((short)lParam, (short)(lParam >> 16)));
+
+	/// <summary>Край, за который тянуть, или null — не у края. Кругъ: по четверти, гдѣ точка; уголокъ — правый нижній уголъ.</summary>
+	int? Edge(Point p)
+	{
+		const int HTTOPLEFT = 13, HTTOPRIGHT = 14, HTBOTTOMLEFT = 16, HTBOTTOMRIGHT = 17;
+		float grip = Px(8), half = ClientSize.Width / 2f, dx = p.X - half, dy = p.Y - half;
+		if (dx > 0 && dy > 0) // уголокъ
+			return p.X >= ClientSize.Width - grip || p.Y >= ClientSize.Height - grip ? HTBOTTOMRIGHT : null;
+		if (dx * dx + dy * dy < (half - grip) * (half - grip)) return null;
+		return dy < 0 ? dx < 0 ? HTTOPLEFT : HTTOPRIGHT : HTBOTTOMLEFT;
+	}
+
+	/// <summary>WM_SIZING: прямоугольникъ, который предлагаетъ Windows, — въ квадратъ въ предѣлахъ окна; противоположный уголъ стоитъ на мѣстѣ.</summary>
+	void KeepSquare(int edge, nint rect)
+	{
+		const int WMSZ_LEFT = 1, WMSZ_RIGHT = 2, WMSZ_TOP = 3, WMSZ_TOPLEFT = 4, WMSZ_TOPRIGHT = 5, WMSZ_BOTTOM = 6, WMSZ_BOTTOMLEFT = 7;
+		RECT r = Marshal.PtrToStructure<RECT>(rect);
+		int width = r.Right - r.Left, height = r.Bottom - r.Top;
+		int side = edge is WMSZ_LEFT or WMSZ_RIGHT ? width : edge is WMSZ_TOP or WMSZ_BOTTOM ? height : (width + height) / 2;
+		side = Math.Clamp(side, MinimumSize.Width, MaximumSize.Width);
+		if (edge is WMSZ_LEFT or WMSZ_TOPLEFT or WMSZ_BOTTOMLEFT) r.Left = r.Right - side; else r.Right = r.Left + side;
+		if (edge is WMSZ_TOP or WMSZ_TOPLEFT or WMSZ_TOPRIGHT) r.Top = r.Bottom - side; else r.Bottom = r.Top + side;
+		Marshal.StructureToPtr(r, rect, false);
+	}
+
+	struct RECT { public int Left, Top, Right, Bottom; }
 
 	// ───── состояніе ─────
 
@@ -309,6 +387,7 @@ public sealed class PanelForm : Form
 			e.Graphics.Clear(SystemColors.Window);
 			return;
 		}
+		if (ClientSize.Width <= 0) return;
 		using LinearGradientBrush back = new(ClientRectangle, FromArgb(0xFD, 0xFD, 0xFE), FromArgb(0xF0, 0xF0, 0xF3), LinearGradientMode.Vertical);
 		e.Graphics.FillRectangle(back, ClientRectangle);
 	}
@@ -317,12 +396,12 @@ public sealed class PanelForm : Form
 	{
 		Graphics g = e.Graphics;
 		g.SmoothingMode = SmoothingMode.AntiAlias;
-		// тонкая обводка окна
-		using (Pen edge = new(Contrast ? SystemColors.WindowFrame : FromArgb(0xD1, 0xD1, 0xD6)))
-		using (GraphicsPath frame = RoundRect(new(0, 0, ClientSize.Width - 1, ClientSize.Height - 1), S(10)))
+		// тонкая обводка окна; край Region зубчатый — сглаженная обводка по нему его прячетъ
+		using (Pen edge = new(Contrast ? SystemColors.WindowFrame : FromArgb(0xD1, 0xD1, 0xD6), Max(1, S(1.2f))))
+		using (GraphicsPath frame = Outline(S(0.6f)))
 			g.DrawPath(edge, frame);
 		// дискъ, какъ верхъ осушителя
-		RectangleF disc = new(S(14), S(12), S(192), S(192));
+		RectangleF disc = new(S(8), S(8), S(184), S(184));
 		if (!Contrast)
 		{
 			using LinearGradientBrush fill = new(disc, FromArgb(0xF7, 0xF7, 0xF9), FromArgb(0xE6, 0xE6, 0xEA), LinearGradientMode.Vertical);
@@ -344,7 +423,7 @@ public sealed class PanelForm : Form
 	/// Flash — «подбѣливаніе»: свѣтлый ореолъ подъ цифрами и сами цифры свѣтлѣе.</summary>
 	void DrawDigits(Graphics g, string text)
 	{
-		float w = S(26), h = S(46), gap = S(12), top = S(48), left = S(110) - (2 * w + gap) / 2;
+		float w = S(26), h = S(46), gap = S(12), top = S(32), left = S(100) - (2 * w + gap) / 2;
 		Color ink = Linked ? Dark : Pale;
 		if (Flash > 0) ink = Blend(ink, White, 0.6f * Flash);
 		using Pen pen = new(ink, S(3.2f)) { StartCap = LineCap.Round, EndCap = LineCap.Round };
@@ -376,18 +455,6 @@ public sealed class PanelForm : Form
 
 	static Color Blend(Color a, Color b, float t) => FromArgb(
 		(int)(a.R + (b.R - a.R) * t), (int)(a.G + (b.G - a.G) * t), (int)(a.B + (b.B - a.B) * t));
-
-	internal static GraphicsPath RoundRect(RectangleF r, float radius)
-	{
-		GraphicsPath path = new();
-		float d = 2 * radius;
-		path.AddArc(r.Left, r.Top, d, d, 180, 90);
-		path.AddArc(r.Right - d, r.Top, d, d, 270, 90);
-		path.AddArc(r.Right - d, r.Bottom - d, d, d, 0, 90);
-		path.AddArc(r.Left, r.Bottom - d, d, d, 90, 90);
-		path.CloseFigure();
-		return path;
-	}
 
 	// ───── значки ─────
 
@@ -488,7 +555,7 @@ sealed class PanelButton : Control
 	{
 		Graphics g = e.Graphics;
 		g.SmoothingMode = SmoothingMode.AntiAlias;
-		float scale = DeviceDpi / 96f, w = Width;
+		float scale = Width / 40f, w = Width; // размѣры — въ долѣ кружка: растётъ окно — растутъ и кольца
 		Color ink = !Enabled ? PanelForm.Pale
 			: Faint ? (hover ? PanelForm.Mid : PanelForm.Pale)
 			: Lit ? PanelForm.Dark

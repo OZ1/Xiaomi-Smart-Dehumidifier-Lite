@@ -190,5 +190,17 @@ namespace DehumidifierControl.Properties {
                 this["StartupPanel"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("200")]
+        public int PanelSize {
+            get {
+                return ((int)(this["PanelSize"]));
+            }
+            set {
+                this["PanelSize"] = value;
+            }
+        }
     }
 }

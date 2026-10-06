@@ -1,4 +1,5 @@
 ﻿using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 using System.Drawing.Text;
 using System.Runtime.InteropServices;
 
@@ -27,6 +28,9 @@ public sealed class PanelForm : Form
 	readonly Action ShowMain;
 
 	readonly PanelButton buttonPower, buttonAuto, buttonNight, buttonDry, buttonWifi, buttonMain;
+	readonly List<PanelButton> Buttons = []; // въ порядкѣ Tab
+	PanelButton? Hover, Pressed, FocusedButton;
+	bool KeyboardCues; // клавиатурою уже ходили — рамка фокуса видна
 	readonly ToolTip toolTip = new() { AutoPopDelay = 10000, InitialDelay = 500 };
 	readonly ContextMenuStrip menu = new(), wifiMenu = new();
 	readonly Timer revertTimer = new() { Interval = 3000 }; // цѣль на экранѣ — 3 с послѣ послѣдняго нажатія
@@ -53,17 +57,18 @@ public sealed class PanelForm : Form
 		AutoScaleMode = AutoScaleMode.None; // раскладка своя, по DeviceDpi
 		StartPosition = FormStartPosition.CenterScreen;
 		KeyPreview = true;
-		DoubleBuffered = true;
 		AccessibleName = main.Text;
 
-		buttonPower = Add(PanelPower, (g, r, ink) => DrawIcon(g, r, ink, ""), Power_Click);
-		buttonAuto  = Add(Capital(ModeSmart), DrawAuto, (_, _) => Mode_Click(0));
-		buttonNight = Add(Capital(ModeSleep), (g, r, ink) => DrawIcon(g, r, ink, ""), (_, _) => Mode_Click(1));
-		buttonDry   = Add(Capital(ModeDry), DrawShirt, (_, _) => Mode_Click(DryMode));
-		buttonWifi  = Add(PanelNoLink, (g, r, ink) => DrawIcon(g, r, ink, ""), (_, _) => wifiMenu.Show(buttonWifi!, new Point(0, buttonWifi!.Height)));
-		buttonMain  = Add(PanelBigWindow, (g, r, ink) => DrawIcon(g, r, ink, ""), (_, _) => ShowMain());
+		buttonPower = Add(PanelPower, (g, r, ink) => DrawIcon(g, r, ink, ""), () => Power_Click());
+		buttonAuto  = Add(Capital(ModeSmart), DrawAuto, () => Mode_Click(0));
+		buttonNight = Add(Capital(ModeSleep), (g, r, ink) => DrawIcon(g, r, ink, ""), () => Mode_Click(1));
+		buttonDry   = Add(Capital(ModeDry), DrawShirt, () => Mode_Click(DryMode));
+		buttonWifi  = Add(PanelNoLink, (g, r, ink) => DrawIcon(g, r, ink, ""), () => wifiMenu.Show(this, new Point(buttonWifi!.Bounds.Left, buttonWifi.Bounds.Bottom)));
+		buttonMain  = Add(PanelBigWindow, (g, r, ink) => DrawIcon(g, r, ink, ""), () => ShowMain());
 		buttonWifi.Circle = buttonMain.Circle = false;
 		buttonMain.Faint = true;
+		Buttons.Clear(); // Tab — сверху внизъ: Wi‑Fi, рядъ режимовъ, выключатель, ключъ
+		Buttons.AddRange([buttonWifi, buttonAuto, buttonNight, buttonDry, buttonPower, buttonMain]);
 
 		menu.Items.Add(PanelBigWindow, null, (_, _) => ShowMain());
 		menu.Items.Add(new ToolStripSeparator());
@@ -72,18 +77,16 @@ public sealed class PanelForm : Form
 		wifiMenu.Items.Add(PanelAddress, null, (_, _) => { ShowMain(); Main.ShowConnectionEditor(); });
 		ContextMenuStrip = menu;
 
-		revertTimer.Tick += (_, _) => { revertTimer.Stop(); ShowTarget = false; Invalidate(); };
+		revertTimer.Tick += (_, _) => { revertTimer.Stop(); ShowTarget = false; Redraw(); };
 		flashTimer.Tick += FlashTimer_Tick;
 		Main.StateChanged += Main_StateChanged;
 		Current = Main.LastState;
 		UpdateView();
 
-		PanelButton Add(string tip, Action<Graphics, RectangleF, Color> glyph, EventHandler click)
+		PanelButton Add(string tip, Action<Graphics, RectangleF, Color> glyph, Action click)
 		{
-			PanelButton button = new() { Glyph = glyph, AccessibleName = tip };
-			button.Click += click;
-			toolTip.SetToolTip(button, tip);
-			Controls.Add(button);
+			PanelButton button = new() { Glyph = glyph, Tip = tip, Click = click };
+			Buttons.Add(button);
 			return button;
 		}
 	}
@@ -123,19 +126,7 @@ public sealed class PanelForm : Form
 		buttonPower.Bounds = At(100, 154, size);
 		buttonWifi .Bounds = At(36, 66, (int)S(24));
 		buttonMain .Bounds = At(181, 181, (int)S(20));
-		using GraphicsPath shape = Outline(0);
-		Region = new(shape);
-		Invalidate(true);
-	}
-
-	protected override void OnHandleCreated(EventArgs e)
-	{
-		base.OnHandleCreated(e);
-		int square = 1; // DWMWCP_DONOTROUND: форму задаётъ Region, скругленіе Windows 11 ей не нужно
-		_ = DwmSetWindowAttribute(Handle, 33 /*DWMWA_WINDOW_CORNER_PREFERENCE*/, ref square, sizeof(int));
-		SetLimits();
-		int side = Px(Math.Clamp(Settings.Default.PanelSize, MinSide, MaxSide));
-		ClientSize = new(side, side);
+		Redraw();
 	}
 
 	void SetLimits()
@@ -163,6 +154,10 @@ public sealed class PanelForm : Form
 
 	protected override async void OnLoad(EventArgs e)
 	{
+		// размѣръ — здѣсь, а не при созданіи окна: тамъ Form потомъ ещё разъ ставитъ свой ClientSize изъ конструктора; до base.OnLoad — чтобы CenterScreen центрировалъ уже этотъ
+		SetLimits();
+		int side = Px(Math.Clamp(Settings.Default.PanelSize, MinSide, MaxSide));
+		Size = new(side, side);
 		base.OnLoad(e);
 		Point location = Settings.Default.PanelLocation;
 		if (location.X > -1000000 && Screen.AllScreens.Any(s => s.WorkingArea.Contains(location)))
@@ -218,8 +213,13 @@ public sealed class PanelForm : Form
 		}
 		base.WndProc(ref m);
 		if (m.Msg == WM_NCHITTEST && m.Result == HTCLIENT)
-			m.Result = Edge(PointToClient(ScreenPoint(m.LParam))) ?? HTCAPTION;
+		{
+			Point p = PointToClient(ScreenPoint(m.LParam));
+			m.Result = Edge(p) ?? (ButtonAt(p) is null ? HTCAPTION : HTCLIENT);
+		}
 	}
+
+	PanelButton? ButtonAt(Point p) => Buttons.FirstOrDefault(b => b.Contains(p));
 
 	/// <summary>Точка экрана изъ lParam: двѣ знаковыя половины — лѣвѣе или выше главнаго экрана онѣ отрицательныя.
 	/// unchecked — въ отладкѣ включена провѣрка переполненія, а (short) отъ половины больше 32767 — какъ разъ оно.</summary>
@@ -251,6 +251,69 @@ public sealed class PanelForm : Form
 
 	struct RECT { public int Left, Top, Right, Bottom; }
 
+	// ───── мышь и клавиши: кнопки — не окна, ихъ ведётъ само окно ─────
+
+	protected override void OnMouseMove(MouseEventArgs e)
+	{
+		base.OnMouseMove(e);
+		SetHover(ButtonAt(e.Location));
+	}
+
+	protected override void OnMouseLeave(EventArgs e)
+	{
+		base.OnMouseLeave(e);
+		SetHover(null);
+	}
+
+	void SetHover(PanelButton? button)
+	{
+		if (Hover == button) return;
+		Hover = button;
+		Cursor = button is { Enabled: true } ? Cursors.Hand : Cursors.Default;
+		toolTip.SetToolTip(this, button?.Tip); // подсказка — той кнопки, что подъ мышью
+		Redraw();
+	}
+
+	protected override void OnMouseDown(MouseEventArgs e)
+	{
+		base.OnMouseDown(e);
+		if (e.Button == MouseButtons.Left) Pressed = ButtonAt(e.Location);
+	}
+
+	protected override void OnMouseUp(MouseEventArgs e)
+	{
+		base.OnMouseUp(e);
+		PanelButton? pressed = Pressed;
+		Pressed = null;
+		if (e.Button == MouseButtons.Left && pressed is { Enabled: true } && pressed == ButtonAt(e.Location))
+			pressed.Click?.Invoke();
+	}
+
+	/// <summary>Tab и Shift+Tab — по кнопкамъ по кругу (видимымъ и доступнымъ), Enter и пробѣлъ — нажать.</summary>
+	protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+	{
+		switch (keyData)
+		{
+			case Keys.Tab or (Keys.Tab | Keys.Shift):
+				PanelButton[] usable = [.. Buttons.Where(b => b.Visible && b.Enabled)];
+				if (usable.Length == 0) return true;
+				int i = FocusedButton is null ? -1 : Array.IndexOf(usable, FocusedButton);
+				i = keyData == Keys.Tab ? (i + 1) % usable.Length : i <= 0 ? usable.Length - 1 : i - 1;
+				FocusedButton = usable[i];
+				KeyboardCues = true;
+				AccessibilityNotifyClients(AccessibleEvents.Focus, Buttons.Where(b => b.Visible).ToList().IndexOf(FocusedButton));
+				Redraw();
+				return true;
+			case Keys.Enter or Keys.Space when FocusedButton is { Visible: true, Enabled: true } focused:
+				focused.Click?.Invoke();
+				return true;
+		}
+		return base.ProcessCmdKey(ref msg, keyData);
+	}
+
+	protected override void OnActivated(EventArgs e) { base.OnActivated(e); Redraw(); }   // рамка фокуса — только у активнаго окна
+	protected override void OnDeactivate(EventArgs e) { base.OnDeactivate(e); Redraw(); }
+
 	// ───── состояніе ─────
 
 	void Main_StateChanged(State? state)
@@ -280,9 +343,10 @@ public sealed class PanelForm : Form
 			button.Lit = button.Selected = linked && on && Mode == mode;
 		buttonWifi.Visible = !linked;
 		string tip = IsNullOrWhiteSpace(Main.StatusText) ? PanelNoLink : $"{PanelNoLink}\n{Main.StatusText}";
-		toolTip.SetToolTip(buttonWifi, tip);
-		foreach (Control control in Controls) control.Invalidate();
-		Invalidate();
+		buttonWifi.Tip = tip;
+		if (Hover == buttonWifi) toolTip.SetToolTip(this, tip);
+		if (FocusedButton is { Visible: false }) FocusedButton = null;
+		Redraw();
 	}
 
 	static bool IsNullOrWhiteSpace(string text) => string.IsNullOrWhiteSpace(text);
@@ -297,7 +361,7 @@ public sealed class PanelForm : Form
 
 	// ───── кнопки ─────
 
-	void Power_Click(object? sender, EventArgs e)
+	void Power_Click()
 	{
 		if (!Linked) return;
 		bool on = !On;
@@ -370,7 +434,7 @@ public sealed class PanelForm : Form
 	{
 		Flash = Max(0, 1 - (float)(DateTime.Now - FlashStart).TotalMilliseconds / 450);
 		if (Flash <= 0) flashTimer.Stop();
-		Invalidate();
+		Redraw();
 	}
 
 	// ───── рисованіе ─────
@@ -380,26 +444,47 @@ public sealed class PanelForm : Form
 	internal static Color Mid  => Contrast ? SystemColors.WindowText : FromArgb(0x8E, 0x8E, 0x93);
 	internal static Color Dark => Contrast ? SystemColors.WindowText : FromArgb(0x3A, 0x3A, 0x3C);
 
-	protected override void OnPaintBackground(PaintEventArgs e)
+	// окно слоистое: Windows беретъ готовую картинку съ прозрачностью (UpdateLayeredWindow), WM_PAINT не нуженъ
+	protected override void OnPaintBackground(PaintEventArgs e) { }
+	protected override void OnPaint(PaintEventArgs e) { }
+
+	/// <summary>Нарисовать всё въ картинку съ прозрачностью и отдать окну: край сглаженъ, внѣ формы — прозрачно (и мышь проходитъ насквозь);
+	/// смѣна картинки — разомъ, безъ мерцанія.</summary>
+	void Redraw()
 	{
-		if (Contrast)
+		if (!IsHandleCreated || ClientSize.Width <= 0) return;
+		using Bitmap frame = new(ClientSize.Width, ClientSize.Height, PixelFormat.Format32bppArgb);
+		using (Graphics g = Graphics.FromImage(frame))
+			Draw(g);
+		nint screen = GetDC(0), memory = CreateCompatibleDC(screen), bitmap = frame.GetHbitmap(Empty /* ARGB 0: прозрачность остаётся */), old = SelectObject(memory, bitmap);
+		try
 		{
-			e.Graphics.Clear(SystemColors.Window);
-			return;
+			SIZE size = new(frame.Width, frame.Height);
+			POINT source = default;
+			BLENDFUNCTION blend = new() { BlendOp = 0 /*AC_SRC_OVER*/, SourceConstantAlpha = 255, AlphaFormat = 1 /*AC_SRC_ALPHA*/ };
+			_ = UpdateLayeredWindow(Handle, screen, 0, ref size, memory, ref source, 0, ref blend, 2 /*ULW_ALPHA*/);
 		}
-		if (ClientSize.Width <= 0) return;
-		using LinearGradientBrush back = new(ClientRectangle, FromArgb(0xFD, 0xFD, 0xFE), FromArgb(0xF0, 0xF0, 0xF3), LinearGradientMode.Vertical);
-		e.Graphics.FillRectangle(back, ClientRectangle);
+		finally
+		{
+			SelectObject(memory, old);
+			DeleteObject(bitmap);
+			DeleteDC(memory);
+			_ = ReleaseDC(0, screen);
+		}
 	}
 
-	protected override void OnPaint(PaintEventArgs e)
+	void Draw(Graphics g)
 	{
-		Graphics g = e.Graphics;
 		g.SmoothingMode = SmoothingMode.AntiAlias;
-		// тонкая обводка окна; край Region зубчатый — сглаженная обводка по нему его прячетъ
-		using (Pen edge = new(Contrast ? SystemColors.WindowFrame : FromArgb(0xD1, 0xD1, 0xD6), Max(1, S(1.2f))))
-		using (GraphicsPath frame = Outline(S(0.6f)))
-			g.DrawPath(edge, frame);
+		// фонъ окна съ тонкою обводкою
+		using (GraphicsPath shape = Outline(S(0.6f)))
+		{
+			using Brush back = Contrast ? new SolidBrush(SystemColors.Window)
+				: new LinearGradientBrush(ClientRectangle, FromArgb(0xFD, 0xFD, 0xFE), FromArgb(0xF0, 0xF0, 0xF3), LinearGradientMode.Vertical);
+			g.FillPath(back, shape);
+			using Pen edge = new(Contrast ? SystemColors.WindowFrame : FromArgb(0xD1, 0xD1, 0xD6), Max(1, S(1.2f)));
+			g.DrawPath(edge, shape);
+		}
 		// дискъ, какъ верхъ осушителя
 		RectangleF disc = new(S(8), S(8), S(184), S(184));
 		if (!Contrast)
@@ -410,6 +495,10 @@ public sealed class PanelForm : Form
 		using (Pen rim = new(Contrast ? SystemColors.WindowText : FromArgb(0xD8, 0xD8, 0xDD), S(1)))
 			g.DrawEllipse(rim, disc);
 		DrawDigits(g, DisplayText());
+		bool cues = KeyboardCues && ContainsFocus;
+		foreach (PanelButton button in Buttons)
+			if (button.Visible)
+				button.Draw(g, button == Hover, cues && button == FocusedButton);
 	}
 
 	/// <summary>Сегменты каждой цифры: a b c d e f g (верхъ, правый верхъ, правый низъ, низъ, лѣвый низъ, лѣвый верхъ, середина).</summary>
@@ -507,55 +596,78 @@ public sealed class PanelForm : Form
 		g.DrawPath(pen, shirt);
 	}
 
-	[DllImport("dwmapi", ExactSpelling = true)]
-	static extern int DwmSetWindowAttribute(nint hwnd, int attribute, ref int value, int size);
-}
+	// ───── слоистое окно ─────
 
-/// <summary>Кнопка панели: кружокъ съ тонкимъ контуромъ и значкомъ (или просто значокъ). Lit — значокъ и контуръ темнѣе (включёнъ, текущій режимъ);
-/// Selected — второе кольцо вокругъ (выбранный режимъ); Faint — блёклая, темнѣе при наведеніи (гаечный ключъ).</summary>
-sealed class PanelButton : Control
-{
-	public Action<Graphics, RectangleF, Color>? Glyph;
-	public bool Circle = true;
-	public bool Faint;
-	bool hover;
-
-	[System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-	public bool Lit { get; set { if (field != value) { field = value; Invalidate(); } } }
-	[System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-	public bool Selected { get; set { if (field != value) { field = value; Invalidate(); } } }
-
-	public PanelButton()
+	protected override CreateParams CreateParams
 	{
-		SetStyle(ControlStyles.SupportsTransparentBackColor | ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint |
-		         ControlStyles.UserPaint | ControlStyles.ResizeRedraw | ControlStyles.Selectable | ControlStyles.StandardClick, true);
-		BackColor = Color.Transparent;
-		TabStop = true;
-		Cursor = Cursors.Hand;
-		AccessibleRole = AccessibleRole.PushButton;
-	}
-
-	protected override void OnMouseEnter(EventArgs e) { base.OnMouseEnter(e); hover = true; Invalidate(); }
-	protected override void OnMouseLeave(EventArgs e) { base.OnMouseLeave(e); hover = false; Invalidate(); }
-	protected override void OnGotFocus(EventArgs e) { base.OnGotFocus(e); Invalidate(); }
-	protected override void OnLostFocus(EventArgs e) { base.OnLostFocus(e); Invalidate(); }
-	protected override void OnEnabledChanged(EventArgs e) { base.OnEnabledChanged(e); Invalidate(); }
-
-	protected override void OnKeyDown(KeyEventArgs e)
-	{
-		base.OnKeyDown(e);
-		if (e.KeyCode is Keys.Enter or Keys.Space)
+		get
 		{
-			OnClick(EventArgs.Empty);
-			e.Handled = true;
+			CreateParams p = base.CreateParams;
+			p.ExStyle |= 0x80000; // WS_EX_LAYERED: окно съ прозрачностью по точкамъ
+			return p;
 		}
 	}
 
-	protected override void OnPaint(PaintEventArgs e)
+	[StructLayout(LayoutKind.Sequential)] struct POINT { public int X, Y; }
+	[StructLayout(LayoutKind.Sequential)] record struct SIZE(int Width, int Height);
+	[StructLayout(LayoutKind.Sequential, Pack = 1)] struct BLENDFUNCTION { public byte BlendOp, BlendFlags, SourceConstantAlpha, AlphaFormat; }
+
+	[DllImport("user32", ExactSpelling = true)]
+	static extern bool UpdateLayeredWindow(nint hwnd, nint hdcDst, nint pptDst, ref SIZE psize, nint hdcSrc, ref POINT pptSrc, int crKey, ref BLENDFUNCTION pblend, int dwFlags);
+	[DllImport("user32", ExactSpelling = true)] static extern nint GetDC(nint hwnd);
+	[DllImport("user32", ExactSpelling = true)] static extern int ReleaseDC(nint hwnd, nint hdc);
+	[DllImport("gdi32", ExactSpelling = true)] static extern nint CreateCompatibleDC(nint hdc);
+	[DllImport("gdi32", ExactSpelling = true)] static extern bool DeleteDC(nint hdc);
+	[DllImport("gdi32", ExactSpelling = true)] static extern nint SelectObject(nint hdc, nint obj);
+	[DllImport("gdi32", ExactSpelling = true)] static extern bool DeleteObject(nint obj);
+
+	// ───── доступность: кружки — дѣти окна для экранныхъ чтецовъ ─────
+
+	protected override AccessibleObject CreateAccessibilityInstance() => new PanelAccessible(this);
+
+	sealed class PanelAccessible(PanelForm panel) : ControlAccessibleObject(panel)
 	{
-		Graphics g = e.Graphics;
-		g.SmoothingMode = SmoothingMode.AntiAlias;
-		float scale = Width / 40f, w = Width; // размѣры — въ долѣ кружка: растётъ окно — растутъ и кольца
+		PanelButton[] Shown => [.. panel.Buttons.Where(b => b.Visible)];
+		public override int GetChildCount() => Shown.Length;
+		public override AccessibleObject? GetChild(int index) => index >= 0 && index < Shown.Length ? new ButtonAccessible(panel, Shown[index], this) : null;
+	}
+
+	sealed class ButtonAccessible(PanelForm panel, PanelButton button, AccessibleObject parent) : AccessibleObject
+	{
+		public override string? Name { get => button.Tip; set { } }
+		public override AccessibleRole Role => AccessibleRole.PushButton;
+		public override AccessibleObject Parent => parent;
+		public override Rectangle Bounds => panel.RectangleToScreen(button.Bounds);
+		public override AccessibleStates State =>
+			(button.Enabled ? AccessibleStates.Focusable : AccessibleStates.Unavailable)
+			| (button.Selected || button.Lit ? AccessibleStates.Pressed : 0)
+			| (panel.FocusedButton == button && panel.ContainsFocus ? AccessibleStates.Focused : 0);
+		public override string DefaultAction => "Press";
+		public override void DoDefaultAction() { if (button.Enabled) button.Click?.Invoke(); }
+	}
+}
+
+/// <summary>Кнопка панели — не окно, а мѣсто на ней: слоистое окно не показываетъ дочернихъ оконъ, всё рисуетъ само.
+/// Кружокъ съ тонкимъ контуромъ и значкомъ (или просто значокъ). Lit — значокъ и контуръ темнѣе (включёнъ, текущій режимъ);
+/// Selected — второе кольцо вокругъ (выбранный режимъ); Faint — блёклая, темнѣе при наведеніи (гаечный ключъ).</summary>
+sealed class PanelButton
+{
+	public Action<Graphics, RectangleF, Color>? Glyph;
+	public Action? Click;
+	public string Tip = "";
+	public Rectangle Bounds;
+	public bool Circle = true, Faint, Lit, Selected, Enabled = true, Visible = true;
+
+	public bool Contains(Point p) => Visible && (Circle
+		? Pow(p.X - (Bounds.X + Bounds.Width / 2f), 2) + Pow(p.Y - (Bounds.Y + Bounds.Height / 2f), 2) <= Pow(Bounds.Width / 2f, 2)
+		: Bounds.Contains(p));
+
+	/// <summary>Рисуетъ себя на мѣстѣ Bounds; размѣры колецъ — въ долѣ кружка: растётъ окно — растутъ и кольца.</summary>
+	public void Draw(Graphics g, bool hover, bool focused)
+	{
+		GraphicsState saved = g.Save();
+		g.TranslateTransform(Bounds.X, Bounds.Y);
+		float w = Bounds.Width, scale = w / 40f;
 		Color ink = !Enabled ? PanelForm.Pale
 			: Faint ? (hover ? PanelForm.Mid : PanelForm.Pale)
 			: Lit ? PanelForm.Dark
@@ -564,10 +676,10 @@ sealed class PanelButton : Control
 		if (Circle)
 		{
 			float inset = 5 * scale; // мѣсто для кольца выбраннаго режима
-			RectangleF round = new(inset, inset, w - 2 * inset - 1, w - 2 * inset - 1);
+			RectangleF round = new(inset, inset, w - 2 * inset, w - 2 * inset);
 			if (Lit && !SystemInformation.HighContrast)
 			{
-				using SolidBrush fill = new(Color.FromArgb(200, Color.White));
+				using SolidBrush fill = new(FromArgb(200, White));
 				g.FillEllipse(fill, round);
 			}
 			using (Pen pen = new(Lit ? PanelForm.Dark : Enabled && hover ? PanelForm.Mid : PanelForm.Pale, 1.2f * scale))
@@ -575,18 +687,19 @@ sealed class PanelButton : Control
 			if (Selected)
 			{
 				using Pen ring = new(PanelForm.Dark, 1.4f * scale);
-				g.DrawEllipse(ring, 1.2f * scale, 1.2f * scale, w - 2.4f * scale - 1, w - 2.4f * scale - 1);
+				g.DrawEllipse(ring, 1.2f * scale, 1.2f * scale, w - 2.4f * scale, w - 2.4f * scale);
 			}
 			float g0 = round.Width * 0.24f;
 			glyph = RectangleF.Inflate(round, -g0, -g0);
 		}
-		else glyph = new(0, 0, w, Height);
+		else glyph = new(0, 0, w, Bounds.Height);
 		Glyph?.Invoke(g, glyph, ink);
-		if (Focused && ShowFocusCues)
+		if (focused)
 		{
 			using Pen focus = new(PanelForm.Mid) { DashStyle = DashStyle.Dot };
-			if (Circle) g.DrawEllipse(focus, 0.5f, 0.5f, w - 2, w - 2);
-			else g.DrawRectangle(focus, 0, 0, w - 1, Height - 1);
+			if (Circle) g.DrawEllipse(focus, 0.5f, 0.5f, w - 1, w - 1);
+			else g.DrawRectangle(focus, 0, 0, w - 1, Bounds.Height - 1);
 		}
+		g.Restore(saved);
 	}
 }

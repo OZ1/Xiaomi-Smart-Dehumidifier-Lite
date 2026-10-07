@@ -1192,7 +1192,25 @@ namespace DehumidifierControl.Properties {
                 return ResourceManager.GetString("CalcWithoutLimit", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Безъ осушителя: воздухообмѣна нѣтъ — стокъ сушитъ комнату безъ предѣла.
+        /// </summary>
+        internal static string CalcWithoutFall {
+            get {
+                return ResourceManager.GetString("CalcWithoutFall", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Безъ осушителя: воздухообмѣна и источниковъ нѣтъ — влажность не мѣняется.
+        /// </summary>
+        internal static string CalcWithoutSteady {
+            get {
+                return ResourceManager.GetString("CalcWithoutSteady", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Ищет локализованную строку, похожую на Съ осушителемъ безъ остановокъ — къ {0:0} % (τ = {1:0.0} ч).
         /// </summary>
@@ -1201,7 +1219,16 @@ namespace DehumidifierControl.Properties {
                 return ResourceManager.GetString("CalcWith", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Съ осушителемъ безъ остановокъ — до ≈ {0:0} % (τ = {1:0.0} ч), ниже сушитъ одинъ воздухообмѣнъ — къ {2:0} %.
+        /// </summary>
+        internal static string CalcWithBelow {
+            get {
+                return ResourceManager.GetString("CalcWithBelow", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Ищет локализованную строку, похожую на До цѣли {0:0} %: {1}.
         /// </summary>
@@ -1237,7 +1264,16 @@ namespace DehumidifierControl.Properties {
                 return ResourceManager.GetString("CalcNeeded", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Чтобы держать {0:0} %, осушитель не нуженъ: при такой влажности влага не прибываетъ.
+        /// </summary>
+        internal static string CalcNeededNone {
+            get {
+                return ResourceManager.GetString("CalcNeededNone", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Ищет локализованную строку, похожую на Ниже ≈ {0:0} % компрессорный осушитель почти не сушитъ.
         /// </summary>

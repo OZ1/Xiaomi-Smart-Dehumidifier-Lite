@@ -489,8 +489,17 @@
   <data name="CalcWithoutLimit" xml:space="preserve">
     <value>Bez odvlhčovača: žiadna výmena vzduchu — zdroje zvyšujú vlhkosť bez obmedzenia</value>
   </data>
+  <data name="CalcWithoutFall" xml:space="preserve">
+    <value>Bez odvlhčovača: žiadna výmena vzduchu — odber vysušuje miestnosť bez obmedzenia</value>
+  </data>
+  <data name="CalcWithoutSteady" xml:space="preserve">
+    <value>Bez odvlhčovača: žiadna výmena vzduchu ani zdroje — vlhkosť sa nemení</value>
+  </data>
   <data name="CalcWith" xml:space="preserve">
     <value>S odvlhčovačom bez prestávok — k {0:0} % (τ = {1:0.0} h)</value>
+  </data>
+  <data name="CalcWithBelow" xml:space="preserve">
+    <value>S odvlhčovačom bez prestávok — do ≈ {0:0} % (τ = {1:0.0} h), nižšie suší len výmena vzduchu — k {2:0} %</value>
   </data>
   <data name="CalcEta" xml:space="preserve">
     <value>Do cieľa {0:0} %: {1}</value>
@@ -503,6 +512,9 @@
   </data>
   <data name="CalcNeeded" xml:space="preserve">
     <value>Na udržanie {0:0} % treba menovitý výkon aspoň {1:0.0} l/deň</value>
+  </data>
+  <data name="CalcNeededNone" xml:space="preserve">
+    <value>Na udržanie {0:0} % nie je odvlhčovač potrebný: pri tejto vlhkosti vlhkosť nepribúda</value>
   </data>
   <data name="CalcTooLow" xml:space="preserve">
     <value>Pod ≈ {0:0} % kompresorový odvlhčovač takmer nesuší</value>

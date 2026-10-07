@@ -533,8 +533,17 @@ siid.piid — номеръ свойства MIoT, какъ подъ подпис
   <data name="CalcWithoutLimit" xml:space="preserve">
     <value>Безъ осушителя: воздухообмѣна нѣтъ — источники поднимаютъ влажность безъ предѣла</value>
   </data>
+  <data name="CalcWithoutFall" xml:space="preserve">
+    <value>Безъ осушителя: воздухообмѣна нѣтъ — стокъ сушитъ комнату безъ предѣла</value>
+  </data>
+  <data name="CalcWithoutSteady" xml:space="preserve">
+    <value>Безъ осушителя: воздухообмѣна и источниковъ нѣтъ — влажность не мѣняется</value>
+  </data>
   <data name="CalcWith" xml:space="preserve">
     <value>Съ осушителемъ безъ остановокъ — къ {0:0} % (τ = {1:0.0} ч)</value>
+  </data>
+  <data name="CalcWithBelow" xml:space="preserve">
+    <value>Съ осушителемъ безъ остановокъ — до ≈ {0:0} % (τ = {1:0.0} ч), ниже сушитъ одинъ воздухообмѣнъ — къ {2:0} %</value>
   </data>
   <data name="CalcEta" xml:space="preserve">
     <value>До цѣли {0:0} %: {1}</value>
@@ -547,6 +556,9 @@ siid.piid — номеръ свойства MIoT, какъ подъ подпис
   </data>
   <data name="CalcNeeded" xml:space="preserve">
     <value>Чтобы держать {0:0} %, нужна паспортная производительность не меньше {1:0.0} л/сутки</value>
+  </data>
+  <data name="CalcNeededNone" xml:space="preserve">
+    <value>Чтобы держать {0:0} %, осушитель не нуженъ: при такой влажности влага не прибываетъ</value>
   </data>
   <data name="CalcTooLow" xml:space="preserve">
     <value>Ниже ≈ {0:0} % компрессорный осушитель почти не сушитъ</value>

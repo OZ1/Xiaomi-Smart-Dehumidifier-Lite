@@ -82,42 +82,52 @@ public partial class CalculatorForm : Form
 			StartPosition = Manual;
 			Location = location;
 		}
-		Updating = true;
-		Set(numericTemperature, 22); // пока не подключены — обычная комната
-		Set(numericHumidity, 60);
-		Set(numericTarget, 50);
-		Set(numericOtherTemperature, 18);
-		Set(numericVolume            , Settings.Default.RoomVolume);
-		Set(numericBuffer            , Settings.Default.BufferFactor);
-		Set(numericExchange          , Settings.Default.AirExchange);
-		Set(numericOutdoorTemperature, Settings.Default.OutdoorTemperature);
-		Set(numericOutdoorHumidity   , Settings.Default.OutdoorHumidity);
-		Set(numericSources           , Settings.Default.MoistureSources);
-		Set(numericRated             , Settings.Default.RatedCapacity);
-		Updating = false;
+		Quietly(() =>
+		{
+			Set(numericTemperature, 22); // пока не подключены — обычная комната
+			Set(numericHumidity, 60);
+			Set(numericTarget, 50);
+			Set(numericOtherTemperature, 18);
+			Set(numericVolume            , Settings.Default.RoomVolume);
+			Set(numericBuffer            , Settings.Default.BufferFactor);
+			Set(numericExchange          , Settings.Default.AirExchange);
+			Set(numericOutdoorTemperature, Settings.Default.OutdoorTemperature);
+			Set(numericOutdoorHumidity   , Settings.Default.OutdoorHumidity);
+			Set(numericSources           , Settings.Default.MoistureSources);
+			Set(numericRated             , Settings.Default.RatedCapacity);
+		});
 		if (!FromDevice())
 			Recalculate();
 	}
 
 	protected override void OnFormClosing(FormClosingEventArgs e)
 	{
-		Settings.Default.RoomVolume         = (double)numericVolume.Value;
-		Settings.Default.BufferFactor       = (double)numericBuffer.Value;
-		Settings.Default.AirExchange        = (double)numericExchange.Value;
-		Settings.Default.OutdoorTemperature = (double)numericOutdoorTemperature.Value;
-		Settings.Default.OutdoorHumidity    = (double)numericOutdoorHumidity.Value;
-		Settings.Default.MoistureSources    = (double)numericSources.Value;
-		Settings.Default.RatedCapacity      = (double)numericRated.Value;
+		Remember(); // въ полѣ могло остаться недовведённое число — чтеніе Value его принимаетъ
 		Settings.Default.CalculatorLocation = WindowState == Normal ? Location : RestoreBounds.Location;
 		Settings.Default.Save();
 		base.OnFormClosing(e);
 	}
 
-	/// <summary>Значеніе въ поле, прижатое къ его предѣламъ.</summary>
+	/// <summary>Значеніе въ поле, прижатое къ его предѣламъ. Прижимаемъ ещё въ double: огромное число при переводѣ въ decimal бросило бы исключеніе.</summary>
 	static void Set(NumericUpDown box, double value)
 	{
 		if (IsFinite(value))
-			box.Value = decimal.Clamp((decimal)Round(value, box.DecimalPlaces), box.Minimum, box.Maximum);
+			box.Value = (decimal)Clamp(Round(value, box.DecimalPlaces), (double)box.Minimum, (double)box.Maximum);
+	}
+
+	/// <summary>Поставить значенія въ поля безъ пересчёта на каждое: обработчики ValueChanged молчатъ, пока идётъ change.</summary>
+	void Quietly(Action change)
+	{
+		bool was = Updating;
+		Updating = true;
+		try
+		{
+			change();
+		}
+		finally
+		{
+			Updating = was;
+		}
 	}
 
 	static double Value(NumericUpDown box) => (double)box.Value;
@@ -127,12 +137,13 @@ public partial class CalculatorForm : Form
 	{
 		if (Current() is not { Temperature: { } t, Humidity: { } h } now)
 			return false;
-		Updating = true;
-		Set(numericTemperature, t);
-		Set(numericHumidity, h);
-		if (now.Target is { } target && now.Mode != DryMode)
-			Set(numericTarget, target);
-		Updating = false;
+		Quietly(() =>
+		{
+			Set(numericTemperature, t);
+			Set(numericHumidity, h);
+			if (now.Target is { } target && now.Mode != DryMode)
+				Set(numericTarget, target);
+		});
 		Recalculate();
 		return true;
 	}
@@ -151,14 +162,25 @@ public partial class CalculatorForm : Form
 	{
 		if (Updating) return;
 		double rh = RelativeHumidity(Value(numericTemperature), Value(numericWater));
-		Updating = true;
-		Set(numericHumidity, rh);
-		Updating = false;
+		Quietly(() => Set(numericHumidity, rh));
 		Recalculate(keepWater: rh <= 100);
 	}
 
 	RoomModel Model() => new(Value(numericVolume), Value(numericBuffer), Value(numericExchange),
 		AbsoluteHumidity(Value(numericOutdoorTemperature), Value(numericOutdoorHumidity)), Value(numericSources), FlowFromRated(Value(numericRated)));
+
+	/// <summary>Поля модели — въ настройки сразу: главное окно считаетъ прогнозъ по нимъ, не дожидаясь закрытія разсчёта.
+	/// На дискъ — при закрытіи.</summary>
+	void Remember()
+	{
+		Settings.Default.RoomVolume         = Value(numericVolume);
+		Settings.Default.BufferFactor       = Value(numericBuffer);
+		Settings.Default.AirExchange        = Value(numericExchange);
+		Settings.Default.OutdoorTemperature = Value(numericOutdoorTemperature);
+		Settings.Default.OutdoorHumidity    = Value(numericOutdoorHumidity);
+		Settings.Default.MoistureSources    = Value(numericSources);
+		Settings.Default.RatedCapacity      = Value(numericRated);
+	}
 
 	void Recalculate(bool keepWater = false)
 	{
@@ -167,16 +189,13 @@ public partial class CalculatorForm : Form
 
 		// воздухъ
 		if (!keepWater)
-		{
-			Updating = true;
-			Set(numericWater, rho);
-			Updating = false;
-		}
+			Quietly(() => Set(numericWater, rho));
 		labelDew.Text = Format(CalcDegrees, DewPoint(t, rh));
 		labelRatio.Text = Format(CalcGramsPerKilogram, MixingRatio(t, rh));
 		labelOther.Text = Format(CalcOther, Min(HumidityAt(t, rh, Value(numericOtherTemperature)), 999));
 
 		// комната
+		Remember();
 		RoomModel model = Model();
 		double air = WaterToRemove(model.Volume, t, rh, target);
 		labelRemove.Text = air > 0 ? Format(CalcRemove, air, air * model.Buffer) : CalcNothingToRemove;
@@ -187,21 +206,25 @@ public partial class CalculatorForm : Form
 		lines.Add(Format(CalcInflow, inflow, inflow * 24 / 1000));
 		lines.Add(Format(CalcRemoval, removal, removal * 24 / 1000));
 		(double tauOff, double limitOff) = model.Course(t, working: false);
-		lines.Add(IsFinite(limitOff) && IsFinite(tauOff)
-			? Format(CalcWithout, RelativeHumidity(t, limitOff), tauOff)
-			: CalcWithoutLimit);
+		lines.Add(IsFinite(limitOff) && IsFinite(tauOff) ? Format(CalcWithout, RelativeHumidity(t, limitOff), tauOff)
+			: model.Sources > 0 ? CalcWithoutLimit // воздухообмѣна нѣтъ — остаются одни источники
+			: model.Sources < 0 ? CalcWithoutFall
+			: CalcWithoutSteady);
 		(double tau, double limit) = model.Course(t, working: true);
-		if (IsFinite(limit) && IsFinite(tau))
+		double floor = MinWater(t);
+		if (limit >= floor)
 			lines.Add(Format(CalcWith, RelativeHumidity(t, limit), tau));
-		Forecast forecast = Forecast.Estimate(rho, t, target, tau, limit);
+		else if (IsFinite(limitOff)) // ниже ρ_min осушитель не сушитъ — дальше влажность идётъ къ предѣлу безъ него (зимою съ сухимъ притокомъ)
+			lines.Add(Format(CalcWithBelow, MinHumidity, tau, RelativeHumidity(t, limitOff)));
+		Forecast forecast = model.Drying(rho, t, target);
 		lines.Add(forecast.Reached ? Format(CalcReached, target)
 			: forecast.Hours is { } hours ? Format(CalcEta, target, Duration(FromHours(Min(hours, 24 * 365))))
 			: Format(CalcNever, target, forecast.LimitHumidity));
 		// держать цѣль: снимать не меньше, чѣмъ приходитъ при цѣли — c·(ρ_цѣль − ρ_min) ≥ притокъ(ρ_цѣль)
-		double goal = AbsoluteHumidity(t, target), margin = goal - MinWater(t);
-		if (margin > 0)
-			lines.Add(Format(CalcNeeded, target, RatedFromFlow(Max(0, model.Inflow(goal)) / margin)));
-		else lines.Add(Format(CalcTooLow, MinHumidity));
+		double goal = AbsoluteHumidity(t, target), margin = goal - floor, need = model.Inflow(goal);
+		lines.Add(margin <= 0 ? Format(CalcTooLow, MinHumidity)
+			: need <= 0 ? Format(CalcNeededNone, target)
+			: Format(CalcNeeded, target, RatedFromFlow(need / margin)));
 		labelForecast.Text = Join(NewLine, lines);
 	}
 
@@ -209,30 +232,27 @@ public partial class CalculatorForm : Form
 	void FromRecords_Click(object? sender, EventArgs e)
 	{
 		List<Segment> segments = [];
-		foreach (Session session in List())
+		List(path => // разбираемъ тѣмъ же чтеніемъ, что и списокъ сеансовъ, — каждый файлъ одинъ разъ; занятые List пропускаетъ самъ
 		{
-			try
-			{
-				segments.AddRange(Analyze(RecordFiles.Load(session.Path)));
-			}
-			catch (IOException)
-			{
-				// файлъ занятъ — пропускаемъ
-			}
-		}
-		if (!segments.Any(s => !s.Fit.Bounded))
+			List<Sample> samples = RecordFiles.Load(path);
+			segments.AddRange(Analyze(samples).Where(Usable));
+			return samples;
+		});
+		if (segments.Count == 0)
 		{
 			MessageBox.Show(this, CalcFromRecordsNone, Text, OK, Information);
 			return;
 		}
 		RoomModel model = Calibrate(Model(), segments);
-		Updating = true;
-		Set(numericBuffer, model.Buffer);
-		Set(numericExchange, model.Exchange);
-		Set(numericSources, model.Sources);
-		Updating = false;
+		Quietly(() =>
+		{
+			Set(numericBuffer, model.Buffer);
+			Set(numericExchange, model.Exchange);
+			Set(numericSources, model.Sources);
+		});
 		Recalculate();
-		MessageBox.Show(this, Format(CalcFromRecordsDone, segments.Count(s => s.Kind == Off && !s.Fit.Bounded),
-			segments.Count(s => s.Kind == Drying && !s.Fit.Bounded), model.Buffer, model.Exchange, model.Sources), Text, OK, Information);
+		// числа — изъ полей: тамъ они уже прижаты къ предѣламъ
+		MessageBox.Show(this, Format(CalcFromRecordsDone, segments.Count(s => s.Kind == Off), segments.Count(s => s.Kind == Drying),
+			Value(numericBuffer), Value(numericExchange), Value(numericSources)), Text, OK, Information);
 	}
 }

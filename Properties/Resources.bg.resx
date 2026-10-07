@@ -489,8 +489,17 @@
   <data name="CalcWithoutLimit" xml:space="preserve">
     <value>Без изсушителя: няма въздухообмен — източниците повишават влажността без граница</value>
   </data>
+  <data name="CalcWithoutFall" xml:space="preserve">
+    <value>Без изсушителя: няма въздухообмен — оттокът изсушава стаята без граница</value>
+  </data>
+  <data name="CalcWithoutSteady" xml:space="preserve">
+    <value>Без изсушителя: няма въздухообмен и източници — влажността не се променя</value>
+  </data>
   <data name="CalcWith" xml:space="preserve">
     <value>С изсушителя без спиране — към {0:0} % (τ = {1:0.0} ч)</value>
+  </data>
+  <data name="CalcWithBelow" xml:space="preserve">
+    <value>С изсушителя без спиране — до ≈ {0:0} % (τ = {1:0.0} ч), под това суши само въздухообменът — към {2:0} %</value>
   </data>
   <data name="CalcEta" xml:space="preserve">
     <value>До целта {0:0} %: {1}</value>
@@ -503,6 +512,9 @@
   </data>
   <data name="CalcNeeded" xml:space="preserve">
     <value>За да се поддържа {0:0} %, е нужен номинален капацитет поне {1:0.0} л/ден</value>
+  </data>
+  <data name="CalcNeededNone" xml:space="preserve">
+    <value>За да се поддържа {0:0} %, изсушител не е нужен: при тази влажност влага не постъпва</value>
   </data>
   <data name="CalcTooLow" xml:space="preserve">
     <value>Под ≈ {0:0} % компресорният изсушител почти не изсушава</value>

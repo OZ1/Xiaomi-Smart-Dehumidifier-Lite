@@ -489,8 +489,17 @@
   <data name="CalcWithoutLimit" xml:space="preserve">
     <value>Bez odvlaživača: nema izmjene zraka — izvori podižu vlažnost bez granice</value>
   </data>
+  <data name="CalcWithoutFall" xml:space="preserve">
+    <value>Bez odvlaživača: nema izmjene zraka — ponor suši sobu bez granice</value>
+  </data>
+  <data name="CalcWithoutSteady" xml:space="preserve">
+    <value>Bez odvlaživača: nema izmjene zraka ni izvora — vlažnost se ne mijenja</value>
+  </data>
   <data name="CalcWith" xml:space="preserve">
     <value>S odvlaživačem bez prekida — prema {0:0} % (τ = {1:0.0} h)</value>
+  </data>
+  <data name="CalcWithBelow" xml:space="preserve">
+    <value>S odvlaživačem bez prekida — do ≈ {0:0} % (τ = {1:0.0} h), ispod toga suši samo izmjena zraka — prema {2:0} %</value>
   </data>
   <data name="CalcEta" xml:space="preserve">
     <value>Do cilja {0:0} %: {1}</value>
@@ -503,6 +512,9 @@
   </data>
   <data name="CalcNeeded" xml:space="preserve">
     <value>Za održavanje {0:0} % potreban je nazivni kapacitet od najmanje {1:0.0} l/dan</value>
+  </data>
+  <data name="CalcNeededNone" xml:space="preserve">
+    <value>Za održavanje {0:0} % odvlaživač nije potreban: pri toj vlažnosti vlaga ne pritječe</value>
   </data>
   <data name="CalcTooLow" xml:space="preserve">
     <value>Ispod ≈ {0:0} % kompresorski odvlaživač gotovo ne suši</value>

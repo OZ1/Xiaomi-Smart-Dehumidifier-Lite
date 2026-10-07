@@ -61,8 +61,19 @@ public sealed record RoomModel(double Volume, double Buffer, double Exchange, do
 		return (Buffer * Volume / sum, (exchange * OutdoorWater + Sources + flow * MinWater(t)) / sum);
 	}
 
-	/// <summary>Сколько воды убрать до цѣли вмѣстѣ съ буферомъ, г.</summary>
-	public double WaterToRemove(double t, double rh, double target) => Buffer * Psychrometrics.WaterToRemove(Volume, t, rh, target);
+	/// <summary>Когда влажность дойдётъ до цѣли, если осушитель работаетъ безъ остановокъ. Ниже ρ_min онъ не сушитъ:
+	/// если и предѣлъ, и цѣль ниже ρ_min, путь — два куска экспоненты, до ρ_min по Course(working: true), дальше — по Course(working: false).</summary>
+	public Forecast Drying(double rho, double t, double target)
+	{
+		(double tau, double limit) = Course(t, working: true);
+		double floor = MinWater(t);
+		if (limit >= floor || AbsoluteHumidity(t, target) >= floor)
+			return Forecast.Estimate(rho, t, target, tau, limit); // всё нужное — выше ρ_min: одна экспонента
+		(double tauOff, double limitOff) = Course(t, working: false);
+		double first = rho > floor ? tau * Log((rho - limit) / (floor - limit)) : 0;
+		Forecast rest = Forecast.Estimate(Min(rho, floor), t, target, tauOff, limitOff);
+		return rest with { Hours = rest.Hours + first }; // не дойдётъ — null и остаётся
+	}
 }
 
 /// <summary>Оцѣнка: когда влажность дойдётъ до цѣли. Hours — null, если не дойдётъ (предѣлъ выше цѣли).</summary>
@@ -234,11 +245,14 @@ public static class MoistureFit
 		return fit is { Count: > MinPoints } ? fit : null;
 	}
 
+	/// <summary>Отрѣзокъ годится для уточненія модели: τ не упёрлась въ край перебора.</summary>
+	public static bool Usable(Segment s) => !s.Fit.Bounded && s.Fit.Tau > 0;
+
 	/// <summary>Уточнить модель по отрѣзкамъ. Изъ «выключенъ» — n/k = 1/τ_off и равновѣсіе ρ_eq; изъ «осушаетъ» — (n·V + c)/(k·V) = 1/τ_on.
 	/// c берётся изъ паспортной производительности, V — изъ настроекъ; отсюда k, n и источники S = n·V·(ρ_eq − ρ_out).</summary>
 	public static RoomModel Calibrate(RoomModel model, IEnumerable<Segment> segments)
 	{
-		List<Segment> good = [.. segments.Where(s => !s.Fit.Bounded && s.Fit.Tau > 0)];
+		List<Segment> good = [.. segments.Where(Usable)];
 		List<Segment> off = [.. good.Where(s => s.Kind == Off)];
 		List<Segment> on = [.. good.Where(s => s.Kind == Drying)];
 		double? invOff = off.Count > 0 ? off.Sum(s => s.Fit.Count / s.Fit.Tau) / off.Sum(s => s.Fit.Count) : null;

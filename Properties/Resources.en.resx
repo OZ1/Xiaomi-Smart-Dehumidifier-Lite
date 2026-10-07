@@ -489,8 +489,17 @@
   <data name="CalcWithoutLimit" xml:space="preserve">
     <value>Without the dehumidifier: no air exchange — sources raise humidity without limit</value>
   </data>
+  <data name="CalcWithoutFall" xml:space="preserve">
+    <value>Without the dehumidifier: no air exchange — the sink dries the room without limit</value>
+  </data>
+  <data name="CalcWithoutSteady" xml:space="preserve">
+    <value>Without the dehumidifier: no air exchange and no sources — humidity stays the same</value>
+  </data>
   <data name="CalcWith" xml:space="preserve">
     <value>With the dehumidifier running nonstop — to {0:0} % (τ = {1:0.0} h)</value>
+  </data>
+  <data name="CalcWithBelow" xml:space="preserve">
+    <value>With the dehumidifier running nonstop — down to ≈ {0:0} % (τ = {1:0.0} h), below that only air exchange dries — to {2:0} %</value>
   </data>
   <data name="CalcEta" xml:space="preserve">
     <value>To target {0:0} %: {1}</value>
@@ -503,6 +512,9 @@
   </data>
   <data name="CalcNeeded" xml:space="preserve">
     <value>To hold {0:0} %, a rated capacity of at least {1:0.0} L/day is needed</value>
+  </data>
+  <data name="CalcNeededNone" xml:space="preserve">
+    <value>To hold {0:0} %, no dehumidifier is needed: at this humidity no moisture comes in</value>
   </data>
   <data name="CalcTooLow" xml:space="preserve">
     <value>Below ≈ {0:0} % a compressor dehumidifier barely dries</value>

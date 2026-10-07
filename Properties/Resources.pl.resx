@@ -489,8 +489,17 @@
   <data name="CalcWithoutLimit" xml:space="preserve">
     <value>Bez osuszacza: brak wymiany powietrza — źródła podnoszą wilgotność bez granic</value>
   </data>
+  <data name="CalcWithoutFall" xml:space="preserve">
+    <value>Bez osuszacza: brak wymiany powietrza — odpływ osusza pokój bez granic</value>
+  </data>
+  <data name="CalcWithoutSteady" xml:space="preserve">
+    <value>Bez osuszacza: brak wymiany powietrza i źródeł — wilgotność się nie zmienia</value>
+  </data>
   <data name="CalcWith" xml:space="preserve">
     <value>Z osuszaczem bez przerw — do {0:0} % (τ = {1:0.0} h)</value>
+  </data>
+  <data name="CalcWithBelow" xml:space="preserve">
+    <value>Z osuszaczem bez przerw — do ≈ {0:0} % (τ = {1:0.0} h), niżej osusza tylko wymiana powietrza — do {2:0} %</value>
   </data>
   <data name="CalcEta" xml:space="preserve">
     <value>Do celu {0:0} %: {1}</value>
@@ -503,6 +512,9 @@
   </data>
   <data name="CalcNeeded" xml:space="preserve">
     <value>Aby utrzymać {0:0} %, potrzebna jest wydajność znamionowa co najmniej {1:0.0} l/dobę</value>
+  </data>
+  <data name="CalcNeededNone" xml:space="preserve">
+    <value>Aby utrzymać {0:0} %, osuszacz nie jest potrzebny: przy tej wilgotności wilgoć nie przybywa</value>
   </data>
   <data name="CalcTooLow" xml:space="preserve">
     <value>Poniżej ≈ {0:0} % osuszacz sprężarkowy prawie nie osusza</value>

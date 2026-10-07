@@ -489,8 +489,17 @@
   <data name="CalcWithoutLimit" xml:space="preserve">
     <value>Без одвлаживача: нема размене ваздуха — извори подижу влажност без границе</value>
   </data>
+  <data name="CalcWithoutFall" xml:space="preserve">
+    <value>Без одвлаживача: нема размене ваздуха — понор суши собу без границе</value>
+  </data>
+  <data name="CalcWithoutSteady" xml:space="preserve">
+    <value>Без одвлаживача: нема размене ваздуха ни извора — влажност се не мења</value>
+  </data>
   <data name="CalcWith" xml:space="preserve">
     <value>Са одвлаживачем без прекида — ка {0:0} % (τ = {1:0.0} ч)</value>
+  </data>
+  <data name="CalcWithBelow" xml:space="preserve">
+    <value>Са одвлаживачем без прекида — до ≈ {0:0} % (τ = {1:0.0} ч), испод тога суши само размена ваздуха — ка {2:0} %</value>
   </data>
   <data name="CalcEta" xml:space="preserve">
     <value>До циља {0:0} %: {1}</value>
@@ -503,6 +512,9 @@
   </data>
   <data name="CalcNeeded" xml:space="preserve">
     <value>За одржавање {0:0} % потребан је називни капацитет од најмање {1:0.0} л/дан</value>
+  </data>
+  <data name="CalcNeededNone" xml:space="preserve">
+    <value>За одржавање {0:0} % одвлаживач није потребан: при тој влажности влага не притиче</value>
   </data>
   <data name="CalcTooLow" xml:space="preserve">
     <value>Испод ≈ {0:0} % компресорски одвлаживач скоро не суши</value>

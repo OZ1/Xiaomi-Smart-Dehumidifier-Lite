@@ -285,11 +285,14 @@
   <data name="CliUnknownCommand" xml:space="preserve">
     <value>Neznámý příkaz „{0}“.</value>
   </data>
-  <data name="CliNoAddress" xml:space="preserve">
-    <value>Adresa není nastavena: otevři program bez parametrů a připoj se.</value>
-  </data>
   <data name="CliNoToken" xml:space="preserve">
-    <value>Token není nastaven: otevři program bez parametrů a připoj se.</value>
+    <value>Za adresou {0} je potřeba token — 32 šestnáctkových číslic, potom příkazy.</value>
+  </data>
+  <data name="CliNoDevice" xml:space="preserve">
+    <value>Není známo, ke kterému odvlhčovači se obrátit: otevři program bez parametrů a připoj se (adresa a token se zapamatují), nebo je uveď před příkazy.</value>
+  </data>
+  <data name="CliBadAddress" xml:space="preserve">
+    <value>Neplatná adresa „{0}“: jsou potřeba čtyři čísla oddělená tečkami, například 192.168.0.10.</value>
   </data>
   <data name="CliPower" xml:space="preserve">
     <value>Napájení:</value>
@@ -407,7 +410,7 @@
   </data>
   <data name="CliUsage" xml:space="preserve">
     <value>Ovládání odvlhčovače Xiaomi Smart Dehumidifier Lite.
-Adresa a token se berou z nastavení programu (stejné jako v okně).
+Adresa a token se berou z nastavení programu (stejné jako v okně) nebo se píší před příkazy.
 
   Dehumidifier.exe status                    stav
   Dehumidifier.exe on                        zapnout
@@ -424,6 +427,8 @@ Adresa a token se berou z nastavení programu (stejné jako v okně).
   Dehumidifier.exe reset-filter              vynulovat počítadlo filtru
   Dehumidifier.exe 2.5                       přečíst vlastnost MIoT siid.piid
   Dehumidifier.exe 2.5=45                    zapsat: číslo, on|off nebo JSON
+  Dehumidifier.exe 192.168.0.10 [token]      okno s tímto odvlhčovačem; nastavení se nemění
+  Dehumidifier.exe 192.168.0.10 token status  příkazy tomuto odvlhčovači; nastavení se nemění
 
 Ruská synonyma: состояніе, включить, выключить, переключить, влажность, режимъ умный|ночной|сушка,
 слѣдующій, подсвѣтка включить|выключить тусклая|яркая, звукъ, блокировка, просушка, таймеръ,
@@ -441,6 +446,9 @@ Příkazů lze zadat několik za sebou, provedou se postupně:
 Nejdřív se zkontroluje celý řádek: pokud je v něm chyba, neprovede se nic.
 Když zařízení odmítne, provádění se zastaví na tomto příkazu.
 Bez parametrů se otevře okno.
+
+Token zapsaný na příkazovém řádku vidí ostatní programy na tomto počítači a zůstává v historii shellu.
+Abys tomu předešel, připoj se jednou v okně: adresa a token se uloží do nastavení.
 
 Návratový kód: 0 — úspěch, 1 — chyba spojení nebo odmítnutí zařízením, 2 — neplatný příkaz.</value>
   </data>

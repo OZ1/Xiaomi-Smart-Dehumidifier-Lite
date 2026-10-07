@@ -285,11 +285,14 @@
   <data name="CliUnknownCommand" xml:space="preserve">
     <value>Neznan ukaz »{0}«.</value>
   </data>
-  <data name="CliNoAddress" xml:space="preserve">
-    <value>Naslov ni nastavljen: odpri program brez parametrov in se poveži.</value>
-  </data>
   <data name="CliNoToken" xml:space="preserve">
-    <value>Žeton ni nastavljen: odpri program brez parametrov in se poveži.</value>
+    <value>Za naslovom {0} je potreben žeton — 32 šestnajstiških števk, nato ukazi.</value>
+  </data>
+  <data name="CliNoDevice" xml:space="preserve">
+    <value>Ni znano, na kateri razvlaževalnik se obrniti: odpri program brez parametrov in se poveži (naslov in žeton se zapomnita) ali ju navedi pred ukazi.</value>
+  </data>
+  <data name="CliBadAddress" xml:space="preserve">
+    <value>Neveljaven naslov »{0}«: potrebna so štiri števila, ločena s pikami, npr. 192.168.0.10.</value>
   </data>
   <data name="CliPower" xml:space="preserve">
     <value>Napajanje:</value>
@@ -407,7 +410,7 @@
   </data>
   <data name="CliUsage" xml:space="preserve">
     <value>Upravljanje razvlaževalnika Xiaomi Smart Dehumidifier Lite.
-Naslov in žeton se vzameta iz nastavitev programa (enaka kot v oknu).
+Naslov in žeton se vzameta iz nastavitev programa (enaka kot v oknu) ali se napišeta pred ukazi.
 
   Dehumidifier.exe status                    stanje
   Dehumidifier.exe on                        vklopi
@@ -424,6 +427,8 @@ Naslov in žeton se vzameta iz nastavitev programa (enaka kot v oknu).
   Dehumidifier.exe reset-filter              ponastavi števec filtra
   Dehumidifier.exe 2.5                       preberi lastnost MIoT siid.piid
   Dehumidifier.exe 2.5=45                    zapiši: število, on|off ali JSON
+  Dehumidifier.exe 192.168.0.10 [žeton]      okno s tem razvlaževalnikom; nastavitve se ne spremenijo
+  Dehumidifier.exe 192.168.0.10 žeton status  ukazi temu razvlaževalniku; nastavitve se ne spremenijo
 
 Ruski sinonimi: состояніе, включить, выключить, переключить, влажность, режимъ умный|ночной|сушка,
 слѣдующій, подсвѣтка включить|выключить тусклая|яркая, звукъ, блокировка, просушка, таймеръ,
@@ -441,6 +446,9 @@ Ukazov lahko podate več zapored, izvedli se bodo po vrsti:
 Najprej se preveri cela vrstica: če je v njej napaka, se ne izvede nič.
 Če naprava zavrne, se izvajanje ustavi pri tem ukazu.
 Brez parametrov se odpre okno.
+
+Žeton, napisan v ukazni vrstici, vidijo drugi programi na tem računalniku in ostane v zgodovini lupine.
+Če se temu želiš izogniti, se enkrat poveži v oknu: naslov in žeton se shranita v nastavitve.
 
 Izhodna koda: 0 — uspeh, 1 — napaka povezave ali zavrnitev naprave, 2 — neveljaven ukaz.</value>
   </data>

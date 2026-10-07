@@ -36,7 +36,7 @@ public sealed class miIO : IDisposable
 
 	static readonly byte[] Hello = [0x21,0x31, 0,32, .. Repeat<byte>(0xFF, 28)];
 
-	readonly string IP;                      // адресъ осушителя — для сообщенія, что онъ не отвѣчаетъ
+	readonly IPAddress IP;                   // адресъ осушителя — для сообщенія, что онъ не отвѣчаетъ
 	readonly byte[] Token;                   // 16 байтъ: изъ него ключъ и векторъ; онъ же стоитъ на мѣстѣ контрольной суммы, пока она считается
 	readonly byte[] IV;                      // 16 байтъ: векторъ AES-CBC = MD5(ключъ + токенъ)
 	readonly Aes AES = Aes.Create();         // 16 байтъ  ключъ   AES-128 = MD5(токенъ)
@@ -55,19 +55,17 @@ public sealed class miIO : IDisposable
 
 	public TimeSpan Timeout { get; set; } = new(0, 0, seconds: 3);
 
-	public miIO(string ip, ReadOnlySpan<char> tokenHex)
+	public miIO(IPAddress ip, byte[] token)
 	{
-		IP = ip;
-		Token = FromHexString(tokenHex);
-		if (Token.Length != 16)
-			throw new ArgumentException(TokenFormat, nameof(tokenHex));
+		IP      =  ip;
+		Token   =  token;
 		byte[]     aesKey = HashData(Token);
 		AES.Key =  aesKey;
 		Span<byte>    keyToken = stackalloc byte[32];
 		aesKey.CopyTo(keyToken);
 		Token .CopyTo(keyToken[16..]);
 		IV = HashData(keyToken);
-		Udp.Connect(Parse(ip), 54321);
+		Udp.Connect(ip, 54321);
 		_ = Run(ReceiveLoopAsync); // циклъ пріёма — сразу въ пулѣ потоковъ, не на потокѣ создателя (въ окнѣ это UI-потокъ)
 	}
 

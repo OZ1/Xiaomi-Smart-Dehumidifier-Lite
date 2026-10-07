@@ -285,11 +285,14 @@
   <data name="CliUnknownCommand" xml:space="preserve">
     <value>Nepoznata naredba „{0}”.</value>
   </data>
-  <data name="CliNoAddress" xml:space="preserve">
-    <value>Adresa nije zadana: otvori program bez parametara i poveži se.</value>
-  </data>
   <data name="CliNoToken" xml:space="preserve">
-    <value>Token nije zadan: otvori program bez parametara i poveži se.</value>
+    <value>Nakon adrese {0} potreban je token — 32 heksadecimalne znamenke, zatim naredbe.</value>
+  </data>
+  <data name="CliNoDevice" xml:space="preserve">
+    <value>Nije poznato kojem se odvlaživaču obratiti: otvori program bez parametara i poveži se (adresa i token bit će zapamćeni) ili ih navedi ispred naredbi.</value>
+  </data>
+  <data name="CliBadAddress" xml:space="preserve">
+    <value>Neispravna adresa „{0}”: potrebna su četiri broja odvojena točkama, npr. 192.168.0.10.</value>
   </data>
   <data name="CliPower" xml:space="preserve">
     <value>Napajanje:</value>
@@ -407,7 +410,7 @@
   </data>
   <data name="CliUsage" xml:space="preserve">
     <value>Upravljanje odvlaživačem Xiaomi Smart Dehumidifier Lite.
-Adresa i token uzimaju se iz postavki programa (iste kao u prozoru).
+Adresa i token uzimaju se iz postavki programa (iste kao u prozoru) ili se pišu ispred naredbi.
 
   Dehumidifier.exe status                    stanje
   Dehumidifier.exe on                        uključi
@@ -424,6 +427,8 @@ Adresa i token uzimaju se iz postavki programa (iste kao u prozoru).
   Dehumidifier.exe reset-filter              poništi brojač filtra
   Dehumidifier.exe 2.5                       pročitaj MIoT svojstvo siid.piid
   Dehumidifier.exe 2.5=45                    upiši: broj, on|off ili JSON
+  Dehumidifier.exe 192.168.0.10 [token]      prozor s ovim odvlaživačem; postavke se ne mijenjaju
+  Dehumidifier.exe 192.168.0.10 token status  naredbe ovom odvlaživaču; postavke se ne mijenjaju
 
 Ruski sinonimi: состояніе, включить, выключить, переключить, влажность, режимъ умный|ночной|сушка,
 слѣдующій, подсвѣтка включить|выключить тусклая|яркая, звукъ, блокировка, просушка, таймеръ,
@@ -441,6 +446,9 @@ Može se zadati više naredbi zaredom, izvršit će se redom:
 Najprije se provjerava cijeli redak: ako u njemu ima greške, ništa se ne izvršava.
 Ako uređaj odbije, izvršavanje se zaustavlja na toj naredbi.
 Bez parametara otvara se prozor.
+
+Token upisan u naredbeni redak vide drugi programi na ovom računalu i ostaje u povijesti ljuske.
+Da to izbjegneš, poveži se jednom u prozoru: adresa i token spremit će se u postavke.
 
 Izlazni kod: 0 — uspjeh, 1 — greška veze ili odbijanje uređaja, 2 — neispravna naredba.</value>
   </data>

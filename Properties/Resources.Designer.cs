@@ -304,11 +304,20 @@ namespace DehumidifierControl.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Адресъ не заданъ: открой программу безъ параметровъ и подключись..
+        ///   Ищет локализованную строку, похожую на Невѣрный адресъ «{0}»: нужны четыре числа черезъ точку, напримѣръ 192.168.0.10..
         /// </summary>
-        internal static string CliNoAddress {
+        internal static string CliBadAddress {
             get {
-                return ResourceManager.GetString("CliNoAddress", resourceCulture);
+                return ResourceManager.GetString("CliBadAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Неизвѣстно, къ какому осушителю обращаться: открой программу безъ параметровъ и подключись (адресъ и токенъ запомнятся) или укажи ихъ передъ командами..
+        /// </summary>
+        internal static string CliNoDevice {
+            get {
+                return ResourceManager.GetString("CliNoDevice", resourceCulture);
             }
         }
         
@@ -331,7 +340,7 @@ namespace DehumidifierControl.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Токенъ не заданъ: открой программу безъ параметровъ и подключись..
+        ///   Ищет локализованную строку, похожую на Послѣ адреса {0} нуженъ токенъ — 32 шестнадцатеричныя цифры, затѣмъ команды..
         /// </summary>
         internal static string CliNoToken {
             get {
@@ -967,5 +976,6 @@ namespace DehumidifierControl.Properties {
                 return ResourceManager.GetString("WriteRejected", resourceCulture);
             }
         }
+        
     }
 }

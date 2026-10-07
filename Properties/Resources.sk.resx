@@ -285,11 +285,14 @@
   <data name="CliUnknownCommand" xml:space="preserve">
     <value>Neznámy príkaz „{0}“.</value>
   </data>
-  <data name="CliNoAddress" xml:space="preserve">
-    <value>Adresa nie je nastavená: otvor program bez parametrov a pripoj sa.</value>
-  </data>
   <data name="CliNoToken" xml:space="preserve">
-    <value>Token nie je nastavený: otvor program bez parametrov a pripoj sa.</value>
+    <value>Za adresou {0} je potrebný token — 32 šestnástkových číslic, potom príkazy.</value>
+  </data>
+  <data name="CliNoDevice" xml:space="preserve">
+    <value>Nie je známe, na ktorý odvlhčovač sa obrátiť: otvor program bez parametrov a pripoj sa (adresa a token sa zapamätajú) alebo ich uveď pred príkazmi.</value>
+  </data>
+  <data name="CliBadAddress" xml:space="preserve">
+    <value>Neplatná adresa „{0}“: sú potrebné štyri čísla oddelené bodkami, napríklad 192.168.0.10.</value>
   </data>
   <data name="CliPower" xml:space="preserve">
     <value>Napájanie:</value>
@@ -407,7 +410,7 @@
   </data>
   <data name="CliUsage" xml:space="preserve">
     <value>Ovládanie odvlhčovača Xiaomi Smart Dehumidifier Lite.
-Adresa a token sa berú z nastavení programu (rovnaké ako v okne).
+Adresa a token sa berú z nastavení programu (rovnaké ako v okne) alebo sa píšu pred príkazy.
 
   Dehumidifier.exe status                    stav
   Dehumidifier.exe on                        zapnúť
@@ -424,6 +427,8 @@ Adresa a token sa berú z nastavení programu (rovnaké ako v okne).
   Dehumidifier.exe reset-filter              vynulovať počítadlo filtra
   Dehumidifier.exe 2.5                       prečítať vlastnosť MIoT siid.piid
   Dehumidifier.exe 2.5=45                    zapísať: číslo, on|off alebo JSON
+  Dehumidifier.exe 192.168.0.10 [token]      okno s týmto odvlhčovačom; nastavenia sa nemenia
+  Dehumidifier.exe 192.168.0.10 token status  príkazy tomuto odvlhčovaču; nastavenia sa nemenia
 
 Ruské synonymá: состояніе, включить, выключить, переключить, влажность, режимъ умный|ночной|сушка,
 слѣдующій, подсвѣтка включить|выключить тусклая|яркая, звукъ, блокировка, просушка, таймеръ,
@@ -441,6 +446,9 @@ Príkazov možno zadať niekoľko za sebou, vykonajú sa postupne:
 Najprv sa skontroluje celý riadok: ak je v ňom chyba, nevykoná sa nič.
 Keď zariadenie odmietne, vykonávanie sa zastaví na tomto príkaze.
 Bez parametrov sa otvorí okno.
+
+Token zapísaný v príkazovom riadku vidia ostatné programy na tomto počítači a zostáva v histórii shellu.
+Aby si sa tomu vyhol, pripoj sa raz v okne: adresa a token sa uložia do nastavení.
 
 Návratový kód: 0 — úspech, 1 — chyba spojenia alebo odmietnutie zariadením, 2 — neplatný príkaz.</value>
   </data>

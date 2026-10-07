@@ -1,15 +1,30 @@
-﻿namespace DehumidifierControl;
+﻿using System.Net;
+using System.Net.Sockets;
+
+namespace DehumidifierControl;
 
 using static Properties.Resources;
 
 using static Math;
 using static Byte;
+using static Char;
 using static UInt16;
 using static String;
+using static Convert;
+using static IPAddress;
+using static AddressFamily;
 
 /// <summary>Разборъ текста въ значенія и показъ значеній текстомъ.</summary>
 static class Values
 {
+	/// <summary>Адресъ осушителя — полный IPv4 (съ тремя точками) или IPv6; иначе null.
+	/// «2.5» .NET тоже принялъ бы за 2.0.0.5, а это свойство MIoT для командной строки.</summary>
+	public static IPAddress? Address(string? text) =>
+		TryParse(text, out IPAddress? ip) && (ip.AddressFamily != InterNetwork || text.Count(c => c == '.') == 3) ? ip : null;
+
+	/// <summary>Токенъ — 32 шестнадцатеричныхъ знака (16 байтъ); иначе null.</summary>
+	public static byte[]? TokenOf(string? text) => text is { Length: 32 } && text.All(IsAsciiHexDigit) ? FromHexString(text) : null;
+
 	/// <summary>Цѣлевая влажность: осушитель принимаетъ 0…100, хотя по спецификаціи 40…70.</summary>
 	public static bool HumidityOf(ReadOnlySpan<char> text, out byte humidity) => TryParse(text.TrimEnd('%'), out humidity) && humidity <= 100;
 

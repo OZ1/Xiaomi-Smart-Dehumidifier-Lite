@@ -285,11 +285,14 @@
   <data name="CliUnknownCommand" xml:space="preserve">
     <value>Nieznane polecenie „{0}”.</value>
   </data>
-  <data name="CliNoAddress" xml:space="preserve">
-    <value>Nie ustawiono adresu: otwórz program bez parametrów i połącz się.</value>
-  </data>
   <data name="CliNoToken" xml:space="preserve">
-    <value>Nie ustawiono tokenu: otwórz program bez parametrów i połącz się.</value>
+    <value>Po adresie {0} potrzebny jest token — 32 cyfry szesnastkowe, a potem polecenia.</value>
+  </data>
+  <data name="CliNoDevice" xml:space="preserve">
+    <value>Nie wiadomo, do którego osuszacza się zwrócić: otwórz program bez parametrów i połącz się (adres i token zostaną zapamiętane) albo podaj je przed poleceniami.</value>
+  </data>
+  <data name="CliBadAddress" xml:space="preserve">
+    <value>Nieprawidłowy adres „{0}”: potrzebne są cztery liczby oddzielone kropkami, np. 192.168.0.10.</value>
   </data>
   <data name="CliPower" xml:space="preserve">
     <value>Zasilanie:</value>
@@ -407,7 +410,7 @@
   </data>
   <data name="CliUsage" xml:space="preserve">
     <value>Sterowanie osuszaczem Xiaomi Smart Dehumidifier Lite.
-Adres i token są pobierane z ustawień programu (tych samych co w oknie).
+Adres i token są pobierane z ustawień programu (tych samych co w oknie) albo podawane przed poleceniami.
 
   Dehumidifier.exe status                    stan
   Dehumidifier.exe on                        włącz
@@ -424,6 +427,8 @@ Adres i token są pobierane z ustawień programu (tych samych co w oknie).
   Dehumidifier.exe reset-filter              wyzeruj licznik filtra
   Dehumidifier.exe 2.5                       odczytaj właściwość MIoT siid.piid
   Dehumidifier.exe 2.5=45                    zapisz: liczba, on|off lub JSON
+  Dehumidifier.exe 192.168.0.10 [token]      okno z tym osuszaczem; ustawienia się nie zmieniają
+  Dehumidifier.exe 192.168.0.10 token status  polecenia dla tego osuszacza; ustawienia się nie zmieniają
 
 Rosyjskie synonimy: состояніе, включить, выключить, переключить, влажность, режимъ умный|ночной|сушка,
 слѣдующій, подсвѣтка включить|выключить тусклая|яркая, звукъ, блокировка, просушка, таймеръ,
@@ -441,6 +446,9 @@ Można podać kilka poleceń po kolei, wykonają się w tej kolejności:
 Najpierw sprawdzany jest cały wiersz: jeśli jest w nim błąd, nic się nie wykonuje.
 Gdy urządzenie odmówi, wykonywanie zatrzymuje się na tym poleceniu.
 Bez parametrów otwiera się okno.
+
+Token wpisany w wierszu poleceń widzą inne programy na tym komputerze i zostaje on w historii powłoki.
+Aby tego uniknąć, połącz się raz w oknie: adres i token zostaną zapisane w ustawieniach.
 
 Kod wyjścia: 0 — sukces, 1 — błąd połączenia lub odmowa urządzenia, 2 — nieprawidłowe polecenie.</value>
   </data>

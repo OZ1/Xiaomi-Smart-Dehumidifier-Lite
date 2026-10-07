@@ -78,7 +78,7 @@ static partial class CLI
 	/// <summary>Ширина столбца подписей въ status — по самой длинной подписи на языкѣ интерфейса; языкъ за время работы не мѣняется.</summary>
 	static readonly int LabelWidth = new[] { CliPower, CliMode, CliLight, CliSound, CliLock, CliTemperature, CliHumidity, CliTarget, CliDryAfterOff, CliTimer, CliWarming, CliFault }.Max(l => l.Length) + 1;
 
-	public static async Task<int> RunAsync(string[] args)
+	public static async Task<int> RunAsync(string[] args, int skip)
 	{
 		[DllImport("Kernel32", ExactSpelling = true)]
 		[SuppressMessage("Interoperability", "SYSLIB1054: Используйте LibraryImportAttribute вместо DllImportAttribute для генерирования кода маршализации P/Invoke во время компиляции")]
@@ -102,14 +102,16 @@ static partial class CLI
 			}
 
 			// первый проходъ: провѣрить всю строку — при ошибкѣ въ ней не выполняется ничего
-			for (int i = 0; i < args.Length; i++)
+			for (int i = skip; i < args.Length; i++)
 			{
 				current = args[i];
 
 				if (!Commands.TryGetValue(current, out Command command))
 				{
 					if (Property().Match(current) is not { Success: true } p)
-						return Wrong(Format(CliUnknownCommand, current));
+						return Wrong(i == 0 && AddressLike().IsMatch(current) ? Format(CliBadAddress,     current) :
+						/**/         i == 1 && skip > 0                       ? Format(CliNoToken,        args[0]) : // за адресомъ — не токенъ и не команда (будь токенъ, skip = 2)
+						/**/                                                    Format(CliUnknownCommand, current));
 					if (TryParse(p.Groups["siid"].ValueSpan, out byte siid) &&
 						TryParse(p.Groups["piid"].ValueSpan, out byte piid))
 					{
@@ -174,20 +176,15 @@ static partial class CLI
 					break;
 				}
 			}
-
 			current = null;
-			using  Dehumidifier device = Connect();
-			static Dehumidifier          Connect()
-			{
-				string ip    = Settings.Default.IP;
-				string token = Settings.Default.Token;
-				if (IsNullOrWhiteSpace(ip))    throw new ArgumentException(CliNoAddress);
-				if (IsNullOrWhiteSpace(token)) throw new ArgumentException(CliNoToken);
-				return new(new(ip, token));
-			}
+
+			if (App.IP is null || App.Token is null)
+				return Wrong(skip > 0 ? Format(CliNoToken, args[0]) : CliNoDevice);
+
+			using Dehumidifier device = new(new(App.IP, App.Token));
 
 			// второй проходъ: выполнить по порядку черезъ одно подключеніе; значенія уже провѣрены
-			for (int i = 0; i < args.Length; i++)
+			for (int i = skip; i < args.Length; i++)
 			{
 				current = args[i];
 
@@ -475,4 +472,9 @@ static partial class CLI
 	/// <summary>Свойство MIoT по номерамъ: siid.piid — прочитать, siid.piid=значеніе — записать.</summary>
 	[GeneratedRegex(@"^(?<siid>\d+)\.(?<piid>\d+)(?:=(?<value>.*))?$")]
 	private static partial Regex Property();
+
+	/// <summary>Похоже на адресъ, но Address его не принялъ: цифры съ двумя точками и больше (192.168.1, 192.168.1.300) или IPv6 (два двоеточія и больше: «1:30» — время таймера).
+	/// Свойство MIoT (одна точка) сюда не попадаетъ — его ловитъ Property() раньше.</summary>
+	[GeneratedRegex(@"^(?:[\d.]*\.[\d.]*\.[\d.]*|[\da-fA-F:]*:[\da-fA-F:]*:[\da-fA-F:]*)$")]
+	private static partial Regex AddressLike();
 }

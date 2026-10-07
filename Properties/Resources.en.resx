@@ -285,11 +285,14 @@
   <data name="CliUnknownCommand" xml:space="preserve">
     <value>Unknown command “{0}”.</value>
   </data>
-  <data name="CliNoAddress" xml:space="preserve">
-    <value>No address set: open the program without parameters and connect.</value>
-  </data>
   <data name="CliNoToken" xml:space="preserve">
-    <value>No token set: open the program without parameters and connect.</value>
+    <value>After the address {0} a token is needed — 32 hexadecimal digits, then the commands.</value>
+  </data>
+  <data name="CliNoDevice" xml:space="preserve">
+    <value>It is not known which dehumidifier to talk to: open the program without parameters and connect (the address and token will be remembered), or give them before the commands.</value>
+  </data>
+  <data name="CliBadAddress" xml:space="preserve">
+    <value>Invalid address “{0}”: four numbers separated by dots are needed, for example 192.168.0.10.</value>
   </data>
   <data name="CliPower" xml:space="preserve">
     <value>Power:</value>
@@ -407,7 +410,7 @@
   </data>
   <data name="CliUsage" xml:space="preserve">
     <value>Control of the Xiaomi Smart Dehumidifier Lite.
-The address and token are taken from the program settings (the same as in the window).
+The address and token are taken from the program settings (the same as in the window) or written before the commands.
 
   Dehumidifier.exe status                    state
   Dehumidifier.exe on                        switch on
@@ -424,6 +427,8 @@ The address and token are taken from the program settings (the same as in the wi
   Dehumidifier.exe reset-filter              reset the filter counter
   Dehumidifier.exe 2.5                       read MIoT property siid.piid
   Dehumidifier.exe 2.5=45                    write: a number, on|off or JSON
+  Dehumidifier.exe 192.168.0.10 [token]      window with this dehumidifier; settings are not changed
+  Dehumidifier.exe 192.168.0.10 token status  commands to this dehumidifier; settings are not changed
 
 Russian synonyms: состояніе, включить, выключить, переключить, влажность, режимъ умный|ночной|сушка,
 слѣдующій, подсвѣтка включить|выключить тусклая|яркая, звукъ, блокировка, просушка, таймеръ,
@@ -441,6 +446,9 @@ Several commands can be given in a row; they run in order:
 The whole line is checked first: if it has an error, nothing runs.
 If the device refuses, execution stops at that command.
 Without parameters the window opens.
+
+A token written on the command line is visible to other programs on this computer and stays in the shell history.
+To avoid that, connect once in the window: the address and token will be saved in the settings.
 
 Exit code: 0 — success, 1 — connection error or device refusal, 2 — invalid command.</value>
   </data>

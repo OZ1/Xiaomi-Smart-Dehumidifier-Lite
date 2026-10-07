@@ -1,6 +1,4 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using System.Net;
-using System.Net.Sockets;
 using System.Runtime.InteropServices;
 using System.Drawing.Drawing2D;
 using System.ComponentModel;
@@ -21,11 +19,11 @@ using static Array;
 using static Single;
 using static Double;
 using static String;
+using static Convert;
 using static DateTime;
 using static TimeSpan;
 using static Color;
 using static SystemColors;
-using static StringComparison;
 using static ToolStripDropDownCloseReason;
 using static FontStyle;
 using static Enumerable;
@@ -79,29 +77,35 @@ public partial class MainForm : Form
 
 		ValueFont = labelFault.Font;
 		QuietFont = new(ValueFont, Regular);
-	}
 
-	protected override async void OnLoad(EventArgs e)
-	{
-		base.OnLoad(e);
-		if (DesignMode) return;
-		ShowTray();
 		if (Settings.Default.Location.X > -1000000)
 		{
 			StartPosition = Manual;
 			Location = Settings.Default.Location;
 		}
-		if (IsNullOrWhiteSpace(Settings.Default.IP) && LocalSubNetPrefix() is { } prefix)
+
+		textBoxIP   .Text = App.IP    is not null ?      App.IP.ToString() : Settings.Default.IP;
+		textBoxToken.Text = App.Token is not null ? ToHexString(App.Token) : Settings.Default.Token;
+		if (IsNullOrWhiteSpace(textBoxIP.Text) && LocalSubNetPrefix() is { } prefix)
 		{
+			// дескриптора ещё нѣтъ: текстовое поле запомнитъ выдѣленіе, а окно поставитъ фокусъ на ActiveControl, когда покажется
 			textBoxIP.Text = prefix; // «192.168.1.» — осталось дописать номеръ осушителя
 			ActiveControl = textBoxIP;
 			textBoxIP.SelectionStart = prefix.Length;
 		}
-		else textBoxIP.Text = Settings.Default.IP;
-		textBoxToken.Text = Settings.Default.Token;
-		if (Settings.Default.Token.Length <= 0)
+		if (textBoxToken.Text.Length <= 0)
 			SetStatus(EnterToken);
-		else await ConnectAsync();
+
+		ShowTray();
+	}
+
+	/// <summary>Въ OnLoad — подключеніе: съ await, а исключенія его должны прійти въ циклъ сообщеній.</summary>
+	protected override async void OnLoad(EventArgs e)
+	{
+		base.OnLoad(e);
+		if (DesignMode) return;
+		if (textBoxToken.Text.Length > 0)
+			await ConnectAsync();
 	}
 
 	protected override void OnFormClosing(FormClosingEventArgs e)
@@ -149,14 +153,13 @@ public partial class MainForm : Form
 
 	async Task ConnectAsync()
 	{
-		string ip = textBoxIP.Text.Trim();
-		string token = textBoxToken.Text.Trim().ToUpperInvariant();
-		if (!IPAddress.TryParse(ip, out _))
+		// всегда изъ полей: въ нихъ уже то, что дали командная строка или настройки, а послѣ неудачи — исправленное человѣкомъ
+		if (Address(textBoxIP.Text.Trim()) is not { } ip)
 		{
 			SetStatus(BadAddress, error: true);
 			return;
 		}
-		if (token.Length != 32 || !token.All(IsHexDigit))
+		if (TokenOf(textBoxToken.Text.Trim()) is not { } token)
 		{
 			SetStatus(BadToken, error: true);
 			return;
@@ -165,9 +168,12 @@ public partial class MainForm : Form
 		pollTimer.Stop();
 		Device?.Dispose();
 		Device = new(new(ip, token));
-		Settings.Default.IP = ip;
-		Settings.Default.Token = token;
-		Settings.Default.Save();
+		if (!App.FromArgs)
+		{
+			Settings.Default.IP = ip.ToString();
+			Settings.Default.Token = ToHexString(token);
+			Settings.Default.Save();
+		}
 
 		buttonConnect.Enabled = false;
 		groupControls.Enabled = false;

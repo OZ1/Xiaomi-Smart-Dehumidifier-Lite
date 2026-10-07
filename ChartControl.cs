@@ -29,6 +29,7 @@ using static CollectionsMarshal;
 /// послѣ lost до слѣдующей строки — пунктиромъ, вырѣзанное (stop…rec) — пусто.
 /// Долгіе промежутки безъ показаній сжаты на оси времени въ узкія заштрихованныя полосы.
 /// Колесо — масштабъ, перетаскиваніе — сдвигъ, Shift+перетаскиваніе — выдѣленіе, двойной щелчокъ — всё.
+/// Надъ шкалою значеній то же — по высотѣ этой оси; нажатое колесо возвращаетъ ей масштабъ по значеніямъ (надъ графиками — всѣмъ осямъ).
 /// Графики рисуются въ картинку и перерисовываются, только когда мѣняются строки, видъ или размѣръ;
 /// курсоръ, выдѣленіе и рамка фокуса — поверхъ картинки: мышь водятъ — графики заново не рисуются.</summary>
 public sealed class ChartControl : Control
@@ -44,6 +45,13 @@ public sealed class ChartControl : Control
 	double DragFrom, DragTo;
 	DateTime SelectStart;
 	bool Dragging, Selecting;
+
+	/// <summary>Оси значеній: у каждой свой масштабъ.</summary>
+	enum YAxis { Humidity, Temperature, Water }
+
+	readonly (double Min, double Max)?[] ManualRanges = new (double, double)?[3]; // заданъ колесомъ или перетаскиваніемъ шкалы; null — по значеніямъ
+	YAxis? AxisDragged; // тащатъ шкалу этой оси
+	(double Min, double Max) DragRange;
 
 	/// <summary>Сжатый промежутокъ безъ показаній: настоящія начало и конецъ и гдѣ онъ начинается на оси.</summary>
 	readonly record struct Gap(DateTime From, DateTime To, double At);
@@ -93,6 +101,7 @@ public sealed class ChartControl : Control
 			if (!keepView)
 			{
 				Selection = null;
+				Array.Clear(ManualRanges);
 				ViewFrom = 0;
 				ViewTo = AxisEnd;
 			}
@@ -300,6 +309,35 @@ public sealed class ChartControl : Control
 	/// <summary>Сжатый промежутокъ въ этомъ мѣстѣ оси; null — тамъ записанное время.</summary>
 	Gap? GapAt(double axis) => GapBefore(axis) is >= 0 and int i && axis < Gaps[i].At + GapWidth ? Gaps[i] : null;
 
+	/// <summary>Предѣлы оси: заданные на шкалѣ или по значеніямъ.</summary>
+	(double Min, double Max) RangeOf(YAxis axis) => ManualRanges[(int)axis] ?? axis switch
+	{
+		YAxis.Humidity => HumidityRange,
+		YAxis.Temperature => TemperatureRange,
+		_ => WaterRange,
+	};
+
+	Rectangle PaneOf(YAxis axis) => axis == YAxis.Humidity ? Panes().Humidity : Panes().Temperature;
+
+	/// <summary>Ось, надъ чьею шкалою точка: влажность и температура — слѣва, вода — справа.</summary>
+	YAxis? AxisUnder(Point p)
+	{
+		(Rectangle humidity, Rectangle temperature, _) = Panes();
+		int slack = Px(6); // крайнія подписи выступаютъ за рамку на полвысоты
+		bool Beside(Rectangle pane) => p.Y >= pane.Top - slack && p.Y <= pane.Bottom + slack;
+		if (p.X < humidity.Left) return Beside(humidity) ? YAxis.Humidity : Beside(temperature) ? YAxis.Temperature : null;
+		if (p.X > humidity.Right && Beside(temperature)) return YAxis.Water;
+		return null;
+	}
+
+	/// <summary>Значеніе оси на высотѣ y.</summary>
+	double ValueAt(YAxis axis, int y)
+	{
+		Rectangle pane = PaneOf(axis);
+		(double min, double max) = RangeOf(axis);
+		return min + (pane.Bottom - y) * (max - min) / Max(1, pane.Height);
+	}
+
 	static float Y(Rectangle pane, double value, (double Min, double Max) range) => (float)(pane.Bottom - (value - range.Min) / (range.Max - range.Min) * pane.Height);
 
 	/// <summary>Предѣлы оси: отъ наименьшаго до наибольшаго значенія, по шагу step, не меньше minSpan.</summary>
@@ -382,17 +420,19 @@ public sealed class ChartControl : Control
 		if (humidityPane.Width <= 0 || humidityPane.Height <= 0 || temperaturePane.Height <= 0) return;
 
 		Font small = Small;
-		DrawComfort(g, humidityPane, HumidityRange);
+		(double, double) humidityRange = RangeOf(YAxis.Humidity), temperatureRange = RangeOf(YAxis.Temperature), waterRange = RangeOf(YAxis.Water);
+		double humidityStep = ManualRanges[(int)YAxis.Humidity] is null ? 10 : Step(humidityRange, humidityPane.Height, small);
+		DrawComfort(g, humidityPane, humidityRange);
 		DrawTimeGrid(g, humidityPane, temperaturePane, band, small);
 		DrawGaps(g, humidityPane, temperaturePane);
-		DrawAxis(g, humidityPane, HumidityRange, 10, "0", left: true, small, HumidityLine);
-		DrawAxis(g, temperaturePane, TemperatureRange, Step(TemperatureRange, temperaturePane.Height, small), "0.#", left: true, small, TemperatureLine);
-		DrawAxis(g, temperaturePane, WaterRange, Step(WaterRange, temperaturePane.Height, small), "0.#", left: false, small, WaterLine);
+		DrawAxis(g, humidityPane, humidityRange, humidityStep, "0.#", left: true, small, HumidityLine);
+		DrawAxis(g, temperaturePane, temperatureRange, Step(temperatureRange, temperaturePane.Height, small), "0.#", left: true, small, TemperatureLine);
+		DrawAxis(g, temperaturePane, waterRange, Step(waterRange, temperaturePane.Height, small), "0.#", left: false, small, WaterLine);
 
-		DrawSeries(g, humidityPane, HumidityRange, i => Samples[i].State is { Mode: not LogFormat.DryMode, Target: { } t } ? t : null, TargetLine, 2, pinned: true);
-		DrawSeries(g, humidityPane, HumidityRange, i => Samples[i].State.Humidity, HumidityLine, 2);
-		DrawSeries(g, temperaturePane, TemperatureRange, i => Samples[i].State.Temperature, TemperatureLine, 2);
-		DrawSeries(g, temperaturePane, WaterRange, i => Waters[i], WaterLine, 2);
+		DrawSeries(g, humidityPane, humidityRange, i => Samples[i].State is { Mode: not LogFormat.DryMode, Target: { } t } ? t : null, TargetLine, 2, pinned: true);
+		DrawSeries(g, humidityPane, humidityRange, i => Samples[i].State.Humidity, HumidityLine, 2);
+		DrawSeries(g, temperaturePane, temperatureRange, i => Samples[i].State.Temperature, TemperatureLine, 2);
+		DrawSeries(g, temperaturePane, waterRange, i => Waters[i], WaterLine, 2);
 		DrawBand(g, band);
 		DrawGaps(g, band);
 
@@ -413,10 +453,10 @@ public sealed class ChartControl : Control
 		int fit = Max(1, height / (font.Height * 2));
 		foreach (double step in AxisSteps)
 			if (span / step <= fit) return step;
-		return 100;
+		return 500;
 	}
 
-	static readonly double[] AxisSteps = [0.5, 1, 2, 5, 10, 20, 50];
+	static readonly double[] AxisSteps = [0.1, 0.2, 0.5, 1, 2, 5, 10, 20, 50, 100, 200];
 
 	static readonly double[] ComfortBounds = [0, 30, 40, 50.5, 60.5, 70.5, 100];
 
@@ -693,20 +733,59 @@ public sealed class ChartControl : Control
 		SetView(around - left, around + right);
 	}
 
+	const double MinRange = 0.5, MaxRange = 500; // размахъ оси значеній
+
+	/// <summary>Масштабъ оси значеній вокругъ высоты y: подъ мышью значеніе остаётся на мѣстѣ.</summary>
+	void ZoomAxis(YAxis axis, double factor, int y)
+	{
+		(double min, double max) = RangeOf(axis);
+		double span = (max - min) * factor;
+		if (span < MinRange || span > MaxRange) return;
+		double around = ValueAt(axis, y);
+		ManualRanges[(int)axis] = (around - (around - min) * factor, around + (max - around) * factor);
+		Redraw();
+	}
+
+	/// <summary>Курсоръ по мѣсту: надъ шкалою — ↕, надъ графиками — перекрестіе.</summary>
+	void UpdateCursor(Point p)
+	{
+		(Rectangle humidity, _, Rectangle band) = Panes();
+		Cursor = Samples.Count == 0 ? Cursors.Default
+			: AxisUnder(p) is not null ? Cursors.SizeNS
+			: Rectangle.FromLTRB(humidity.Left, humidity.Top, band.Right, band.Bottom).Contains(p) ? Cursors.Cross
+			: Cursors.Default;
+	}
+
 	protected override void OnMouseWheel(MouseEventArgs e)
 	{
 		base.OnMouseWheel(e);
 		if (Samples.Count == 0) return;
-		Zoom(Pow(1.25, -e.Delta / 120.0), AxisAt(e.X));
+		double factor = Pow(1.25, -e.Delta / 120.0);
+		if (AxisUnder(e.Location) is { } axis) ZoomAxis(axis, factor, e.Y);
+		else Zoom(factor, AxisAt(e.X));
 	}
 
 	protected override void OnMouseDown(MouseEventArgs e)
 	{
 		base.OnMouseDown(e);
 		Focus();
-		if (e.Button != MouseButtons.Left || Samples.Count == 0) return;
+		if (Samples.Count == 0) return;
+		YAxis? under = AxisUnder(e.Location);
+		if (e.Button == MouseButtons.Middle) // нажатое колесо — масштабъ по значеніямъ
+		{
+			if (under is { } axis) ManualRanges[(int)axis] = null;
+			else Array.Clear(ManualRanges);
+			Redraw();
+			return;
+		}
+		if (e.Button != MouseButtons.Left) return;
 		DragStart = e.Location;
-		if ((ModifierKeys & Keys.Shift) != 0)
+		if (under is { } dragged)
+		{
+			AxisDragged = dragged;
+			DragRange = RangeOf(dragged);
+		}
+		else if ((ModifierKeys & Keys.Shift) != 0)
 		{
 			Selecting = true;
 			SelectStart = Clamp(Time(e.X));
@@ -717,7 +796,7 @@ public sealed class ChartControl : Control
 			Dragging = true;
 			DragFrom = ViewFrom;
 			DragTo = ViewTo;
-			Cursor = Cursors.SizeWE;
+			Cursor = Cursors.Hand;
 		}
 		Capture = true;
 	}
@@ -728,7 +807,13 @@ public sealed class ChartControl : Control
 	{
 		base.OnMouseMove(e);
 		Mouse = e.Location;
-		if (Dragging)
+		if (AxisDragged is { } axis) // тащатъ шкалу — значенія ѣдутъ вслѣдъ за мышью
+		{
+			double shift = (e.Y - DragStart.Y) * (DragRange.Max - DragRange.Min) / Max(1, PaneOf(axis).Height);
+			ManualRanges[(int)axis] = (DragRange.Min + shift, DragRange.Max + shift);
+			Redraw();
+		}
+		else if (Dragging)
 		{
 			double shift = (DragStart.X - e.X) * (DragTo - DragFrom) / Max(1, Plot.Width);
 			SetView(DragFrom + shift, DragTo + shift);
@@ -738,6 +823,7 @@ public sealed class ChartControl : Control
 			DateTime now = Clamp(Time(e.X));
 			Selection = now < SelectStart ? (now, SelectStart) : (SelectStart, now);
 		}
+		else UpdateCursor(e.Location);
 		Invalidate();
 	}
 
@@ -749,8 +835,9 @@ public sealed class ChartControl : Control
 		if (Selecting)
 			SelectionChanged?.Invoke(this, EventArgs.Empty);
 		Selecting = Dragging = false;
+		AxisDragged = null;
 		Capture = false;
-		Cursor = Cursors.Default;
+		UpdateCursor(e.Location);
 		Invalidate();
 	}
 

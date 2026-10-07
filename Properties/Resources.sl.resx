@@ -461,4 +461,7 @@ Izhodna koda: 0 — uspeh, 1 — napaka povezave ali zavrnitev naprave, 2 — ne
   <data name="DurationDays" xml:space="preserve">
     <value>{0} d {1} h</value>
   </data>
+  <data name="ConnectedTo" xml:space="preserve">
+    <value>Povezano z {0}</value>
+  </data>
 </root>

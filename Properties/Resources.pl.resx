@@ -461,4 +461,7 @@ Kod wyjścia: 0 — sukces, 1 — błąd połączenia lub odmowa urządzenia, 2 
   <data name="DurationDays" xml:space="preserve">
     <value>{0} d {1} h</value>
   </data>
+  <data name="ConnectedTo" xml:space="preserve">
+    <value>Połączono z {0}</value>
+  </data>
 </root>

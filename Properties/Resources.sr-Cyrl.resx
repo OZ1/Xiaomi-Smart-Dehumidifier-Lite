@@ -461,4 +461,7 @@ siid.piid је број MIoT својства, као испод натписа 
   <data name="DurationDays" xml:space="preserve">
     <value>{0} д {1} ч</value>
   </data>
+  <data name="ConnectedTo" xml:space="preserve">
+    <value>Повезано са {0}</value>
+  </data>
 </root>

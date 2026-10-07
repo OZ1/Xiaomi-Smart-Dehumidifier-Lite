@@ -3,11 +3,35 @@
 namespace DehumidifierControl;
 
 using static Single;
+using static Graphics;
 using static Color;
 
 /// <summary>Рисованные значки: что рисовать — здѣсь, когда и какимъ цвѣтомъ — рѣшаетъ окно.</summary>
 static class Glyph
 {
+	/// <summary>Вилка и розетка разведены — щёлкни, чтобы разъединить. Въ квадратѣ bounds.</summary>
+	public static void PlugsApart(Graphics g, Rectangle bounds, Color color)
+	{
+		int size = bounds.Width;
+		g.SmoothingMode = SmoothingMode.AntiAlias;
+		g.TranslateTransform(bounds.X, bounds.Y);
+		{
+			float u = size / 16f;
+			using Pen        cord = new(color, Max(1, 1.4f * u)) { StartCap = LineCap.Round, EndCap = LineCap.Round };
+			using SolidBrush body = new(color);
+			g.TranslateTransform(size / 2f, size / 2f); // наискосокъ, какъ на привычномъ значкѣ
+			g.RotateTransform(-45);
+			g.TranslateTransform(-size / 2f, -size / 2f);
+			g.DrawLine     (cord, 0.5f  * u, 8    * u,  2.5f * u, 8    * u); // вилка: шнуръ,
+			g.FillRectangle(body, 2.5f  * u, 5    * u,  3.5f * u, 6    * u); // корпусъ
+			g.DrawLine     (cord,  6    * u, 6.5f * u,  7.5f * u, 6.5f * u); // и два штыря;
+			g.DrawLine     (cord,  6    * u, 9.5f * u,  7.5f * u, 9.5f * u);
+			g.FillRectangle(body, 10    * u, 5    * u,  3.5f * u, 6    * u); // зазоръ — и розетка
+			g.DrawLine     (cord, 13.5f * u, 8    * u, 15.5f * u, 8    * u); // со шнуромъ
+		}
+		g.ResetTransform();
+	}
+
 	/// <summary>Крупная капля во весь значокъ: остріе вверху, брюшко внизу; тонкій ободокъ — тёмный на свѣтлой панели задачъ, свѣтлый на тёмной:
 	/// яркая капля на свѣтлой панели безъ него расплывается.</summary>
 	public static void Drop(Graphics g, Rectangle bounds, Color color, bool lightTheme)

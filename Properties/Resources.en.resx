@@ -461,4 +461,7 @@ Exit code: 0 — success, 1 — connection error or device refusal, 2 — invali
   <data name="DurationDays" xml:space="preserve">
     <value>{0} d {1} h</value>
   </data>
+  <data name="ConnectedTo" xml:space="preserve">
+    <value>Connected to {0}</value>
+  </data>
 </root>

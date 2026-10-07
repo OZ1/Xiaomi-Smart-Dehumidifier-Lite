@@ -977,5 +977,13 @@ namespace DehumidifierControl.Properties {
             }
         }
         
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Подключенъ къ {0}.
+        /// </summary>
+        internal static string ConnectedTo {
+            get {
+                return ResourceManager.GetString("ConnectedTo", resourceCulture);
+            }
+        }
     }
 }

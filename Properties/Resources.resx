@@ -461,4 +461,7 @@ siid.piid — номеръ свойства MIoT, какъ подъ подпис
   <data name="DurationDays" xml:space="preserve">
     <value>{0} сут {1} ч</value>
   </data>
+  <data name="ConnectedTo" xml:space="preserve">
+    <value>Подключенъ къ {0}</value>
+  </data>
 </root>

@@ -9,7 +9,6 @@ using Properties;
 
 using static Properties.Resources;
 
-using static Uri;
 using static Byte;
 using static Char;
 using static Size;
@@ -26,7 +25,6 @@ using static Color;
 using static SystemColors;
 using static ToolStripDropDownCloseReason;
 using static FontStyle;
-using static Enumerable;
 using static LayoutKind;
 using static CheckState;
 using static CloseReason;
@@ -37,10 +35,8 @@ using static MessageBoxButtons;
 using static FormStartPosition;
 using static SystemInformation;
 using static DehumidifierState;
-using static Dehumidifier;
-using static Network;
 using static ComfortScale;
-using static Comfort;
+using static Network;
 using static Values;
 
 using State = DehumidifierState;
@@ -100,12 +96,12 @@ public partial class MainForm : Form
 	}
 
 	/// <summary>Въ OnLoad — подключеніе: съ await, а исключенія его должны прійти въ циклъ сообщеній.</summary>
-	protected override async void OnLoad(EventArgs e)
+	protected override void OnLoad(EventArgs e)
 	{
 		base.OnLoad(e);
 		if (DesignMode) return;
 		if (textBoxToken.Text.Length > 0)
-			await ConnectAsync();
+			Connect_Click(buttonConnect, e);
 	}
 
 	protected override void OnFormClosing(FormClosingEventArgs e)
@@ -142,16 +138,9 @@ public partial class MainForm : Form
 		panelTargetScale.Invalidate(); // включили или выключили высокую контрастность — шкалу перерисовать
 	}
 
-	async void Connect_Click(object? sender, EventArgs e)
-	{
-		if (Device is null)
-			await ConnectAsync();
-		else Disconnect();
-	}
-
 	// ───── связь съ устройствомъ ─────
 
-	async Task ConnectAsync()
+	async void Connect_Click(object? sender, EventArgs e)
 	{
 		// всегда изъ полей: въ нихъ уже то, что дали командная строка или настройки, а послѣ неудачи — исправленное человѣкомъ
 		if (Address(textBoxIP.Text.Trim()) is not { } ip)
@@ -190,16 +179,20 @@ public partial class MainForm : Form
 		{
 			SetConnected(true);
 			SetStatus(Connected);
+			toolTip.SetToolTip(buttonDisconnect, Format(ConnectedTo, ip));
+			checkBoxPower.Focus();
 			pollTimer.Start();
 		}
 		else // не вышло: соединеніе закрываемъ, поля остаются для правки, ошибка — въ строкѣ состоянія
 		{
+			textBoxIP.Focus();
 			Device?.Dispose();
 			Device = null;
 		}
 	}
 
-	void Disconnect()
+	/// <summary>Кнопка съ разведёнными вилкою и розеткою (подсказка «Подключенъ къ …») — отключиться и вернуть рамку подключенія.</summary>
+	void Disconnect_Click(object? sender, EventArgs e)
 	{
 		pollTimer.Stop();
 		targetDebounceTimer.Stop();
@@ -213,17 +206,6 @@ public partial class MainForm : Form
 		SetStatus(Disconnected);
 		SetUpdated("");
 		textBoxIP.Focus();
-	}
-
-	/// <summary>Пока подключены, адресъ и токенъ только для чтенія, токенъ звёздочками, а кнопка отключаетъ.
-	/// AcceptButton на это время снимаемъ, чтобы Enter въ любомъ полѣ не рвалъ соединеніе.</summary>
-	void SetConnected(bool connected)
-	{
-		textBoxIP.ReadOnly = connected;
-		textBoxToken.ReadOnly = connected;
-		textBoxToken.UseSystemPasswordChar = connected;
-		buttonConnect.Text = connected ? Resources.Disconnect : Connect;
-		AcceptButton = connected ? null : buttonConnect;
 	}
 
 	async Task RunAsync(Func<Dehumidifier, Task> action)
@@ -345,6 +327,39 @@ public partial class MainForm : Form
 		toolStripStatusTime.AccessibleName = $"{toolStripStatusTime.ToolTipText} {time}".TrimEnd();
 	}
 
+	/// <summary>Пока подключены, адресъ и токенъ только для чтенія, токенъ звёздочками, а кнопка отключаетъ.
+	/// AcceptButton на это время снимаемъ, чтобы Enter въ любомъ полѣ не рвалъ соединеніе.
+	/// Рамка подключенія при этомъ спрятана, а вмѣсто неё въ «Состояніи» справа внизу кнопка-значокъ «Подключенъ къ …», которая отключаетъ;
+	/// всё ниже поднимается на ея мѣсто.</summary>
+	void SetConnected(bool connected)
+	{
+		textBoxIP   .ReadOnly              = connected;
+		textBoxToken.ReadOnly              = connected;
+		textBoxToken.UseSystemPasswordChar = connected;
+		buttonConnect.Text = connected ? Disconnect : Connect;
+		AcceptButton       = connected ? null : buttonConnect;
+		groupConnection.Visible = !connected;
+		buttonDisconnect.Visible = connected;
+		HiddenConnectionGroupHeight = connected ? groupState.Top - groupConnection.Top + HiddenConnectionGroupHeight : 0; // «Состояніе» встаётъ на мѣсто рамки
+	}
+
+	/// <summary>Высота спрятанной рамки подключенія вмѣстѣ съ промежуткомъ подъ нею — на столько поднято всё ниже; 0 — рамка на мѣстѣ, какъ въ дизайнерѣ.
+	/// Присвоеніе передвигаетъ: окно и его наименьшій размѣръ мѣняютъ высоту на разницу, рамки ниже сдвигаются,
+	/// растянутая по высотѣ («Управленіе») сохраняетъ высоту.</summary>
+	int HiddenConnectionGroupHeight { get; set
+	{
+		int below = field - value; // на сколько опустить
+		if (below == 0) return;
+		field = value;
+		// мѣста — до смѣны высоты окна: якорь снизу у «Управленія» растягиваетъ его не всегда (у ещё не показаннаго окна — нѣтъ),
+		// поэтому ставимъ всё явно, а не поправляемъ растянутое
+		Rectangle state = groupState.Bounds, controls = groupControls.Bounds;
+		Size client = ClientSize; // наименьшій размѣръ — вмѣстѣ съ окномъ, иначе окно не ужмётся
+		MinimumSize = new(MinimumSize.Width, MinimumSize.Height + below);
+		ClientSize = new(client.Width, client.Height + below);
+		groupState   .SetBounds(state   .Left, state   .Top + below, state   .Width, state   .Height);
+		groupControls.SetBounds(controls.Left, controls.Top + below, controls.Width, controls.Height);
+	}}
 
 	void Power_CheckedChanged(object? sender, EventArgs e)
 	{
@@ -584,6 +599,12 @@ public partial class MainForm : Form
 
 	[StructLayout(Sequential)]
 	struct RECT { public int Left, Top, Right, Bottom; }
+
+	/// <summary>Значокъ на кнопку «Подключенъ къ …» — цвѣтомъ ея текста.</summary>
+	void Disconnect_PaintImage(object? sender, PaintEventArgs e)
+	{
+		Glyph.PlugsApart(e.Graphics, e.ClipRectangle, buttonDisconnect.ForeColor);
+	}
 
 	// ───── трей: капля цвѣтомъ влажности и меню управленія ─────
 

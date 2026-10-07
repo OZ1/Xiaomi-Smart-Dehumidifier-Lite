@@ -461,4 +461,7 @@ Návratový kód: 0 — úspěch, 1 — chyba spojení nebo odmítnutí zaříze
   <data name="DurationDays" xml:space="preserve">
     <value>{0} d {1} h</value>
   </data>
+  <data name="ConnectedTo" xml:space="preserve">
+    <value>Připojeno k {0}</value>
+  </data>
 </root>

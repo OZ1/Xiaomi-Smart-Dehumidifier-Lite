@@ -128,7 +128,7 @@ partial class MainForm
 		pollTimer = new Timer(components);
 		targetDebounceTimer = new Timer(components);
 		delayDebounceTimer = new Timer(components);
-		notifyIcon = new NotifyIcon(components);
+		notifyIcon = new TrayIcon(components);
 		menuTray = new ContextMenuStrip(components);
 		menuOpen = new ToolStripMenuItem();
 		menuPower = new ToolStripMenuItem();
@@ -800,6 +800,7 @@ partial class MainForm
 		notifyIcon.ContextMenuStrip = menuTray;
 		resources.ApplyResources(notifyIcon, "notifyIcon");
 		notifyIcon.MouseClick += NotifyIcon_MouseClick;
+		notifyIcon.Paint += NotifyIcon_Paint;
 		// 
 		// menuTray
 		// 
@@ -879,7 +880,7 @@ partial class MainForm
 	private Timer pollTimer;
 	private Timer targetDebounceTimer;
 	private Timer delayDebounceTimer;
-	private NotifyIcon notifyIcon;
+	private TrayIcon notifyIcon;
 	private ContextMenuStrip menuTray;
 	private ToolStripMenuItem menuOpen;
 	private ToolStripMenuItem menuPower;

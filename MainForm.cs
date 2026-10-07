@@ -4,7 +4,6 @@ using System.Net.Sockets;
 using System.Runtime.InteropServices;
 using System.Drawing.Drawing2D;
 using System.ComponentModel;
-using Microsoft.Win32;
 
 namespace DehumidifierControl;
 
@@ -24,10 +23,8 @@ using static Double;
 using static String;
 using static DateTime;
 using static TimeSpan;
-using static Graphics;
 using static Color;
 using static SystemColors;
-using static SystemEvents;
 using static StringComparison;
 using static ToolStripDropDownCloseReason;
 using static FontStyle;
@@ -65,20 +62,16 @@ public partial class MainForm : Form
 	byte? RoomHumidity { get; set // влажность въ комнатѣ — для треугольника подъ шкалой
 	{
 		if (field == value) return;
-		field = value;
+		else field = value;
 		panelTargetScale.Invalidate();
 	}}
 
-	(Color Color, bool Light) TrayLook { get; set // какой капля нарисована: цвѣтъ и тема панели задачъ
+	Color NotifyIconColor { get; set
 	{
 		if (field == value) return;
-		field = value;
-		nint hIcon = TrayIconHandle;
-		notifyIcon.Icon = TrayIcon(value.Color, value.Light, SmallIconSize, out TrayIconHandle);
-		DestroyIcon(hIcon);
+		else field = value;
+		notifyIcon.Invalidate();
 	}}
-
-	nint TrayIconHandle; // HICON капли: Icon.FromHandle его не освобождаетъ — освобождаемъ сами, когда замѣняемъ
 
 	public MainForm()
 	{
@@ -93,7 +86,6 @@ public partial class MainForm : Form
 		base.OnLoad(e);
 		if (DesignMode) return;
 		ShowTray();
-		UserPreferenceChanged += SystemEvents_UserPreferenceChanged;
 		if (Settings.Default.Location.X > -1000000)
 		{
 			StartPosition = Manual;
@@ -124,10 +116,8 @@ public partial class MainForm : Form
 
 	protected override void OnFormClosed(FormClosedEventArgs e)
 	{
-		UserPreferenceChanged -= SystemEvents_UserPreferenceChanged; // событіе статическое: безъ отписки держитъ окно въ памяти
 		pollTimer.Stop();
 		notifyIcon.Visible = false;
-		DestroyIcon(TrayIconHandle);
 		base.OnFormClosed(e);
 	}
 
@@ -591,31 +581,13 @@ public partial class MainForm : Form
 
 	// ───── трей: капля цвѣтомъ влажности и меню управленія ─────
 
-	/// <summary>Панель задачъ свѣтлая (иначе тёмная) — отъ этого цвѣтъ ободка капли.</summary>
-	static bool LightTaskbar => Registry.GetValue(@"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize", "SystemUsesLightTheme", 0) is 1;
-
 	/// <summary>Капля въ треѣ — цвѣтомъ влажности (переливъ тотъ же, что у надписи, цвѣта ярче), подсказка — влажность и ступень словами;
-	/// безъ данныхъ — серебряная. Перерисовывается, только когда мѣняется цвѣтъ или тема панели задачъ.</summary>
+	/// безъ данныхъ — серебряная. Перерисовывается, только когда мѣняется цвѣтъ, а за темою, контрастомъ и размѣромъ значокъ слѣдитъ самъ.</summary>
 	void ShowTray(byte? humidity = null)
 	{
-		string text = humidity is { } h ? $"{CliHumidity} {h} %" : Text;
-		notifyIcon.Text = text.Length <= 127 ? text : text[..127]; // больше Windows не принимаетъ
-		TrayLook = (Accent(humidity is { } hc ? HumidityColor(hc, TrayComfortColor) : Silver), LightTaskbar);
+		notifyIcon.Text = humidity is { } ht ? $"{CliHumidity} {ht} %" : Text;
+		NotifyIconColor = humidity is { } hc ? HumidityColor(hc, TrayComfortColor) : Silver;
 	}
-
-	/// <summary>Значокъ трея — капля Glyph.Drop во весь размѣръ.</summary>
-	static Icon TrayIcon(Color color, bool lightTaskbar, Size size, out nint handle)
-	{
-		using Bitmap bitmap = new(size.Width, size.Height);
-		using (Graphics g = FromImage(bitmap))
-			Glyph.Drop(g, new(Point.Empty, size), color, lightTaskbar);
-		handle = bitmap.GetHicon();
-		return Icon.FromHandle(handle);
-	}
-
-	[SuppressMessage("Interoperability", "SYSLIB1054: Используйте LibraryImportAttribute вместо DllImportAttribute для генерирования кода маршализации P/Invoke во время компиляции")]
-	[DllImport("User32", ExactSpelling = true)]
-	static extern bool DestroyIcon(nint icon);
 
 	void RestoreFromTray()
 	{
@@ -628,6 +600,11 @@ public partial class MainForm : Form
 	void NotifyIcon_MouseClick(object? sender, MouseEventArgs e)
 	{
 		if (e.Button == MouseButtons.Left) RestoreFromTray();
+	}
+
+	void NotifyIcon_Paint(object? sender, PaintEventArgs e)
+	{
+		Glyph.Drop(e.Graphics, e.ClipRectangle, Accent(NotifyIconColor), notifyIcon.LightTheme);
 	}
 
 	void Open_Click(object? sender, EventArgs e) => RestoreFromTray();
@@ -738,13 +715,5 @@ public partial class MainForm : Form
 			if (switchMode) await d.SetAsync((nameof(State.dehumidifier_mode), mode));
 			await d.SetAsync((nameof(State.dehumidifier_target_humidity), target));
 		});
-	}
-
-	/// <summary>Смѣна темы (WM_SETTINGCHANGE съ «ImmersiveColorSet») приходитъ какъ General — перерисовать каплю сразу, не дожидаясь опроса;
-	/// ShowTray самъ провѣритъ, поменялась ли тема панели задачъ. Вызывается въ UI-потокѣ: SystemEvents шлётъ въ контекстъ подписавшагося.</summary>
-	void SystemEvents_UserPreferenceChanged(object sender, UserPreferenceChangedEventArgs e)
-	{
-		if (e.Category == UserPreferenceCategory.General)
-			ShowTray(RoomHumidity);
 	}
 }

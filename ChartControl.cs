@@ -389,7 +389,7 @@ public sealed class ChartControl : Control
 		DrawAxis(g, temperaturePane, TemperatureRange, Step(TemperatureRange, temperaturePane.Height, small), "0.#", left: true, small, TemperatureLine);
 		DrawAxis(g, temperaturePane, WaterRange, Step(WaterRange, temperaturePane.Height, small), "0.#", left: false, small, WaterLine);
 
-		DrawSeries(g, humidityPane, HumidityRange, i => Samples[i].State is { Mode: not LogFormat.DryMode, Target: { } t } ? t : null, TargetLine, 2);
+		DrawSeries(g, humidityPane, HumidityRange, i => Samples[i].State is { Mode: not LogFormat.DryMode, Target: { } t } ? t : null, TargetLine, 2, pinned: true);
 		DrawSeries(g, humidityPane, HumidityRange, i => Samples[i].State.Humidity, HumidityLine, 2);
 		DrawSeries(g, temperaturePane, TemperatureRange, i => Samples[i].State.Temperature, TemperatureLine, 2);
 		DrawSeries(g, temperaturePane, WaterRange, i => Waters[i], WaterLine, 2);
@@ -506,15 +506,18 @@ public sealed class ChartControl : Control
 
 	/// <summary>Ступенчатая линія: горизонталь — пока значеніе держится, вертикаль — смѣна; послѣ lost — пунктиромъ.
 	/// Только видимое: съ первой видимой строки (двоичнымъ поискомъ) до первой правѣе края.
-	/// Отрѣзками, а не одною ломаною: у ломаной при утолщеніи частыя ступеньки замыкаютъ петли, и тѣ заливаются.</summary>
-	void DrawSeries(Graphics g, Rectangle pane, (double Min, double Max) range, Func<int, double?> value, Color color, float width)
+	/// Отрѣзками, а не одною ломаною: у ломаной при утолщеніи частыя ступеньки замыкаютъ петли, и тѣ заливаются.
+	/// pinned — значеніе на краю и за краемъ рисуется внутри рамки, у края; за краемъ — пунктиромъ.</summary>
+	void DrawSeries(Graphics g, Rectangle pane, (double Min, double Max) range, Func<int, double?> value, Color color, float width, bool pinned = false)
 	{
-		using Pen solid = new(color, width * DeviceDpi / 96);
-		using Pen dashed = new(color, width * DeviceDpi / 96) { DashStyle = Dash };
+		float thickness = width * DeviceDpi / 96;
+		using Pen solid = new(color, thickness);
+		using Pen dashed = new(color, thickness) { DashStyle = Dash };
 		GraphicsState saved = g.Save();
 		g.SetClip(pane);
 		float? previousY = null;
 		float left = pane.Left - 2, right = pane.Right + 2;
+		float top = pane.Top + 1 + thickness / 2, bottom = pane.Bottom - thickness / 2; // внутри рамки: она по Top и по Bottom
 		for (int i = Max(0, IndexAt(TimeAt(ViewFrom))); i < Samples.Count; i++)
 		{
 			Sample sample = Samples[i];
@@ -526,10 +529,12 @@ public sealed class ChartControl : Control
 				continue;
 			}
 			float x2 = X(EndOf(i)), y = Y(pane, v, range);
+			bool outside = pinned && (v > range.Max || v < range.Min);
+			if (pinned) y = Min(Max(y, top), bottom);
 			if (previousY is { } py && py != y)
 				g.DrawLine(solid, x1, py, x1, y);
 			if (x2 > x1)
-				g.DrawLine(sample.Kind == Lost ? dashed : solid, Max(x1, left), y, Min(x2, right), y);
+				g.DrawLine(sample.Kind == Lost || outside ? dashed : solid, Max(x1, left), y, Min(x2, right), y);
 			previousY = y;
 		}
 		g.Restore(saved);

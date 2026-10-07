@@ -16,7 +16,7 @@ using static String;
 using static Nullable;
 using static AttributeTargets;
 using static MIoTAccess;
-using static Comfort;
+using static Values;
 
 using State = DehumidifierState;
 
@@ -69,28 +69,9 @@ public enum MIoTAccess : byte
 	RWN = R | W | N,
 }
 
-public enum Comfort : byte { TooDry, Dry, Ideal, Normal, Humid, TooHumid }
-
 /// <summary>Xiaomi Smart Dehumidifier Lite</summary>
 public sealed class Dehumidifier(miIO Client) : IDisposable
 {
-	/// <summary>Оцѣнка влажности въ комнатѣ по медицинскимъ рекомендаціямъ:
-	/// 30…60 % — допустимо по ГОСТ 30494-2011;
-	/// 40…60 % — норма (диаграмма Стерлинга, 1986), изъ нея
-	/// 40…50 % — лучше всего (тамъ же и совѣтъ EPA, клиники Мэйо — не выше 50 %);
-	/// ниже 30 % сохнутъ слизистыя;
-	/// EPA совѣтуетъ держать ниже 60 % — съ 60 % уже влажно;
-	/// съ 70 % растутъ плѣсень и клещи.
-	/// Ступень — сколько началъ ComfortStarts влажность уже достигла.</summary>
-	public static Comfort HumidityComfort(byte humidity)
-	{
-		int i = ComfortStarts.BinarySearch(humidity);
-		return (Comfort)(i < 0 ? ~i : i + 1);
-	}
-
-	/// <summary>Первое значеніе каждой ступени послѣ TooDry.</summary>
-	public static ReadOnlySpan<byte> ComfortStarts => [/*Dry*/30, /*Ideal*/40, /*Normal*/51, /*Humid*/60, /*TooHumid*/70];
-
 	static readonly List<(PropertyInfo Info, MIoTAttribute MIoT)> Fields = [..
 		from  Info in typeof(State).GetProperties()
 		let   MIoT = Info.GetCustomAttribute<MIoTAttribute>()
@@ -102,9 +83,6 @@ public sealed class Dehumidifier(miIO Client) : IDisposable
 
 	/// <summary>Тѣ же свойства по (siid, piid) — по нимъ разбираемъ отвѣты: устройство возвращаетъ siid и piid каждаго свойства.</summary>
 	static readonly Dictionary<(byte siid, byte piid), PropertyInfo> Props = Fields.ToDictionary(p => (p.MIoT.siid, p.MIoT.piid), p => p.Info);
-
-	public static string FaultText(byte code) => ResourceManager.GetString($"Fault{code}", Culture) ?? Format(FaultUnknown, code);
-	public static string ComfortText(Comfort comfort) => ResourceManager.GetString($"Comfort{comfort}", Culture)!;
 
 	public async Task<State> GetStateAsync(CancellationToken ct = default)
 	{
@@ -229,19 +207,6 @@ public sealed class Dehumidifier(miIO Client) : IDisposable
 		if (chunk.Count > 0)
 			yield return chunk;
 	}
-
-	/// <summary>Коды ошибокъ MIoT въ отвѣтахъ на get/set_properties и action.</summary>
-	public static string ErrorText(int code) => code switch
-	{
-		-4001 => Error4001,
-		-4002 => Error4002,
-		-4003 => Error4003,
-		-4004 => Error4004,
-		-4005 => Error4005,
-		-4006 => Error4006,
-		-4007 => Error4007,
-		_ => Format(ErrorCode, code),
-	};
 
 	/// <summary>(siid, piid) изъ элемента отвѣта.</summary>
 	static (byte siid, byte piid)? Key(JsonNode? r) =>

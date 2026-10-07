@@ -12,18 +12,18 @@ using Properties;
 
 using static Properties.Resources;
 
-using static Math;
 using static Byte;
-using static UInt16;
 using static String;
 using static Console;
-using static Comfort;
 using static TimeSpan;
 using static Encoding;
 using static ConsoleColor;
 using static StringComparison;
 using static DehumidifierState;
 using static Dehumidifier;
+using static ComfortScale;
+using static Comfort;
+using static Values;
 
 using State = DehumidifierState;
 
@@ -236,7 +236,7 @@ static partial class CLI
 					Field(CliLight      , s.indicator_light switch { false => (LightNames[0], DarkGray), true => s.indicator_light_mode is byte l and < 3 ? (LightNames[l], l == 0 ? DarkGray : White) : null, null => null });
 					Field(CliSound      , OnOff(s.alarm));
 					Field(CliLock       , OnOff(s.physical_controls_locked));
-					Field(CliTemperature, s.environment_temperature      is { } c ? (Format(Resources.TemperatureFormat, c), White) : null);
+					Field(CliTemperature, s.environment_temperature      is { } c ? (Temperature(c), White) : null);
 					Field(CliHumidity   , s.environment_relative_umidity is { } h ? ($"{h} %, {ComfortText(HumidityComfort(h))}", HumidityComfort(h) switch { Ideal => Green, Normal => DarkGreen, Dry or Humid => Yellow, _ => Red }) : null);
 					Field(CliTarget     , s.dehumidifier_target_humidity is { } t ? ($"{t} %", White) : null);
 					Field(CliDryAfterOff, DryText(s));
@@ -373,31 +373,6 @@ static partial class CLI
 	}
 
 	// ───── разборъ значеній: одни и тѣ же для провѣрки и для выполненія ─────
-
-	/// <summary>Цѣлевая влажность: осушитель принимаетъ 0…100, хотя по спецификаціи 40…70.</summary>
-	static bool HumidityOf(ReadOnlySpan<char> text, out byte humidity) => TryParse(text.TrimEnd('%'), out humidity) && humidity <= 100;
-
-	/// <summary>Минуты таймера: «90» или часы съ минутами «1:30»; больше 65535 — null: осушитель хранитъ delay_time въ 16 битахъ (провѣрено).
-	/// Часы — ushort, произведеніе — въ int: не переполняется.</summary>
-	static ushort? Minutes(ReadOnlySpan<char> text)
-	{
-		int colon = text.IndexOf(':');
-		if (colon < 0) return TryParse(text, out ushort time) ? time : null;
-		return TryParse(text[(colon + 1)..], out byte minutes) && minutes < 60 &&
-		/**/   TryParse(text[..colon],       out ushort hours) && minutes + 60 * hours <= 0xFFFF ? (ushort)(hours * 60 + minutes) : null;
-	}
-
-	/// <summary>Длительность словами: «2 ч 05 мин», «15 мин», «3 сут 4 ч».</summary>
-	/// Округляется разъ — до самой мелкой показанной единицы, дальше только цѣлое дѣленіе:
-	/// иначе на стыкѣ выходило бы «60 мин» вмѣсто «1 ч 00 мин» и «1 ч 59 мин» вмѣсто «2 ч 00 мин».
-	static string Duration(TimeSpan span)
-	{
-		long minutes = Max((long)Round(span.TotalMinutes), 0);
-		if (minutes < 60)      return Format(DurationMinutes, minutes);
-		if (minutes < 60 * 24) return Format(DurationHours, minutes / 60, minutes % 60);
-		long hours = (minutes + 30) / 60; // въ суткахъ минутъ не видно — до часа
-		return Format(DurationDays, hours / 24, hours % 24);
-	}
 
 	/// <summary>Значеніе для записи siid.piid=: on|off (включить|выключить) — true|false, иначе JSON (число, true, "строка"…), а что не JSON — строка.
 	/// null — для JSON null: на него осушитель отвѣчаетъ code 0, но что дѣлаетъ — неизвѣстно; такое не пишемъ.</summary>

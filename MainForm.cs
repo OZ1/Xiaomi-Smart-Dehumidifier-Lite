@@ -68,7 +68,7 @@ public partial class MainForm : Form
 	{
 		if (field == value) return;
 		else field = value;
-		notifyIcon.Invalidate();
+		notifyIcon.InvalidateImage();
 	}}
 
 	public MainForm()
@@ -608,7 +608,7 @@ public partial class MainForm : Form
 		if (e.Button == MouseButtons.Left) RestoreFromTray();
 	}
 
-	void NotifyIcon_Paint(object? sender, PaintEventArgs e)
+	void NotifyIcon_PaintImage(object? sender, PaintEventArgs e)
 	{
 		Glyph.Drop(e.Graphics, e.ClipRectangle, Accent(NotifyIconColor), notifyIcon.LightTheme);
 	}

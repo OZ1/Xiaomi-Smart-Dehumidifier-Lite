@@ -11,13 +11,13 @@ using static Graphics;
 
 using HICON = nint;
 
-/// <summary>Значокъ въ треѣ, нарисованный въ событіи Paint. NotifyIcon запечатанъ — поэтому онъ внутри, а не предокъ.
-/// Invalidate даётъ обработчику Paint чистую картинку размѣра SmallIconSize, дѣлаетъ изъ нея HICON и самъ его освобождаетъ.
+/// <summary>Значокъ въ треѣ, нарисованный въ событіи PaintImage (какъ у GlyphButton). NotifyIcon запечатанъ — поэтому онъ внутри, а не предокъ.
+/// InvalidateImage даётъ обработчику PaintImage чистую картинку размѣра SmallIconSize, дѣлаетъ изъ нея HICON и самъ его освобождаетъ.
 /// Перерисовывается самъ, когда смѣнилась тема панели задачъ.</summary>
-[DefaultEvent(nameof(Paint))]
+[DefaultEvent(nameof(PaintImage))]
 sealed class TrayIcon : Component
 {
-	public event PaintEventHandler? Paint;
+	public event PaintEventHandler? PaintImage;
 	public event MouseEventHandler? MouseClick;
 
 	readonly NotifyIcon NotifyIcon = new();
@@ -58,18 +58,18 @@ sealed class TrayIcon : Component
 	{
 		if (field == value) return;
 		else field = value;
-		Invalidate();
+		InvalidateImage();
 	}}        = SystemUsesLightTheme;
 	static bool SystemUsesLightTheme => Registry.GetValue(@"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize", "SystemUsesLightTheme", 0) is 1;
 
-	/// <summary>Перерисовать: Paint на свѣжей прозрачной картинкѣ — и въ трей.</summary>
-	public void Invalidate()
+	/// <summary>Перерисовать значокъ: PaintImage на свѣжей прозрачной картинкѣ — и въ трей.</summary>
+	public void InvalidateImage()
 	{
 		Size size = SmallIconSize;
 		using Bitmap bitmap = new(size.Width, size.Height);
 		using (Graphics g = FromImage(bitmap))
 		using (PaintEventArgs e = new(g, new(default, size)))
-			Paint?.Invoke(this, e);
+			PaintImage?.Invoke(this, e);
 		HICON hOld = hIcon;
 		hIcon = bitmap.GetHicon();
 		NotifyIcon.Icon = Icon.FromHandle(hIcon);
